@@ -1,0 +1,43 @@
+---
+import calculators from '../../calculators.json';
+
+export function getStaticPaths() {
+  return calculators.map((calc) => ({
+    params: { slug: calc.slug },
+    props: { calc },
+  }));
+}
+
+const { calc } = Astro.props;
+---
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>{calc.name} - FinanceHub</title>
+    <style>
+        body { font-family: sans-serif; background: #f0f2f5; margin: 0; display: flex; justify-content: center; align-items: center; height: 100vh; }
+        .card { background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); width: 350px; }
+        h1 { color: #1e40af; font-size: 1.5rem; margin-bottom: 0.5rem; }
+        p { color: #64748b; font-size: 0.9rem; margin-bottom: 1.5rem; }
+        label { display: block; margin-bottom: 5px; font-weight: bold; }
+        input { width: 100%; padding: 10px; margin-bottom: 15px; border: 1px solid #ddd; border-radius: 6px; box-sizing: border-box; }
+        button { width: 100%; padding: 12px; background: #2563eb; color: white; border: none; border-radius: 6px; cursor: pointer; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>{calc.name}</h1>
+        <p>{calc.description}</p>
+        
+        <label>{calc.label1}</label>
+        <input type="number" id="input1" />
+        
+        <label>{calc.label2}</label>
+        <input type="number" id="input2" />
+        
+        <button onclick="alert('Calculation logic for ' + document.title + ' coming soon!')">Calculate Now</button>
+        <br><br>
+        <a href="/" style="font-size: 0.8rem; color: #2563eb;">← Back to Home</a>
+    </div>
+</body>
+</html>

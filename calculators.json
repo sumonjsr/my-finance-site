@@ -1,0 +1,23 @@
+[
+  {
+    "slug": "roi-calculator",
+    "name": "ROI Calculator",
+    "description": "Calculate your return on investment quickly.",
+    "label1": "Investment Amount ($)",
+    "label2": "Total Return ($)"
+  },
+  {
+    "slug": "compound-interest-calculator",
+    "name": "Compound Interest",
+    "description": "See how your money grows over time with compound interest.",
+    "label1": "Principal Amount ($)",
+    "label2": "Annual Rate (%)"
+  },
+  {
+    "slug": "vat-calculator-bangladesh",
+    "name": "VAT Calculator (BD)",
+    "description": "Calculate VAT based on Bangladesh standard rates.",
+    "label1": "Base Amount (BDT)",
+    "label2": "VAT Rate (%)"
+  }
+]
