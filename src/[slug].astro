@@ -1,5 +1,5 @@
 ---
-import calculators from '../../calculators.json';
+import calculators from '../calculators.json';
 
 export function getStaticPaths() {
   return calculators.map((calc) => ({
@@ -15,29 +15,33 @@ const { calc } = Astro.props;
     <meta charset="utf-8" />
     <title>{calc.name} - FinanceHub</title>
     <style>
-        body { font-family: sans-serif; background: #f0f2f5; margin: 0; display: flex; justify-content: center; align-items: center; height: 100vh; }
-        .card { background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); width: 350px; }
-        h1 { color: #1e40af; font-size: 1.5rem; margin-bottom: 0.5rem; }
-        p { color: #64748b; font-size: 0.9rem; margin-bottom: 1.5rem; }
-        label { display: block; margin-bottom: 5px; font-weight: bold; }
-        input { width: 100%; padding: 10px; margin-bottom: 15px; border: 1px solid #ddd; border-radius: 6px; box-sizing: border-box; }
-        button { width: 100%; padding: 12px; background: #2563eb; color: white; border: none; border-radius: 6px; cursor: pointer; font-weight: bold; }
+        body { font-family: sans-serif; background: #f0f2f5; margin: 0; display: flex; flex-direction: column; align-items: center; min-height: 100vh; }
+        .nav { background: #1e40af; color: white; padding: 15px; width: 100%; text-align: center; font-weight: bold; margin-bottom: 50px; }
+        .card { background: white; padding: 2.5rem; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); width: 100%; max-width: 400px; }
+        h1 { color: #1e40af; font-size: 1.6rem; margin-bottom: 10px; text-align: center; }
+        p { color: #64748b; text-align: center; margin-bottom: 30px; }
+        label { display: block; margin-bottom: 8px; font-weight: 600; color: #334155; }
+        input { width: 100%; padding: 12px; margin-bottom: 20px; border: 1px solid #cbd5e1; border-radius: 8px; box-sizing: border-box; font-size: 1rem; }
+        button { width: 100%; padding: 14px; background: #2563eb; color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: bold; font-size: 1rem; transition: 0.2s; }
+        button:hover { background: #1d4ed8; }
+        .back-link { margin-top: 20px; text-decoration: none; color: #64748b; font-size: 0.9rem; }
     </style>
 </head>
 <body>
+    <div class="nav">FinanceHub.bd</div>
     <div class="card">
         <h1>{calc.name}</h1>
         <p>{calc.description}</p>
         
         <label>{calc.label1}</label>
-        <input type="number" id="input1" />
+        <input type="number" id="val1" placeholder="Enter value..." />
         
         <label>{calc.label2}</label>
-        <input type="number" id="input2" />
+        <input type="number" id="val2" placeholder="Enter value..." />
         
-        <button onclick="alert('Calculation logic for ' + document.title + ' coming soon!')">Calculate Now</button>
-        <br><br>
-        <a href="/" style="font-size: 0.8rem; color: #2563eb;">← Back to Home</a>
+        <button onclick="alert('Calculation Logic Integration in Progress!')">Calculate</button>
+        
+        <center><a href="/" class="back-link">← Back to Home</a></center>
     </div>
 </body>
 </html>

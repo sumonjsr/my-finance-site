@@ -1,23 +1,35 @@
-[
-  {
-    "slug": "roi-calculator",
-    "name": "ROI Calculator",
-    "description": "Calculate your return on investment quickly.",
-    "label1": "Investment Amount ($)",
-    "label2": "Total Return ($)"
-  },
-  {
-    "slug": "compound-interest-calculator",
-    "name": "Compound Interest",
-    "description": "See how your money grows over time with compound interest.",
-    "label1": "Principal Amount ($)",
-    "label2": "Annual Rate (%)"
-  },
-  {
-    "slug": "vat-calculator-bangladesh",
-    "name": "VAT Calculator (BD)",
-    "description": "Calculate VAT based on Bangladesh standard rates.",
-    "label1": "Base Amount (BDT)",
-    "label2": "VAT Rate (%)"
-  }
-]
+---
+import calculators from '../calculators.json';
+---
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>FinanceHub - Home</title>
+    <style>
+        body { font-family: 'Inter', sans-serif; background: #f8fafc; margin: 0; padding: 0; }
+        .nav { background: #1e40af; color: white; padding: 20px; text-align: center; font-weight: bold; font-size: 1.5rem; }
+        .container { max-width: 1000px; margin: 40px auto; padding: 0 20px; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
+        .card { background: white; padding: 20px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); border: 1px solid #e2e8f0; text-decoration: none; color: inherit; transition: 0.3s; }
+        .card:hover { transform: translateY(-5px); border-color: #2563eb; }
+        h2 { color: #1e3a8a; margin-top: 0; font-size: 1.2rem; }
+        p { color: #64748b; font-size: 0.9rem; line-height: 1.4; }
+        .link-text { color: #2563eb; font-weight: bold; font-size: 0.8rem; margin-top: 15px; display: block; }
+    </style>
+</head>
+<body>
+    <div class="nav">FinanceHub.bd</div>
+    <div class="container">
+        <h1 style="text-align: center; color: #1e3a8a;">Financial Decision Tools</h1>
+        <div class="grid">
+            {calculators.map((calc) => (
+                <a href={`/${calc.slug}`} class="card">
+                    <h2>{calc.name}</h2>
+                    <p>{calc.description}</p>
+                    <span class="link-text">Open Calculator →</span>
+                </a>
+            ))}
+        </div>
+    </div>
+</body>
+</html>
