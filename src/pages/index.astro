@@ -17,7 +17,7 @@ import calculators from '../../calculators.json';
     <h1 style="text-align:center;">Financial Decision Tools</h1>
     <div class="grid">
         {calculators.map((calc) => (
-            <a href={`/${calc.slug}`} class="card">
+            <a href={`${calc.slug}/`} class="card">
                 <h2>{calc.name}</h2>
                 <p style="color: #64748b;">{calc.description}</p>
                 <strong>Open Tool &rarr;</strong>
