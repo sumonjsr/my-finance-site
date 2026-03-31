@@ -9,112 +9,192 @@ export async function getStaticPaths() {
 }
 
 const { calc } = Astro.props;
+
+// সাজেশনের জন্য অন্য ৩টি ক্যালকুলেটর
+const suggestions = calculators
+  .filter(item => item.slug !== calc.slug)
+  .sort(() => 0.5 - Math.random())
+  .slice(0, 3);
 ---
 <html lang="en">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{calc.name} | FinanceHub</title>
+    <title>{calc.name} | FinanceHub Pro - Accurate Financial Tools</title>
     <style>
-        body { font-family: 'Inter', sans-serif; background: #f1f5f9; display: flex; justify-content: center; padding: 40px; margin: 0; min-height: 100vh; }
-        .calc-box { background: white; padding: 40px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); width: 100%; max-width: 420px; text-align: center; border: 1px solid #e2e8f0; height: fit-content; }
-        h1 { color: #1e3a8a; font-size: 1.6rem; margin-bottom: 10px; }
-        p { color: #64748b; font-size: 0.9rem; margin-bottom: 30px; }
-        label { display: block; text-align: left; font-weight: 600; color: #334155; margin-bottom: 8px; font-size: 0.85rem; }
-        input { width: 100%; padding: 12px; margin-bottom: 18px; border: 1px solid #cbd5e1; border-radius: 8px; box-sizing: border-box; font-size: 1rem; }
-        button { width: 100%; padding: 16px; background: #2563eb; color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: bold; font-size: 1rem; margin-top: 10px; }
-        .result-box { margin-top: 25px; padding: 20px; background: #f0f7ff; border-radius: 12px; border: 1px solid #bfdbfe; display: none; color: #1e40af; text-align: left; }
-        .back { display: block; margin-top: 20px; color: #64748b; text-decoration: none; font-size: 0.85rem; }
+        :root {
+            --primary: #1e3a8a;
+            --secondary: #2563eb;
+            --accent: #f0f9ff;
+            --text-dark: #1e293b;
+            --text-light: #64748b;
+            --border: #e2e8f0;
+        }
+        body { font-family: 'Inter', sans-serif; background: #f8fafc; color: var(--text-dark); margin: 0; padding: 0; line-height: 1.6; }
+        
+        header { background: white; padding: 20px 0; border-bottom: 1px solid var(--border); text-align: center; position: sticky; top: 0; z-index: 100; }
+        .logo { font-size: 1.8rem; font-weight: 800; color: var(--primary); text-decoration: none; }
+        .logo span { color: var(--secondary); }
+
+        .container { max-width: 900px; margin: 0 auto; padding: 40px 20px; }
+        
+        /* Calculator Card */
+        .calc-box { background: white; padding: 40px; border-radius: 24px; box-shadow: 0 10px 30px rgba(0,0,0,0.04); border: 1px solid var(--border); margin-bottom: 40px; }
+        h1 { color: var(--primary); font-size: 2rem; margin-bottom: 10px; text-align: center; }
+        .desc-top { text-align: center; color: var(--text-light); margin-bottom: 35px; font-size: 1.1rem; }
+        
+        .input-group { max-width: 400px; margin: 0 auto; }
+        label { display: block; text-align: left; font-weight: 600; color: var(--text-dark); margin-bottom: 8px; font-size: 0.95rem; }
+        input { width: 100%; padding: 15px; margin-bottom: 25px; border: 1.5px solid #cbd5e1; border-radius: 12px; font-size: 1rem; box-sizing: border-box; transition: 0.3s; }
+        input:focus { border-color: var(--secondary); outline: none; box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1); }
+        
+        button { width: 100%; padding: 18px; background: var(--primary); color: white; border: none; border-radius: 14px; cursor: pointer; font-weight: 700; font-size: 1.1rem; transition: 0.3s; }
+        button:hover { background: var(--secondary); transform: translateY(-2px); }
+        
+        .result-box { margin-top: 30px; padding: 25px; background: var(--accent); border-radius: 18px; border: 1px solid #bae6fd; display: none; color: var(--primary); }
+
+        /* Rich Content Section */
+        .rich-content { background: white; padding: 45px; border-radius: 24px; border: 1px solid var(--border); margin-bottom: 40px; }
+        .rich-content h2 { color: var(--primary); font-size: 1.6rem; margin-top: 30px; }
+        .rich-content p { color: #475569; margin-bottom: 20px; }
+        
+        .formula-box { background: #f8fafc; padding: 30px; border-radius: 16px; border: 1.5px dashed #cbd5e1; margin: 30px 0; text-align: center; }
+        .formula-label { font-size: 0.8rem; font-weight: 800; color: var(--text-light); text-transform: uppercase; letter-spacing: 1px; }
+        .formula-text { font-family: 'Courier New', monospace; font-weight: 700; font-size: 1.4rem; color: var(--primary); margin: 15px 0; }
+        
+        .audit-note { background: #fff7ed; border-left: 5px solid #f97316; padding: 20px; border-radius: 8px; margin: 30px 0; font-style: italic; color: #9a3412; }
+
+        /* Suggestions */
+        .suggestions h3 { color: var(--primary); margin-bottom: 20px; }
+        .sugg-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
+        .sugg-card { background: white; padding: 25px; border-radius: 18px; border: 1px solid var(--border); text-decoration: none; transition: 0.3s; }
+        .sugg-card:hover { border-color: var(--secondary); transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
+        .sugg-card h4 { margin: 0; color: var(--primary); }
+
+        footer { text-align: center; padding: 40px; color: var(--text-light); font-size: 0.9rem; border-top: 1px solid var(--border); }
     </style>
 </head>
 <body>
-    <div class="calc-box">
-        <h1>{calc.name}</h1>
-        <p>{calc.description}</p>
-        
-        <label>{calc.label1}</label>
-        <input type="number" id="input1" placeholder="Enter amount..." />
-        
-        <label>{calc.label2}</label>
-        <input type="number" id="input2" placeholder="Enter rate/value..." />
 
-        {calc.slug === 'loan-emi-calculator' && (
-            <div id="tenure-section">
-                <label>Loan Tenure (Total Months)</label>
-                <input type="number" id="tenure" placeholder="e.g. 12, 24, 60" />
+    <header>
+        <a href="/" class="logo">Finance<span>Hub</span></a>
+    </header>
+
+    <div class="container">
+        <div class="calc-box">
+            <h1>{calc.name}</h1>
+            <p class="desc-top">{calc.description}</p>
+            
+            <div class="input-group">
+                <label>{calc.label1}</label>
+                <input type="number" id="input1" placeholder="Enter amount..." />
+                
+                <label>{calc.label2}</label>
+                <input type="number" id="input2" placeholder="Enter value..." />
+
+                {calc.type === 'loan' && (
+                    <div>
+                        <label>{calc.label3 || "Tenure (Months)"}</label>
+                        <input type="number" id="input3" placeholder="e.g. 12, 60" />
+                    </div>
+                )}
+                
+                <button id="calcBtn">Calculate Result</button>
+                <div id="result" class="result-box"></div>
             </div>
-        )}
-        
-        <button id="calcBtn">Calculate Now</button>
+        </div>
 
-        <div id="result" class="result-box"></div>
-        
-        <a href="/" class="back">&larr; Back to Dashboard</a>
+        <div class="rich-content">
+            <h2>Why Use Our {calc.name}?</h2>
+            <p>In the world of finance, precision is everything. Whether you are managing personal investments or controlling costs for a multi-national corporation, small errors can lead to significant financial gaps. Our <strong>{calc.name}</strong> is built with professional-grade algorithms to ensure you get the most accurate results instantly.</p>
+
+            <div class="formula-box">
+                <div class="formula-label">Verified Calculation Formula</div>
+                <p class="formula-text">
+                    {calc.type === 'loan' ? "E = [P x R x (1+R)^N] / [(1+R)^N - 1]" : 
+                     calc.type === 'roi' ? "ROI = [(Gain - Cost) / Cost] x 100" :
+                     calc.type === 'margin' ? "Margin = [(Revenue - COGS) / Revenue] x 100" :
+                     "Total = Net + (Net x Tax Rate / 100)"}
+                </p>
+                <p style="font-size: 0.85rem; color: var(--text-light);">*Globally accepted financial standard</p>
+            </div>
+
+            <h2>How to Interpret the Results</h2>
+            <p>Understanding the numbers is just as important as calculating them. When analyzing the output of this tool, consider current market volatility and inflation rates, especially in competitive markets like the USA, UK, and Canada.</p>
+
+            <div class="audit-note">
+                <strong>Pro Auditor's Insight:</strong> "Always cross-verify automated results with manual ledgers during quarterly closings to maintain 100% financial integrity." — <em>Internal Audit Dept.</em>
+            </div>
+
+            <h2>Key Features of This Tool</h2>
+            <ul style="color: #475569; padding-left: 20px;">
+                <li>Real-time processing with zero latency.</li>
+                <li>Mobile-responsive design for on-the-go auditing.</li>
+                <li>Accurate rounding based on international accounting principles.</li>
+                <li>Free to use for entrepreneurs and financial students.</li>
+            </ul>
+        </div>
+
+        <div class="suggestions">
+            <h3>Try Our Other Premium Tools</h3>
+            <div class="sugg-grid">
+                {suggestions.map(s => (
+                    <a href={`/${s.slug}/`} class="sugg-card">
+                        <h4>{s.name}</h4>
+                        <p style="font-size: 0.8rem; color: var(--text-light); margin-top: 8px;">Explore this tool &rarr;</p>
+                    </a>
+                ))}
+            </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 40px;">
+            <a href="/" style="text-decoration: none; color: var(--secondary); font-weight: 700;">&larr; Back to Main Dashboard</a>
+        </div>
     </div>
 
-    <script define:vars={{ slug: calc.slug }}>
+    <footer>
+        <p>&copy; 2026 FinanceHub. Verified by Md Merajul Islam (Internal Audit Professional).</p>
+        <p style="font-size: 0.75rem; margin-top: 10px;">Disclaimer: Results are estimates. Consult a certified financial advisor for legal decisions.</p>
+    </footer>
+
+    <script define:vars={{ type: calc.type }}>
         const btn = document.getElementById('calcBtn');
         const resDiv = document.getElementById('result');
 
         btn.addEventListener('click', () => {
-            const val1 = parseFloat(document.getElementById('input1').value);
-            const val2 = parseFloat(document.getElementById('input2').value);
+            const v1 = parseFloat(document.getElementById('input1').value);
+            const v2 = parseFloat(document.getElementById('input2').value);
 
-            if (isNaN(val1) || isNaN(val2)) {
-                alert("Please fill in the required fields.");
+            if (isNaN(v1) || isNaN(v2)) {
+                alert("Please fill in all fields with valid numbers.");
                 return;
             }
 
-            let resultHTML = "";
+            let resHTML = "";
 
-            // 1. Loan EMI Logic
-            if (slug === 'loan-emi-calculator') {
-                const tenure = parseFloat(document.getElementById('tenure').value);
-                if (isNaN(tenure) || tenure <= 0) {
-                    alert("Please enter total months.");
-                    return;
-                }
-                const monthlyRate = (val2 / 12) / 100;
-                const emi = (val1 * monthlyRate * Math.pow(1 + monthlyRate, tenure)) / (Math.pow(1 + monthlyRate, tenure) - 1);
-                const totalPayment = emi * tenure;
-                const totalInterest = totalPayment - val1;
-
-                resultHTML = `
-                    <div style="font-size: 1.1rem; margin-bottom: 8px;">Monthly EMI: <strong>${emi.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})}</strong></div>
-                    <hr style="border: 0; border-top: 1px solid #bfdbfe; margin: 10px 0;">
-                    <div style="font-size: 0.9rem;">Total Interest: ${totalInterest.toLocaleString()}</div>
-                    <div style="font-size: 0.9rem;">Total Payment: ${totalPayment.toLocaleString()}</div>
-                `;
+            if (type === 'loan') {
+                const v3 = parseFloat(document.getElementById('input3').value);
+                if (!v3) return alert("Please enter tenure months.");
+                const r = (v2 / 12) / 100;
+                const emi = (v1 * r * Math.pow(1 + r, v3)) / (Math.pow(1 + r, v3) - 1);
+                resHTML = `<strong>Monthly EMI:</strong> $${emi.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})}<br><strong>Total Interest:</strong> $${(emi * v3 - v1).toLocaleString()}`;
             } 
-            // 2. ROI Logic
-            else if (slug === 'roi-calculator') {
-                const roi = ((val2 - val1) / val1) * 100;
-                resultHTML = `<strong>Total ROI: ${roi.toFixed(2)}%</strong>`;
-            } 
-            // 3. VAT Logic
-            else if (slug === 'vat-calculator-bd') {
-                const vat = (val1 * val2) / 100;
-                const total = val1 + vat;
-                resultHTML = `<strong>VAT Amount: ${vat.toFixed(2)}</strong><br>Total Price: ${total.toFixed(2)}`;
-            } 
-            // 4. Compound Interest Logic (1 Year standard)
-            else if (slug === 'compound-interest-calculator') {
-                const ci = val1 * Math.pow((1 + (val2 / 100)), 1); 
-                resultHTML = `<strong>Future Value (1 Year): ${ci.toFixed(2)}</strong>`;
-            } 
-            // 5. Gross Margin Logic
-            else if (slug === 'gross-margin-calculator') {
-                const margin = ((val1 - val2) / val1) * 100;
-                resultHTML = `<strong>Gross Margin: ${margin.toFixed(2)}%</strong>`;
-            } 
-            // 6. Break-Even Logic
-            else if (slug === 'break-even-calculator') {
-                const bep = val1 / (val2 / 100);
-                resultHTML = `<strong>Break-Even Sales: ${bep.toFixed(2)}</strong>`;
+            else if (type === 'roi') {
+                const roi = ((v2 - v1) / v1) * 100;
+                resHTML = `<strong>Investment ROI:</strong> ${roi.toFixed(2)}%<br><strong>Net Profit:</strong> $${(v2 - v1).toLocaleString()}`;
+            }
+            else if (type === 'margin') {
+                const margin = ((v1 - v2) / v1) * 100;
+                resHTML = `<strong>Gross Margin:</strong> ${margin.toFixed(2)}%<br><strong>Gross Profit:</strong> $${(v1 - v2).toLocaleString()}`;
+            }
+            else {
+                const tax = (v1 * v2) / 100;
+                resHTML = `<strong>Total Amount:</strong> $${(v1 + tax).toLocaleString()}<br><strong>Tax Component:</strong> $${tax.toLocaleString()}`;
             }
 
-            resDiv.innerHTML = resultHTML;
+            resDiv.innerHTML = resHTML;
             resDiv.style.display = 'block';
+            resDiv.style.animation = 'fadeIn 0.5s';
         });
     </script>
 </body>

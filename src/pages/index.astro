@@ -1,28 +1,58 @@
 ---
 import calculators from '../../calculators.json';
+
+const title = "FinanceHub | 50+ Professional Financial Calculators";
+const description = "Free online financial tools for ROI, Loans, Taxes, and Business Margins.";
 ---
+
 <html lang="en">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>FinanceHub | Professional Tools</title>
+    <title>{title}</title>
     <style>
-        body { font-family: 'Inter', sans-serif; background: #f8fafc; margin: 0; padding: 40px; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; max-width: 1200px; margin: 40px auto; }
-        .card { background: white; padding: 30px; border-radius: 12px; border: 1px solid #e2e8f0; text-decoration: none; color: #1e3a8a; transition: 0.3s; }
-        .card:hover { transform: translateY(-5px); border-color: #2563eb; box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
+        :root { --primary: #1e3a8a; --secondary: #2563eb; --text-dark: #1e293b; --text-light: #64748b; --border: #e2e8f0; }
+        body { font-family: 'Inter', sans-serif; background: #f8fafc; margin: 0; padding: 0; }
+        header { background: white; padding: 25px 0; border-bottom: 1px solid var(--border); text-align: center; }
+        .logo { font-size: 2rem; font-weight: 800; color: var(--primary); text-decoration: none; }
+        .logo span { color: var(--secondary); }
+        .hero-search { background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%); padding: 60px 20px; text-align: center; color: white; }
+        #searchInput { width: 100%; max-width: 600px; padding: 18px 25px; border-radius: 50px; border: none; font-size: 1.1rem; box-shadow: 0 10px 25px rgba(0,0,0,0.15); outline: none; }
+        .container { max-width: 1200px; margin: -30px auto 60px; padding: 0 20px; }
+        .calc-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 25px; }
+        .calc-card { background: white; padding: 30px; border-radius: 20px; border: 1px solid var(--border); text-decoration: none; display: block; transition: 0.3s; height: 160px; }
+        .calc-card:hover { transform: translateY(-8px); border-color: var(--secondary); box-shadow: 0 15px 30px rgba(0,0,0,0.08); }
+        .calc-card h3 { color: var(--primary); margin: 0 0 10px 0; pointer-events: none; }
+        .calc-card p { color: var(--text-light); font-size: 0.9rem; margin: 0; pointer-events: none; }
+        footer { background: #0f172a; color: #94a3b8; padding: 40px; text-align: center; margin-top: 80px; }
     </style>
 </head>
 <body>
-    <h1 style="text-align:center;">Financial Decision Tools</h1>
-    <div class="grid">
-        {calculators.map((calc) => (
-            <a href={`/${calc.slug}/`} class="card">
-                <h2>{calc.name}</h2>
-                <p style="color: #64748b;">{calc.description}</p>
-                <strong>Open Tool &rarr;</strong>
-            </a>
-        ))}
-    </div>
+    <header><a href="/" class="logo">Finance<span>Hub</span></a></header>
+    <section class="hero-search">
+        <h1>Find Your Calculator</h1>
+        <input type="text" id="searchInput" placeholder="Search (e.g. ROI, Loan...)" onkeyup="filterCalculators()" />
+    </section>
+    <main class="container">
+        <div class="calc-grid" id="calcGrid">
+            {calculators.map((calc) => (
+                <a href={`/${calc.slug}/`} class="calc-card" data-name={calc.name.toLowerCase()}>
+                    <h3>{calc.name}</h3>
+                    <p>{calc.description}</p>
+                </a>
+            ))}
+        </div>
+    </main>
+    <footer>&copy; 2026 FinanceHub. Designed by Md Merajul Islam.</footer>
+    <script is:inline>
+        function filterCalculators() {
+            const filter = document.getElementById('searchInput').value.toLowerCase();
+            const cards = document.getElementsByClassName('calc-card');
+            for (let i = 0; i < cards.length; i++) {
+                const name = cards[i].getAttribute('data-name');
+                cards[i].style.display = name.includes(filter) ? "block" : "none";
+            }
+        }
+    </script>
 </body>
 </html>
