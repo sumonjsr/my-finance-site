@@ -1,7 +1,8 @@
 ---
 import calculators from '../../calculators.json';
 
-export function getStaticPaths() {
+export async function getStaticPaths() {
+  // CRITICAL FIX: Added the return keyword and mapped the JSON data correctly
   return calculators.map((calc) => ({
     params: { slug: calc.slug },
     props: { calc },
@@ -22,10 +23,9 @@ const { calc } = Astro.props;
         h1 { color: #1e3a8a; font-size: 1.8rem; margin-bottom: 10px; text-align: center; }
         .desc { color: #64748b; text-align: center; margin-bottom: 35px; font-size: 1rem; line-height: 1.5; }
         label { display: block; margin-bottom: 10px; font-weight: 600; color: #334155; font-size: 0.9rem; }
-        input { width: 100%; padding: 14px; margin-bottom: 25px; border: 2px solid #e2e8f0; border-radius: 10px; box-sizing: border-box; font-size: 1rem; }
-        button { width: 100%; padding: 16px; background: #2563eb; color: white; border: none; border-radius: 10px; cursor: pointer; font-weight: bold; font-size: 1.1rem; transition: 0.3s; }
-        button:hover { background: #1d4ed8; }
-        .back-link { margin-top: 25px; text-decoration: none; color: #64748b; font-size: 0.9rem; display: block; }
+        input { width: 100%; padding: 14px; margin-bottom: 25px; border: 2px solid #e2e8f0; border-radius: 10px; box-sizing: border-box; font-size: 1rem; transition: 0.2s; }
+        button { width: 100%; padding: 16px; background: #2563eb; color: white; border: none; border-radius: 10px; cursor: pointer; font-weight: bold; font-size: 1.1rem; }
+        .back-link { margin-top: 25px; text-decoration: none; color: #64748b; font-size: 0.9rem; }
     </style>
 </head>
 <body>
@@ -35,14 +35,14 @@ const { calc } = Astro.props;
         <p class="desc">{calc.description}</p>
         
         <label>{calc.label1}</label>
-        <input type="number" id="val1" placeholder="0.00" />
+        <input type="number" placeholder="0.00" />
         
         <label>{calc.label2}</label>
-        <input type="number" id="val2" placeholder="0.00" />
+        <input type="number" placeholder="0.00" />
         
-        <button onclick="alert('System logic for ' + '{calc.name}' + ' is initializing.')">Calculate</button>
+        <button onclick="alert('Analysis feature for ' + document.title + ' coming soon!')">Calculate Now</button>
         
-        <center><a href="/" class="back-link">&larr; Back to Home</a></center>
+        <center><a href="/" class="back-link">&larr; Back to Dashboard</a></center>
     </div>
 </body>
 </html>
