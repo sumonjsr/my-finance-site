@@ -1,46 +1,80 @@
 ---
+// Import path adjusted to find calculators.json in the root folder
 import calculators from '../../calculators.json';
 ---
 <html lang="en">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>FinanceHub | Professional Calculators</title>
+    <title>FinanceHub | Dashboard</title>
     <style>
-        body { font-family: 'Inter', system-ui, sans-serif; background: #f8fafc; margin: 0; padding: 0; color: #0f172a; }
-        .navbar { background: #1e40af; color: white; padding: 20px; text-align: center; font-weight: bold; font-size: 1.5rem; border-bottom: 4px solid #1d4ed8; }
-        .container { max-width: 1100px; margin: 50px auto; padding: 0 25px; }
-        .hero { text-align: center; margin-bottom: 60px; }
-        .hero h1 { font-size: 2.5rem; color: #1e3a8a; margin-bottom: 15px; font-weight: 800; }
-        .hero p { font-size: 1.1rem; color: #64748b; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 30px; }
-        .card { background: white; padding: 30px; border-radius: 16px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); border: 1px solid #e2e8f0; text-decoration: none; color: inherit; transition: all 0.3s ease; display: flex; flex-direction: column; justify-content: space-between; position: relative; }
-        .card:hover { transform: translateY(-8px); border-color: #2563eb; box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1); }
-        .card h2 { margin: 0 0 12px 0; color: #1e3a8a; font-size: 1.4rem; }
-        .card p { font-size: 0.95rem; color: #475569; line-height: 1.6; margin-bottom: 25px; }
-        .action { color: #2563eb; font-weight: 700; font-size: 0.9rem; display: flex; align-items: center; gap: 8px; border-top: 1px solid #f1f5f9; padding-top: 15px; }
-        footer { text-align: center; margin-top: 80px; padding: 40px; color: #94a3b8; font-size: 0.9rem; border-top: 1px solid #e2e8f0; }
+        body { 
+            font-family: 'Inter', system-ui, sans-serif; 
+            background: #f8fafc; 
+            margin: 0; 
+            padding: 40px; 
+            color: #0f172a; 
+        }
+        h1 { 
+            text-align: center; 
+            color: #1e3a8a; 
+            margin-bottom: 40px; 
+            font-size: 2.5rem;
+        }
+        .grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); 
+            gap: 25px; 
+            max-width: 1200px; 
+            margin: 0 auto; 
+        }
+        .card { 
+            background: white; 
+            padding: 30px; 
+            border-radius: 16px; 
+            border: 1px solid #e2e8f0; 
+            text-decoration: none; 
+            color: inherit; 
+            transition: all 0.3s ease; 
+            display: flex; 
+            flex-direction: column; 
+            justify-content: space-between;
+        }
+        .card:hover { 
+            transform: translateY(-5px); 
+            border-color: #2563eb; 
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05); 
+        }
+        .card h2 { 
+            margin: 0 0 10px 0; 
+            color: #1e40af; 
+            font-size: 1.5rem; 
+        }
+        .card p { 
+            color: #64748b; 
+            font-size: 0.95rem; 
+            line-height: 1.5; 
+            margin-bottom: 20px; 
+        }
+        .card strong { 
+            color: #2563eb; 
+            font-size: 0.9rem; 
+        }
     </style>
 </head>
 <body>
-    <nav class="navbar">FinanceHub.bd</nav>
-    <div class="container">
-        <header class="hero">
-            <h1>Professional Decision Tools</h1>
-            <p>High-precision financial calculators for business analysis and internal audit standards.</p>
-        </header>
-        <main class="grid">
-            {calculators.map((calc) => (
-                <a href={`/${calc.slug}`} class="card">
-                    <div>
-                        <h2>{calc.name}</h2>
-                        <p>{calc.description}</p>
-                    </div>
-                    <div class="action">Open Calculator &rarr;</div>
-                </a>
-            ))}
-        </main>
-    </div>
-    <footer>&copy; 2026 FinanceHub.bd | Standard Control & Audit Tools</footer>
+    <h1>Financial Decision Tools</h1>
+    
+    <main class="grid">
+        {calculators.map((calc) => (
+            <a href={`/${calc.slug}`} class="card">
+                <div>
+                    <h2>{calc.name}</h2>
+                    <p>{calc.description}</p>
+                </div>
+                <strong>Open Tool &rarr;</strong>
+            </a>
+        ))}
+    </main>
 </body>
 </html>
