@@ -20,15 +20,13 @@ const { calc } = Astro.props;
         .nav { background: #1e40af; color: white; padding: 20px; width: 100%; text-align: center; font-weight: bold; margin-bottom: 60px; }
         .calculator-card { background: white; padding: 40px; border-radius: 20px; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.1); width: 100%; max-width: 450px; border: 1px solid #e2e8f0; }
         h1 { color: #1e3a8a; font-size: 1.8rem; margin-bottom: 10px; text-align: center; }
-        .desc { color: #64748b; text-align: center; margin-bottom: 35px; font-size: 1rem; line-height: 1.5; }
-        label { display: block; margin-bottom: 10px; font-weight: 600; color: #334155; font-size: 0.9rem; }
-        input { width: 100%; padding: 14px; margin-bottom: 25px; border: 2px solid #e2e8f0; border-radius: 10px; box-sizing: border-box; font-size: 1rem; transition: 0.2s; }
-        input:focus { border-color: #2563eb; outline: none; box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1); }
-        button { width: 100%; padding: 16px; background: #2563eb; color: white; border: none; border-radius: 10px; cursor: pointer; font-weight: bold; font-size: 1.1rem; transition: 0.3s; }
-        button:hover { background: #1d4ed8; transform: translateY(-2px); }
-        .footer-nav { margin-top: 30px; }
-        .back-btn { text-decoration: none; color: #64748b; font-size: 0.9rem; font-weight: 500; transition: 0.2s; }
-        .back-btn:hover { color: #1e40af; }
+        .desc { color: #64748b; text-align: center; margin-bottom: 35px; font-size: 1rem; }
+        label { display: block; margin-bottom: 10px; font-weight: 600; color: #334155; }
+        input { width: 100%; padding: 14px; margin-bottom: 25px; border: 2px solid #e2e8f0; border-radius: 10px; box-sizing: border-box; font-size: 1rem; }
+        button { width: 100%; padding: 16px; background: #2563eb; color: white; border: none; border-radius: 10px; cursor: pointer; font-weight: bold; font-size: 1.1rem; margin-bottom: 20px; }
+        .result-box { background: #f8fafc; padding: 20px; border-radius: 10px; border: 1px dashed #cbd5e1; text-align: center; display: none; }
+        .result-box h3 { margin: 0; color: #1e40af; font-size: 1.4rem; }
+        .back-btn { text-decoration: none; color: #64748b; font-size: 0.9rem; margin-top: 20px; display: block; }
     </style>
 </head>
 <body>
@@ -38,16 +36,75 @@ const { calc } = Astro.props;
         <p class="desc">{calc.description}</p>
         
         <label>{calc.label1}</label>
-        <input type="number" id="input1" placeholder="0.00" />
+        <input type="number" id="input1" placeholder="Enter value..." />
         
         <label>{calc.label2}</label>
-        <input type="number" id="input2" placeholder="0.00" />
+        <input type="number" id="input2" placeholder="Enter value..." />
         
-        <button onclick="alert('Calculation logic for ' + document.title + ' is being integrated.')">Run Analysis</button>
+        <button id="calcBtn">Run Financial Analysis</button>
         
-        <div class="footer-nav">
-            <center><a href="/" class="back-btn">&larr; Back to Dashboard</a></center>
+        <div id="resultBox" class="result-box">
+            <p id="resultLabel" style="margin-bottom:5px; font-size:0.9rem; color:#64748b;"></p>
+            <h3 id="resultValue">0.00</h3>
         </div>
+        
+        <center><a href="/" class="back-btn">&larr; Back to Dashboard</a></center>
     </div>
+
+    <script define:vars={{ slug: calc.slug }}>
+        const btn = document.getElementById('calcBtn');
+        const box = document.getElementById('resultBox');
+        const resVal = document.getElementById('resultValue');
+        const resLab = document.getElementById('resultLabel');
+
+        btn.addEventListener('click', () => {
+            const v1 = parseFloat(document.getElementById('input1').value);
+            const v2 = parseFloat(document.getElementById('input2').value);
+            
+            if (isNaN(v1) || isNaN(v2)) {
+                alert("Please enter valid numbers in both fields.");
+                return;
+            }
+
+            let result = 0;
+            let unit = "";
+
+            // Audit Logic Engine
+            switch(slug) {
+                case 'roi-calculator':
+                    result = (v2 / v1) * 100;
+                    unit = "ROI: " + result.toFixed(2) + "%";
+                    break;
+                case 'compound-interest-calculator':
+                    // Simplified: P(1 + r)^5 years
+                    result = v1 * Math.pow((1 + (v2/100)), 5);
+                    unit = "Est. Value (5yrs): $" + result.toLocaleString();
+                    break;
+                case 'vat-calculator-bd':
+                    result = v1 * (v2 / 100);
+                    unit = "VAT Amount: " + result.toLocaleString() + " BDT";
+                    break;
+                case 'loan-emi-calculator':
+                    let r = v2 / 12 / 100;
+                    result = v1 * r * Math.pow(1 + r, 12) / (Math.pow(1 + r, 12) - 1);
+                    unit = "Monthly EMI: " + result.toFixed(2);
+                    break;
+                case 'gross-margin-calculator':
+                    result = ((v1 - v2) / v1) * 100;
+                    unit = "Gross Margin: " + result.toFixed(2) + "%";
+                    break;
+                case 'break-even-calculator':
+                    result = v1 / (v2 / 100);
+                    unit = "Break-Even Sales: $" + result.toLocaleString();
+                    break;
+                default:
+                    unit = "Analysis Complete";
+            }
+
+            resLab.innerText = "Calculation Result:";
+            resVal.innerText = unit;
+            box.style.display = 'block';
+        });
+    </script>
 </body>
 </html>
