@@ -16,6 +16,9 @@ const description = "Free online financial tools for ROI, Loans, Taxes, and Busi
         header { background: white; padding: 25px 0; border-bottom: 1px solid var(--border); text-align: center; }
         .logo { font-size: 2rem; font-weight: 800; color: var(--primary); text-decoration: none; }
         .logo span { color: var(--secondary); }
+        .nav-links { text-align: center; margin-top: 15px; }
+        .nav-links a { color: var(--text-light); text-decoration: none; margin: 0 15px; font-weight: 500; font-size: 0.95rem; transition: 0.2s; }
+        .nav-links a:hover { color: var(--secondary); }
         .hero-search { background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%); padding: 60px 20px; text-align: center; color: white; }
         #searchInput { width: 100%; max-width: 600px; padding: 18px 25px; border-radius: 50px; border: none; font-size: 1.1rem; box-shadow: 0 10px 25px rgba(0,0,0,0.15); outline: none; }
         .container { max-width: 1200px; margin: -30px auto 60px; padding: 0 20px; }
@@ -28,11 +31,20 @@ const description = "Free online financial tools for ROI, Loans, Taxes, and Busi
     </style>
 </head>
 <body>
-    <header><a href="/" class="logo">Finance<span>Hub</span></a></header>
+    <header>
+        <a href="/" class="logo">Finance<span>Hub</span></a>
+        <div class="nav-links">
+            <a href="/about">About</a>
+            <a href="/contact">Contact</a>
+            <a href="/privacy">Privacy</a>
+        </div>
+    </header>
+
     <section class="hero-search">
         <h1>Find Your Calculator</h1>
         <input type="text" id="searchInput" placeholder="Search (e.g. ROI, Loan...)" onkeyup="filterCalculators()" />
     </section>
+
     <main class="container">
         <div class="calc-grid" id="calcGrid">
             {calculators.map((calc) => (
@@ -43,7 +55,9 @@ const description = "Free online financial tools for ROI, Loans, Taxes, and Busi
             ))}
         </div>
     </main>
+
     <footer>&copy; 2026 FinanceHub. Designed by Md Merajul Islam.</footer>
+
     <script is:inline>
         function filterCalculators() {
             const filter = document.getElementById('searchInput').value.toLowerCase();

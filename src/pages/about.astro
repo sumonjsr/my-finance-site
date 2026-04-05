@@ -1,0 +1,44 @@
+---
+const title = "About Us | FinanceHub";
+---
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <style>
+        :root { --primary: #1e3a8a; --secondary: #2563eb; --text-dark: #1e293b; --text-light: #64748b; --border: #e2e8f0; }
+        body { font-family: 'Inter', sans-serif; background: #f8fafc; margin: 0; padding: 0; line-height: 1.6; }
+        header { background: white; padding: 25px 0; border-bottom: 1px solid var(--border); text-align: center; }
+        .logo { font-size: 2rem; font-weight: 800; color: var(--primary); text-decoration: none; }
+        .logo span { color: var(--secondary); }
+        .nav-links { margin-top: 10px; }
+        .nav-links a { text-decoration: none; color: var(--text-light); margin: 0 15px; font-weight: 500; }
+        .nav-links a:hover { color: var(--secondary); }
+        .hero { background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%); padding: 60px 20px; text-align: center; color: white; }
+        .container { max-width: 800px; margin: 40px auto; padding: 0 20px; background: white; border-radius: 20px; padding: 40px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); border: 1px solid var(--border); }
+        h2 { color: var(--primary); }
+        footer { background: #0f172a; color: #94a3b8; padding: 40px; text-align: center; margin-top: 80px; }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="/" class="logo">Finance<span>Hub</span></a>
+        <div class="nav-links">
+            <a href="/">Home</a>
+            <a href="/about">About</a>
+            <a href="/contact">Contact</a>
+        </div>
+    </header>
+    <section class="hero">
+        <h1>About Our Mission</h1>
+    </section>
+    <main class="container">
+        <h2>Who We Are</h2>
+        <p>FinanceHub provides 50+ professional-grade financial calculators designed for speed, accuracy, and ease of use. Whether you are an internal auditor, a trader, or a business owner, our tools help you make data-driven decisions.</p>
+        <h2>Why Choose FinanceHub?</h2>
+        <p>All our calculations are performed locally in your browser, meaning your financial data never leaves your device. We focus on minimalist design and professional accuracy.</p>
+    </main>
+    <footer>&copy; 2026 FinanceHub. Designed by Md Merajul Islam.</footer>
+</body>
+</html>

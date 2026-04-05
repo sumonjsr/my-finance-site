@@ -1,0 +1,51 @@
+---
+const title = "Contact Us | FinanceHub";
+---
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <style>
+        :root { --primary: #1e3a8a; --secondary: #2563eb; --text-dark: #1e293b; --text-light: #64748b; --border: #e2e8f0; }
+        body { font-family: 'Inter', sans-serif; background: #f8fafc; margin: 0; padding: 0; }
+        header { background: white; padding: 25px 0; border-bottom: 1px solid var(--border); text-align: center; }
+        .logo { font-size: 2rem; font-weight: 800; color: var(--primary); text-decoration: none; }
+        .logo span { color: var(--secondary); }
+        .hero { background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%); padding: 60px 20px; text-align: center; color: white; }
+        .container { max-width: 600px; margin: 40px auto; padding: 40px; background: white; border-radius: 20px; border: 1px solid var(--border); box-shadow: 0 10px 25px rgba(0,0,0,0.05); }
+        .form-group { margin-bottom: 20px; }
+        label { display: block; margin-bottom: 8px; color: var(--text-dark); font-weight: 600; }
+        input, textarea { width: 100%; padding: 12px; border: 1px solid var(--border); border-radius: 10px; outline: none; font-family: inherit; box-sizing: border-box; }
+        input:focus, textarea:focus { border-color: var(--secondary); }
+        button { background: var(--secondary); color: white; border: none; padding: 15px 30px; border-radius: 10px; font-weight: 700; cursor: pointer; width: 100%; transition: 0.3s; }
+        button:hover { background: var(--primary); }
+        footer { background: #0f172a; color: #94a3b8; padding: 40px; text-align: center; margin-top: 80px; }
+    </style>
+</head>
+<body>
+    <header><a href="/" class="logo">Finance<span>Hub</span></a></header>
+    <section class="hero">
+        <h1>Contact Us</h1>
+        <p>Questions? Suggestions? We'd love to hear from you.</p>
+    </section>
+    <main class="container">
+        <form>
+            <div class="form-group">
+                <label>Name</label>
+                <input type="text" placeholder="Your Full Name" required />
+            </div>
+            <div class="form-group">
+                <label>Email</label>
+                <input type="email" placeholder="email@example.com" required />
+            </div>
+            <div class="form-group">
+                <label>Message</label>
+                <textarea rows="5" placeholder="How can we help?"></textarea>
+            </div>
+            <button type="submit">Send Message</button>
+        </form>
+    </main>
+    <footer>&copy; 2026 FinanceHub. Designed by Md Merajul Islam.</footer>
+</body>
+</html>
