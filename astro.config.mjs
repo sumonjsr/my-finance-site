@@ -1,13 +1,20 @@
 import { defineConfig } from 'astro/config';
+import sitemap from '@astrojs/sitemap'; // যদি ইনস্টল করা থাকে
 
 // https://astro.build/config
 export default defineConfig({
-  // This setting ensures that /about and /about/ both work correctly
-  trailingSlash: 'ignore',
+  // আপনার Netlify সাইটের ইউআরএল এখানে দিন (SEO এর জন্য জরুরি)
+  site: 'https://financecalhub.netlify.app/',
+  
+  trailingSlash: 'always', // SEO এর জন্য সাধারণত 'always' বা 'never' ভালো, 'ignore' এর চেয়ে।
 
-  // If you are deploying to a specific folder (like GitHub Pages), 
-  // you might need to add a 'site' property here later.
-  // site: 'https://your-domain.com',
+  output: 'static',
 
-  output: 'static', // Ensures your site is built as a fast, static website
+  // সোপান (Sitemap) এবং অন্যান্য ইন্টিগ্রেশন
+  integrations: [sitemap()],
+
+  // Build settings
+  build: {
+    format: 'directory', // এটি /privacy কে /privacy/index.html হিসেবে বিল্ড করবে, যা ক্লিন ইউআরএল দেয়।
+  }
 });

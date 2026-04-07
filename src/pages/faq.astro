@@ -1,0 +1,232 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const title = "Frequently Asked Questions | FinanceHub Pro";
+const description = "Common questions about mortgages, loans, investing, and financial calculations. Get expert answers to your money questions.";
+---
+
+<Layout title={title} description={description}>
+    <style>
+        /* FAQ Page Specific Styles */
+        :root {
+            --deep-navy: #0a1628;
+            --accent-gold: #d4a373;
+            --serif: 'Crimson Pro', serif;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, var(--deep-navy) 0%, #1e3a5f 100%);
+            color: #fdfbf7;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-family: var(--serif);
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        /* Search Box */
+        .search-container {
+            max-width: 800px;
+            margin: -2rem auto 3rem;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        .search-box {
+            width: 100%;
+            padding: 1.2rem 1.5rem;
+            font-size: 1.1rem;
+            border: 2px solid var(--accent-gold);
+            border-radius: 8px;
+            background: white;
+            box-shadow: 0 8px 30px rgba(10, 22, 40, 0.15);
+            outline: none;
+        }
+
+        /* FAQ Items */
+        .faq-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 1rem 2rem 4rem;
+        }
+
+        .category-title {
+            font-family: var(--serif);
+            font-size: 2rem;
+            color: var(--deep-navy);
+            margin: 2rem 0 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 3px solid var(--accent-gold);
+            display: inline-block;
+        }
+
+        .faq-item {
+            background: white;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            border: 1px solid rgba(10, 22, 40, 0.1);
+            overflow: hidden;
+            transition: 0.3s;
+        }
+
+        .faq-question {
+            padding: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            color: var(--deep-navy);
+            user-select: none;
+        }
+
+        .faq-icon {
+            font-size: 1.5rem;
+            transition: transform 0.3s;
+            color: var(--accent-gold);
+        }
+
+        .faq-item.active .faq-icon {
+            transform: rotate(45deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 1000px;
+        }
+
+        .faq-answer-content {
+            padding: 0 1.5rem 1.5rem;
+            color: #64748b;
+            line-height: 1.8;
+        }
+
+        .calculator-link {
+            display: inline-block;
+            margin-top: 10px;
+            color: var(--accent-gold);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: var(--deep-navy);
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: var(--accent-gold);
+            color: var(--deep-navy);
+            text-decoration: none;
+            font-weight: 700;
+            border-radius: 6px;
+            margin-top: 1rem;
+        }
+    </style>
+
+    <section class="hero">
+        <h1>Frequently Asked Questions</h1>
+        <p>Find answers to common questions about mortgages, loans, investments, and financial planning</p>
+    </section>
+
+    <div class="search-container">
+        <input type="text" class="search-box" id="faqSearch" placeholder="Search for answers... (e.g., 'mortgage')">
+    </div>
+
+    <div class="faq-container">
+        <div class="faq-category">
+            <h2 class="category-title">Mortgages & Home Loans</h2>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    How much house can I afford?
+                    <span class="faq-icon">+</span>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        <p>Most lenders recommend your monthly mortgage payment should not exceed <strong>28% of your gross monthly income</strong>. This is known as the front-end ratio.</p>
+                        <a href="/mortgage-calculator" class="calculator-link">→ Use Mortgage Calculator</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="faq-category">
+            <h2 class="category-title">Investing & Retirement</h2>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    What's a good return on investment (ROI)?
+                    <span class="faq-icon">+</span>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        <p>The historical stock market average is around 10% annually. However, a "good" ROI depends on your risk tolerance and the asset class.</p>
+                        <a href="/roi-calculator" class="calculator-link">→ Calculate ROI</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="cta-section">
+        <h2>Still Have Questions?</h2>
+        <p>Try our calculators to get personalized answers to your financial questions</p>
+        <a href="/" class="cta-button">Browse All Calculators</a>
+    </section>
+
+    <script is:inline>
+        // FAQ Accordion Logic
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const item = question.parentElement;
+                const wasActive = item.classList.contains('active');
+                
+                // Close other items
+                document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
+                
+                // Toggle current item
+                if (!wasActive) item.classList.add('active');
+            });
+        });
+
+        // Search Functionality
+        const searchInput = document.getElementById('faqSearch');
+        searchInput?.addEventListener('input', (e) => {
+            const searchTerm = e.target.value.toLowerCase();
+            const faqItems = document.querySelectorAll('.faq-item');
+            const categories = document.querySelectorAll('.faq-category');
+            
+            faqItems.forEach(item => {
+                const text = item.innerText.toLowerCase();
+                item.style.display = text.includes(searchTerm) ? 'block' : 'none';
+            });
+
+            // Hide category title if no items are visible in that category
+            categories.forEach(cat => {
+                const visibleItems = cat.querySelectorAll('.faq-item[style="display: block;"]');
+                const title = cat.querySelector('.category-title');
+                if (searchTerm !== "" && visibleItems.length === 0) {
+                    title.style.display = 'none';
+                } else {
+                    title.style.display = 'inline-block';
+                }
+            });
+        });
+    </script>
+</Layout>

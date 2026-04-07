@@ -1,0 +1,153 @@
+---
+// src/layouts/Layout.astro
+// এই অংশটি প্রতিটি পেজের জন্য আলাদা টাইটেল এবং ডেসক্রিপশন সেট করতে সাহায্য করবে
+const { title, description = "Over 50+ professional financial calculators for tax, loans, and investment planning." } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{title} | FinanceHub</title>
+    <meta name="description" content={description}>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <style is:global>
+        /* Global Variables and Reset */
+        :root {
+            --deep-navy: #0a1628;
+            --warm-white: #fdfbf7;
+            --accent-gold: #d4a373;
+            --slate: #64748b;
+            --light-slate: #cbd5e1;
+            --serif: 'Crimson Pro', serif;
+            --sans: 'DM Sans', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--sans);
+            background: var(--warm-white);
+            color: var(--deep-navy);
+            line-height: 1.6;
+        }
+
+        /* Common Header Styles */
+        header {
+            background: var(--deep-navy);
+            color: var(--warm-white);
+            padding: 1.2rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 3px solid var(--accent-gold);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: var(--serif);
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--warm-white);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--warm-white);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-gold);
+        }
+
+        /* Footer Styles */
+        footer {
+            background: var(--deep-navy);
+            color: var(--warm-white);
+            padding: 3rem 2rem;
+            margin-top: 4rem;
+            text-align: center;
+            border-top: 3px solid var(--accent-gold);
+        }
+
+        .footer-links {
+            margin-bottom: 1.5rem;
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: var(--light-slate);
+            text-decoration: none;
+            font-size: 0.95rem;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-gold);
+        }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; } /* মোবাইলের জন্য পরে হ্যামবার্গার মেনু যোগ করা যাবে */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="/" class="logo">FinanceHub</a>
+            <ul class="nav-links">
+                <li><a href="/">Calculators</a></li>
+                <li><a href="/articles">Articles</a></li>
+                <li><a href="/faq">FAQ</a></li>
+                <li><a href="/contact">Contact</a></li>
+                <li><a href="/about">About</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <slot /> 
+    </main>
+
+    <footer>
+        <div class="footer-links">
+            <a href="/">Home</a>
+            <a href="/articles">Articles</a>
+            <a href="/faq">FAQ</a>
+            <a href="/privacy">Privacy Policy</a>
+            <a href="/terms">Terms of Service</a>
+            <a href="/contact">Contact</a>
+        </div>
+        <p style="color: var(--light-slate); font-size: 0.85rem;">
+            &copy; 2026 FinanceHub. Designed for precision financial planning.
+        </p>
+    </footer>
+</body>
+</html>
