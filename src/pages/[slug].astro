@@ -1,6 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import calculators from '../data/calculators.json';
+import calculators from '../../calculators.json';
 
 export async function getStaticPaths() {
   return calculators.map((calc) => ({
@@ -11,160 +11,178 @@ export async function getStaticPaths() {
 
 const { calc } = Astro.props;
 
-// Related Tools Logic
-const suggestions = calculators
-  .filter(item => item.slug !== calc.slug && item.type === calc.type)
-  .sort(() => 0.5 - Math.random())
-  .slice(0, 3);
-
-const title = `${calc.name} | FinanceHub Pro`;
+const title = `${calc.name} | QuickFinCalc`;
 ---
 
 <Layout title={title} description={calc.description}>
-    <script type="application/ld+json" set:html={JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "WebApplication",
-      "name": calc.name,
-      "description": calc.description,
-      "applicationCategory": "FinanceApplication",
-      "operatingSystem": "Web",
-      "author": {
-          "@type": "Person",
-          "name": "Md. Merajul Islam"
-      }
-    })} />
+  <div class="container">
+    <div class="calc-box">
+      <h1>{calc.name}</h1>
+      <p class="desc-top">{calc.description}</p>
 
-    <style>
-        .container { max-width: 900px; margin: 0 auto; padding: 40px 20px; }
-        .calc-box { 
-            background: white; padding: 45px; border-radius: 24px; 
-            box-shadow: 0 10px 30px rgba(0,0,0,0.04); border: 1px solid #e2e8f0; 
-            margin-bottom: 40px; 
-        }
-        h1 { color: #1e3a8a; font-size: 2.5rem; text-align: center; margin-bottom: 10px; }
-        .desc-top { text-align: center; color: #64748b; margin-bottom: 35px; font-size: 1.1rem; }
-        
-        .input-group { max-width: 450px; margin: 0 auto; }
-        label { display: block; font-weight: 600; margin-bottom: 8px; color: #1e293b; }
-        input { 
-            width: 100%; padding: 15px; margin-bottom: 25px; 
-            border: 1.5px solid #cbd5e1; border-radius: 12px; font-size: 1rem; 
-            transition: 0.3s;
-        }
-        input:focus { border-color: #2563eb; outline: none; box-shadow: 0 0 0 4px #f0f9ff; }
-        
-        button { 
-            width: 100%; padding: 18px; background: #1e3a8a; color: white; 
-            border: none; border-radius: 14px; cursor: pointer; font-weight: 700; 
-            font-size: 1.1rem; transition: 0.3s; 
-        }
-        button:hover { background: #2563eb; transform: translateY(-2px); }
+      <div class="input-group">
+        <label for="v1">{calc.label1}</label>
+        <input type="number" id="v1" class="calc-input" placeholder="Enter value" step="any" />
 
-        .result-box { 
-            margin-top: 30px; padding: 25px; background: #dcfce7; 
-            border-radius: 18px; border: 1px solid #bbf7d0; display: none; 
-            color: #166534; text-align: center; font-size: 1.2rem; font-weight: 800; 
-        }
+        <label for="v2">{calc.label2}</label>
+        <input type="number" id="v2" class="calc-input" placeholder="Enter value" step="any" />
 
-        .rich-content { background: white; padding: 40px; border-radius: 24px; border: 1px solid #e2e8f0; }
-        .rich-content h2 { color: #1e3a8a; margin-top: 30px; border-bottom: 2px solid #f0f9ff; padding-bottom: 8px; }
-        .pro-tip { background: #eff6ff; border-left: 5px solid #2563eb; padding: 20px; border-radius: 8px; margin: 30px 0; }
-        
-        .sugg-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 20px; }
-        .sugg-card { background: white; padding: 20px; border-radius: 15px; border: 1px solid #e2e8f0; text-decoration: none; transition: 0.2s; }
-        .sugg-card:hover { border-color: #2563eb; transform: translateY(-5px); }
-    </style>
-
-    <div class="container">
-        <div class="calc-box">
-            <h1>{calc.name}</h1>
-            <p class="desc-top">{calc.description}</p>
-            
-            <div class="input-group">
-                <label for="input1">{calc.label1}</label>
-                <input type="number" id="input1" placeholder="e.g. 50000" step="any" />
-                
-                <label for="input2">{calc.label2}</label>
-                <input type="number" id="input2" placeholder="e.g. 12" step="any" />
-                
-                {calc.label3 && (
-                    <label for="input3">{calc.label3}</label>
-                    <input type="number" id="input3" placeholder="e.g. 5" step="any" />
-                )}
-                
-                <button id="calcBtn">Calculate Now</button>
-                <div id="result" class="result-box"></div>
-            </div>
-        </div>
-
-        <div class="rich-content">
-            <h2>What is {calc.name}?</h2>
-            <p>{calc.what_is}</p>
-
-            <h2>Step-by-Step Guide</h2>
-            <div style="white-space: pre-line; background: #f8fafc; padding: 20px; border-radius: 12px;">
-                {calc.how_to_use}
-            </div>
-
-            <div class="pro-tip">
-                <strong>💡 Pro Tip:</strong>
-                <p>{calc.pro_tip}</p>
-            </div>
-
-            <h2>How to Interpret the Result</h2>
-            <p>{calc.how_to_read}</p>
-        </div>
-
-        {suggestions.length > 0 && (
-            <div style="margin-top: 50px;">
-                <h3 style="color: #1e3a8a;">Related {calc.type} Tools</h3>
-                <div class="sugg-grid">
-                    {suggestions.map(s => (
-                        <a href={`/${s.slug}/`} class="sugg-card">
-                            <h4 style="margin:0; color: #1e3a8a;">{s.name}</h4>
-                            <p style="font-size: 0.85rem; color: #64748b; margin: 10px 0;">{s.description}</p>
-                            <span style="color: #2563eb; font-weight: 600; font-size: 0.9rem;">Try it &rarr;</span>
-                        </a>
-                    ))}
-                </div>
-            </div>
+        {calc.label3 && (
+          <label for="v3">{calc.label3}</label>
+          <input type="number" id="v3" class="calc-input" placeholder="Enter value" step="any" />
         )}
+
+        <button id="calcBtn">Calculate Now</button>
+        <div id="result" class="result-box"></div>
+      </div>
     </div>
 
-    <script define:vars={{ type: calc.type, slug: calc.slug }}>
-        const btn = document.getElementById('calcBtn');
-        const resDiv = document.getElementById('result');
+    <div class="rich-content">
+      <h2>What is {calc.name}?</h2>
+      <p>{calc.what_is}</p>
+      
+      <h2>How to Use</h2>
+      <p style="white-space: pre-line;">{calc.how_to_use}</p>
 
-        btn.addEventListener('click', () => {
-            const v1 = parseFloat(document.getElementById('input1').value);
-            const v2 = parseFloat(document.getElementById('input2').value);
-            const v3El = document.getElementById('input3');
-            const v3 = v3El ? parseFloat(v3El.value) : null;
+      <div class="pro-tip">
+        <strong>💡 Pro Tip:</strong> {calc.pro_tip}
+      </div>
+    </div>
+  </div>
 
-            if (isNaN(v1) || isNaN(v2)) {
-                alert("Please enter valid numbers.");
-                return;
-            }
+  <style>
+    .container { max-width: 800px; margin: 0 auto; padding: 40px 20px; }
+    .calc-box { 
+      background: #ffffff; padding: 40px; border-radius: 20px; 
+      box-shadow: 0 4px 20px rgba(0,0,0,0.05); border: 1px solid #f1f5f9;
+      margin-bottom: 30px;
+    }
+    h1 { color: #1e3a8a; text-align: center; font-size: 2rem; }
+    .desc-top { text-align: center; color: #64748b; margin-bottom: 30px; }
+    .input-group { max-width: 400px; margin: 0 auto; }
+    label { display: block; font-weight: 600; margin-bottom: 8px; color: #334155; }
+    .calc-input { 
+      width: 100%; padding: 12px; margin-bottom: 20px; 
+      border: 1px solid #cbd5e1; border-radius: 8px; 
+    }
+    button { 
+      width: 100%; padding: 15px; background: #1e3a8a; color: white; 
+      border: none; border-radius: 10px; font-weight: 700; cursor: pointer;
+    }
+    .result-box { 
+      margin-top: 20px; padding: 20px; border-radius: 10px; 
+      background: #f0fdf4; color: #166534; font-weight: 800; 
+      display: none; text-align: center; border: 1px solid #bbf7d0;
+    }
+    .rich-content { background: white; padding: 30px; border-radius: 20px; border: 1px solid #e2e8f0; }
+    .pro-tip { background: #eff6ff; padding: 20px; border-radius: 10px; margin-top: 20px; border-left: 4px solid #1e3a8a; }
+  </style>
 
-            let out = "";
-            const fmt = (num) => num.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2});
+<script define:vars={{ formula: calc.formula }}>
+  const btn = document.getElementById('calcBtn');
+  const resDiv = document.getElementById('result');
 
-            // Logic sections (Loan, Investment, Ecommerce etc. stay as per your code)
-            // Example update for formatting:
-            if (type === 'loan') {
-                if (slug === 'debt-to-income-ratio') {
-                    out = `DTI Ratio: ${((v1 / v2) * 100).toFixed(2)}%`;
-                } else {
-                    const r = (v2 / 12) / 100;
-                    const emi = (v1 * r * Math.pow(1 + r, v3)) / (Math.pow(1 + r, v3) - 1);
-                    out = `Monthly Payment: $${fmt(emi)}`;
-                }
-            }
-            // ... rest of your logic ...
+  // ফিনান্সিয়াল ফরম্যাটার
+  const fmt = (num) => new Intl.NumberFormat('en-US', {
+    style: 'currency', currency: 'USD', maximumFractionDigits: 0
+  }).format(num);
+  
+  const pct = (num) => isFinite(num) ? num.toFixed(2) + '%' : '0.00%';
 
-            resDiv.innerText = out;
-            resDiv.style.display = 'block';
-            resDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        });
-    </script>
+  btn.addEventListener('click', () => {
+    const v1 = parseFloat(document.getElementById('v1').value);
+    const v2 = parseFloat(document.getElementById('v2').value);
+    const v3El = document.getElementById('v3');
+    const v3 = v3El ? parseFloat(v3El.value) : 0;
+
+    if (isNaN(v1) || isNaN(v2)) {
+      alert("Please enter valid numbers in the required fields.");
+      return;
+    }
+
+    let out = "";
+
+    // ইউনিversal ক্যালকুলেশন ইঞ্জিন (Formula Based)
+    switch (formula) {
+      case 'loan':
+        // Standard EMI Formula: [P x R x (1+R)^N]/[(1+R)^N-1]
+        const r = (v2 / 12) / 100;
+        const emi = r > 0 ? (v1 * r * Math.pow(1 + r, v3)) / (Math.pow(1 + r, v3) - 1) : v1 / v3;
+        out = `Monthly Payment: ${fmt(emi)} | Total: ${fmt(emi * v3)}`;
+        break;
+
+      case 'margin':
+        // ((Revenue - Cost) / Revenue) * 100
+        const marginPct = ((v1 - v2) / v1) * 100;
+        out = `Profit Margin: ${pct(marginPct)} | Profit: ${fmt(v1 - v2)}`;
+        break;
+
+      case 'break_even':
+        // Fixed Costs / (Selling Price - Variable Cost)
+        if (v3 <= v2) {
+          out = "Price must be higher than Variable Cost";
+        } else {
+          out = `Break-even Point: ${Math.ceil(v1 / (v3 - v2)).toLocaleString()} Units`;
+        }
+        break;
+
+      case 'runway':
+        // Cash / (Monthly Expenses - Monthly Revenue)
+        const netBurn = v2 - v3;
+        out = netBurn <= 0 ? "Infinite Runway (Profitable)" : `Runway: ${(v1 / netBurn).toFixed(1)} Months`;
+        break;
+
+      case 'ratio':
+        // Current Assets / Current Liabilities
+        out = `Ratio Result: ${(v1 / v2).toFixed(2)}`;
+        break;
+
+      case 'tax':
+        // Amount * Tax Rate
+        const taxAmount = v1 * (v2 / 100);
+        out = `Tax: ${fmt(taxAmount)} | Total: ${fmt(v1 + taxAmount)}`;
+        break;
+
+      case 'roi':
+        // v1 = Final Value, v2 = Initial Cost
+        out = `Total ROI: ${pct(((v1 - v2) / v2) * 100)} | Net Gain: ${fmt(v1 - v2)}`;
+        break;
+
+      case 'compound':
+        // FV = P * (1 + r/n)^(nt)
+        const futureValue = v1 * Math.pow(1 + (v2 / 100) / 12, 12 * v3);
+        out = `Future Value: ${fmt(futureValue)} | Interest: ${fmt(futureValue - v1)}`;
+        break;
+
+      case 'property_roi':
+        // ((Annual Income - Expenses) / Property Value) * 100
+        out = `Annual ROI: ${pct(((v1 - v2) / v3) * 100)}`;
+        break;
+
+      case 'stock':
+        // (Sell Price - Buy Price) * Quantity
+        const totalProfit = (v2 - v1) * v3;
+        out = `Profit/Loss: ${fmt(totalProfit)} (${pct(((v2 - v1) / v1) * 100)})`;
+        break;
+
+      case 'fee':
+        // (Amount * %) + Fixed Fee
+        const fee = (v1 * (v2 / 100)) + v3;
+        out = `Fee: ${fmt(fee)} | Net Amount: ${fmt(v1 - fee)}`;
+        break;
+
+      case 'basic':
+      default:
+        // Basic calculations like Hourly to Salary
+        if (v3 > 0) {
+           out = `Total Result: ${(v1 + v2 + v3).toLocaleString()}`;
+        } else {
+           out = `Result: ${(v1 + v2).toLocaleString()}`;
+        }
+    }
+
+    resDiv.innerText = out;
+    resDiv.style.display = 'block';
+  });
+</script>
 </Layout>

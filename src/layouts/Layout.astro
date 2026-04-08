@@ -1,7 +1,13 @@
 ---
 // src/layouts/Layout.astro
-// এই অংশটি প্রতিটি পেজের জন্য আলাদা টাইটেল এবং ডেসক্রিপশন সেট করতে সাহায্য করবে
-const { title, description = "Over 50+ professional financial calculators for tax, loans, and investment planning." } = Astro.props;
+// Quick Financial Calculator - Master Layout
+const { 
+    title, 
+    description = "Quick Financial Calculator offers 50+ professional tools for tax, loans, business analysis, and investment planning. Precise, fast, and free." 
+} = Astro.props;
+
+const siteName = "Quick Financial Calculator";
+const shortName = "QuickFinCalc";
 ---
 
 <!DOCTYPE html>
@@ -9,23 +15,26 @@ const { title, description = "Over 50+ professional financial calculators for ta
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{title} | FinanceHub</title>
+    
+    <title>{title} | {siteName}</title>
     <meta name="description" content={description}>
+    <link rel="canonical" href="https://quickfincalc.com" />
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
     
     <style is:global>
-        /* Global Variables and Reset */
+        /* Modern Financial Brand Palette */
         :root {
-            --deep-navy: #0a1628;
-            --warm-white: #fdfbf7;
-            --accent-gold: #d4a373;
-            --slate: #64748b;
-            --light-slate: #cbd5e1;
-            --serif: 'Crimson Pro', serif;
+            --brand-blue: #1e3a8a;      /* Deep Navy for Trust */
+            --brand-accent: #d4a373;    /* Professional Gold */
+            --bg-warm: #fdfbf7;         /* Soft Background */
+            --text-main: #0f172a;       /* Dark Slate */
+            --text-muted: #64748b;
+            --white: #ffffff;
             --sans: 'DM Sans', sans-serif;
+            --serif: 'Crimson Pro', serif;
         }
 
         * {
@@ -36,20 +45,24 @@ const { title, description = "Over 50+ professional financial calculators for ta
 
         body {
             font-family: var(--sans);
-            background: var(--warm-white);
-            color: var(--deep-navy);
+            background: var(--bg-warm);
+            color: var(--text-main);
             line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
 
-        /* Common Header Styles */
+        /* Header & Navigation */
         header {
-            background: var(--deep-navy);
-            color: var(--warm-white);
-            padding: 1.2rem 2rem;
+            background: var(--brand-blue);
+            color: var(--white);
+            padding: 1rem 2rem;
             position: sticky;
             top: 0;
             z-index: 1000;
-            border-bottom: 3px solid var(--accent-gold);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            border-bottom: 3px solid var(--brand-accent);
         }
 
         nav {
@@ -61,73 +74,113 @@ const { title, description = "Over 50+ professional financial calculators for ta
         }
 
         .logo {
-            font-family: var(--serif);
-            font-size: 1.6rem;
-            font-weight: 700;
-            color: var(--warm-white);
             text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .logo-main {
+            font-family: var(--serif);
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--white);
+        }
+
+        .logo-accent {
+            color: var(--brand-accent);
         }
 
         .nav-links {
             display: flex;
-            gap: 2rem;
+            gap: 1.5rem;
             list-style: none;
         }
 
         .nav-links a {
-            color: var(--warm-white);
+            color: var(--white);
             text-decoration: none;
             font-weight: 500;
-            transition: color 0.3s;
+            font-size: 0.95rem;
+            transition: 0.3s;
+            opacity: 0.9;
         }
 
         .nav-links a:hover {
-            color: var(--accent-gold);
+            color: var(--brand-accent);
+            opacity: 1;
         }
 
-        /* Footer Styles */
+        /* Main Content Area */
+        main {
+            flex: 1;
+        }
+
+        /* Professional Footer */
         footer {
-            background: var(--deep-navy);
-            color: var(--warm-white);
-            padding: 3rem 2rem;
+            background: #0f172a; /* Darker Slate for Footer */
+            color: #cbd5e1;
+            padding: 4rem 2rem 2rem;
             margin-top: 4rem;
+            border-top: 4px solid var(--brand-accent);
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
             text-align: center;
-            border-top: 3px solid var(--accent-gold);
+        }
+
+        .footer-brand {
+            font-family: var(--serif);
+            font-size: 1.5rem;
+            color: var(--white);
+            margin-bottom: 1rem;
         }
 
         .footer-links {
-            margin-bottom: 1.5rem;
             display: flex;
             justify-content: center;
-            gap: 1.5rem;
+            gap: 2rem;
+            margin-bottom: 2rem;
             flex-wrap: wrap;
         }
 
         .footer-links a {
-            color: var(--light-slate);
+            color: #94a3b8;
             text-decoration: none;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
+            transition: 0.3s;
         }
 
         .footer-links a:hover {
-            color: var(--accent-gold);
+            color: var(--brand-accent);
+        }
+
+        .copyright {
+            border-top: 1px solid #1e293b;
+            padding-top: 2rem;
+            font-size: 0.85rem;
+            color: #64748b;
         }
 
         @media (max-width: 768px) {
-            .nav-links { display: none; } /* মোবাইলের জন্য পরে হ্যামবার্গার মেনু যোগ করা যাবে */
+            .nav-links { display: none; } /* Hide on mobile for later burger menu */
+            .logo-main { font-size: 1.4rem; }
         }
     </style>
 </head>
 <body>
     <header>
         <nav>
-            <a href="/" class="logo">FinanceHub</a>
+            <a href="/" class="logo" title="Go to Homepage">
+                <span class="logo-main">QuickFin<span class="logo-accent">Calc</span></span>
+            </a>
             <ul class="nav-links">
                 <li><a href="/">Calculators</a></li>
-                <li><a href="/articles">Articles</a></li>
-                <li><a href="/faq">FAQ</a></li>
-                <li><a href="/contact">Contact</a></li>
-                <li><a href="/about">About</a></li>
+                <li><a href="/articles">Financial Guides</a></li>
+                <li><a href="/about">About Us</a></li>
+                <li><a href="/contact">Support</a></li>
             </ul>
         </nav>
     </header>
@@ -137,17 +190,23 @@ const { title, description = "Over 50+ professional financial calculators for ta
     </main>
 
     <footer>
-        <div class="footer-links">
-            <a href="/">Home</a>
-            <a href="/articles">Articles</a>
-            <a href="/faq">FAQ</a>
-            <a href="/privacy">Privacy Policy</a>
-            <a href="/terms">Terms of Service</a>
-            <a href="/contact">Contact</a>
+        <div class="footer-container">
+            <div class="footer-brand">{siteName}</div>
+            <p style="margin-bottom: 2rem; max-width: 600px; margin-left: auto; margin-right: auto;">
+                Providing precision-engineered financial tools for individuals, startups, and auditors worldwide.
+            </p>
+            <div class="footer-links">
+                <a href="/">Home</a>
+                <a href="/articles">Guides</a>
+                <a href="/privacy">Privacy Policy</a>
+                <a href="/terms">Terms of Service</a>
+                <a href="/contact">Contact</a>
+            </div>
+            <div class="copyright">
+                &copy; {new Date().getFullYear()} {siteName}. All rights reserved. <br/>
+                <small>Calculations are for informational purposes. Consult an auditor for legal decisions.</small>
+            </div>
         </div>
-        <p style="color: var(--light-slate); font-size: 0.85rem;">
-            &copy; 2026 FinanceHub. Designed for precision financial planning.
-        </p>
     </footer>
 </body>
 </html>

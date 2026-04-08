@@ -1,20 +1,20 @@
 import { defineConfig } from 'astro/config';
-import sitemap from '@astrojs/sitemap'; // যদি ইনস্টল করা থাকে
 
 // https://astro.build/config
 export default defineConfig({
-  // আপনার Netlify সাইটের ইউআরএল এখানে দিন (SEO এর জন্য জরুরি)
-  site: 'https://financecalhub.netlify.app/',
+  // আপনার Netlify সাইটের ইউআরএল
+  site: 'https://quickfincalc.com',
   
-  trailingSlash: 'always', // SEO এর জন্য সাধারণত 'always' বা 'never' ভালো, 'ignore' এর চেয়ে।
+  // 'always' থেকে পরিবর্তন করে 'ignore' করা হয়েছে যাতে স্ল্যাশ নিয়ে ঝামেলা না হয়
+  trailingSlash: 'ignore', 
 
   output: 'static',
 
-  // সোপান (Sitemap) এবং অন্যান্য ইন্টিগ্রেশন
-  integrations: [sitemap()],
+  // সitemap এখন খালি রাখা হয়েছে
+  integrations: [],
 
   // Build settings
   build: {
-    format: 'directory', // এটি /privacy কে /privacy/index.html হিসেবে বিল্ড করবে, যা ক্লিন ইউআরএল দেয়।
+    format: 'directory', 
   }
 });

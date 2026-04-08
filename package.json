@@ -1,7 +1,8 @@
 {
-  "name": "finance-calcs",
+  "name": "quick-financial-calculator",
   "type": "module",
   "version": "0.0.1",
+  "homepage": "https://quickfincalc.com",
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",

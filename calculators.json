@@ -1,9 +1,10 @@
 [
   {
     "slug": "mortgage-calculator",
+    "formula": "loan",
     "type": "loan",
     "name": "Mortgage Payment Calculator",
-    "description": "Calculate monthly mortgage payments for US & UK real estate.",
+    "description": "Calculate monthly mortgage payments for   US & UK real estate.",
     "label1": "Home Price ($)",
     "label2": "Interest Rate (%)",
     "label3": "Tenure (Months)",
@@ -15,6 +16,7 @@
   },
   {
     "slug": "car-loan-calculator",
+    "formula": "loan",
     "type": "loan",
     "name": "Auto Loan EMI Calculator",
     "description": "Estimate monthly installment payments for new or used cars.",
@@ -29,6 +31,7 @@
   },
   {
     "slug": "personal-loan-calculator",
+    "formula": "loan",
     "type": "loan",
     "name": "Personal Loan Calculator",
     "description": "Calculate monthly installments for personal credit lines.",
@@ -43,6 +46,7 @@
   },
   {
     "slug": "sba-7a-loan-calculator",
+    "formula": "loan",
     "type": "loan",
     "name": "SBA 7(a) Business Loan Calculator",
     "description": "Specialized calculator for US Small Business Administration loans.",
@@ -57,6 +61,7 @@
   },
   {
     "slug": "student-loan-refinance",
+    "formula": "loan",
     "type": "loan",
     "name": "Student Loan Repayment Calculator",
     "description": "Plan your student debt payoff strategy.",
@@ -71,6 +76,7 @@
   },
   {
     "slug": "credit-card-payoff",
+    "formula": "loan",
     "type": "loan",
     "name": "Credit Card Payoff Calculator",
     "description": "Plan your journey to becoming debt-free.",
@@ -85,6 +91,7 @@
   },
   {
     "slug": "equipment-lease-payment",
+    "formula": "loan",
     "type": "loan",
     "name": "Equipment Lease Calculator",
     "description": "Calculate monthly lease costs for business machinery and tools.",
@@ -99,6 +106,7 @@
   },
   {
     "slug": "debt-to-income-ratio",
+    "formula": "ratio",
     "type": "loan",
     "name": "Debt-to-Income (DTI) Ratio Calculator",
     "description": "Check your loan eligibility with DTI ratio.",
@@ -113,6 +121,7 @@
   },
   {
     "slug": "debt-service-coverage",
+    "formula": "ratio",
     "type": "loan",
     "name": "Debt Service Coverage Ratio (DSCR) Calculator",
     "description": "Essential for commercial loan approval analysis.",
@@ -127,6 +136,7 @@
   },
   {
     "slug": "loan-amortization-schedule",
+    "formula": "loan",
     "type": "loan",
     "name": "Loan Amortization Schedule Calculator",
     "description": "See a full breakdown of principal vs. interest for every payment.",
@@ -141,6 +151,7 @@
   },
   {
     "slug": "roi-marketing-calculator",
+    "formula": "roi",
     "type": "investment",
     "name": "Marketing ROI Calculator",
     "description": "Measure the return on your ad spend and campaigns.",
@@ -155,6 +166,7 @@
   },
   {
     "slug": "real-estate-roi",
+    "formula": "roi",
     "type": "investment",
     "name": "Rental Property ROI Calculator",
     "description": "Calculate annual return on investment for rental properties.",
@@ -169,6 +181,7 @@
   },
   {
     "slug": "stock-profit-calculator",
+    "formula": "stock",
     "type": "investment",
     "name": "Stock Profit Calculator",
     "description": "Calculate your capital gains from stock market trading.",
@@ -183,6 +196,7 @@
   },
   {
     "slug": "crypto-profit-calculator",
+    "formula": "stock",
     "type": "investment",
     "name": "Crypto Gains Calculator",
     "description": "Track your profits and losses for BTC, ETH, and altcoins.",
@@ -197,6 +211,7 @@
   },
   {
     "slug": "dividend-reinvestment-calc",
+    "formula": "roi",
     "type": "investment",
     "name": "Dividend Yield Calculator",
     "description": "Calculate annual dividend returns from stocks.",
@@ -211,6 +226,7 @@
   },
   {
     "slug": "cap-rate-real-estate",
+    "formula": "property_roi",
     "type": "investment",
     "name": "Cap Rate Calculator",
     "description": "Evaluate commercial real estate investment returns.",
@@ -225,6 +241,7 @@
   },
   {
     "slug": "compound-interest-savings",
+    "formula": "compound",
     "type": "investment",
     "name": "Compound Interest Calculator",
     "description": "See how your savings grow with monthly compounding.",
@@ -239,6 +256,7 @@
   },
   {
     "slug": "savings-goal-calculator",
+    "formula": "compound",
     "type": "investment",
     "name": "Savings Goal Calculator",
     "description": "Find out how much to save monthly to reach your financial target.",
@@ -253,6 +271,7 @@
   },
   {
     "slug": "retirement-nest-egg",
+    "formula": "compound",
     "type": "investment",
     "name": "Retirement Fund Goal Calculator",
     "description": "Calculate how much you need for a comfortable retirement.",
@@ -267,6 +286,7 @@
   },
   {
     "slug": "business-valuation",
+    "formula": "basic",
     "type": "investment",
     "name": "Business Valuation Calculator",
     "description": "Estimate the market value of your small business.",
@@ -281,6 +301,7 @@
   },
   {
     "slug": "eps-earnings-per-share",
+    "formula": "ratio",
     "type": "investment",
     "name": "Earnings Per Share (EPS) Calculator",
     "description": "Calculate earnings per share for stock analysis.",
@@ -295,6 +316,7 @@
   },
   {
     "slug": "return-on-equity-roe",
+    "formula": "ratio",
     "type": "investment",
     "name": "Return on Equity (ROE) Calculator",
     "description": "Measure how effectively management uses shareholder equity.",
@@ -309,6 +331,7 @@
   },
   {
     "slug": "shopify-margin-calculator",
+    "formula": "margin",
     "type": "ecommerce",
     "name": "Shopify Profit Margin Calculator",
     "description": "Calculate your store's gross profit margin.",
@@ -323,6 +346,7 @@
   },
   {
     "slug": "amazon-fba-calculator",
+    "formula": "margin",
     "type": "ecommerce",
     "name": "Amazon FBA Fee Margin Calculator",
     "description": "Estimate profit after Amazon FBA and referral fees.",
@@ -337,6 +361,7 @@
   },
   {
     "slug": "ebay-fee-calculator",
+    "formula": "margin",
     "type": "ecommerce",
     "name": "eBay Profit Calculator",
     "description": "Calculate net profit after eBay and payment fees.",
@@ -351,6 +376,7 @@
   },
   {
     "slug": "gross-profit-margin",
+    "formula": "margin",
     "type": "ecommerce",
     "name": "Gross Profit Margin Calculator",
     "description": "Calculate the percentage of revenue above cost of goods sold.",
@@ -365,6 +391,7 @@
   },
   {
     "slug": "net-profit-margin",
+    "formula": "margin",
     "type": "ecommerce",
     "name": "Net Profit Margin Calculator",
     "description": "Find your actual profit after all business expenses.",
@@ -379,6 +406,7 @@
   },
   {
     "slug": "markup-percentage-calc",
+    "formula": "margin",
     "type": "ecommerce",
     "name": "Price Markup Calculator",
     "description": "Determine the markup needed to reach your profit goal.",
@@ -393,6 +421,7 @@
   },
   {
     "slug": "break-even-sales",
+    "formula": "break_even",
     "type": "ecommerce",
     "name": "Break-Even Sales Volume Calculator",
     "description": "Find how many units you must sell to cover all costs.",
@@ -407,6 +436,7 @@
   },
   {
     "slug": "startup-burn-rate",
+    "formula": "runway",
     "type": "ecommerce",
     "name": "Startup Burn Rate Calculator",
     "description": "Calculate how long your cash reserves will last.",
@@ -421,6 +451,7 @@
   },
   {
     "slug": "inventory-turnover",
+    "formula": "ratio",
     "type": "ecommerce",
     "name": "Inventory Turnover Ratio Calculator",
     "description": "Measure efficiency in managing business inventory.",
@@ -435,6 +466,7 @@
   },
   {
     "slug": "working-capital-ratio",
+    "formula": "ratio",
     "type": "ecommerce",
     "name": "Working Capital Ratio Calculator",
     "description": "Check your business liquidity and financial health.",
@@ -449,6 +481,7 @@
   },
   {
     "slug": "sales-tax-usa",
+    "formula": "tax",
     "type": "tax",
     "name": "USA Sales Tax Calculator",
     "description": "Quickly add the correct sales tax to your product prices.",
@@ -463,6 +496,7 @@
   },
   {
     "slug": "vat-uk-calculator",
+    "formula": "tax",
     "type": "tax",
     "name": "UK VAT Calculator",
     "description": "Calculate 20% or 5% VAT for UK business invoices.",
@@ -477,6 +511,7 @@
   },
   {
     "slug": "gst-canada-calculator",
+    "formula": "tax",
     "type": "tax",
     "name": "Canada GST/HST Calculator",
     "description": "Estimate goods and services tax for Canadian provinces.",
@@ -491,6 +526,7 @@
   },
   {
     "slug": "payroll-tax-usa",
+    "formula": "tax",
     "type": "tax",
     "name": "US Payroll Tax Estimator",
     "description": "Estimate employer-side payroll taxes for employees.",
@@ -505,6 +541,7 @@
   },
   {
     "slug": "freelance-tax-estimator",
+    "formula": "tax",
     "type": "tax",
     "name": "Freelance Tax Estimator",
     "description": "Estimate self-employment taxes for 1099 gig workers.",
@@ -519,6 +556,7 @@
   },
   {
     "slug": "paypal-fee-international",
+    "formula": "fee",
     "type": "tax",
     "name": "PayPal Fee Calculator",
     "description": "Calculate fees for international and domestic payments.",
@@ -533,6 +571,7 @@
   },
   {
     "slug": "stripe-fee-calculator",
+    "formula": "fee",
     "type": "tax",
     "name": "Stripe Fee Calculator",
     "description": "Estimate net revenue after Stripe processing fees.",
@@ -547,6 +586,7 @@
   },
   {
     "slug": "invoice-discount-calc",
+    "formula": "tax",
     "type": "tax",
     "name": "Invoice Discount Calculator",
     "description": "Calculate net total after applying business discounts.",
@@ -561,6 +601,7 @@
   },
   {
     "slug": "asset-depreciation-calc",
+    "formula": "basic",
     "type": "tax",
     "name": "Straight-Line Depreciation Calculator",
     "description": "Calculate annual asset depreciation for tax purposes.",
@@ -575,6 +616,7 @@
   },
   {
     "slug": "cac-customer-acquisition",
+    "formula": "ratio",
     "type": "marketing",
     "name": "Customer Acquisition Cost (CAC) Calculator",
     "description": "Calculate the cost to acquire a single new customer.",
@@ -589,6 +631,7 @@
   },
   {
     "slug": "clv-lifetime-value",
+    "formula": "basic",
     "type": "marketing",
     "name": "Customer Lifetime Value (CLV) Calculator",
     "description": "Estimate total revenue per customer over their lifetime.",
@@ -603,6 +646,7 @@
   },
   {
     "slug": "marketing-expense-ratio",
+    "formula": "ratio",
     "type": "marketing",
     "name": "Marketing Expense Ratio Calculator",
     "description": "Track your marketing spend relative to total revenue.",
@@ -617,6 +661,7 @@
   },
   {
     "slug": "customer-retention-rate",
+    "formula": "ratio",
     "type": "marketing",
     "name": "Customer Retention Rate Calculator",
     "description": "Measure the percentage of customers who stay loyal.",
@@ -631,6 +676,7 @@
   },
   {
     "slug": "email-open-rate-roi",
+    "formula": "roi",
     "type": "marketing",
     "name": "Email Open Rate ROI Calculator",
     "description": "Measure your email marketing campaign performance and return.",
@@ -645,6 +691,7 @@
   },
   {
     "slug": "hourly-to-salary",
+    "formula": "basic",
     "type": "salary",
     "name": "Hourly to Salary Calculator",
     "description": "Convert your hourly wage into an equivalent yearly salary.",
@@ -659,6 +706,7 @@
   },
   {
     "slug": "employee-turnover-rate",
+    "formula": "ratio",
     "type": "salary",
     "name": "Employee Turnover Rate Calculator",
     "description": "Calculate the rate at which employees leave your company.",
@@ -673,6 +721,7 @@
   },
   {
     "slug": "ebitda-margin-calc",
+    "formula": "margin",
     "type": "salary",
     "name": "EBITDA Margin Calculator",
     "description": "Professional earnings analysis for businesses and investors.",
@@ -687,6 +736,7 @@
   },
   {
     "slug": "current-ratio-analysis",
+    "formula": "ratio",
     "type": "salary",
     "name": "Current Ratio Analysis Calculator",
     "description": "Evaluate your business's short-term financial strength.",
