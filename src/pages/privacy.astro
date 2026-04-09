@@ -1,16 +1,16 @@
 ---
 import Layout from '../layouts/Layout.astro';
 
-const title = "Privacy Policy | FinanceHub Pro";
-const description = "FinanceHub Privacy Policy — learn how we handle your data, cookies, and third-party advertising including Google AdSense.";
+const title = "Privacy Policy | Quick Financial Calculator";
+const description = "Privacy Policy for Quick Financial Calculator — Learn how we protect your data and our commitment to local browser-based computing.";
 
 // JSON-LD Schema for SEO
 const schema = {
   "@context": "https://schema.org",
   "@type": "WebPage",
-  "name": "Privacy Policy — FinanceHub",
+  "name": "Privacy Policy — Quick Financial Calculator",
   "description": description,
-  "url": "https://financecalculator-all.netlify.app/privacy/",
+  "url": "https://quickfincalc.com/privacy/",
   "publisher": {
     "@type": "Person",
     "name": "Md. Merajul Islam"
@@ -24,106 +24,119 @@ const schema = {
     <style>
         :root {
             --primary: #1e3a8a;
-            --secondary: #2563eb;
-            --accent: #f0f9ff;
-            --text-dark: #1e293b;
-            --border: #e2e8f0;
+            --secondary: #0f172a;
+            --accent-gold: #d4a373;
+            --bg-light: #fdfbf7;
+            --text-slate: #475569;
+            --border-soft: #e2e8f0;
         }
 
         /* Hero Section */
         .hero {
-            background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
-            padding: 60px 20px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            padding: 70px 20px;
             text-align: center;
             color: white;
+            border-bottom: 4px solid var(--accent-gold);
         }
 
-        .hero h1 { font-size: 2.5rem; font-weight: 800; margin-bottom: 10px; }
+        .hero h1 { font-family: 'Crimson Pro', serif; font-size: 2.8rem; font-weight: 800; margin-bottom: 12px; }
+        .hero p { color: #cbd5e1; font-size: 1.1rem; max-width: 600px; margin: 0 auto; }
 
-        .container { max-width: 860px; margin: 40px auto; padding: 0 20px; }
+        .container { max-width: 860px; margin: 50px auto; padding: 0 20px; }
 
-        /* Meta & TOC */
-        .meta-bar { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 30px; }
-        .badge { padding: 6px 14px; border-radius: 999px; font-size: 0.8rem; font-weight: 600; border: 1px solid #bfdbfe; background: var(--accent); color: var(--primary); }
-        .badge-green { background: #f0fdf4; color: #166534; border-color: #bbf7d0; }
+        /* Meta Badges */
+        .meta-bar { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 35px; justify-content: center; }
+        .badge { padding: 8px 16px; border-radius: 6px; font-size: 0.75rem; font-weight: 700; border: 1px solid var(--border-soft); background: white; color: var(--primary); text-transform: uppercase; letter-spacing: 0.5px; }
+        .badge-gold { background: var(--bg-light); color: #92400e; border-color: var(--accent-gold); }
 
-        .toc { background: var(--accent); border: 1px solid #bfdbfe; border-radius: 16px; padding: 25px; margin-bottom: 30px; }
-        .toc h2 { font-size: 1rem; text-transform: uppercase; margin-bottom: 15px; color: var(--primary); }
-        .toc ol { padding-left: 20px; }
-        .toc a { color: var(--secondary); text-decoration: none; font-size: 0.95rem; }
+        /* TOC */
+        .toc { background: white; border: 1px solid var(--border-soft); border-radius: 12px; padding: 25px; margin-bottom: 35px; }
+        .toc h2 { font-size: 0.9rem; text-transform: uppercase; margin-bottom: 15px; color: var(--primary); letter-spacing: 1px; font-weight: 800; }
+        .toc ol { padding-left: 20px; color: var(--text-slate); }
+        .toc li { margin-bottom: 8px; }
+        .toc a { color: var(--primary); text-decoration: none; font-size: 0.95rem; font-weight: 600; transition: color 0.2s; }
+        .toc a:hover { color: var(--accent-gold); }
 
         /* Content Sections */
-        .section { background: white; border-radius: 16px; padding: 35px; border: 1px solid var(--border); margin-bottom: 24px; box-shadow: 0 4px 6px rgba(0,0,0,0.02); }
-        .section h2 { color: var(--primary); font-size: 1.4rem; border-bottom: 2px solid var(--accent); padding-bottom: 10px; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
-        .section-num { background: var(--primary); color: white; width: 28px; height: 28px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 0.85rem; }
+        .section { background: white; border-radius: 16px; padding: 40px; border: 1px solid var(--border-soft); margin-bottom: 24px; box-shadow: 0 4px 12px rgba(0,0,0,0.03); }
+        .section h2 { color: var(--primary); font-family: 'Crimson Pro', serif; font-size: 1.6rem; border-bottom: 2px solid var(--bg-light); padding-bottom: 12px; margin-bottom: 20px; display: flex; align-items: center; gap: 12px; }
+        .section-num { background: var(--accent-gold); color: var(--primary); width: 30px; height: 30px; border-radius: 6px; display: inline-flex; align-items: center; justify-content: center; font-size: 0.9rem; font-weight: 800; }
+        .section p { line-height: 1.7; color: var(--text-slate); margin-bottom: 15px; }
         
-        .highlight-box { border-radius: 12px; padding: 20px; margin: 20px 0; border-left: 5px solid; }
-        .highlight-green { background: #f0fdf4; border-left-color: #16a34a; color: #14532d; }
-        .highlight-blue { background: var(--accent); border-left-color: var(--secondary); color: #1e3a8a; }
-        .highlight-amber { background: #fffbeb; border-left-color: #d97706; color: #78350f; }
+        .highlight-box { border-radius: 10px; padding: 22px; margin: 25px 0; border-left: 5px solid; font-size: 0.95rem; }
+        .highlight-gold { background: var(--bg-light); border-left-color: var(--accent-gold); color: #92400e; }
+        .highlight-blue { background: #f0f7ff; border-left-color: var(--primary); color: var(--primary); }
 
-        .contact-card { background: var(--accent); border-radius: 12px; padding: 25px; border: 1px solid #bfdbfe; }
-        .contact-card a { color: var(--secondary); font-weight: 700; text-decoration: none; }
+        .contact-card { background: #f8fafc; border-radius: 12px; padding: 30px; border: 1px solid var(--border-soft); margin-top: 20px; }
+        .contact-card p { margin-bottom: 8px; color: var(--secondary); font-weight: 500; }
+        .contact-card a { color: var(--primary); font-weight: 700; text-decoration: underline; }
 
         @media (max-width: 640px) {
-            .section { padding: 20px; }
-            .hero h1 { font-size: 2rem; }
+            .section { padding: 25px; }
+            .hero h1 { font-size: 2.1rem; }
         }
     </style>
 
     <section class="hero">
-        <h1>Privacy Policy</h1>
-        <p>Your data security and privacy are our top priorities</p>
+        <h1>Privacy Commitment</h1>
+        <p>Transparency and local data processing are the foundations of Quick Financial Calculator.</p>
     </section>
 
     <div class="container">
         <div class="meta-bar">
-            <span class="badge">📅 Updated: April 1, 2026</span>
-            <span class="badge badge-green">✅ AdSense Compliant</span>
-            <span class="badge badge-green">✅ GDPR Aware</span>
+            <span class="badge">📅 Last Revised: April 9, 2026</span>
+            <span class="badge badge-gold">🔒 Browser-Side Compute</span>
+            <span class="badge">⚖️ GDPR & CCPA Compliant</span>
         </div>
 
         <div class="toc">
-            <h2>Table of Contents</h2>
+            <h2>Quick Navigation</h2>
             <ol>
-                <li><a href="#overview">Overview</a></li>
-                <li><a href="#calculator-data">Calculator Data Privacy</a></li>
-                <li><a href="#google-adsense">Google AdSense & Cookies</a></li>
-                <li><a href="#contact">Contact Us</a></li>
+                <li><a href="#data-processing">Data Processing Philosophy</a></li>
+                <li><a href="#local-calculation">Local Calculation Security</a></li>
+                <li><a href="#cookies-ads">AdSense & Third-Party Cookies</a></li>
+                <li><a href="#compliance">Regulatory Compliance</a></li>
+                <li><a href="#contact">Privacy Enquiries</a></li>
             </ol>
         </div>
 
-        <section class="section" id="overview">
-            <h2><span class="section-num">1</span> Overview</h2>
-            <p>Welcome to <strong>FinanceHub Pro</strong>. This Privacy Policy outlines how we manage information when you use our financial tools. We believe in transparency and keeping your data safe.</p>
-            <div class="highlight-green">
-                <strong>No-Data Policy:</strong> FinanceHub does not store or see the numbers you enter. All calculations happen locally on your device.
+        <section class="section" id="data-processing">
+            <h2><span class="section-num">1</span> Data Processing Philosophy</h2>
+            <p>At <strong>Quick Financial Calculator</strong>, we believe your financial plans are your own business. Our application is architected to prioritize user privacy above all else.</p>
+            <div class="highlight-gold">
+                <strong>Zero-Storage Policy:</strong> We do not store, log, or transmit any financial data you enter into our calculators. No databases are used to collect your private numbers.
             </div>
         </section>
 
-        <section class="section" id="calculator-data">
-            <h2><span class="section-num">2</span> Calculator Data & Your Privacy</h2>
-            <p>Every financial input—whether it's your salary, loan amount, or tax details—is processed entirely within your browser using JavaScript.</p>
+        <section class="section" id="local-calculation">
+            <h2><span class="section-num">2</span> Local Calculation Security</h2>
+            <p>Every tool on this platform—from mortgage amortizations to tax estimators—executes calculations locally on your device using client-side JavaScript.</p>
             <div class="highlight-blue">
-                🔒 <strong>Zero Transmission:</strong> Your numbers are never sent to any server. Once you close the tab, all data is permanently cleared.
+                🔒 <strong>On-Device Only:</strong> Your inputs never leave your browser. This ensures that even if our servers were compromised, your financial information remains safe because it was never there to begin with.
             </div>
         </section>
 
-        <section class="section" id="google-adsense">
-            <h2><span class="section-num">3</span> Google AdSense & Advertising</h2>
-            <p>We use Google AdSense to show relevant ads. Google uses cookies (like the DoubleClick cookie) to serve ads based on your visit to this site and others.</p>
-            <div class="highlight-amber">
-                <strong>Control Your Privacy:</strong> You can opt-out of personalized ads via <a href="https://www.google.com/settings/ads" target="_blank">Google Ads Settings</a>.
-            </div>
+        <section class="section" id="cookies-ads">
+            <h2><span class="section-num">3</span> Google AdSense & Third-Party Cookies</h2>
+            <p>To keep our tools free for everyone, we display advertisements via Google AdSense. Google uses cookies to serve ads based on your prior visits to our website or other websites.</p>
+            <p>Google’s use of advertising cookies enables it and its partners to serve ads to you based on your visit to Quick Financial Calculator and/or other sites on the Internet.</p>
+            <p>Users may opt out of personalized advertising by visiting <a href="https://www.google.com/settings/ads" target="_blank">Google Ads Settings</a>.</p>
+        </section>
+
+        <section class="section" id="compliance">
+            <h2><span class="section-num">4</span> Regulatory Compliance</h2>
+            <p>We respect international privacy standards, including the GDPR (Europe) and CCPA (California). Since we do not collect personal identifiable information (PII) through our tools, our footprint is minimal.</p>
         </section>
 
         <section class="section" id="contact">
-            <h2><span class="section-num">4</span> Contact Us</h2>
+            <h2><span class="section-num">5</span> Privacy Enquiries</h2>
             <div class="contact-card">
-                <p><strong>FinanceHub — Privacy Enquiries</strong></p>
-                <p>👤 Maintained by: <strong>Md. Merajul Islam</strong></p>
-                <p>📬 Contact: <a href="/contact/">Send a Message</a></p>
-                <p style="font-size: 0.85rem; color: #64748b; margin-top: 10px;">We aim to respond to all privacy concerns within 5 business days.</p>
+                <p><strong>Technical Data Controller</strong></p>
+                <p>👤 <strong>Md. Merajul Islam</strong></p>
+                <p>🔗 Website: <a href="https://quickfincalc.com">quickfincalc.com</a></p>
+                <p>📬 Contact: <a href="/contact/">Official Support Channel</a></p>
+                <p style="font-size: 0.8rem; color: #64748b; margin-top: 15px;">We review and respond to all privacy-related concerns within 48–72 hours.</p>
             </div>
         </section>
     </div>

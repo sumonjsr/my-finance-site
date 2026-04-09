@@ -1,0 +1,70 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import articles from '../../../articles.json'; // রুটে থাকা ফাইলটি ইমপোর্ট করছি
+
+export async function getStaticPaths() {
+  return articles.map((post) => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+---
+
+<Layout title={`${post.title} | QuickFinCalc`} description={post.excerpt}>
+  <article class="article-wrap">
+    <div class="header-section">
+      <div class="meta-info">
+        <span class="badge">{post.category}</span>
+        <span class="dot">•</span>
+        <span>{post.date}</span>
+        <span class="dot">•</span>
+        <span>{post.readTime}</span>
+      </div>
+      <h1>{post.emoji} {post.title}</h1>
+      <p class="intro-text">{post.excerpt}</p>
+    </div>
+
+    <div class="main-content">
+      <p style="white-space: pre-line;">{post.content}</p>
+    </div>
+
+    <div class="cta-box">
+      <h3>Ready to run the numbers?</h3>
+      <p>Use our professional calculators to turn these insights into a financial plan.</p>
+      <a href="/" class="btn-primary">View All Calculators</a>
+    </div>
+  </article>
+</Layout>
+
+<style>
+  .article-wrap { max-width: 800px; margin: 0 auto; padding: 80px 20px; }
+  .header-section { text-align: center; margin-bottom: 60px; }
+  .meta-info { 
+    display: flex; align-items: center; justify-content: center; gap: 10px;
+    color: #64748b; font-weight: 700; text-transform: uppercase; font-size: 0.8rem; margin-bottom: 20px;
+  }
+  .badge { color: #d4a373; border: 1px solid #d4a373; padding: 2px 10px; border-radius: 4px; }
+  
+  h1 { font-family: 'Crimson Pro', serif; font-size: 3.2rem; color: #1e3a8a; line-height: 1.1; margin-bottom: 25px; }
+  .intro-text { font-size: 1.3rem; color: #475569; line-height: 1.6; font-style: italic; }
+
+  .main-content { 
+    background: white; padding: 50px; border-radius: 24px; 
+    border: 1px solid #e2e8f0; line-height: 1.8; color: #334155; font-size: 1.2rem;
+    box-shadow: 0 4px 30px rgba(0,0,0,0.03);
+  }
+  
+  .cta-box { 
+    margin-top: 60px; background: #1e3a8a; color: white; padding: 45px; 
+    border-radius: 24px; text-align: center; border-bottom: 5px solid #d4a373;
+  }
+  .cta-box h3 { font-family: 'Crimson Pro', serif; font-size: 2rem; margin-bottom: 10px; }
+  .btn-primary { 
+    display: inline-block; margin-top: 25px; padding: 14px 35px; 
+    background: #d4a373; color: #1e3a8a; text-decoration: none; 
+    border-radius: 10px; font-weight: 800; transition: 0.3s;
+  }
+  .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(212,163,115,0.3); }
+</style>

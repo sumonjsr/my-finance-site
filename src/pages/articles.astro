@@ -1,167 +1,54 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import articles from '../../articles.json'; // আপনার JSON ফাইলের লোকেশন অনুযায়ী
 
-const title = "Financial Guides & Articles | FinanceHub";
-const description = "Expert guides on mortgages, loans, investments, and business finance.";
+const title = "Financial Insights & Expert Guides | Quick Financial Calculator";
+const description = "Master your finances with expert guides on loan strategies, tax planning, and business analysis.";
 ---
 
 <Layout title={title} description={description}>
     <style>
-        /* Articles Page Specific CSS */
         .hero {
-            background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
-            color: white;
-            padding: 60px 20px;
-            text-align: center;
+            background: linear-gradient(135deg, #1e3a8a 0%, #0f172a 100%);
+            color: white; padding: 80px 20px; text-align: center; border-bottom: 4px solid #d4a373;
         }
-        .hero h1 { font-size: 3rem; margin-bottom: 1rem; font-weight: 700; font-family: 'Crimson Pro', serif; }
-        .hero p { font-size: 1.2rem; opacity: 0.9; max-width: 700px; margin: 0 auto; }
-
-        /* Categories */
-        .category-pills {
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
-            justify-content: center;
-            margin: 40px auto;
-            max-width: 1000px;
-            padding: 0 20px;
-        }
-        .pill {
-            padding: 8px 20px;
-            background: white;
-            border: 1px solid #e2e8f0;
-            color: #1e293b;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 0.9rem;
-            transition: 0.3s;
-        }
-        .pill:hover, .pill.active { background: #1e3a8a; color: white; border-color: #1e3a8a; }
-
-        /* Articles Grid */
-        .articles-grid {
-            max-width: 1200px;
-            margin: 0 auto 60px;
-            padding: 0 20px;
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            gap: 30px;
-        }
-        .article-card {
-            background: white;
-            border-radius: 20px;
-            overflow: hidden;
-            border: 1px solid #e2e8f0;
-            transition: 0.3s;
-            text-decoration: none;
-            display: flex;
-            flex-direction: column;
-        }
-        .article-card:hover { transform: translateY(-8px); box-shadow: 0 15px 30px rgba(0,0,0,0.08); }
+        .hero h1 { font-size: 3rem; font-family: 'Crimson Pro', serif; margin-bottom: 1rem; }
         
-        .article-image {
-            height: 180px;
-            background: #eff6ff;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3.5rem;
-            position: relative;
+        .articles-grid { 
+            max-width: 1200px; margin: 60px auto; padding: 0 20px;
+            display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 30px; 
         }
-        .article-category {
-            position: absolute;
-            top: 15px;
-            left: 15px;
-            background: #2563eb;
-            color: white;
-            padding: 4px 12px;
-            border-radius: 10px;
-            font-size: 0.7rem;
-            font-weight: 700;
-            text-transform: uppercase;
+        .article-card { 
+            background: white; border-radius: 15px; overflow: hidden; border: 1px solid #e2e8f0;
+            text-decoration: none; display: flex; flex-direction: column; transition: 0.3s;
         }
-
-        .article-content { padding: 25px; }
-        .article-title { font-family: 'Crimson Pro', serif; font-size: 1.4rem; color: #1e3a8a; margin-bottom: 12px; line-height: 1.3; font-weight: 700; }
-        .article-excerpt { color: #64748b; font-size: 0.95rem; margin-bottom: 20px; }
-
-        .article-meta {
-            margin-top: auto;
-            display: flex;
-            justify-content: space-between;
-            font-size: 0.85rem;
-            color: #64748b;
-            padding-top: 15px;
-            border-top: 1px solid #e2e8f0;
-        }
-
-        /* Coming Soon Ribbon */
-        .coming-soon { position: relative; }
-        .coming-soon::after {
-            content: 'Coming Soon';
-            position: absolute;
-            top: 10px;
-            right: -5px;
-            background: #d4a373;
-            color: white;
-            padding: 2px 10px;
-            font-size: 0.7rem;
-            font-weight: 800;
-            border-radius: 5px;
-            transform: rotate(5deg);
-        }
+        .article-card:hover { transform: translateY(-10px); box-shadow: 0 15px 30px rgba(0,0,0,0.1); border-color: #d4a373; }
+        
+        .card-img { height: 180px; background: #f8fafc; display: flex; align-items: center; justify-content: center; font-size: 3.5rem; position: relative; }
+        .cat-tag { position: absolute; top: 15px; left: 15px; background: #1e3a8a; color: #d4a373; padding: 4px 12px; border-radius: 5px; font-size: 0.7rem; font-weight: 800; text-transform: uppercase; }
+        
+        .card-body { padding: 25px; }
+        .card-body h2 { font-family: 'Crimson Pro', serif; color: #1e3a8a; font-size: 1.4rem; margin-bottom: 12px; }
+        .card-body p { color: #64748b; font-size: 0.95rem; line-height: 1.6; }
     </style>
 
     <section class="hero">
         <h1>Financial Knowledge Hub</h1>
-        <p>Expert guides and insights to help you master your money and business growth.</p>
+        <p>Expert insights and strategic guides for your financial growth.</p>
     </section>
 
-    <div class="category-pills">
-        <a href="#" class="pill active">All Articles</a>
-        <a href="#" class="pill">Loans</a>
-        <a href="#" class="pill">Investing</a>
-        <a href="#" class="pill">Business</a>
-        <a href="#" class="pill">Tax</a>
-    </div>
-
     <main class="articles-grid">
-        <div class="article-card coming-soon">
-            <div class="article-image">🏠<span class="article-category">Mortgages</span></div>
-            <div class="article-content">
-                <h2 class="article-title">How to Calculate Mortgage Payments: 2026 Guide</h2>
-                <p class="article-excerpt">Learn the exact formula lenders use and how to reduce your monthly interest.</p>
-                <div class="article-meta">
-                    <span>8 min read</span>
-                    <span>Apr 2026</span>
+        {articles.map((post) => (
+            <a href={`/articles/${post.slug}`} class="article-card">
+                <div class="card-img">
+                    {post.emoji}
+                    <span class="cat-tag">{post.category}</span>
                 </div>
-            </div>
-        </div>
-
-        <div class="article-card coming-soon">
-            <div class="article-image">📈<span class="article-category">Investing</span></div>
-            <div class="article-content">
-                <h2 class="article-title">Compound Interest: The Secret to Wealth</h2>
-                <p class="article-excerpt">Visualizing how small monthly investments grow into millions over time.</p>
-                <div class="article-meta">
-                    <span>6 min read</span>
-                    <span>Apr 2026</span>
+                <div class="card-body">
+                    <h2>{post.title}</h2>
+                    <p>{post.excerpt}</p>
                 </div>
-            </div>
-        </div>
-
-        <div class="article-card coming-soon">
-            <div class="article-image">🏢<span class="article-category">Business</span></div>
-            <div class="article-content">
-                <h2 class="article-title">SBA Loans vs Bank Loans: Which is Better?</h2>
-                <p class="article-excerpt">A deep dive into business financing options for small entrepreneurs.</p>
-                <div class="article-meta">
-                    <span>10 min read</span>
-                    <span>Apr 2026</span>
-                </div>
-            </div>
-        </div>
+            </a>
+        ))}
     </main>
 </Layout>

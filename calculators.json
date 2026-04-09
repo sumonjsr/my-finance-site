@@ -211,7 +211,7 @@
   },
   {
     "slug": "dividend-reinvestment-calc",
-    "formula": "roi",
+    "formula": "dividend",
     "type": "investment",
     "name": "Dividend Yield Calculator",
     "description": "Calculate annual dividend returns from stocks.",

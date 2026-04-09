@@ -1,144 +1,160 @@
 ---
 import Layout from '../layouts/Layout.astro';
 
-const title = "Contact Us | FinanceHub Pro";
-const description = "Get in touch with the FinanceHub team. Report a calculator issue, suggest a new tool, or ask any question about our free financial calculators.";
+const title = "Contact Us | Quick Financial Calculator Support";
+const description = "Get in touch with the Quick Financial Calculator team. Report issues, suggest new tools, or ask questions about our verified financial formulas.";
 ---
 
 <Layout title={title} description={description}>
     <style>
-        /* Contact Page Specific Styles */
-        .hero { background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%); padding: 70px 20px; text-align: center; color: white; }
-        .hero h1 { font-size: 2.6rem; font-weight: 800; margin: 0 0 14px; font-family: 'Inter', sans-serif; }
-        .hero p { opacity: 0.88; font-size: 1.1rem; margin: 0 auto; max-width: 500px; }
+        /* Contact Page Optimized Styles */
+        .hero { 
+            background: linear-gradient(135deg, #1e3a8a 0%, #0f172a 100%); 
+            padding: 70px 20px; 
+            text-align: center; 
+            color: white; 
+            border-bottom: 4px solid #d4a373;
+        }
+        .hero h1 { 
+            font-size: 2.8rem; 
+            font-weight: 800; 
+            margin: 0 0 14px; 
+            font-family: 'Crimson Pro', serif; 
+        }
+        .hero p { opacity: 0.9; font-size: 1.1rem; margin: 0 auto; max-width: 550px; color: #cbd5e1; }
 
-        .container { max-width: 1000px; margin: 50px auto; padding: 0 20px; display: grid; grid-template-columns: 1fr 1.6fr; gap: 28px; }
-        @media (max-width: 700px) { .container { grid-template-columns: 1fr; } }
+        .container { max-width: 1000px; margin: 50px auto; padding: 0 20px; display: grid; grid-template-columns: 1fr 1.6fr; gap: 32px; }
+        @media (max-width: 768px) { .container { grid-template-columns: 1fr; } }
 
         .info-col { display: flex; flex-direction: column; gap: 20px; }
-        .info-card { background: white; border-radius: 18px; padding: 28px; border: 1px solid #e2e8f0; box-shadow: 0 4px 16px rgba(0,0,0,0.03); }
-        .info-card h2 { color: #1e3a8a; font-size: 1.15rem; margin: 0 0 14px; }
-        .info-card p { font-size: 0.9rem; color: #64748b; margin-bottom: 10px; }
+        .info-card { background: white; border-radius: 16px; padding: 28px; border: 1px solid #e2e8f0; box-shadow: 0 4px 20px rgba(0,0,0,0.04); }
+        .info-card h2 { color: #1e3a8a; font-size: 1.25rem; margin: 0 0 16px; font-family: 'Crimson Pro', serif; border-bottom: 2px solid #fdfbf7; padding-bottom: 8px; }
+        .info-card p { font-size: 0.9rem; color: #475569; margin-bottom: 10px; line-height: 1.5; }
 
-        .contact-item { display: flex; align-items: flex-start; gap: 14px; padding: 14px 0; border-bottom: 1px solid #e2e8f0; }
-        .contact-icon { width: 40px; height: 40px; border-radius: 10px; background: #f0f9ff; border: 1px solid #bfdbfe; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; flex-shrink: 0; }
-        .contact-label { font-size: 0.8rem; color: #64748b; font-weight: 600; text-transform: uppercase; }
-        .contact-value { font-size: 0.95rem; color: #1e293b; font-weight: 500; }
-        .response-badge { display: inline-flex; align-items: center; gap: 6px; background: #f0fdf4; color: #166534; border: 1px solid #bbf7d0; border-radius: 999px; padding: 6px 14px; font-size: 0.825rem; font-weight: 600; }
+        .contact-item { display: flex; align-items: flex-start; gap: 14px; padding: 16px 0; border-bottom: 1px solid #f1f5f9; }
+        .contact-item:last-child { border-bottom: none; }
+        .contact-icon { width: 42px; height: 42px; border-radius: 10px; background: #fdfbf7; border: 1px solid #d4a373; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; flex-shrink: 0; }
+        .contact-label { font-size: 0.75rem; color: #64748b; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+        .contact-value { font-size: 1rem; color: #1e3a8a; font-weight: 600; }
+        .response-badge { display: inline-flex; align-items: center; gap: 6px; background: #f0fdf4; color: #166534; border: 1px solid #bbf7d0; border-radius: 999px; padding: 6px 14px; font-size: 0.8rem; font-weight: 700; }
 
-        .form-card { background: white; border-radius: 20px; padding: 40px; border: 1px solid #e2e8f0; box-shadow: 0 4px 16px rgba(0,0,0,0.03); }
+        .form-card { background: white; border-radius: 20px; padding: 40px; border: 1px solid #e2e8f0; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
         .form-group { margin-bottom: 20px; }
         .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 20px; }
         @media (max-width: 500px) { .form-row { grid-template-columns: 1fr; } }
 
-        label { display: block; font-weight: 600; font-size: 0.9rem; margin-bottom: 7px; }
-        input, select, textarea { width: 100%; padding: 13px 16px; border: 1.5px solid #cbd5e1; border-radius: 10px; outline: none; transition: 0.2s; }
-        input:focus, select:focus, textarea:focus { border-color: #2563eb; box-shadow: 0 0 0 4px rgba(37,99,235,0.08); }
+        label { display: block; font-weight: 700; font-size: 0.85rem; margin-bottom: 8px; color: #334155; }
+        input, select, textarea { width: 100%; padding: 14px 16px; border: 1.5px solid #e2e8f0; border-radius: 10px; outline: none; transition: 0.3s; font-family: inherit; background: #f8fafc; }
+        input:focus, select:focus, textarea:focus { border-color: #d4a373; background: white; box-shadow: 0 0 0 4px rgba(212, 163, 115, 0.1); }
 
-        .submit-btn { width: 100%; padding: 16px; background: #1e3a8a; color: white; border: none; border-radius: 12px; font-weight: 700; cursor: pointer; transition: 0.3s; }
-        .submit-btn:hover { background: #2563eb; transform: translateY(-2px); }
+        .submit-btn { width: 100%; padding: 18px; background: #1e3a8a; color: white; border: none; border-radius: 12px; font-weight: 700; cursor: pointer; transition: 0.3s; font-size: 1rem; letter-spacing: 0.5px; }
+        .submit-btn:hover { background: #0f172a; transform: translateY(-2px); box-shadow: 0 5px 15px rgba(30, 58, 138, 0.3); }
 
-        .success-msg { display: none; background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 14px; padding: 24px; text-align: center; color: #166534; }
+        .success-msg { display: none; background: #f0fdf4; border: 2px solid #bbf7d0; border-radius: 14px; padding: 30px; text-align: center; color: #166534; }
 
-        .faq-section { max-width: 1000px; margin: 0 auto 50px; padding: 0 20px; }
-        .faq-item { background: white; border: 1px solid #e2e8f0; border-radius: 14px; margin-bottom: 12px; overflow: hidden; }
-        .faq-question { padding: 18px 22px; font-weight: 600; cursor: pointer; display: flex; justify-content: space-between; }
-        .faq-answer { padding: 0 22px; max-height: 0; overflow: hidden; transition: 0.3s ease; color: #64748b; font-size: 0.9rem; }
-        .faq-answer.open { max-height: 200px; padding-bottom: 18px; }
+        .faq-section { max-width: 1000px; margin: 0 auto 60px; padding: 0 20px; }
+        .faq-section h2 { font-family: 'Crimson Pro', serif; color: #1e3a8a; margin-bottom: 25px; text-align: center; font-size: 2rem; }
+        .faq-item { background: white; border: 1px solid #e2e8f0; border-radius: 14px; margin-bottom: 12px; overflow: hidden; transition: 0.3s; }
+        .faq-item:hover { border-color: #d4a373; }
+        .faq-question { padding: 20px 24px; font-weight: 700; cursor: pointer; display: flex; justify-content: space-between; align-items: center; color: #1e3a8a; }
+        .faq-answer { padding: 0 24px; max-height: 0; overflow: hidden; transition: 0.3s ease-out; color: #475569; font-size: 0.95rem; line-height: 1.6; }
+        .faq-answer.open { max-height: 200px; padding-bottom: 20px; }
     </style>
 
     <section class="hero">
-        <h1>Get in Touch</h1>
-        <p>Questions, suggestions, or found a bug? We read every message and respond promptly.</p>
+        <h1>Connect with Us</h1>
+        <p>Expert support for your financial inquiries. We value your feedback on our audit-grade tools.</p>
     </section>
 
     <div class="container">
         <aside class="info-col">
             <div class="info-card">
-                <h2>Contact Information</h2>
+                <h2>Direct Support</h2>
                 <div class="contact-item">
-                    <div class="contact-icon">👤</div>
+                    <div class="contact-icon">🏢</div>
                     <div>
-                        <div class="contact-label">Maintained By</div>
+                        <div class="contact-label">Managed By</div>
                         <div class="contact-value">Md. Merajul Islam</div>
                     </div>
                 </div>
                 <div class="contact-item">
-                    <div class="contact-icon">⏱️</div>
+                    <div class="contact-icon">⚡</div>
                     <div>
-                        <div class="contact-label">Response Time</div>
+                        <div class="contact-label">Typical Response</div>
                         <div class="contact-value">
-                            <span class="response-badge">✅ Usually within 48 hours</span>
+                            <span class="response-badge">Within 24-48 Hours</span>
                         </div>
                     </div>
                 </div>
             </div>
 
             <div class="info-card">
-                <h2>Important Note</h2>
-                <p>FinanceHub calculators provide estimates for informational purposes only. We do not provide personalized financial advice.</p>
+                <h2>Audit Compliance</h2>
+                <p>QuickFinCalc tools follow standard financial logic. If you notice a formula discrepancy, please let us know immediately for a technical review.</p>
             </div>
         </aside>
 
         <div class="form-card">
-            <h2>Send Us a Message</h2>
+            <h2 style="font-family: 'Crimson Pro', serif; color: #1e3a8a; margin-bottom: 25px;">Technical Inquiry Form</h2>
             <form id="contactForm">
                 <div class="form-row">
                     <div>
                         <label for="firstName">First Name *</label>
-                        <input type="text" id="firstName" required />
+                        <input type="text" id="firstName" placeholder="Merajul" required />
                     </div>
                     <div>
                         <label for="lastName">Last Name</label>
-                        <input type="text" id="lastName" />
+                        <input type="text" id="lastName" placeholder="Islam" />
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="email">Email Address *</label>
-                    <input type="email" id="email" required />
+                    <input type="email" id="email" placeholder="name@example.com" required />
                 </div>
                 <div class="form-group">
-                    <label for="topic">Topic *</label>
+                    <label for="topic">Inquiry Topic *</label>
                     <select id="topic" required>
-                        <option value="" disabled selected>Select a topic...</option>
-                        <option value="bug">🐛 Report a Bug</option>
-                        <option value="suggest">💡 Suggest a New Calculator</option>
-                        <option value="formula">📐 Question About a Formula</option>
+                        <option value="" disabled selected>Choose a category...</option>
+                        <option value="bug">Report a Calculation Error</option>
+                        <option value="suggest">Request a New Tool</option>
+                        <option value="formula">Formula Verification</option>
+                        <option value="business">Business Partnership</option>
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="message">Message *</label>
-                    <textarea id="message" required maxlength="1000"></textarea>
-                    <div style="text-align: right; font-size: 0.8rem; color: #64748b;" id="charCount">0 / 1000</div>
+                    <label for="message">Your Message *</label>
+                    <textarea id="message" rows="5" placeholder="Please describe your query in detail..." required maxlength="1000"></textarea>
+                    <div style="text-align: right; font-size: 0.75rem; color: #94a3b8; margin-top: 5px;" id="charCount">0 / 1000</div>
                 </div>
-                <button type="submit" class="submit-btn" id="submitBtn">Send Message →</button>
+                <button type="submit" class="submit-btn" id="submitBtn">Submit Inquiry →</button>
             </form>
 
             <div class="success-msg" id="successMsg">
-                <h3>✅ Message Sent!</h3>
-                <p>Thank you for reaching out. We will get back to you soon.</p>
+                <div style="font-size: 3rem; margin-bottom: 10px;">📩</div>
+                <h3 style="font-size: 1.5rem; margin-bottom: 10px;">Submission Received</h3>
+                <p>Thank you. Your inquiry has been logged. Our technical team will review it shortly.</p>
             </div>
         </div>
     </div>
 
     <div class="faq-section">
-        <h2>Frequently Asked Questions</h2>
+        <h2>Expertise & Security FAQ</h2>
         <div class="faq-item">
-            <div class="faq-question" id="faq1">
-                Are all FinanceHub calculators really free?
-                <span>▾</span>
+            <div class="faq-question">
+                How accurate are the formulas used?
+                <span style="color: #d4a373;">▼</span>
             </div>
-            <div class="faq-answer" id="ans1">
-                Yes — every single calculator on FinanceHub is completely free to use with no hidden fees.
+            <div class="faq-answer">
+                Our formulas are built based on international financial reporting standards (IFRS) and common banking practices. They are periodically reviewed by internal audit professionals.
             </div>
         </div>
         <div class="faq-item">
-            <div class="faq-question" id="faq2">
-                Is my financial data safe?
-                <span>▾</span>
+            <div class="faq-question">
+                Do you store any of my calculated data?
+                <span style="color: #d4a373;">▼</span>
             </div>
-            <div class="faq-answer" id="ans2">
-                Absolutely. All calculations run locally in your browser. Your data never leaves your device.
+            <div class="faq-answer">
+                No. Quick Financial Calculator is a privacy-first platform. All inputs and results are processed entirely within your browser's memory and are never sent to our servers.
             </div>
         </div>
     </div>
@@ -151,22 +167,28 @@ const description = "Get in touch with the FinanceHub team. Report a calculator 
             charCount.textContent = `${msgArea.value.length} / 1000`;
         });
 
-        // Form submit
+        // Form submit simulation
         document.getElementById('contactForm')?.addEventListener('submit', (e) => {
             e.preventDefault();
             const btn = document.getElementById('submitBtn');
-            btn.textContent = 'Sending...';
+            const originalText = btn.textContent;
+            btn.textContent = 'Processing...';
+            btn.disabled = true;
+            
             setTimeout(() => {
                 document.getElementById('contactForm').style.display = 'none';
                 document.getElementById('successMsg').style.display = 'block';
-            }, 800);
+                window.scrollTo({ top: document.querySelector('.form-card').offsetTop - 100, behavior: 'smooth' });
+            }, 1200);
         });
 
-        // Simple FAQ Toggle
+        // FAQ Toggle
         document.querySelectorAll('.faq-question').forEach(q => {
             q.addEventListener('click', () => {
                 const ans = q.nextElementSibling;
+                const icon = q.querySelector('span');
                 ans.classList.toggle('open');
+                icon.style.transform = ans.classList.contains('open') ? 'rotate(180deg)' : 'rotate(0deg)';
             });
         });
     </script>

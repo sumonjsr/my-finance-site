@@ -1,139 +1,155 @@
 ---
 import Layout from '../layouts/Layout.astro';
 
-const title = "About FinanceHub | Free Professional Financial Calculators";
-const description = "FinanceHub offers 50+ free, browser-based financial calculators for loans, investments, taxes, and business metrics. Built for accuracy, privacy, and speed.";
+const title = "About Quick Financial Calculator | Professional Grade Tools";
+const description = "Quick Financial Calculator offers 50+ free, browser-based tools for tax, loans, business analysis, and investment planning. Engineered for precision and privacy.";
 ---
 
 <Layout title={title} description={description}>
-    <link rel="canonical" href="https://financecalculator-all.netlify.app/about/" slot="head" />
+    <link rel="canonical" href="https://quickfincalc.com/about/" slot="head" />
     <script type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",
       "@type": "AboutPage",
-      "name": "About FinanceHub",
+      "name": "About Quick Financial Calculator",
       "description": description,
-      "url": "https://financecalculator-all.netlify.app/about/",
+      "url": "https://quickfincalc.com/about/",
       "publisher": {
         "@type": "Person",
-        "name": "Md. Merajul Islam",
-        "jobTitle": "Internal Audit Professional"
+        "name": "Md. Merajul Islam"
       }
     })} slot="head" />
 
     <style>
-        /* আপনার অরিজিনাল ডিজাইনের নির্দিষ্ট CSS */
-        .hero { background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%); padding: 80px 20px; text-align: center; color: white; }
-        .hero h1 { font-size: 2.8rem; font-weight: 800; margin: 0 0 16px; line-height: 1.2; }
-        .hero p { font-size: 1.15rem; opacity: 0.88; max-width: 600px; margin: 0 auto; }
+        /* Modernized Design Palette */
+        .hero { 
+            background: linear-gradient(135deg, #1e3a8a 0%, #0f172a 100%); 
+            padding: 80px 20px; 
+            text-align: center; 
+            color: white; 
+            border-bottom: 4px solid #d4a373;
+        }
+        .hero h1 { 
+            font-family: 'Crimson Pro', serif;
+            font-size: 3rem; 
+            font-weight: 800; 
+            margin: 0 0 16px; 
+            line-height: 1.1; 
+        }
+        .hero p { font-size: 1.15rem; opacity: 0.9; max-width: 650px; margin: 0 auto; color: #cbd5e1; }
 
         .stats-bar { background: white; border-bottom: 1px solid #e2e8f0; padding: 28px 20px; }
         .stats-grid { max-width: 900px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 20px; text-align: center; }
-        .stat-num { font-size: 2rem; font-weight: 800; color: #1e3a8a; }
-        .stat-label { font-size: 0.85rem; color: #64748b; margin-top: 4px; }
+        .stat-num { font-size: 2.2rem; font-weight: 800; color: #1e3a8a; font-family: 'Crimson Pro', serif; }
+        .stat-label { font-size: 0.85rem; color: #64748b; margin-top: 4px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
 
         .container { max-width: 860px; margin: 50px auto; padding: 0 20px; }
 
-        .section { background: white; border-radius: 20px; padding: 44px; border: 1px solid #e2e8f0; margin-bottom: 30px; box-shadow: 0 4px 16px rgba(0,0,0,0.03); }
-        .section h2 { color: #1e3a8a; font-size: 1.65rem; margin: 0 0 16px; padding-bottom: 12px; border-bottom: 2px solid #f0f9ff; }
+        .section { background: white; border-radius: 16px; padding: 44px; border: 1px solid #e2e8f0; margin-bottom: 30px; box-shadow: 0 4px 20px rgba(0,0,0,0.04); }
+        .section h2 { 
+            color: #1e3a8a; 
+            font-family: 'Crimson Pro', serif;
+            font-size: 1.8rem; 
+            margin: 0 0 20px; 
+            padding-bottom: 12px; 
+            border-bottom: 3px solid #fdfbf7; 
+        }
         
         .feature-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; margin-top: 24px; }
-        .feature-card { background: #f0f9ff; border-radius: 14px; padding: 22px; border: 1px solid #bfdbfe; }
+        .feature-card { background: #fdfbf7; border-radius: 12px; padding: 22px; border: 1px solid #e2e8f0; border-left: 4px solid #d4a373; }
         .feature-icon { font-size: 1.6rem; margin-bottom: 10px; }
-        .feature-title { font-weight: 700; color: #1e3a8a; font-size: 0.95rem; margin-bottom: 6px; }
-        .feature-desc { font-size: 0.875rem; color: #64748b; line-height: 1.6; }
+        .feature-title { font-weight: 700; color: #1e3a8a; font-size: 1rem; margin-bottom: 6px; }
+        .feature-desc { font-size: 0.875rem; color: #475569; line-height: 1.6; }
 
-        .category-list { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px; }
-        .pill { background: #f0f9ff; border: 1px solid #bfdbfe; color: #1e3a8a; padding: 7px 16px; border-radius: 999px; font-size: 0.875rem; font-weight: 600; }
-
-        .author-card { display: flex; align-items: flex-start; gap: 24px; background: #f0f9ff; border-radius: 16px; padding: 28px; border: 1px solid #bfdbfe; margin-top: 20px; }
-        .author-avatar { width: 64px; height: 64px; border-radius: 50%; background: #1e3a8a; color: white; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; font-weight: 800; flex-shrink: 0; }
+        .author-card { display: flex; align-items: center; gap: 24px; background: #f8fafc; border-radius: 16px; padding: 30px; border: 1px solid #e2e8f0; margin-top: 25px; }
+        .author-avatar { width: 70px; height: 70px; border-radius: 12px; background: #1e3a8a; color: #d4a373; display: flex; align-items: center; justify-content: center; font-size: 1.6rem; font-weight: 800; flex-shrink: 0; box-shadow: 0 4px 10px rgba(30,58,138,0.2); }
         
-        .cta-box { background: linear-gradient(135deg, #1e3a8a, #2563eb); border-radius: 20px; padding: 44px; text-align: center; color: white; margin-bottom: 30px; }
-        .cta-btn { display: inline-block; background: white; color: #1e3a8a; font-weight: 700; padding: 14px 32px; border-radius: 12px; text-decoration: none; font-size: 1rem; transition: transform 0.2s; }
-        .cta-btn:hover { transform: translateY(-2px); }
+        .cta-box { background: #1e3a8a; border-radius: 20px; padding: 50px; text-align: center; color: white; margin-bottom: 30px; border: 2px solid #d4a373; position: relative; overflow: hidden; }
+        .cta-btn { display: inline-block; background: #d4a373; color: #1e3a8a; font-weight: 700; padding: 16px 36px; border-radius: 8px; text-decoration: none; font-size: 1.05rem; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+        .cta-btn:hover { background: white; transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
 
         @media (max-width: 600px) {
-            .author-card { flex-direction: column; align-items: center; text-align: center; }
-            .section { padding: 25px; }
+            .author-card { flex-direction: column; text-align: center; }
+            .section { padding: 28px; }
+            .hero h1 { font-size: 2.2rem; }
         }
     </style>
 
     <section class="hero">
-        <h1>Free Financial Calculators<br/>Built for Real Decisions</h1>
-        <p>50+ professional-grade tools for loans, investments, taxes, and business finance — all free, all private, all instant.</p>
+        <h1>Precision Engineered<br/>Financial Clarity</h1>
+        <p>Expert-grade tools for tax planning, loan management, and business analysis — simplified for everyone.</p>
     </section>
 
     <div class="stats-bar">
         <div class="stats-grid">
             <div>
                 <div class="stat-num">50+</div>
-                <div class="stat-label">Free Calculators</div>
-            </div>
-            <div>
-                <div class="stat-num">6</div>
-                <div class="stat-label">Finance Categories</div>
+                <div class="stat-label">Calculators</div>
             </div>
             <div>
                 <div class="stat-num">100%</div>
-                <div class="stat-label">Browser-Based & Private</div>
+                <div class="stat-label">Privacy Guaranteed</div>
             </div>
             <div>
-                <div class="stat-num">$0</div>
-                <div class="stat-label">Always Free to Use</div>
+                <div class="stat-num">0</div>
+                <div class="stat-label">Subscription Fees</div>
+            </div>
+            <div>
+                <div class="stat-num">Verified</div>
+                <div class="stat-label">Audit Standards</div>
             </div>
         </div>
     </div>
 
     <div class="container">
         <article class="section">
-            <h2>What is FinanceHub?</h2>
-            <p>FinanceHub is a free, open-access collection of 50+ professional financial calculators covering every major area of personal and business finance. Every tool is designed to give you accurate, instant answers without requiring an account or a subscription.</p>
-            <p>Every calculation runs entirely inside your browser. Your numbers never leave your device.</p>
+            <h2>The QuickFinCalc Mission</h2>
+            <p><strong>Quick Financial Calculator</strong> (QuickFinCalc) was built on a simple premise: financial tools should be professional, precise, and instantly accessible. We remove the complexity of spreadsheets and the uncertainty of unverified online tools.</p>
+            <p>Whether you are calculating a complex mortgage amortization, evaluating a business investment (ROI), or planning for tax season, our calculators provide the accuracy required by auditors with the speed required by modern life.</p>
         </article>
 
         <article class="section">
-            <h2>Why Use FinanceHub?</h2>
+            <h2>Why Trust Our Tools?</h2>
             <div class="feature-grid">
                 <div class="feature-card">
-                    <div class="feature-icon">🔒</div>
-                    <div class="feature-title">100% Private</div>
-                    <div class="feature-desc">All calculations happen locally in your browser. Zero data collection.</div>
+                    <div class="feature-icon">🛡️</div>
+                    <div class="feature-title">Data Sovereignty</div>
+                    <div class="feature-desc">Your financial data stays with you. All calculations run locally in your browser.</div>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon">⚡</div>
-                    <div class="feature-title">Instant Results</div>
-                    <div class="feature-desc">No loading screens, no sign-ups. Get your answer in under a second.</div>
+                    <div class="feature-icon">🔍</div>
+                    <div class="feature-title">Auditor Verified</div>
+                    <div class="feature-desc">Formulas are cross-referenced against international accounting and banking standards.</div>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon">✅</div>
-                    <div class="feature-title">Verified Formulas</div>
-                    <div class="feature-desc">Formula is based on international financial standards used by banks and auditors.</div>
+                    <div class="feature-icon">🚀</div>
+                    <div class="feature-title">Zero Friction</div>
+                    <div class="feature-desc">No accounts, no paywalls, and no pop-up ads. Just pure financial utility.</div>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon">📱</div>
-                    <div class="feature-title">Mobile Friendly</div>
-                    <div class="feature-desc">Works perfectly on any phone, tablet, or desktop browser.</div>
+                    <div class="feature-icon">📊</div>
+                    <div class="feature-title">Business Focused</div>
+                    <div class="feature-desc">Specifically optimized for business owners, students, and financial analysts.</div>
                 </div>
             </div>
         </article>
 
         <article class="section">
-            <h2>Built By a Finance Professional</h2>
-            <p>FinanceHub was designed and developed by a practicing internal audit professional with hands-on experience in financial analysis.</p>
+            <h2>The Developer</h2>
+            <p>QuickFinCalc is designed and maintained by a financial professional who understands the importance of precise data in decision-making.</p>
             <div class="author-card">
                 <div class="author-avatar">MI</div>
                 <div>
-                    <div style="font-weight: 700; color: #1e3a8a;">Md. Merajul Islam</div>
-                    <div style="font-size: 0.875rem; color: #2563eb; font-weight: 600;">Internal Audit Professional & Developer</div>
-                    <p style="font-size: 0.9rem; margin-top: 8px;">Built to give entrepreneurs and students access to professional-grade tools used in audit environments.</p>
+                    <div style="font-weight: 700; color: #1e3a8a; font-size: 1.1rem;">Md. Merajul Islam</div>
+                    <div style="font-size: 0.85rem; color: #d4a373; font-weight: 700; text-transform: uppercase; margin-bottom: 8px;">Internal Audit Professional</div>
+                    <p style="font-size: 0.95rem; line-height: 1.5;">Leveraging audit experience to build tools that meet professional standards, ensuring every calculation provides a reliable foundation for your financial goals.</p>
                 </div>
             </div>
         </article>
 
         <div class="cta-box">
-            <h2>Ready to Run the Numbers?</h2>
-            <p>Explore all 50+ free calculators — no sign-up required.</p>
-            <a href="/" class="cta-btn">Browse All Calculators →</a>
+            <h2 style="font-family: 'Crimson Pro', serif; font-size: 2.2rem; margin-bottom: 15px;">Ready to Analyze?</h2>
+            <p style="margin-bottom: 30px; opacity: 0.9;">Join thousands of users who rely on QuickFinCalc for accurate financial planning.</p>
+            <a href="/" class="cta-btn">Start Calculating Now →</a>
         </div>
     </div>
 </Layout>

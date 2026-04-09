@@ -1,0 +1,32 @@
+[
+  {
+    "slug": "mortgage-math-2026",
+    "category": "Mortgages",
+    "emoji": "🏡",
+    "title": "The Math Behind Your Mortgage: 2026 Edition",
+    "excerpt": "An audit-grade breakdown of amortization schedules and how extra payments impact long-term interest.",
+    "content": "Understanding mortgage math is crucial for long-term financial health. Most homeowners don't realize that in the early years of a 30-year mortgage, nearly 70% of their payment goes toward interest.\n\nBy making just one extra principal payment per year, you can effectively shave off 5-7 years from your loan term. This strategy works by reducing the principal balance faster, which in turn reduces the amount of interest calculated in every subsequent month.",
+    "readTime": "9 min read",
+    "date": "April 2026"
+  },
+  {
+    "slug": "compound-interest-growth",
+    "category": "Investing",
+    "emoji": "📈",
+    "title": "Compound Interest: Moving Beyond the Basics",
+    "excerpt": "Visualizing the exponential curve: how consistency outperforms timing in the global market.",
+    "content": "Compound interest is often called the eighth wonder of the world. The magic happens not in the first five years, but after the tenth. \n\nConsistency is the key. For example, investing $500 monthly at a 7% return for 30 years results in over $600,000, where the majority of that wealth is generated in the final decade. Waiting even 5 years to start can cost you nearly half of that potential final balance.",
+    "readTime": "7 min read",
+    "date": "April 2026"
+  },
+  {
+    "slug": "dscr-guide-for-business",
+    "category": "Business",
+    "emoji": "💼",
+    "title": "Debt Service Coverage Ratio (DSCR) Explained",
+    "excerpt": "Why lenders care about this specific metric and how to optimize your business for better loan terms.",
+    "content": "Lenders use DSCR to measure a business's ability to pay its current debt obligations. A DSCR of 1.25 is often the minimum requirement for commercial loans.\n\nTo improve your DSCR, you must either increase your Net Operating Income (NOI) or decrease your total debt service. From an audit perspective, managing operating expenses is often the fastest way to boost this ratio without needing to immediately increase top-line revenue.",
+    "readTime": "12 min read",
+    "date": "April 2026"
+  }
+]
