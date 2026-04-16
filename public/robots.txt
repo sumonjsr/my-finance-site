@@ -1,0 +1,10 @@
+# সব সার্চ ইঞ্জিনকে (Google, Bing) এলাউ করা হচ্ছে
+User-agent: *
+Allow: /
+
+# আপনার সিতেম্যাপের লিঙ্ক (আপনার কনফিগ অনুযায়ী দেওয়া হয়েছে)
+Sitemap: https://quickfincalc.com/sitemap-index.xml
+
+# যদি এমন কোনো পেজ থাকে যা গুগলে দেখাতে চান না (যেমন- ড্রাফট বা টেস্টিং পেজ)
+Disallow: /admin/
+Disallow: /temp/

@@ -1,12 +1,15 @@
 ---
 // src/layouts/Layout.astro
-// Quick Financial Calculator - Final Compact Layout
 const { 
     title, 
-    description = "Quick Financial Calculator offers 50+ professional tools for tax, loans, business analysis, and investment planning. Precise, fast, and free." 
+    description = "Quick Financial Calculator offers 50+ professional tools for tax, loans, business analysis, and investment planning. Precise, fast, and free.",
+    keywords = "financial calculator, loan emi, roi calculator, profit margin, internal audit tools", 
+    url = Astro.url.pathname 
 } = Astro.props;
 
 const siteName = "Quick Financial Calculator";
+const siteUrl = "https://quickfincalc.com"; 
+const canonicalURL = new URL(url, siteUrl);
 ---
 
 <!DOCTYPE html>
@@ -17,7 +20,11 @@ const siteName = "Quick Financial Calculator";
     
     <title>{title} | {siteName}</title>
     <meta name="description" content={description}>
-    <link rel="canonical" href="https://quickfincalc.com" />
+    <meta name="keywords" content={keywords}>
+    <meta name="author" content="Md Merajul Islam">
+    <meta name="theme-color" content="#1e3a8a">
+
+    <link rel="canonical" href={canonicalURL} />
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -25,9 +32,9 @@ const siteName = "Quick Financial Calculator";
     
     <style is:global>
         :root {
-            --brand-blue: #1e3a8a;      /* Deep Navy */
-            --brand-accent: #d4a373;    /* Professional Gold */
-            --bg-warm: #fdfbf7;         /* Soft Background */
+            --brand-blue: #1e3a8a;      
+            --brand-accent: #d4a373;    
+            --bg-warm: #fdfbf7;         
             --text-main: #0f172a;
             --white: #ffffff;
             --sans: 'DM Sans', sans-serif;
@@ -50,12 +57,14 @@ const siteName = "Quick Financial Calculator";
             min-height: 100vh;
         }
 
-        /* Slim Header */
+        html { scroll-behavior: smooth; }
+
+        /* Website Main Menu Bar - Sticky রাখা হয়েছে */
         header {
             background: var(--brand-blue);
             color: var(--white);
             padding: 0.6rem 2rem;
-            position: sticky;
+            position: sticky; /* মেনু বার লক থাকবে */
             top: 0;
             z-index: 1000;
             box-shadow: 0 4px 15px rgba(0,0,0,0.15);
@@ -156,7 +165,6 @@ const siteName = "Quick Financial Calculator";
 
         main { flex: 1; }
 
-        /* Compact Professional Footer */
         footer {
             background: #0f172a;
             color: #cbd5e1;
@@ -200,7 +208,6 @@ const siteName = "Quick Financial Calculator";
             text-decoration: none;
             font-size: 0.85rem;
             transition: 0.3s;
-            position: relative;
         }
 
         .footer-links a:hover {
@@ -237,7 +244,8 @@ const siteName = "Quick Financial Calculator";
             <ul class="nav-links">
                 <li><a href="/">Calculators</a></li>
                 <li><a href="/articles">Guides</a></li>
-                <li><a href="/faq">FAQ</a></li> <li><a href="/about">About</a></li>
+                <li><a href="/faq">FAQ</a></li> 
+                <li><a href="/about">About</a></li>
                 <li><a href="/contact">Support</a></li>
             </ul>
         </nav>
@@ -256,7 +264,8 @@ const siteName = "Quick Financial Calculator";
             <div class="footer-links">
                 <a href="/">Home</a>
                 <a href="/articles">Guides</a>
-                <a href="/faq">FAQ</a> <a href="/privacy">Privacy</a>
+                <a href="/faq">FAQ</a> 
+                <a href="/privacy">Privacy</a>
                 <a href="/terms">Terms</a>
                 <a href="/contact">Support</a>
             </div>

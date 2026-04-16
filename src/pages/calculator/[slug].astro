@@ -1,0 +1,195 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import calculators from '../../../calculators.json';
+
+export async function getStaticPaths() {
+  return calculators.map((calc) => ({
+    params: { slug: calc.slug },
+    props: { calc },
+  }));
+}
+
+const { calc } = Astro.props;
+
+// যদি কোনো কারণে calc না পাওয়া যায়
+if (!calc) {
+  return Astro.redirect('/404');
+}
+
+const title = `${calc.name} | QuickFinCalc`;
+---
+
+<Layout title={title} description={calc.description}>
+  <div class="container">
+    <nav class="breadcrumb">
+      <a href="/">Home</a> / <a href="/calculator">Calculators</a> / {calc.name}
+    </nav>
+
+    <div class="calc-box">
+      <h1>{calc.name}</h1>
+      <p class="desc-top">{calc.description}</p>
+
+      <div class="input-group">
+        <label for="v1">{calc.label1}</label>
+        <input type="number" id="v1" class="calc-input" placeholder="0.00" step="any" />
+
+        {calc.label2 && (
+          <label for="v2">{calc.label2}</label>
+          <input type="number" id="v2" class="calc-input" placeholder="0.00" step="any" />
+        )}
+
+        {calc.label3 && (
+          <label for="v3">{calc.label3}</label>
+          <input type="number" id="v3" class="calc-input" placeholder="0.00" step="any" />
+        )}
+
+        <button id="calcBtn">Calculate Now</button>
+        <div id="result" class="result-box"></div>
+      </div>
+    </div>
+
+    <div class="rich-content">
+      <div class="content-section">
+        <h2>What is {calc.name}?</h2>
+        <p>{calc.what_is}</p>
+      </div>
+      
+      <div class="content-section">
+        <h2>How to Use This Tool</h2>
+        <p style="white-space: pre-line;">{calc.how_to_use}</p>
+      </div>
+
+      <div class="pro-tip">
+        <strong>💡 Pro Tip:</strong> {calc.pro_tip}
+      </div>
+    </div>
+  </div>
+
+  <style>
+    .container { max-width: 900px; margin: 0 auto; padding: 40px 20px; }
+    
+    .breadcrumb { margin-bottom: 20px; font-size: 0.9rem; color: #64748b; }
+    .breadcrumb a { color: #1e3a8a; text-decoration: none; font-weight: 600; }
+    .breadcrumb a:hover { text-decoration: underline; }
+
+    .calc-box { 
+      background: #ffffff; padding: 45px; border-radius: 24px; 
+      box-shadow: 0 10px 40px rgba(0,0,0,0.04); border: 1px solid #e2e8f0;
+      margin-bottom: 40px;
+    }
+    
+    h1 { color: #1e3a8a; text-align: center; font-size: 2.5rem; font-family: 'Crimson Pro', serif; margin-bottom: 15px; font-weight: 800; }
+    .desc-top { text-align: center; color: #475569; margin-bottom: 35px; font-size: 1.15rem; max-width: 600px; margin-inline: auto; }
+    
+    .input-group { max-width: 480px; margin: 0 auto; }
+    label { display: block; font-weight: 700; margin-bottom: 10px; color: #1e293b; font-size: 1rem; }
+    
+    .calc-input { 
+      width: 100%; padding: 16px; margin-bottom: 25px; 
+      border: 2px solid #cbd5e1; border-radius: 12px; transition: 0.3s;
+      font-size: 1.1rem; background: #f8fafc;
+    }
+    .calc-input:focus { border-color: #d4a373; outline: none; background: #fff; box-shadow: 0 0 0 4px rgba(212, 163, 115, 0.1); }
+    
+    button { 
+      width: 100%; padding: 18px; background: #1e3a8a; color: white; 
+      border: none; border-radius: 12px; font-weight: 800; cursor: pointer;
+      font-size: 1.2rem; transition: 0.3s; margin-top: 10px;
+    }
+    button:hover { background: #0f172a; transform: translateY(-3px); box-shadow: 0 8px 20px rgba(30, 58, 138, 0.2); }
+    
+    .result-box { 
+      margin-top: 30px; padding: 30px; border-radius: 16px; 
+      background: #f0fdf4; color: #166534; font-weight: 800; 
+      display: none; text-align: center; border: 2px dashed #22c55e;
+      font-size: 1.4rem; line-height: 1.6; animation: fadeIn 0.5s ease;
+    }
+
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+    .rich-content { background: white; padding: 50px; border-radius: 24px; border: 1px solid #e2e8f0; line-height: 1.8; color: #334155; }
+    .content-section { margin-bottom: 35px; }
+    .rich-content h2 { color: #1e3a8a; font-family: 'Crimson Pro', serif; margin-bottom: 15px; font-size: 2rem; border-bottom: 2px solid #f1f5f9; pb-2; }
+    
+    .pro-tip { background: #fffbeb; padding: 30px; border-radius: 16px; margin-top: 40px; border-left: 6px solid #d4a373; color: #92400e; font-size: 1.1rem; }
+  </style>
+
+<script define:vars={{ formula: calc.formula }}>
+  const btn = document.getElementById('calcBtn');
+  const resDiv = document.getElementById('result');
+
+  const fmt = (num) => new Intl.NumberFormat('en-US', {
+    style: 'currency', currency: 'USD'
+  }).format(num);
+  
+  const pct = (num) => isFinite(num) ? num.toFixed(2) + '%' : '0.00%';
+
+  btn.addEventListener('click', () => {
+    const v1 = parseFloat(document.getElementById('v1')?.value || 0);
+    const v2 = parseFloat(document.getElementById('v2')?.value || 0);
+    const v3 = parseFloat(document.getElementById('v3')?.value || 0);
+
+    let out = "";
+
+    switch (formula) {
+      case 'dividend':
+        const dYield = (v1 / v2) * 100;
+        const dIncome = v1 * v3;
+        out = `Dividend Yield: ${pct(dYield)} <br/> <span style="font-size:1rem; font-weight:400;">Annual Income: ${fmt(dIncome)}</span>`;
+        break;
+
+      case 'roi':
+        if (v3 > 0) {
+            const propReturn = ((v1 - v2) / v3) * 100;
+            out = `Annual ROI: ${pct(propReturn)} <br/> <span style="font-size:1rem; font-weight:400;">Net Income: ${fmt(v1 - v2)}</span>`;
+        } else {
+            const basicReturn = ((v1 - v2) / v2) * 100;
+            out = `Total ROI: ${pct(basicReturn)} <br/> <span style="font-size:1rem; font-weight:400;">Net Profit: ${fmt(v1 - v2)}</span>`;
+        }
+        break;
+
+      case 'loan':
+        const r = (v2 / 12) / 100;
+        const emi = r > 0 ? (v1 * r * Math.pow(1 + r, v3)) / (Math.pow(1 + r, v3) - 1) : v1 / v3;
+        out = `Monthly Payment: ${fmt(emi)} <br/> <span style="font-size:1rem; font-weight:400;">Total Repayment: ${fmt(emi * v3)}</span>`;
+        break;
+
+      case 'tax':
+        const tAmt = v1 * (v2 / 100);
+        out = `Tax Amount: ${fmt(tAmt)} <br/> <span style="font-size:1rem; font-weight:400;">Total Due: ${fmt(v1 + tAmt)}</span>`;
+        break;
+
+      case 'margin':
+        const pMargin = ((v1 - v2) / v1) * 100;
+        out = `Profit Margin: ${pct(pMargin)} <br/> <span style="font-size:1rem; font-weight:400;">Gross Profit: ${fmt(v1 - v2)}</span>`;
+        break;
+
+      case 'compound':
+        const fv = v1 * Math.pow(1 + (v2 / 100) / 12, 12 * v3);
+        out = `Future Value: ${fmt(fv)} <br/> <span style="font-size:1rem; font-weight:400;">Total Interest: ${fmt(fv - v1)}</span>`;
+        break;
+
+      case 'stock':
+        const sProfit = (v2 - v1) * v3;
+        out = `Net Profit/Loss: ${fmt(sProfit)} <br/> <span style="font-size:1rem; font-weight:400;">Growth: ${pct(((v2 - v1) / v1) * 100)}</span>`;
+        break;
+
+      case 'break_even':
+        const contrib = v3 - v2;
+        if (contrib <= 0) {
+            out = "Price must be higher than variable cost.";
+        } else {
+            out = `Break-even Point: ${Math.ceil(v1 / contrib).toLocaleString()} Units`;
+        }
+        break;
+
+      default:
+        out = "Formula check failed.";
+    }
+
+    resDiv.innerHTML = out;
+    resDiv.style.display = 'block';
+    resDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  });
+</script>
+</Layout>

@@ -1,0 +1,110 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('articles');
+  return posts.map(post => ({
+    params: { id: post.id },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+
+const { title, description, keywords, author, date, emoji, category, readTime } = post.data;
+---
+
+<Layout 
+  title={title} 
+  description={description} 
+  keywords={keywords}
+>
+  <style>
+    /* হেডার এখন স্ক্রলের সাথে উপরে চলে যাবে, লক হয়ে থাকবে না */
+    .article-header {
+      background: linear-gradient(135deg, #1e3a8a 0%, #0f172a 100%);
+      color: white;
+      padding: 30px 20px; 
+      text-align: center;
+      border-bottom: 3px solid var(--brand-accent);
+      position: relative; /* লকড অবস্থা এড়াতে নিশ্চিত করা হলো */
+    }
+    
+    .emoji-hero { 
+      font-size: 2rem; 
+      margin-bottom: 5px; 
+    }
+
+    h1 { 
+      font-family: var(--serif); 
+      font-size: 1.7rem !important; 
+      margin: 8px auto;
+      max-width: 850px;
+      line-height: 1.2;
+    }
+
+    .meta-info {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 10px;
+      font-size: 0.8rem;
+      opacity: 0.8;
+    }
+
+    .back-link {
+      display: inline-block;
+      margin: 20px 0;
+      color: var(--brand-blue);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.85rem;
+    }
+    
+    .content-area {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 20px 50px;
+      line-height: 1.7;
+      font-size: 1.05rem;
+    }
+
+    /* মোবাইলের জন্য আরও কম্প্যাক্ট */
+    @media (max-width: 768px) {
+      h1 { font-size: 1.4rem !important; }
+      .article-header { padding: 20px 15px; }
+      .emoji-hero { font-size: 1.8rem; }
+    }
+  </style>
+
+  <header class="article-header">
+    <div class="emoji-hero">{emoji}</div>
+    <span style="color: var(--brand-accent); font-weight: 700; text-transform: uppercase; font-size: 0.65rem; letter-spacing: 1px;">{category}</span>
+    <h1>{title}</h1>
+    
+    <div class="meta-info">
+      <span>📅 {date}</span>
+      <span>⏱️ {readTime}</span>
+      {author && <span>🛡️ {author}</span>}
+    </div>
+  </header>
+
+  <main class="content-area">
+    <a href="/articles" class="back-link">← Back to Guides</a>
+    
+    <article class="prose lg:prose-xl max-w-none">
+      <Content />
+    </article>
+    
+    <hr style="margin: 40px 0; border: 0; border-top: 1px solid #e2e8f0;" />
+    
+    <div style="background: #f8fafc; padding: 25px; border-radius: 12px; text-align: center; border: 1px solid #e2e8f0;">
+      <h4 style="color: #1e3a8a; margin-bottom: 8px;">Need a precise calculation?</h4>
+      <p style="color: #64748b; font-size: 0.9rem;">Try our professional tools for accurate financial analysis.</p>
+      <a href="/" style="display: inline-block; margin-top: 12px; padding: 10px 24px; background: var(--brand-blue); color: white; text-decoration: none; border-radius: 6px; font-weight: 600; font-size: 0.9rem;">Open Calculators</a>
+    </div>
+  </main>
+</Layout>

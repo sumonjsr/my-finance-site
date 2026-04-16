@@ -1,5 +1,7 @@
 import { defineConfig } from 'astro/config';
 
+import sitemap from '@astrojs/sitemap';
+
 // https://astro.build/config
 export default defineConfig({
   // আপনার Netlify সাইটের ইউআরএল
@@ -11,7 +13,7 @@ export default defineConfig({
   output: 'static',
 
   // সitemap এখন খালি রাখা হয়েছে
-  integrations: [],
+  integrations: [sitemap()],
 
   // Build settings
   build: {
