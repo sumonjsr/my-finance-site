@@ -24,6 +24,15 @@ const canonicalURL = new URL(url, siteUrl);
     <meta name="author" content="Md Merajul Islam">
     <meta name="theme-color" content="#1e3a8a">
 
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon.ico">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content={canonicalURL}>
+    <meta property="og:title" content={title}>
+    <meta property="og:description" content={description}>
+    <meta property="og:site_name" content={siteName}>
+
     <link rel="canonical" href={canonicalURL} />
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -59,12 +68,11 @@ const canonicalURL = new URL(url, siteUrl);
 
         html { scroll-behavior: smooth; }
 
-        /* Website Main Menu Bar - Sticky রাখা হয়েছে */
         header {
             background: var(--brand-blue);
             color: var(--white);
             padding: 0.6rem 2rem;
-            position: sticky; /* মেনু বার লক থাকবে */
+            position: sticky;
             top: 0;
             z-index: 1000;
             box-shadow: 0 4px 15px rgba(0,0,0,0.15);

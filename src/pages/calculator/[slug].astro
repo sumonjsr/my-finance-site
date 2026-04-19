@@ -11,22 +11,25 @@ export async function getStaticPaths() {
 
 const { calc } = Astro.props;
 
-// যদি কোনো কারণে calc না পাওয়া যায়
 if (!calc) {
   return Astro.redirect('/404');
 }
 
-const title = `${calc.name} | QuickFinCalc`;
+// SEO ডেটা সেটআপ
+const seoTitle = calc.seo?.title || `${calc.name} | QuickFinCalc`;
+const seoDescription = calc.seo?.meta_description || calc.description;
 ---
 
-<Layout title={title} description={calc.description}>
+<Layout title={seoTitle} description={seoDescription}>
+  <script type="application/ld+json" set:html={JSON.stringify(calc.seo.schema)} />
+  
   <div class="container">
     <nav class="breadcrumb">
       <a href="/">Home</a> / <a href="/calculator">Calculators</a> / {calc.name}
     </nav>
 
     <div class="calc-box">
-      <h1>{calc.name}</h1>
+      <h1>{calc.seo.h1 || calc.name}</h1>
       <p class="desc-top">{calc.description}</p>
 
       <div class="input-group">
@@ -50,146 +53,160 @@ const title = `${calc.name} | QuickFinCalc`;
 
     <div class="rich-content">
       <div class="content-section">
-        <h2>What is {calc.name}?</h2>
+        <h2>{calc.seo.h2_structure?.[0] || `What is ${calc.name}?`}</h2>
         <p>{calc.what_is}</p>
       </div>
       
       <div class="content-section">
-        <h2>How to Use This Tool</h2>
+        <h2>{calc.seo.h2_structure?.[1] || "Who Should Use This Tool?"}</h2>
+        <p>{calc.who_use}</p>
+      </div>
+
+      <div class="content-section">
+        <h2>{calc.seo.h2_structure?.[2] || "How to Use"}</h2>
         <p style="white-space: pre-line;">{calc.how_to_use}</p>
+      </div>
+
+      <div class="content-section">
+        <h2>{calc.seo.h2_structure?.[3] || "Understanding Your Results"}</h2>
+        <p>{calc.how_to_read}</p>
       </div>
 
       <div class="pro-tip">
         <strong>💡 Pro Tip:</strong> {calc.pro_tip}
       </div>
+
+      {calc.seo.faqs && (
+        <div class="content-section faq-section">
+          <h2>{calc.seo.h2_structure?.[4] || "Frequently Asked Questions"}</h2>
+          {calc.seo.faqs.map((faq) => (
+            <div class="faq-item">
+              <p class="faq-q"><strong>Q: {faq.question}</strong></p>
+              <p class="faq-a">{faq.answer}</p>
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   </div>
 
   <style>
     .container { max-width: 900px; margin: 0 auto; padding: 40px 20px; }
-    
     .breadcrumb { margin-bottom: 20px; font-size: 0.9rem; color: #64748b; }
     .breadcrumb a { color: #1e3a8a; text-decoration: none; font-weight: 600; }
-    .breadcrumb a:hover { text-decoration: underline; }
-
-    .calc-box { 
-      background: #ffffff; padding: 45px; border-radius: 24px; 
-      box-shadow: 0 10px 40px rgba(0,0,0,0.04); border: 1px solid #e2e8f0;
-      margin-bottom: 40px;
-    }
-    
+    .calc-box { background: #ffffff; padding: 45px; border-radius: 24px; box-shadow: 0 10px 40px rgba(0,0,0,0.04); border: 1px solid #e2e8f0; margin-bottom: 40px; }
     h1 { color: #1e3a8a; text-align: center; font-size: 2.5rem; font-family: 'Crimson Pro', serif; margin-bottom: 15px; font-weight: 800; }
     .desc-top { text-align: center; color: #475569; margin-bottom: 35px; font-size: 1.15rem; max-width: 600px; margin-inline: auto; }
-    
     .input-group { max-width: 480px; margin: 0 auto; }
-    label { display: block; font-weight: 700; margin-bottom: 10px; color: #1e293b; font-size: 1rem; }
-    
-    .calc-input { 
-      width: 100%; padding: 16px; margin-bottom: 25px; 
-      border: 2px solid #cbd5e1; border-radius: 12px; transition: 0.3s;
-      font-size: 1.1rem; background: #f8fafc;
-    }
-    .calc-input:focus { border-color: #d4a373; outline: none; background: #fff; box-shadow: 0 0 0 4px rgba(212, 163, 115, 0.1); }
-    
-    button { 
-      width: 100%; padding: 18px; background: #1e3a8a; color: white; 
-      border: none; border-radius: 12px; font-weight: 800; cursor: pointer;
-      font-size: 1.2rem; transition: 0.3s; margin-top: 10px;
-    }
-    button:hover { background: #0f172a; transform: translateY(-3px); box-shadow: 0 8px 20px rgba(30, 58, 138, 0.2); }
-    
-    .result-box { 
-      margin-top: 30px; padding: 30px; border-radius: 16px; 
-      background: #f0fdf4; color: #166534; font-weight: 800; 
-      display: none; text-align: center; border: 2px dashed #22c55e;
-      font-size: 1.4rem; line-height: 1.6; animation: fadeIn 0.5s ease;
-    }
-
-    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-
+    label { display: block; font-weight: 700; margin-bottom: 10px; color: #1e293b; }
+    .calc-input { width: 100%; padding: 16px; margin-bottom: 25px; border: 2px solid #cbd5e1; border-radius: 12px; font-size: 1.1rem; background: #f8fafc; }
+    button { width: 100%; padding: 18px; background: #1e3a8a; color: white; border: none; border-radius: 12px; font-weight: 800; cursor: pointer; font-size: 1.2rem; transition: 0.2s; }
+    button:hover { background: #0f172a; }
+    .result-box { margin-top: 30px; padding: 30px; border-radius: 16px; background: #f0fdf4; color: #166534; font-weight: 800; display: none; text-align: center; border: 2px dashed #22c55e; font-size: 1.4rem; line-height: 1.6; }
     .rich-content { background: white; padding: 50px; border-radius: 24px; border: 1px solid #e2e8f0; line-height: 1.8; color: #334155; }
     .content-section { margin-bottom: 35px; }
-    .rich-content h2 { color: #1e3a8a; font-family: 'Crimson Pro', serif; margin-bottom: 15px; font-size: 2rem; border-bottom: 2px solid #f1f5f9; pb-2; }
-    
-    .pro-tip { background: #fffbeb; padding: 30px; border-radius: 16px; margin-top: 40px; border-left: 6px solid #d4a373; color: #92400e; font-size: 1.1rem; }
+    .rich-content h2 { color: #1e3a8a; font-family: 'Crimson Pro', serif; margin-bottom: 15px; font-size: 2rem; border-bottom: 2px solid #f1f5f9; padding-bottom: 10px; }
+    .pro-tip { background: #fffbeb; padding: 30px; border-radius: 16px; margin-top: 40px; border-left: 6px solid #d4a373; color: #92400e; }
+    .faq-item { margin-bottom: 20px; padding-bottom: 15px; border-bottom: 1px solid #f1f5f9; }
+    .faq-q { color: #1e293b; font-size: 1.1rem; }
   </style>
 
-<script define:vars={{ formula: calc.formula }}>
-  const btn = document.getElementById('calcBtn');
-  const resDiv = document.getElementById('result');
+  <script define:vars={{ formula: calc.formula, calcName: calc.name }}>
+    const btn = document.getElementById('calcBtn');
+    const resDiv = document.getElementById('result');
+    const fmt = (num) => new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(num);
+    const pct = (num) => isFinite(num) ? num.toFixed(2) + '%' : '0.00%';
 
-  const fmt = (num) => new Intl.NumberFormat('en-US', {
-    style: 'currency', currency: 'USD'
-  }).format(num);
-  
-  const pct = (num) => isFinite(num) ? num.toFixed(2) + '%' : '0.00%';
+    btn.addEventListener('click', () => {
+      const v1 = parseFloat(document.getElementById('v1')?.value || 0);
+      const v2 = parseFloat(document.getElementById('v2')?.value || 0);
+      const v3 = parseFloat(document.getElementById('v3')?.value || 0);
+      let out = "";
 
-  btn.addEventListener('click', () => {
-    const v1 = parseFloat(document.getElementById('v1')?.value || 0);
-    const v2 = parseFloat(document.getElementById('v2')?.value || 0);
-    const v3 = parseFloat(document.getElementById('v3')?.value || 0);
+      switch (formula) {
+        case 'loan':
+          const r = (v2 / 12) / 100;
+          const emi = r > 0 ? (v1 * r * Math.pow(1 + r, v3)) / (Math.pow(1 + r, v3) - 1) : v1 / v3;
+          out = `Monthly Payment: ${fmt(emi)} <br/> 
+                 <span style="font-size:1.1rem; font-weight:400;">Total Repayment: ${fmt(emi * v3)}</span>`;
+          break;
 
-    let out = "";
+        case 'ratio':
+          if (v2 > 0) {
+            if (calcName.includes("DSCR")) {
+              const dscr = v1 / v2;
+              out = `DSCR Ratio: ${dscr.toFixed(2)} <br/> 
+                     <span style="font-size:1.1rem; font-weight:400;">Status: ${dscr >= 1.25 ? '✅ Strong' : '⚠️ Risky'}</span>`;
+            } else {
+              out = `Ratio: ${pct((v1 / v2) * 100)}`;
+            }
+          } else { out = "Invalid Input 2 (Must be > 0)"; }
+          break;
 
-    switch (formula) {
-      case 'dividend':
-        const dYield = (v1 / v2) * 100;
-        const dIncome = v1 * v3;
-        out = `Dividend Yield: ${pct(dYield)} <br/> <span style="font-size:1rem; font-weight:400;">Annual Income: ${fmt(dIncome)}</span>`;
-        break;
+        case 'roi':
+          if (v2 > 0) {
+            const netRoi = ((v1 - v2) / v2) * 100;
+            out = `ROI: ${pct(netRoi)} <br/> 
+                   <span style="font-size:1.1rem; font-weight:400;">Profit: ${fmt(v1 - v2)}</span>`;
+          } else { out = "Please enter cost (Input 2)"; }
+          break;
 
-      case 'roi':
-        if (v3 > 0) {
-            const propReturn = ((v1 - v2) / v3) * 100;
-            out = `Annual ROI: ${pct(propReturn)} <br/> <span style="font-size:1rem; font-weight:400;">Net Income: ${fmt(v1 - v2)}</span>`;
-        } else {
-            const basicReturn = ((v1 - v2) / v2) * 100;
-            out = `Total ROI: ${pct(basicReturn)} <br/> <span style="font-size:1rem; font-weight:400;">Net Profit: ${fmt(v1 - v2)}</span>`;
-        }
-        break;
+        case 'runway':
+          const burn = v2 - v3; // Expenses - Revenue
+          if (burn <= 0) {
+            out = `Runway: Infinite <br/> 
+                   <span style="font-size:1.1rem; font-weight:400;">Status: Profitable (No burn)</span>`;
+          } else {
+            out = `Runway: ${(v1 / burn).toFixed(1)} Months <br/> 
+                   <span style="font-size:1.1rem; font-weight:400;">Net Monthly Burn: ${fmt(burn)}</span>`;
+          }
+          break;
 
-      case 'loan':
-        const r = (v2 / 12) / 100;
-        const emi = r > 0 ? (v1 * r * Math.pow(1 + r, v3)) / (Math.pow(1 + r, v3) - 1) : v1 / v3;
-        out = `Monthly Payment: ${fmt(emi)} <br/> <span style="font-size:1rem; font-weight:400;">Total Repayment: ${fmt(emi * v3)}</span>`;
-        break;
+        case 'margin':
+        case 'fee':
+          const net = v1 - v2;
+          out = `Margin: ${pct((net / v1) * 100)} <br/> 
+                 <span style="font-size:1.1rem; font-weight:400;">Profit: ${fmt(net)}</span>`;
+          break;
 
-      case 'tax':
-        const tAmt = v1 * (v2 / 100);
-        out = `Tax Amount: ${fmt(tAmt)} <br/> <span style="font-size:1rem; font-weight:400;">Total Due: ${fmt(v1 + tAmt)}</span>`;
-        break;
+        case 'stock':
+          const profit = (v2 - v1) * v3;
+          out = `Total Gain/Loss: ${fmt(profit)} <br/> 
+                 <span style="font-size:1.1rem; font-weight:400;">Return: ${pct(((v2-v1)/v1)*100)}</span>`;
+          break;
 
-      case 'margin':
-        const pMargin = ((v1 - v2) / v1) * 100;
-        out = `Profit Margin: ${pct(pMargin)} <br/> <span style="font-size:1rem; font-weight:400;">Gross Profit: ${fmt(v1 - v2)}</span>`;
-        break;
+        case 'tax':
+          const t = v1 * (v2 / 100);
+          out = `Tax Amount: ${fmt(t)} <br/> 
+                 <span style="font-size:1.1rem; font-weight:400;">Total: ${fmt(v1 + t)}</span>`;
+          break;
 
-      case 'compound':
-        const fv = v1 * Math.pow(1 + (v2 / 100) / 12, 12 * v3);
-        out = `Future Value: ${fmt(fv)} <br/> <span style="font-size:1rem; font-weight:400;">Total Interest: ${fmt(fv - v1)}</span>`;
-        break;
+        case 'compound':
+          const total = v1 * Math.pow(1 + (v2 / 100) / 12, 12 * v3);
+          out = `Future Value: ${fmt(total)} <br/> 
+                 <span style="font-size:1.1rem; font-weight:400;">Total Interest: ${fmt(total - v1)}</span>`;
+          break;
 
-      case 'stock':
-        const sProfit = (v2 - v1) * v3;
-        out = `Net Profit/Loss: ${fmt(sProfit)} <br/> <span style="font-size:1rem; font-weight:400;">Growth: ${pct(((v2 - v1) / v1) * 100)}</span>`;
-        break;
+        case 'property_roi':
+          out = v2 > 0 ? `Cap Rate: ${pct((v1 / v2) * 100)}` : "Invalid Value";
+          break;
 
-      case 'break_even':
-        const contrib = v3 - v2;
-        if (contrib <= 0) {
-            out = "Price must be higher than variable cost.";
-        } else {
-            out = `Break-even Point: ${Math.ceil(v1 / contrib).toLocaleString()} Units`;
-        }
-        break;
+        case 'basic':
+          out = `Total: ${fmt(v1 * v2)}`;
+          break;
 
-      default:
-        out = "Formula check failed.";
-    }
+        case 'dividend':
+          out = `Yield: ${pct((v1 / v2) * 100)} <br/> 
+                 <span style="font-size:1.1rem; font-weight:400;">Annual Payout: ${fmt(v1 * v3)}</span>`;
+          break;
 
-    resDiv.innerHTML = out;
-    resDiv.style.display = 'block';
-    resDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
-  });
-</script>
+        default:
+          out = `Result: ${fmt(v1 * v2)}`;
+      }
+
+      resDiv.innerHTML = out;
+      resDiv.style.display = 'block';
+      resDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    });
+  </script>
 </Layout>
