@@ -153,6 +153,7 @@ const canonicalURL = new URL(url, siteUrl);
             font-weight: 600;
         }
 
+        /* Menu Styles */
         .nav-links {
             display: flex;
             gap: 1.8rem;
@@ -171,6 +172,25 @@ const canonicalURL = new URL(url, siteUrl);
         .nav-links a:hover {
             color: var(--brand-accent);
             opacity: 1;
+        }
+
+        /* Mobile Menu Toggle Button */
+        .menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 5px;
+            z-index: 1001;
+        }
+
+        .menu-btn span {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background: var(--white);
+            margin: 5px 0;
+            transition: 0.3s;
         }
 
         main { flex: 1; }
@@ -232,12 +252,42 @@ const canonicalURL = new URL(url, siteUrl);
             line-height: 1.5;
         }
 
+        /* Mobile Viewport Updates */
         @media (max-width: 768px) {
-            .nav-links { display: none; }
+            header { padding: 0.6rem 1rem; }
+            
+            .menu-btn { display: block; }
+
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 70%;
+                height: 100vh;
+                background: var(--brand-blue);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                transition: 0.4s;
+                box-shadow: -5px 0 15px rgba(0,0,0,0.3);
+                z-index: 1000;
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+
+            .nav-links a {
+                font-size: 1.2rem;
+            }
+
+            /* Hamburger to X animation */
+            .menu-btn.active span:nth-child(1) { transform: rotate(-45deg) translate(-5px, 6px); }
+            .menu-btn.active span:nth-child(2) { opacity: 0; }
+            .menu-btn.active span:nth-child(3) { transform: rotate(45deg) translate(-5px, -6px); }
+
             .brand-main { font-size: 1.2rem; }
             .brand-sub { font-size: 0.55rem; }
-            header { padding: 0.6rem 1rem; }
-            footer { padding: 2rem 1rem 1rem; }
         }
     </style>
 </head>
@@ -251,7 +301,14 @@ const canonicalURL = new URL(url, siteUrl);
                     <span class="brand-sub">Financial Calculator</span>
                 </div>
             </a>
-            <ul class="nav-links">
+
+            <button class="menu-btn" id="mobile-menu-btn" aria-label="Toggle Navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <ul class="nav-links" id="nav-menu">
                 <li><a href="/">Calculators</a></li>
                 <li><a href="/articles">Guides</a></li>
                 <li><a href="/faq">FAQ</a></li> 
@@ -285,5 +342,23 @@ const canonicalURL = new URL(url, siteUrl);
             </div>
         </div>
     </footer>
+
+    <script is:inline>
+        const menuBtn = document.getElementById('mobile-menu-btn');
+        const navMenu = document.getElementById('nav-menu');
+
+        menuBtn.addEventListener('click', () => {
+            menuBtn.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+
+        // Close menu when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                menuBtn.classList.remove('active');
+                navMenu.classList.remove('active');
+            });
+        });
+    </script>
 </body>
 </html>
