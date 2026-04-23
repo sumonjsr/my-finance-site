@@ -96,24 +96,25 @@ const description = "Get in touch with the Quick Financial Calculator team. Repo
 
         <div class="form-card">
             <h2 style="font-family: 'Crimson Pro', serif; color: #1e3a8a; margin-bottom: 25px;">Technical Inquiry Form</h2>
-            <form id="contactForm">
+            
+            <form id="contactForm" action="https://formspree.io/f/mvzdvypd" method="POST">
                 <div class="form-row">
                     <div>
                         <label for="firstName">First Name *</label>
-                        <input type="text" id="firstName" placeholder="Merajul" required />
+                        <input type="text" name="first_name" id="firstName" placeholder="Merajul" required />
                     </div>
                     <div>
                         <label for="lastName">Last Name</label>
-                        <input type="text" id="lastName" placeholder="Islam" />
+                        <input type="text" name="last_name" id="lastName" placeholder="Islam" />
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="email">Email Address *</label>
-                    <input type="email" id="email" placeholder="name@example.com" required />
+                    <input type="email" name="email" id="email" placeholder="name@example.com" required />
                 </div>
                 <div class="form-group">
                     <label for="topic">Inquiry Topic *</label>
-                    <select id="topic" required>
+                    <select name="topic" id="topic" required>
                         <option value="" disabled selected>Choose a category...</option>
                         <option value="bug">Report a Calculation Error</option>
                         <option value="suggest">Request a New Tool</option>
@@ -123,7 +124,7 @@ const description = "Get in touch with the Quick Financial Calculator team. Repo
                 </div>
                 <div class="form-group">
                     <label for="message">Your Message *</label>
-                    <textarea id="message" rows="5" placeholder="Please describe your query in detail..." required maxlength="1000"></textarea>
+                    <textarea name="message" id="message" rows="5" placeholder="Please describe your query in detail..." required maxlength="1000"></textarea>
                     <div style="text-align: right; font-size: 0.75rem; color: #94a3b8; margin-top: 5px;" id="charCount">0 / 1000</div>
                 </div>
                 <button type="submit" class="submit-btn" id="submitBtn">Submit Inquiry →</button>
@@ -167,19 +168,42 @@ const description = "Get in touch with the Quick Financial Calculator team. Repo
             charCount.textContent = `${msgArea.value.length} / 1000`;
         });
 
-        // Form submit simulation
-        document.getElementById('contactForm')?.addEventListener('submit', (e) => {
+        // Formspree Submission Handling
+        const contactForm = document.getElementById('contactForm');
+        const successMsg = document.getElementById('successMsg');
+        const btn = document.getElementById('submitBtn');
+
+        contactForm?.addEventListener('submit', async (e) => {
             e.preventDefault();
-            const btn = document.getElementById('submitBtn');
-            const originalText = btn.textContent;
             btn.textContent = 'Processing...';
             btn.disabled = true;
-            
-            setTimeout(() => {
-                document.getElementById('contactForm').style.display = 'none';
-                document.getElementById('successMsg').style.display = 'block';
-                window.scrollTo({ top: document.querySelector('.form-card').offsetTop - 100, behavior: 'smooth' });
-            }, 1200);
+
+            const formData = new FormData(contactForm);
+
+            try {
+                const response = await fetch(contactForm.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: { 'Accept': 'application/json' }
+                });
+
+                if (response.ok) {
+                    contactForm.style.display = 'none';
+                    successMsg.style.display = 'block';
+                    window.scrollTo({ 
+                        top: document.querySelector('.form-card').offsetTop - 100, 
+                        behavior: 'smooth' 
+                    });
+                } else {
+                    alert('Oops! There was a problem submitting your form. Please try again.');
+                    btn.textContent = 'Submit Inquiry →';
+                    btn.disabled = false;
+                }
+            } catch (error) {
+                alert('Connection error. Please check your internet and try again.');
+                btn.textContent = 'Submit Inquiry →';
+                btn.disabled = false;
+            }
         });
 
         // FAQ Toggle
