@@ -48,6 +48,11 @@ const seoDescription = calc.seo?.meta_description || calc.description;
 
         <button id="calcBtn">Calculate Now</button>
         <div id="result" class="result-box"></div>
+        
+        <div id="chartWrapper" style="display:none; margin-top: 35px; background: #fff; padding: 25px; border-radius: 20px; border: 1px solid #e2e8f0;">
+          <h3 style="text-align:center; font-size:1.1rem; color:#1e3a8a; margin-bottom:15px; font-family:'Crimson Pro', serif;">Visual Breakdown</h3>
+          <canvas id="resultChart"></canvas>
+        </div>
       </div>
     </div>
 
@@ -77,12 +82,12 @@ const seoDescription = calc.seo?.meta_description || calc.description;
       </div>
 
       {calc.seo.faqs && (
-        <div class="content-section faq-section">
+        <div class="content-section faq-section" style="margin-top: 40px;">
           <h2>{calc.seo.h2_structure?.[4] || "Frequently Asked Questions"}</h2>
           {calc.seo.faqs.map((faq) => (
             <div class="faq-item">
               <p class="faq-q"><strong>Q: {faq.question}</strong></p>
-              <p class="faq-a">{faq.answer}</p>
+              <p class="faq-a">A: {faq.answer}</p>
             </div>
           ))}
         </div>
@@ -108,10 +113,40 @@ const seoDescription = calc.seo?.meta_description || calc.description;
     .rich-content h2 { color: #1e3a8a; font-family: 'Crimson Pro', serif; margin-bottom: 15px; font-size: 2rem; border-bottom: 2px solid #f1f5f9; padding-bottom: 10px; }
     .pro-tip { background: #fffbeb; padding: 30px; border-radius: 16px; margin-top: 40px; border-left: 6px solid #d4a373; color: #92400e; }
     .faq-item { margin-bottom: 20px; padding-bottom: 15px; border-bottom: 1px solid #f1f5f9; }
-    .faq-q { color: #1e293b; font-size: 1.1rem; }
+    .faq-q { color: #1e293b; font-size: 1.1rem; margin-bottom: 5px; }
+    .faq-a { color: #475569; }
   </style>
 
-  <script define:vars={{ formula: calc.formula, calcName: calc.name }}>
+  <script>
+    import Chart from 'chart.js/auto';
+
+    let myChart = null;
+    function updateChart(labels, data) {
+      const ctx = document.getElementById('resultChart');
+      document.getElementById('chartWrapper').style.display = 'block';
+
+      if (myChart) { myChart.destroy(); }
+
+      myChart = new Chart(ctx, {
+        type: 'doughnut',
+        data: {
+          labels: labels,
+          datasets: [{
+            data: data,
+            backgroundColor: ['#1e3a8a', '#d4a373', '#64748b'],
+            hoverOffset: 15,
+            borderWidth: 0
+          }]
+        },
+        options: {
+          responsive: true,
+          plugins: {
+            legend: { position: 'bottom', labels: { padding: 20, font: { size: 12, weight: 'bold' } } }
+          }
+        }
+      });
+    }
+
     const btn = document.getElementById('calcBtn');
     const resDiv = document.getElementById('result');
     const fmt = (num) => new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(num);
@@ -121,92 +156,101 @@ const seoDescription = calc.seo?.meta_description || calc.description;
       const v1 = parseFloat(document.getElementById('v1')?.value || 0);
       const v2 = parseFloat(document.getElementById('v2')?.value || 0);
       const v3 = parseFloat(document.getElementById('v3')?.value || 0);
+      
+      const formula = window.currentFormula;
+      const calcName = window.currentName;
+      
       let out = "";
+      let cLabels = [];
+      let cData = [];
 
       switch (formula) {
         case 'loan':
           const r = (v2 / 12) / 100;
           const emi = r > 0 ? (v1 * r * Math.pow(1 + r, v3)) / (Math.pow(1 + r, v3) - 1) : v1 / v3;
-          out = `Monthly Payment: ${fmt(emi)} <br/> 
-                 <span style="font-size:1.1rem; font-weight:400;">Total Repayment: ${fmt(emi * v3)}</span>`;
-          break;
-
-        case 'ratio':
-          if (v2 > 0) {
-            if (calcName.includes("DSCR")) {
-              const dscr = v1 / v2;
-              out = `DSCR Ratio: ${dscr.toFixed(2)} <br/> 
-                     <span style="font-size:1.1rem; font-weight:400;">Status: ${dscr >= 1.25 ? '✅ Strong' : '⚠️ Risky'}</span>`;
-            } else {
-              out = `Ratio: ${pct((v1 / v2) * 100)}`;
-            }
-          } else { out = "Invalid Input 2 (Must be > 0)"; }
+          const totalInt = (emi * v3) - v1;
+          out = `Monthly Payment: ${fmt(emi)} <br/> Total Repayment: ${fmt(emi * v3)}`;
+          cLabels = ['Principal Amount', 'Total Interest'];
+          cData = [v1, totalInt];
           break;
 
         case 'roi':
-          if (v2 > 0) {
-            const netRoi = ((v1 - v2) / v2) * 100;
-            out = `ROI: ${pct(netRoi)} <br/> 
-                   <span style="font-size:1.1rem; font-weight:400;">Profit: ${fmt(v1 - v2)}</span>`;
-          } else { out = "Please enter cost (Input 2)"; }
+          const profitRoi = v1 - v2;
+          out = `ROI: ${pct((profitRoi / v2) * 100)} <br/> Profit: ${fmt(profitRoi)}`;
+          cLabels = ['Investment Cost', 'Net Profit'];
+          cData = [v2, profitRoi > 0 ? profitRoi : 0];
           break;
 
         case 'runway':
-          const burn = v2 - v3; // Expenses - Revenue
+          const burn = v2 - v3;
           if (burn <= 0) {
-            out = `Runway: Infinite <br/> 
-                   <span style="font-size:1.1rem; font-weight:400;">Status: Profitable (No burn)</span>`;
+            out = `Runway: Infinite <br/> Status: Profitable`;
+            cLabels = ['Cash in Hand', 'Monthly Revenue'];
+            cData = [v1, v3];
           } else {
-            out = `Runway: ${(v1 / burn).toFixed(1)} Months <br/> 
-                   <span style="font-size:1.1rem; font-weight:400;">Net Monthly Burn: ${fmt(burn)}</span>`;
+            out = `Runway: ${(v1 / burn).toFixed(1)} Months <br/> Burn: ${fmt(burn)}`;
+            cLabels = ['Remaining Cash', 'Monthly Net Burn'];
+            cData = [v1, burn];
           }
           break;
 
         case 'margin':
-        case 'fee':
-          const net = v1 - v2;
-          out = `Margin: ${pct((net / v1) * 100)} <br/> 
-                 <span style="font-size:1.1rem; font-weight:400;">Profit: ${fmt(net)}</span>`;
+          const netMargin = v1 - v2;
+          out = `Margin: ${pct((netMargin / v1) * 100)} <br/> Profit: ${fmt(netMargin)}`;
+          cLabels = ['Total Cost', 'Net Profit'];
+          cData = [v2, netMargin > 0 ? netMargin : 0];
           break;
 
         case 'stock':
-          const profit = (v2 - v1) * v3;
-          out = `Total Gain/Loss: ${fmt(profit)} <br/> 
-                 <span style="font-size:1.1rem; font-weight:400;">Return: ${pct(((v2-v1)/v1)*100)}</span>`;
+          const stockProfit = (v2 - v1) * v3;
+          out = `Gain/Loss: ${fmt(stockProfit)} <br/> Return: ${pct(((v2-v1)/v1)*100)}`;
+          cLabels = ['Total Investment', 'Total Gain'];
+          cData = [v1 * v3, stockProfit > 0 ? stockProfit : 0];
           break;
 
         case 'tax':
-          const t = v1 * (v2 / 100);
-          out = `Tax Amount: ${fmt(t)} <br/> 
-                 <span style="font-size:1.1rem; font-weight:400;">Total: ${fmt(v1 + t)}</span>`;
+          const taxAmt = v1 * (v2 / 100);
+          out = `Tax Amount: ${fmt(taxAmt)} <br/> Total: ${fmt(v1 + taxAmt)}`;
+          cLabels = ['Base Price', 'Tax Amount'];
+          cData = [v1, taxAmt];
           break;
 
         case 'compound':
-          const total = v1 * Math.pow(1 + (v2 / 100) / 12, 12 * v3);
-          out = `Future Value: ${fmt(total)} <br/> 
-                 <span style="font-size:1.1rem; font-weight:400;">Total Interest: ${fmt(total - v1)}</span>`;
-          break;
-
-        case 'property_roi':
-          out = v2 > 0 ? `Cap Rate: ${pct((v1 / v2) * 100)}` : "Invalid Value";
-          break;
-
-        case 'basic':
-          out = `Total: ${fmt(v1 * v2)}`;
+          const compoundTotal = v1 * Math.pow(1 + (v2 / 100) / 12, 12 * v3);
+          const compInt = compoundTotal - v1;
+          out = `Future Value: ${fmt(compoundTotal)} <br/> Interest Earned: ${fmt(compInt)}`;
+          cLabels = ['Initial Deposit', 'Total Interest'];
+          cData = [v1, compInt];
           break;
 
         case 'dividend':
-          out = `Yield: ${pct((v1 / v2) * 100)} <br/> 
-                 <span style="font-size:1.1rem; font-weight:400;">Annual Payout: ${fmt(v1 * v3)}</span>`;
+          out = `Yield: ${pct((v1 / v2) * 100)} <br/> Annual Payout: ${fmt(v1 * v3)}`;
+          cLabels = ['Stock Price', 'Annual Dividend'];
+          cData = [v2, v1 * v3];
+          break;
+
+        case 'ratio':
+          const ratioVal = v1 / v2;
+          out = `Ratio: ${ratioVal.toFixed(2)}`;
+          cLabels = ['Numerator', 'Denominator'];
+          cData = [v1, v2];
           break;
 
         default:
           out = `Result: ${fmt(v1 * v2)}`;
+          cLabels = ['Value 1', 'Value 2'];
+          cData = [v1, v2];
       }
 
       resDiv.innerHTML = out;
       resDiv.style.display = 'block';
+      if (cData.length > 0) updateChart(cLabels, cData);
       resDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
     });
+  </script>
+
+  <script define:vars={{ f: calc.formula, n: calc.name }}>
+    window.currentFormula = f;
+    window.currentName = n;
   </script>
 </Layout>
