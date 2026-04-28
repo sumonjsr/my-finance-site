@@ -2,7 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import calculators from '../../calculators.json'; 
 
-const title = "QuickFinCalc Pro | Professional Financial Tools";
+const title = "QuickFinCalc – Free Professional Financial Calculators";
 const description = "Free online financial tools for ROI, Loans, Taxes, and Business Margins.";
 ---
 
@@ -45,12 +45,96 @@ const description = "Free online financial tools for ROI, Loans, Taxes, and Busi
             box-shadow: 0 20px 40px rgba(0,0,0,0.2);
             background: white;
             color: var(--text-dark);
+            transition: box-shadow 0.3s ease;
+        }
+
+        #searchInput:focus {
+            outline: none;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
         }
 
         .container {
             max-width: 1200px;
-            margin: -50px auto 80px;
+            margin: -50px auto 0;
             padding: 0 20px;
+        }
+
+        /* Content Section Styles */
+        .content-section {
+            background: white;
+            padding: 60px 40px;
+            border-radius: 24px;
+            border: 1px solid var(--border);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+            margin-bottom: 100px;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .content-section h2 {
+            color: var(--primary);
+            font-size: 2.2rem;
+            font-family: 'Crimson Pro', serif;
+            margin-bottom: 30px;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .content-section p {
+            color: var(--text-dark);
+            font-size: 1.05rem;
+            line-height: 1.85;
+            margin-bottom: 20px;
+            letter-spacing: 0.3px;
+        }
+
+        .content-section p:last-of-type {
+            margin-bottom: 0;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 30px;
+            margin-top: 45px;
+            padding-top: 40px;
+            border-top: 2px solid var(--border);
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+        }
+
+        .feature-icon {
+            color: var(--secondary);
+            font-weight: 700;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .feature-text {
+            color: var(--text-dark);
+            font-size: 0.96rem;
+            font-weight: 500;
+            line-height: 1.5;
+        }
+
+        .calculators-section {
+            margin-bottom: 60px;
+        }
+
+        .section-title {
+            text-align: center;
+            color: var(--primary);
+            font-size: 1.8rem;
+            font-family: 'Crimson Pro', serif;
+            font-weight: 700;
+            margin-bottom: 50px;
+            letter-spacing: 0.5px;
         }
 
         .calc-grid {
@@ -83,6 +167,7 @@ const description = "Free online financial tools for ROI, Loans, Taxes, and Busi
             margin: 0 0 15px 0;
             font-size: 1.4rem;
             font-family: 'Crimson Pro', serif;
+            font-weight: 600;
         }
 
         .calc-card p {
@@ -99,9 +184,51 @@ const description = "Free online financial tools for ROI, Loans, Taxes, and Busi
             font-weight: 700;
             color: var(--primary);
             background: #e0e7ff;
-            padding: 5px 12px;
+            padding: 6px 14px;
             border-radius: 6px;
             width: fit-content;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .content-section {
+                padding: 40px 25px;
+                margin-bottom: 80px;
+            }
+
+            .content-section h2 {
+                font-size: 1.7rem;
+                margin-bottom: 25px;
+            }
+
+            .content-section p {
+                font-size: 1rem;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+                gap: 25px;
+                margin-top: 35px;
+                padding-top: 35px;
+            }
+
+            .feature-item {
+                gap: 12px;
+            }
+
+            .section-title {
+                font-size: 1.4rem;
+                margin-bottom: 35px;
+            }
+
+            .calc-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 
@@ -118,15 +245,57 @@ const description = "Free online financial tools for ROI, Loans, Taxes, and Busi
     </section>
 
     <main class="container">
-        <div class="calc-grid" id="calcGrid">
-            {calculators.map((calc) => (
-                <a href={`/calculator/${calc.slug}`} class="calc-card" data-name={calc.name.toLowerCase()}>
-                    <h3>{calc.name}</h3>
-                    <p>{calc.description}</p>
-                    <span class="badge">Tool</span>
-                </a>
-            ))}
-        </div>
+        <!-- SEO Content Section -->
+        <section class="content-section">
+            <h2>Smart Financial Calculations Made Simple</h2>
+            <p>Welcome to QuickFinCalc Pro, your trusted partner for accurate and fast financial calculations. Whether you're managing business finances, planning investments, or calculating loan payments, our comprehensive suite of online financial tools provides instant, reliable results without the complexity.</p>
+            
+            <p>Our platform offers professional-grade calculators designed for entrepreneurs, finance professionals, and individuals who demand precision. From ROI analysis and loan amortization to tax calculations and business margin assessment, each tool is built with accuracy and user experience in mind. No downloads required, no complicated formulas to memorize—just intuitive, straightforward calculations at your fingertips.</p>
+            
+            <p>QuickFinCalc Pro eliminates the guesswork from financial decision-making. Our tools help you understand the true cost of loans, maximize investment returns, optimize business pricing, and plan taxes effectively. With real-time calculations and clear breakdowns, you can make informed financial decisions with confidence. Start exploring our collection of free financial calculators today and take control of your financial future.</p>
+
+            <div class="features-grid">
+                <div class="feature-item">
+                    <span class="feature-icon">✓</span>
+                    <span class="feature-text">100% Free & No Registration</span>
+                </div>
+                <div class="feature-item">
+                    <span class="feature-icon">✓</span>
+                    <span class="feature-text">Instant Results</span>
+                </div>
+                <div class="feature-item">
+                    <span class="feature-icon">✓</span>
+                    <span class="feature-text">Mobile Friendly</span>
+                </div>
+                <div class="feature-item">
+                    <span class="feature-icon">✓</span>
+                    <span class="feature-text">Accurate Calculations</span>
+                </div>
+                <div class="feature-item">
+                    <span class="feature-icon">✓</span>
+                    <span class="feature-text">Professional Tools</span>
+                </div>
+                <div class="feature-item">
+                    <span class="feature-icon">✓</span>
+                    <span class="feature-text">Secure & Private</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Calculators Section -->
+        <section class="calculators-section">
+            <h2 class="section-title">Our Financial Calculators</h2>
+            
+            <div class="calc-grid" id="calcGrid">
+                {calculators.map((calc) => (
+                    <a href={`/calculator/${calc.slug}`} class="calc-card" data-name={calc.name.toLowerCase()}>
+                        <h3>{calc.name}</h3>
+                        <p>{calc.description}</p>
+                        <span class="badge">Tool</span>
+                    </a>
+                ))}
+            </div>
+        </section>
     </main>
 
     <script is:inline>

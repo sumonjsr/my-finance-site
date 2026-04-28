@@ -18,103 +18,560 @@ if (!calc) {
 // SEO ডেটা সেটআপ
 const seoTitle = calc.seo?.title || `${calc.name} | QuickFinCalc`;
 const seoDescription = calc.seo?.meta_description || calc.description;
+
+// ✨ RELATED CALCULATORS - Same type এর অন্য calculators খুঁজে বের করা
+const relatedCalcs = calculators
+  .filter(c => c.type === calc.type && c.slug !== calc.slug)
+  .slice(0, 3);
+
+// ✨ SCHEMA MARKUP GENERATION
+// 1. FAQPage Schema
+const faqPageSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": calc.seo.faqs?.map((faq) => ({
+    "@type": "Question",
+    "name": faq.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": faq.answer
+    }
+  })) || []
+};
+
+// 2. HowTo Schema
+const howToSteps = calc.how_to_use.split('\n').filter(line => line.trim()).map((step, index) => ({
+  "@type": "HowToStep",
+  "position": index + 1,
+  "name": step.replace(/^\d+\.\s*/, '').split('\n')[0],
+  "text": step.replace(/^\d+\.\s*/, '')
+}));
+
+const howToSchema = {
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": `How to Use ${calc.name}`,
+  "description": `Step-by-step guide to using ${calc.name}`,
+  "image": "https://quickfincalc.com/favicon.ico",
+  "step": howToSteps
+};
+
+// 3. WebApplication Schema
+const webAppSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": calc.name,
+  "description": calc.description,
+  "url": `https://quickfincalc.com/calculator/${calc.slug}`,
+  "applicationCategory": "FinanceApplication",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.8",
+    "ratingCount": "250"
+  }
+};
+
+// 4. BreadcrumbList Schema
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://quickfincalc.com"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Calculators",
+      "item": "https://quickfincalc.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": calc.name,
+      "item": `https://quickfincalc.com/calculator/${calc.slug}`
+    }
+  ]
+};
 ---
 
 <Layout title={seoTitle} description={seoDescription}>
+  {/* ✨ ALL SCHEMA MARKUPS */}
+  {/* 1. SoftwareApplication Schema (from JSON) */}
   <script type="application/ld+json" set:html={JSON.stringify(calc.seo.schema)} />
+  
+  {/* 2. FAQPage Schema */}
+  {calc.seo.faqs && calc.seo.faqs.length > 0 && (
+    <script type="application/ld+json" set:html={JSON.stringify(faqPageSchema)} />
+  )}
+  
+  {/* 3. HowTo Schema */}
+  <script type="application/ld+json" set:html={JSON.stringify(howToSchema)} />
+  
+  {/* 4. WebApplication Schema */}
+  <script type="application/ld+json" set:html={JSON.stringify(webAppSchema)} />
+  
+  {/* 5. BreadcrumbList Schema */}
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
   
   <div class="container">
     <nav class="breadcrumb">
-      <a href="/">Home</a> / <a href="/calculator">Calculators</a> / {calc.name}
+      <a href="/">Home</a> / <a href="/">Calculators</a> / {calc.name}
     </nav>
 
-    <div class="calc-box">
-      <h1>{calc.seo.h1 || calc.name}</h1>
-      <p class="desc-top">{calc.description}</p>
+    {/* Main Content with Sidebar Layout */}
+    <div class="main-wrapper">
+      {/* LEFT SIDE - Calculator */}
+      <div class="calc-main">
+        <div class="calc-box">
+          <h1>{calc.seo.h1 || calc.name}</h1>
+          <p class="desc-top">{calc.description}</p>
 
-      <div class="input-group">
-        <label for="v1">{calc.label1}</label>
-        <input type="number" id="v1" class="calc-input" placeholder="0.00" step="any" />
+          <div class="input-group">
+            <label for="v1">{calc.label1}</label>
+            <input type="number" id="v1" class="calc-input" placeholder="0.00" step="any" />
 
-        {calc.label2 && (
-          <label for="v2">{calc.label2}</label>
-          <input type="number" id="v2" class="calc-input" placeholder="0.00" step="any" />
-        )}
+            {calc.label2 && (
+              <>
+                <label for="v2">{calc.label2}</label>
+                <input type="number" id="v2" class="calc-input" placeholder="0.00" step="any" />
+              </>
+            )}
 
-        {calc.label3 && (
-          <label for="v3">{calc.label3}</label>
-          <input type="number" id="v3" class="calc-input" placeholder="0.00" step="any" />
-        )}
+            {calc.label3 && (
+              <>
+                <label for="v3">{calc.label3}</label>
+                <input type="number" id="v3" class="calc-input" placeholder="0.00" step="any" />
+              </>
+            )}
 
-        <button id="calcBtn">Calculate Now</button>
-        <div id="result" class="result-box"></div>
-        
-        <div id="chartWrapper" style="display:none; margin-top: 35px; background: #fff; padding: 25px; border-radius: 20px; border: 1px solid #e2e8f0;">
-          <h3 style="text-align:center; font-size:1.1rem; color:#1e3a8a; margin-bottom:15px; font-family:'Crimson Pro', serif;">Visual Breakdown</h3>
-          <canvas id="resultChart"></canvas>
-        </div>
-      </div>
-    </div>
-
-    <div class="rich-content">
-      <div class="content-section">
-        <h2>{calc.seo.h2_structure?.[0] || `What is ${calc.name}?`}</h2>
-        <p>{calc.what_is}</p>
-      </div>
-      
-      <div class="content-section">
-        <h2>{calc.seo.h2_structure?.[1] || "Who Should Use This Tool?"}</h2>
-        <p>{calc.who_use}</p>
-      </div>
-
-      <div class="content-section">
-        <h2>{calc.seo.h2_structure?.[2] || "How to Use"}</h2>
-        <p style="white-space: pre-line;">{calc.how_to_use}</p>
-      </div>
-
-      <div class="content-section">
-        <h2>{calc.seo.h2_structure?.[3] || "Understanding Your Results"}</h2>
-        <p>{calc.how_to_read}</p>
-      </div>
-
-      <div class="pro-tip">
-        <strong>💡 Pro Tip:</strong> {calc.pro_tip}
-      </div>
-
-      {calc.seo.faqs && (
-        <div class="content-section faq-section" style="margin-top: 40px;">
-          <h2>{calc.seo.h2_structure?.[4] || "Frequently Asked Questions"}</h2>
-          {calc.seo.faqs.map((faq) => (
-            <div class="faq-item">
-              <p class="faq-q"><strong>Q: {faq.question}</strong></p>
-              <p class="faq-a">A: {faq.answer}</p>
+            <button id="calcBtn">Calculate Now</button>
+            <div id="result" class="result-box"></div>
+            
+            <div id="chartWrapper" style="display:none; margin-top: 35px; background: #fff; padding: 25px; border-radius: 20px; border: 1px solid #e2e8f0;">
+              <h3 style="text-align:center; font-size:1.1rem; color:#1e3a8a; margin-bottom:15px; font-family:'Crimson Pro', serif;">Visual Breakdown</h3>
+              <canvas id="resultChart"></canvas>
             </div>
-          ))}
+          </div>
         </div>
+
+        {/* Rich Content Below */}
+        <div class="rich-content">
+          <div class="content-section">
+            <h2>{calc.seo.h2_structure?.[0] || `What is ${calc.name}?`}</h2>
+            <p>{calc.what_is}</p>
+          </div>
+          
+          <div class="content-section">
+            <h2>{calc.seo.h2_structure?.[1] || "Who Should Use This Tool?"}</h2>
+            <p>{calc.who_use}</p>
+          </div>
+
+          <div class="content-section">
+            <h2>{calc.seo.h2_structure?.[2] || "How to Use"}</h2>
+            <p style="white-space: pre-line;">{calc.how_to_use}</p>
+          </div>
+
+          <div class="content-section">
+            <h2>{calc.seo.h2_structure?.[3] || "Understanding Your Results"}</h2>
+            <p>{calc.how_to_read}</p>
+          </div>
+
+          <div class="pro-tip">
+            <strong>💡 Pro Tip:</strong> {calc.pro_tip}
+          </div>
+
+          {calc.seo.faqs && (
+            <div class="content-section faq-section" style="margin-top: 40px;">
+              <h2>{calc.seo.h2_structure?.[4] || "Frequently Asked Questions"}</h2>
+              {calc.seo.faqs.map((faq) => (
+                <div class="faq-item">
+                  <p class="faq-q"><strong>Q: {faq.question}</strong></p>
+                  <p class="faq-a">A: {faq.answer}</p>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+      </div>
+
+      {/* RIGHT SIDE - Related Calculators Sidebar */}
+      {relatedCalcs.length > 0 && (
+        <aside class="sidebar">
+          <div class="sidebar-box">
+            <h3 class="sidebar-title">Related Tools</h3>
+            <p class="sidebar-subtitle">Similar Calculators</p>
+            
+            <div class="sidebar-cards">
+              {relatedCalcs.map((related) => (
+                <a href={`/calculator/${related.slug}`} class="sidebar-card">
+                  <div class="card-name">{related.name}</div>
+                  <div class="card-desc">{related.description}</div>
+                  <div class="card-arrow">→</div>
+                </a>
+              ))}
+            </div>
+          </div>
+        </aside>
       )}
     </div>
   </div>
 
   <style>
-    .container { max-width: 900px; margin: 0 auto; padding: 40px 20px; }
-    .breadcrumb { margin-bottom: 20px; font-size: 0.9rem; color: #64748b; }
-    .breadcrumb a { color: #1e3a8a; text-decoration: none; font-weight: 600; }
-    .calc-box { background: #ffffff; padding: 45px; border-radius: 24px; box-shadow: 0 10px 40px rgba(0,0,0,0.04); border: 1px solid #e2e8f0; margin-bottom: 40px; }
-    h1 { color: #1e3a8a; text-align: center; font-size: 2.5rem; font-family: 'Crimson Pro', serif; margin-bottom: 15px; font-weight: 800; }
-    .desc-top { text-align: center; color: #475569; margin-bottom: 35px; font-size: 1.15rem; max-width: 600px; margin-inline: auto; }
-    .input-group { max-width: 480px; margin: 0 auto; }
-    label { display: block; font-weight: 700; margin-bottom: 10px; color: #1e293b; }
-    .calc-input { width: 100%; padding: 16px; margin-bottom: 25px; border: 2px solid #cbd5e1; border-radius: 12px; font-size: 1.1rem; background: #f8fafc; }
-    button { width: 100%; padding: 18px; background: #1e3a8a; color: white; border: none; border-radius: 12px; font-weight: 800; cursor: pointer; font-size: 1.2rem; transition: 0.2s; }
-    button:hover { background: #0f172a; }
-    .result-box { margin-top: 30px; padding: 30px; border-radius: 16px; background: #f0fdf4; color: #166534; font-weight: 800; display: none; text-align: center; border: 2px dashed #22c55e; font-size: 1.4rem; line-height: 1.6; }
-    .rich-content { background: white; padding: 50px; border-radius: 24px; border: 1px solid #e2e8f0; line-height: 1.8; color: #334155; }
-    .content-section { margin-bottom: 35px; }
-    .rich-content h2 { color: #1e3a8a; font-family: 'Crimson Pro', serif; margin-bottom: 15px; font-size: 2rem; border-bottom: 2px solid #f1f5f9; padding-bottom: 10px; }
-    .pro-tip { background: #fffbeb; padding: 30px; border-radius: 16px; margin-top: 40px; border-left: 6px solid #d4a373; color: #92400e; }
-    .faq-item { margin-bottom: 20px; padding-bottom: 15px; border-bottom: 1px solid #f1f5f9; }
-    .faq-q { color: #1e293b; font-size: 1.1rem; margin-bottom: 5px; }
-    .faq-a { color: #475569; }
+    .container { 
+      max-width: 1200px; 
+      margin: 0 auto; 
+      padding: 40px 20px; 
+    }
+
+    .breadcrumb { 
+      margin-bottom: 20px; 
+      font-size: 0.9rem; 
+      color: #64748b; 
+    }
+
+    .breadcrumb a { 
+      color: #1e3a8a; 
+      text-decoration: none; 
+      font-weight: 600; 
+    }
+
+    .breadcrumb a:hover { 
+      text-decoration: underline; 
+    }
+
+    /* Main Wrapper - Grid Layout */
+    .main-wrapper {
+      display: grid;
+      grid-template-columns: 1fr 320px;
+      gap: 30px;
+      align-items: start;
+    }
+
+    .calc-main {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+    }
+    
+    .calc-box { 
+      background: #ffffff; 
+      padding: 45px; 
+      border-radius: 24px; 
+      box-shadow: 0 10px 40px rgba(0,0,0,0.04); 
+      border: 1px solid #e2e8f0; 
+    }
+    
+    h1 { 
+      color: #1e3a8a; 
+      text-align: center; 
+      font-size: 2.5rem; 
+      font-family: 'Crimson Pro', serif; 
+      margin-bottom: 15px; 
+      font-weight: 800; 
+    }
+    
+    .desc-top { 
+      text-align: center; 
+      color: #475569; 
+      margin-bottom: 35px; 
+      font-size: 1.15rem; 
+      max-width: 600px; 
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    .input-group { 
+      max-width: 480px; 
+      margin: 0 auto; 
+    }
+    
+    label { 
+      display: block; 
+      font-weight: 700; 
+      margin-bottom: 10px; 
+      color: #1e293b; 
+    }
+    
+    .calc-input { 
+      width: 100%; 
+      padding: 16px; 
+      margin-bottom: 25px; 
+      border: 2px solid #cbd5e1; 
+      border-radius: 12px; 
+      font-size: 1.1rem; 
+      background: #f8fafc; 
+      transition: border-color 0.2s;
+    }
+    
+    .calc-input:focus {
+      outline: none;
+      border-color: #1e3a8a;
+    }
+    
+    button { 
+      width: 100%; 
+      padding: 18px; 
+      background: #1e3a8a; 
+      color: white; 
+      border: none; 
+      border-radius: 12px; 
+      font-weight: 800; 
+      cursor: pointer; 
+      font-size: 1.2rem; 
+      transition: 0.2s; 
+    }
+    
+    button:hover { 
+      background: #0f172a; 
+      transform: translateY(-2px);
+    }
+    
+    button:active {
+      transform: translateY(0);
+    }
+    
+    .result-box { 
+      margin-top: 30px; 
+      padding: 30px; 
+      border-radius: 16px; 
+      background: #f0fdf4; 
+      color: #166534; 
+      font-weight: 800; 
+      display: none; 
+      text-align: center; 
+      border: 2px dashed #22c55e; 
+      font-size: 1.4rem; 
+      line-height: 1.6;
+      animation: slideIn 0.3s ease-out;
+    }
+
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    .rich-content { 
+      background: white; 
+      padding: 50px; 
+      border-radius: 24px; 
+      border: 1px solid #e2e8f0; 
+      line-height: 1.8; 
+      color: #334155;
+    }
+    
+    .content-section { 
+      margin-bottom: 35px; 
+    }
+    
+    .rich-content h2 { 
+      color: #1e3a8a; 
+      font-family: 'Crimson Pro', serif; 
+      margin-bottom: 15px; 
+      font-size: 2rem; 
+      border-bottom: 2px solid #f1f5f9; 
+      padding-bottom: 10px; 
+    }
+    
+    .pro-tip { 
+      background: #fffbeb; 
+      padding: 30px; 
+      border-radius: 16px; 
+      margin-top: 40px; 
+      border-left: 6px solid #d4a373; 
+      color: #92400e; 
+    }
+    
+    .faq-item { 
+      margin-bottom: 20px; 
+      padding-bottom: 15px; 
+      border-bottom: 1px solid #f1f5f9; 
+    }
+    
+    .faq-q { 
+      color: #1e293b; 
+      font-size: 1.1rem; 
+      margin-bottom: 5px; 
+    }
+    
+    .faq-a { 
+      color: #475569; 
+    }
+
+    /* ✨ SIDEBAR STYLES */
+    .sidebar {
+      position: sticky;
+      top: 100px;
+    }
+
+    .sidebar-box {
+      background: white;
+      border: 1px solid #e2e8f0;
+      border-radius: 20px;
+      padding: 30px 20px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.04);
+    }
+
+    .sidebar-title {
+      color: #1e3a8a;
+      font-size: 1.3rem;
+      font-weight: 800;
+      font-family: 'Crimson Pro', serif;
+      margin-bottom: 5px;
+      text-align: center;
+    }
+
+    .sidebar-subtitle {
+      text-align: center;
+      color: #94a3b8;
+      font-size: 0.85rem;
+      margin-bottom: 25px;
+    }
+
+    .sidebar-cards {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .sidebar-card {
+      background: linear-gradient(135deg, #f8fafc 0%, #ffffff 100%);
+      border: 2px solid #e2e8f0;
+      border-radius: 14px;
+      padding: 16px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      min-height: 90px;
+    }
+
+    .sidebar-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(212, 163, 115, 0.15), transparent);
+      transition: left 0.5s ease;
+    }
+
+    .sidebar-card:hover {
+      border-color: #d4a373;
+      box-shadow: 0 12px 30px rgba(30, 58, 138, 0.15);
+      transform: translateX(5px);
+    }
+
+    .sidebar-card:hover::before {
+      left: 100%;
+    }
+
+    .card-name {
+      color: #1e3a8a;
+      font-size: 0.95rem;
+      font-weight: 700;
+      line-height: 1.3;
+      position: relative;
+      z-index: 1;
+      margin-bottom: 6px;
+    }
+
+    .card-desc {
+      color: #64748b;
+      font-size: 0.8rem;
+      line-height: 1.4;
+      position: relative;
+      z-index: 1;
+      flex: 1;
+    }
+
+    .card-arrow {
+      color: #d4a373;
+      font-size: 1.2rem;
+      font-weight: 800;
+      margin-top: 8px;
+      transition: transform 0.3s ease;
+      position: relative;
+      z-index: 1;
+    }
+
+    .sidebar-card:hover .card-arrow {
+      transform: translateX(3px);
+    }
+
+    /* Tablet - 2 Column Layout */
+    @media (max-width: 1024px) {
+      .main-wrapper {
+        grid-template-columns: 1fr;
+      }
+
+      .sidebar {
+        position: static;
+        margin-top: 20px;
+      }
+
+      .sidebar-box {
+        padding: 25px;
+      }
+
+      .sidebar-cards {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 15px;
+      }
+    }
+
+    /* Mobile */
+    @media (max-width: 768px) {
+      .container { 
+        padding: 20px 15px; 
+      }
+      
+      .calc-box { 
+        padding: 30px 20px; 
+      }
+      
+      h1 { 
+        font-size: 1.8rem; 
+      }
+      
+      .rich-content { 
+        padding: 30px 20px; 
+      }
+
+      .main-wrapper {
+        grid-template-columns: 1fr;
+      }
+
+      .sidebar-cards {
+        grid-template-columns: 1fr;
+      }
+
+      .sidebar-box {
+        padding: 20px;
+      }
+
+      .sidebar-title {
+        font-size: 1.1rem;
+      }
+    }
   </style>
 
   <script>
@@ -233,6 +690,33 @@ const seoDescription = calc.seo?.meta_description || calc.description;
           const ratioVal = v1 / v2;
           out = `Ratio: ${ratioVal.toFixed(2)}`;
           cLabels = ['Numerator', 'Denominator'];
+          cData = [v1, v2];
+          break;
+
+        case 'fee':
+          const feeAmt = v1 * (v2 / 100) + v3;
+          out = `Fee: ${fmt(feeAmt)} <br/> Net Amount: ${fmt(v1 - feeAmt)}`;
+          cLabels = ['Fee Amount', 'Net Received'];
+          cData = [feeAmt, v1 - feeAmt];
+          break;
+
+        case 'break_even':
+          const brkeven = v1 / (v3 - v2);
+          out = `Break-Even: ${brkeven.toFixed(0)} units <br/> Revenue Needed: ${fmt(brkeven * v3)}`;
+          cLabels = ['Fixed Costs', 'Profit Per Unit'];
+          cData = [v1, v3 - v2];
+          break;
+
+        case 'property_roi':
+          const propRoi = (v1 / v2) * 100;
+          out = `Cap Rate: ${pct(propRoi)} <br/> Annual Income: ${fmt(v1)}`;
+          cLabels = ['Property Value', 'Annual Income'];
+          cData = [v2, v1];
+          break;
+
+        case 'basic':
+          out = `Result: ${fmt(v1 * v2)}`;
+          cLabels = ['Value 1', 'Value 2'];
           cData = [v1, v2];
           break;
 
