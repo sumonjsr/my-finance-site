@@ -1,9 +1,58 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import calculators from '../../calculators.json'; 
+import calculators from '../../calculators.json';
 
-const title = "QuickFinCalc – Free Professional Financial Calculators";
+const title = "QuickFinCalc Pro | Professional Financial Tools";
 const description = "Free online financial tools for ROI, Loans, Taxes, and Business Margins.";
+
+// Group calculators by type
+const calcsByType = {};
+calculators.forEach(calc => {
+  if (!calcsByType[calc.type]) {
+    calcsByType[calc.type] = [];
+  }
+  calcsByType[calc.type].push(calc);
+});
+
+// Category descriptions
+const categoryInfo = {
+  'loan': {
+    emoji: '💰',
+    title: 'Loans & EMI',
+    description: 'Calculate loan payments, EMI, mortgage, auto loans, and personal loans with accurate interest calculations.',
+    color: '#3b82f6'
+  },
+  'investment': {
+    emoji: '📈',
+    title: 'Investments & Returns',
+    description: 'Analyze ROI, dividend yields, compound interest, stock profits, and investment performance.',
+    color: '#10b981'
+  },
+  'tax': {
+    emoji: '📊',
+    title: 'Taxes & Compliance',
+    description: 'Calculate sales tax, VAT, GST, payroll taxes, and self-employment tax for compliance.',
+    color: '#f59e0b'
+  },
+  'ecommerce': {
+    emoji: '🛍️',
+    title: 'E-commerce & Margins',
+    description: 'Optimize profit margins, calculate Amazon FBA fees, eBay fees, and business profitability.',
+    color: '#8b5cf6'
+  },
+  'marketing': {
+    emoji: '📢',
+    title: 'Marketing & Metrics',
+    description: 'Track CAC, CLV, email ROI, retention rates, and marketing efficiency metrics.',
+    color: '#ec4899'
+  },
+  'salary': {
+    emoji: '💼',
+    title: 'Salary & HR',
+    description: 'Calculate hourly rates, payroll taxes, turnover costs, and employee metrics.',
+    color: '#06b6d4'
+  }
+};
 ---
 
 <Layout title={title} description={description}>
@@ -17,11 +66,31 @@ const description = "Free online financial tools for ROI, Loans, Taxes, and Busi
             --border: #e2e8f0;
         }
 
+        /* HERO SECTION */
         .hero {
             background: linear-gradient(135deg, #1e3a8a 0%, #0f172a 100%);
             padding: 100px 20px;
             text-align: center;
             color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 20% 50%, rgba(212, 163, 115, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 80%, rgba(212, 163, 115, 0.05) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
         }
 
         .hero h1 {
@@ -29,6 +98,15 @@ const description = "Free online financial tools for ROI, Loans, Taxes, and Busi
             font-weight: 800;
             margin-bottom: 20px;
             font-family: 'Crimson Pro', serif;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            opacity: 0.95;
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .search-container {
@@ -45,7 +123,7 @@ const description = "Free online financial tools for ROI, Loans, Taxes, and Busi
             box-shadow: 0 20px 40px rgba(0,0,0,0.2);
             background: white;
             color: var(--text-dark);
-            transition: box-shadow 0.3s ease;
+            transition: box-shadow 0.3s;
         }
 
         #searchInput:focus {
@@ -53,142 +131,339 @@ const description = "Free online financial tools for ROI, Loans, Taxes, and Busi
             box-shadow: 0 20px 50px rgba(0,0,0,0.3);
         }
 
-        .container {
-            max-width: 1200px;
-            margin: -50px auto 0;
+        .main-container {
+            max-width: 1300px;
+            margin: 0 auto;
             padding: 0 20px;
         }
 
-        /* Content Section Styles */
-        .content-section {
+        /* CONTENT SECTION */
+        .intro-section {
             background: white;
-            padding: 60px 40px;
+            padding: 60px 50px;
             border-radius: 24px;
+            margin: -50px auto 80px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.05);
             border: 1px solid var(--border);
-            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
-            margin-bottom: 100px;
-            max-width: 900px;
-            margin-left: auto;
-            margin-right: auto;
+            max-width: 1000px;
         }
 
-        .content-section h2 {
+        .intro-section h2 {
             color: var(--primary);
             font-size: 2.2rem;
             font-family: 'Crimson Pro', serif;
-            margin-bottom: 30px;
-            font-weight: 700;
-            line-height: 1.2;
+            margin-bottom: 25px;
+            font-weight: 800;
         }
 
-        .content-section p {
+        .intro-section p {
             color: var(--text-dark);
             font-size: 1.05rem;
             line-height: 1.85;
             margin-bottom: 20px;
-            letter-spacing: 0.3px;
         }
 
-        .content-section p:last-of-type {
+        .intro-section p:last-child {
             margin-bottom: 0;
         }
 
         .features-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 30px;
-            margin-top: 45px;
-            padding-top: 40px;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            margin-top: 40px;
+            padding-top: 30px;
             border-top: 2px solid var(--border);
         }
 
         .feature-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 15px;
+            text-align: center;
         }
 
         .feature-icon {
-            color: var(--secondary);
-            font-weight: 700;
-            font-size: 1.5rem;
-            flex-shrink: 0;
-            margin-top: 2px;
+            font-size: 2rem;
+            margin-bottom: 10px;
         }
 
         .feature-text {
             color: var(--text-dark);
-            font-size: 0.96rem;
-            font-weight: 500;
+            font-weight: 600;
+            font-size: 0.95rem;
             line-height: 1.5;
         }
 
-        .calculators-section {
-            margin-bottom: 60px;
+        /* CATEGORIES SECTION */
+        .categories-section {
+            margin-bottom: 100px;
         }
 
         .section-title {
             text-align: center;
             color: var(--primary);
-            font-size: 1.8rem;
+            font-size: 2.2rem;
             font-family: 'Crimson Pro', serif;
-            font-weight: 700;
+            font-weight: 800;
             margin-bottom: 50px;
-            letter-spacing: 0.5px;
         }
 
-        .calc-grid {
+        .categories-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin-bottom: 80px;
+        }
+
+        .category-card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            border: 2px solid var(--border);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .category-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--category-color, var(--secondary));
+        }
+
+        .category-card:hover {
+            transform: translateY(-12px);
+            border-color: var(--category-color, var(--secondary));
+            box-shadow: 0 25px 50px rgba(30, 58, 138, 0.15);
+        }
+
+        .category-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .category-emoji {
+            font-size: 2.5rem;
+        }
+
+        .category-title {
+            color: var(--primary);
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin: 0;
+            font-family: 'Crimson Pro', serif;
+        }
+
+        .category-description {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            line-height: 1.7;
+            margin-bottom: 25px;
+        }
+
+        .category-count {
+            display: inline-block;
+            background: #f1f5f9;
+            color: var(--primary);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .category-tools {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+
+        .tool-name {
+            background: #f8fafc;
+            padding: 10px 12px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            color: var(--text-dark);
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.2s;
+            border: 1px solid var(--border);
+            display: block;
+            text-align: center;
+        }
+
+        .tool-name:hover {
+            background: var(--category-color, var(--secondary));
+            color: white;
+            border-color: var(--category-color, var(--secondary));
+        }
+
+        .view-all-link {
+            display: block;
+            text-align: center;
+            color: var(--primary);
+            font-weight: 700;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border);
+            transition: color 0.2s;
+            cursor: pointer;
+        }
+
+        .view-all-link:hover {
+            color: var(--secondary);
+        }
+
+        /* ALL CALCULATORS VIEW */
+        .all-calculators-section {
+            display: none;
+        }
+
+        .all-calculators-section.active {
+            display: block;
+        }
+
+        .back-button {
+            background: white;
+            padding: 12px 24px;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            color: var(--primary);
+            font-weight: 700;
+            text-decoration: none;
+            display: inline-block;
+            margin-bottom: 30px;
+            transition: all 0.2s;
+            cursor: pointer;
+        }
+
+        .back-button:hover {
+            background: #f8fafc;
+            border-color: var(--secondary);
+            color: var(--secondary);
+        }
+
+        .all-calc-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
             gap: 25px;
+            margin-bottom: 80px;
         }
 
         .calc-card {
             background: white;
-            padding: 35px;
-            border-radius: 24px;
+            padding: 30px;
+            border-radius: 16px;
             border: 1px solid var(--border);
             text-decoration: none;
             display: flex;
             flex-direction: column;
-            transition: all 0.4s ease;
-            min-height: 200px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.02);
         }
 
         .calc-card:hover {
-            transform: translateY(-12px);
+            transform: translateY(-8px);
             border-color: var(--secondary);
-            box-shadow: 0 25px 50px rgba(30, 58, 138, 0.1);
+            box-shadow: 0 15px 35px rgba(30, 58, 138, 0.1);
         }
 
         .calc-card h3 {
             color: var(--primary);
-            margin: 0 0 15px 0;
-            font-size: 1.4rem;
+            margin: 0 0 12px 0;
+            font-size: 1.2rem;
             font-family: 'Crimson Pro', serif;
             font-weight: 600;
         }
 
         .calc-card p {
             color: var(--text-light);
-            font-size: 1rem;
-            line-height: 1.6;
+            font-size: 0.9rem;
+            line-height: 1.5;
             margin: 0;
+            flex: 1;
         }
 
-        .badge {
+        .calc-badge {
             display: inline-block;
-            margin-top: auto;
+            margin-top: 12px;
             font-size: 0.75rem;
             font-weight: 700;
             color: var(--primary);
             background: #e0e7ff;
-            padding: 6px 14px;
-            border-radius: 6px;
+            padding: 5px 10px;
+            border-radius: 5px;
             width: fit-content;
+        }
+
+        /* CTA SECTION */
+        .cta-section {
+            background: linear-gradient(135deg, var(--primary) 0%, #0f172a 100%);
+            color: white;
+            padding: 60px 40px;
+            text-align: center;
+            border-radius: 20px;
+            margin-top: 80px;
+        }
+
+        .cta-section h2 {
+            font-family: 'Crimson Pro', serif;
+            font-size: 2.2rem;
+            margin-bottom: 15px;
+        }
+
+        .cta-section p {
+            font-size: 1.1rem;
+            opacity: 0.95;
+            margin-bottom: 30px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 14px 35px;
+            background: var(--secondary);
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 800;
+            border-radius: 12px;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
+            letter-spacing: 1px;
+            transition: all 0.3s;
+            font-size: 0.95rem;
+            cursor: pointer;
+            border: none;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(212, 163, 115, 0.4);
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 1024px) {
+            .intro-section {
+                padding: 40px 30px;
+            }
+
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .categories-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .category-tools {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .all-calc-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
         }
 
         @media (max-width: 768px) {
@@ -196,116 +471,236 @@ const description = "Free online financial tools for ROI, Loans, Taxes, and Busi
                 font-size: 2.2rem;
             }
 
-            .content-section {
-                padding: 40px 25px;
-                margin-bottom: 80px;
+            .intro-section {
+                padding: 30px 20px;
+                margin: -40px auto 60px;
             }
 
-            .content-section h2 {
-                font-size: 1.7rem;
-                margin-bottom: 25px;
+            .section-title {
+                font-size: 1.8rem;
+                margin-bottom: 30px;
             }
 
-            .content-section p {
-                font-size: 1rem;
+            .category-card {
+                padding: 25px;
+            }
+
+            .category-title {
+                font-size: 1.2rem;
             }
 
             .features-grid {
                 grid-template-columns: 1fr;
-                gap: 25px;
-                margin-top: 35px;
-                padding-top: 35px;
             }
 
-            .feature-item {
-                gap: 12px;
+            .category-tools {
+                grid-template-columns: repeat(2, 1fr);
             }
 
-            .section-title {
-                font-size: 1.4rem;
-                margin-bottom: 35px;
+            .cta-section {
+                padding: 40px 20px;
             }
 
-            .calc-grid {
+            .cta-section h2 {
+                font-size: 1.6rem;
+            }
+
+            .all-calc-grid {
                 grid-template-columns: 1fr;
             }
         }
     </style>
 
     <section class="hero">
-        <div class="search-container">
+        <div class="hero-content">
             <h1>Precision Financial Tools</h1>
-            <input 
-                type="text" 
-                id="searchInput" 
-                placeholder="Search tools (e.g. ROI, Loan...)" 
-                onkeyup="filterCalculators()" 
-            />
+            <p>Professional-grade calculators for accurate financial planning, completely free</p>
+            <div class="search-container">
+                <input 
+                    type="text" 
+                    id="searchInput" 
+                    placeholder="Search tools (e.g. ROI, Loan, Tax...)" 
+                    onkeyup="filterCalculators()" 
+                />
+            </div>
         </div>
     </section>
 
-    <main class="container">
-        <!-- SEO Content Section -->
-        <section class="content-section">
+    <div class="main-container">
+        {/* INTRO CONTENT SECTION */}
+        <div class="intro-section" id="introSection">
             <h2>Smart Financial Calculations Made Simple</h2>
             <p>Welcome to QuickFinCalc Pro, your trusted partner for accurate and fast financial calculations. Whether you're managing business finances, planning investments, or calculating loan payments, our comprehensive suite of online financial tools provides instant, reliable results without the complexity.</p>
             
             <p>Our platform offers professional-grade calculators designed for entrepreneurs, finance professionals, and individuals who demand precision. From ROI analysis and loan amortization to tax calculations and business margin assessment, each tool is built with accuracy and user experience in mind. No downloads required, no complicated formulas to memorize—just intuitive, straightforward calculations at your fingertips.</p>
             
-            <p>QuickFinCalc Pro eliminates the guesswork from financial decision-making. Our tools help you understand the true cost of loans, maximize investment returns, optimize business pricing, and plan taxes effectively. With real-time calculations and clear breakdowns, you can make informed financial decisions with confidence. Start exploring our collection of free financial calculators today and take control of your financial future.</p>
+            <p>QuickFinCalc Pro eliminates the guesswork from financial decision-making. Our tools help you understand the true cost of loans, maximize investment returns, optimize business pricing, and plan taxes effectively. With real-time calculations and clear breakdowns, you can make informed financial decisions with confidence.</p>
 
             <div class="features-grid">
                 <div class="feature-item">
-                    <span class="feature-icon">✓</span>
-                    <span class="feature-text">100% Free & No Registration</span>
+                    <div class="feature-icon">✓</div>
+                    <div class="feature-text">100% Free & No Registration</div>
                 </div>
                 <div class="feature-item">
-                    <span class="feature-icon">✓</span>
-                    <span class="feature-text">Instant Results</span>
+                    <div class="feature-icon">⚡</div>
+                    <div class="feature-text">Instant Results</div>
                 </div>
                 <div class="feature-item">
-                    <span class="feature-icon">✓</span>
-                    <span class="feature-text">Mobile Friendly</span>
+                    <div class="feature-icon">📱</div>
+                    <div class="feature-text">Mobile Friendly</div>
                 </div>
                 <div class="feature-item">
-                    <span class="feature-icon">✓</span>
-                    <span class="feature-text">Accurate Calculations</span>
+                    <div class="feature-icon">🎯</div>
+                    <div class="feature-text">Accurate Calculations</div>
                 </div>
                 <div class="feature-item">
-                    <span class="feature-icon">✓</span>
-                    <span class="feature-text">Professional Tools</span>
+                    <div class="feature-icon">⭐</div>
+                    <div class="feature-text">Professional Tools</div>
                 </div>
                 <div class="feature-item">
-                    <span class="feature-icon">✓</span>
-                    <span class="feature-text">Secure & Private</span>
+                    <div class="feature-icon">🔒</div>
+                    <div class="feature-text">Secure & Private</div>
                 </div>
             </div>
-        </section>
+        </div>
 
-        <!-- Calculators Section -->
-        <section class="calculators-section">
-            <h2 class="section-title">Our Financial Calculators</h2>
+        {/* CATEGORIES SECTION */}
+        <div class="categories-section" id="categoriesSection">
+            <h2 class="section-title">Browse by Category</h2>
+
+            <div class="categories-grid">
+                {Object.entries(calcsByType).map(([type, calcs]) => {
+                    const info = categoryInfo[type] || { title: type, emoji: '📊', description: 'Financial calculators', color: '#d4a373' };
+                    return (
+                        <div 
+                            class="category-card" 
+                            style={`--category-color: ${info.color}`}
+                            data-category={type}
+                        >
+                            <div class="category-header">
+                                <span class="category-emoji">{info.emoji}</span>
+                                <h3 class="category-title">{info.title}</h3>
+                            </div>
+                            
+                            <p class="category-description">{info.description}</p>
+                            
+                            <div class="category-count">{calcs.length} Tools</div>
+
+                            <div class="category-tools">
+                                {calcs.slice(0, 4).map(calc => (
+                                    <a 
+                                        href={`/calculator/${calc.slug}`} 
+                                        class="tool-name"
+                                        title={calc.name}
+                                    >
+                                        {calc.name.split(' ').slice(0, 2).join(' ')}
+                                    </a>
+                                ))}
+                                {calcs.length > 4 && (
+                                    <div style="grid-column: 1 / -1; text-align: center; color: var(--text-light); font-size: 0.85rem; padding-top: 8px;">
+                                        +{calcs.length - 4} more
+                                    </div>
+                                )}
+                            </div>
+
+                            <div class="view-all-link" onclick={`showAllByCategory('${type}')`}>
+                                View All {info.title} →
+                            </div>
+                        </div>
+                    );
+                })}
+            </div>
+        </div>
+
+        {/* ALL CALCULATORS SECTION */}
+        <div class="all-calculators-section" id="allCalcsSection">
+            <button class="back-button" onclick="showCategories()">← Back to Categories</button>
             
-            <div class="calc-grid" id="calcGrid">
-                {calculators.map((calc) => (
-                    <a href={`/calculator/${calc.slug}`} class="calc-card" data-name={calc.name.toLowerCase()}>
+            <h2 class="section-title" id="categoryTitle">Calculators</h2>
+
+            <div class="all-calc-grid" id="allCalcsGrid">
+                {calculators.map(calc => (
+                    <a href={`/calculator/${calc.slug}`} class="calc-card" data-type={calc.type}>
                         <h3>{calc.name}</h3>
                         <p>{calc.description}</p>
-                        <span class="badge">Tool</span>
+                        <span class="calc-badge">Tool</span>
                     </a>
                 ))}
             </div>
+        </div>
+
+        {/* CTA SECTION */}
+        <section class="cta-section" id="ctaSection">
+            <h2>Start Calculating Today</h2>
+            <p>Explore our complete suite of professional financial calculators</p>
+            <button class="cta-button" onclick="document.getElementById('searchInput').focus()">Start Now</button>
         </section>
-    </main>
+    </div>
 
     <script is:inline>
         function filterCalculators() {
-            const filter = document.getElementById('searchInput').value.toLowerCase();
-            const cards = document.getElementsByClassName('calc-card');
-            for (let i = 0; i < cards.length; i++) {
-                const name = cards[i].getAttribute('data-name');
-                cards[i].style.display = name.includes(filter) ? "flex" : "none";
-            }
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            const categoryCards = document.querySelectorAll('.category-card');
+
+            categoryCards.forEach(card => {
+                const title = card.querySelector('.category-title').textContent.toLowerCase();
+                const description = card.querySelector('.category-description').textContent.toLowerCase();
+                const tools = card.querySelectorAll('.tool-name');
+                
+                let hasMatch = false;
+                
+                if (title.includes(searchTerm) || description.includes(searchTerm)) {
+                    hasMatch = true;
+                }
+                
+                tools.forEach(tool => {
+                    if (tool.textContent.toLowerCase().includes(searchTerm)) {
+                        hasMatch = true;
+                    }
+                });
+
+                card.style.display = searchTerm === '' || hasMatch ? 'block' : 'none';
+            });
+        }
+
+        function showAllByCategory(categoryType) {
+            const categoryInfo = {
+                'loan': '💰 Loans & EMI',
+                'investment': '📈 Investments & Returns',
+                'tax': '📊 Taxes & Compliance',
+                'ecommerce': '🛍️ E-commerce & Margins',
+                'marketing': '📢 Marketing & Metrics',
+                'salary': '💼 Salary & HR'
+            };
+
+            // Hide categories, show all calculators
+            document.getElementById('categoriesSection').style.display = 'none';
+            document.getElementById('introSection').style.display = 'none';
+            document.getElementById('allCalcsSection').classList.add('active');
+            document.getElementById('ctaSection').style.display = 'none';
+
+            // Update title
+            document.getElementById('categoryTitle').textContent = categoryInfo[categoryType] || 'Calculators';
+
+            // Filter and show only calculators of this type
+            const allCalcCards = document.querySelectorAll('#allCalcsGrid .calc-card');
+            allCalcCards.forEach(card => {
+                const calcType = card.getAttribute('data-type');
+                card.style.display = calcType === categoryType ? 'block' : 'none';
+            });
+
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function showCategories() {
+            // Show categories, hide all calculators
+            document.getElementById('categoriesSection').style.display = 'block';
+            document.getElementById('introSection').style.display = 'block';
+            document.getElementById('allCalcsSection').classList.remove('active');
+            document.getElementById('ctaSection').style.display = 'block';
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
     </script>
 </Layout>
