@@ -3,7 +3,7 @@
 const { 
     title, 
     description = "Quick Financial Calculator offers 50+ professional tools for tax, loans, business analysis, and investment planning. Precise, fast, and free.",
-    keywords = "financial calculator, loan emi, roi calculator, profit margin, internal audit tools", 
+    keywords = "financial calculator for small business, Personal loan emi, roi calculator for small business, profit margin calculator for small business", 
     url = Astro.url.pathname 
 } = Astro.props;
 
@@ -25,6 +25,15 @@ const canonicalURL = new URL(url, siteUrl);
     <meta name="theme-color" content="#1e3a8a">
 
     <meta name="google-site-verification" content="Tqp2-c0brhmsvO3x6Sb8y7puO8N78gikKDnE-qoENH8" />
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5SEFVH6V0S"></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-5SEFVH6V0S');
+    </script>
 
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <link rel="apple-touch-icon" sizes="180x180" href="/favicon.ico">
@@ -153,7 +162,6 @@ const canonicalURL = new URL(url, siteUrl);
             font-weight: 600;
         }
 
-        /* Menu Styles */
         .nav-links {
             display: flex;
             gap: 1.8rem;
@@ -174,7 +182,6 @@ const canonicalURL = new URL(url, siteUrl);
             opacity: 1;
         }
 
-        /* Mobile Menu Toggle Button */
         .menu-btn {
             display: none;
             background: none;
@@ -252,12 +259,9 @@ const canonicalURL = new URL(url, siteUrl);
             line-height: 1.5;
         }
 
-        /* Mobile Viewport Updates */
         @media (max-width: 768px) {
             header { padding: 0.6rem 1rem; }
-            
             .menu-btn { display: block; }
-
             .nav-links {
                 position: fixed;
                 top: 0;
@@ -272,20 +276,11 @@ const canonicalURL = new URL(url, siteUrl);
                 box-shadow: -5px 0 15px rgba(0,0,0,0.3);
                 z-index: 1000;
             }
-
-            .nav-links.active {
-                right: 0;
-            }
-
-            .nav-links a {
-                font-size: 1.2rem;
-            }
-
-            /* Hamburger to X animation */
+            .nav-links.active { right: 0; }
+            .nav-links a { font-size: 1.2rem; }
             .menu-btn.active span:nth-child(1) { transform: rotate(-45deg) translate(-5px, 6px); }
             .menu-btn.active span:nth-child(2) { opacity: 0; }
             .menu-btn.active span:nth-child(3) { transform: rotate(45deg) translate(-5px, -6px); }
-
             .brand-main { font-size: 1.2rem; }
             .brand-sub { font-size: 0.55rem; }
         }
@@ -352,7 +347,6 @@ const canonicalURL = new URL(url, siteUrl);
             navMenu.classList.toggle('active');
         });
 
-        // Close menu when clicking a link
         document.querySelectorAll('.nav-links a').forEach(link => {
             link.addEventListener('click', () => {
                 menuBtn.classList.remove('active');
