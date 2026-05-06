@@ -6,7 +6,7 @@ category: "Investing"
 emoji: "📈"
 readTime: "14 min read"
 keywords: "ROI calculator, return on investment calculator, how to calculate ROI, marketing ROI calculator, real estate ROI, stock ROI calculator, annualized ROI, ROI formula, simple roi calculator, investment roi calculator"
-author: "Cost Control Specialist & Internal Auditor"
+author: "Md. Merajul Islam - Cost Control Specialist & Internal Auditor"
 ---
 
 # ROI Calculator: Calculate Your Return on Investment

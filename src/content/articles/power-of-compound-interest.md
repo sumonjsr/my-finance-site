@@ -6,7 +6,7 @@ category: "Investment"
 emoji: "🪄"
 readTime: "14 min read"
 keywords: "compound interest calculator, how does compound interest work, compound interest formula, investment growth calculator, retirement savings calculator, rule of 72, compound interest examples, daily compound interest, investment compounding"
-author: "Cost Control Specialist & Internal Auditor"
+author: "Md. Merajul Islam - Cost Control Specialist & Internal Auditor"
 ---
 
 # Compound Interest Calculator: Watch Your Money Multiply

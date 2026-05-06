@@ -6,7 +6,7 @@ category: "Investing"
 emoji: "📈"
 readTime: "16 min read"
 keywords: "SIP calculator, step up SIP calculator, SIP with inflation, systematic investment plan calculator, SIP return calculator, SIP calculator with step up, mutual fund SIP calculator, SIP vs lump sum, SIP formula, monthly SIP calculator"
-author: "Certified Financial Planner & Wealth Accumulation Strategist"
+author: "Md. Merajul Islam - Cost Control Specialist & Internal Auditor"
 ---
 
 # SIP Calculator: Calculate Your Systematic Investment Plan Returns

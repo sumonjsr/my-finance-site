@@ -6,7 +6,7 @@ category: "Investing"
 emoji: "📈"
 readTime: "13 min read"
 keywords: "EPS calculator, stock profit calculator, earnings per share calculator, how to calculate EPS, diluted EPS calculator, stock evaluation tools, investment calculator, how to evaluate stocks, stock analysis calculator, profit margin calculator"
-author: "Cost Control Specialist & Internal Auditor"
+author: "Md. Merajul Islam - Cost Control Specialist & Internal Auditor"
 ---
 
 # How to Evaluate Stocks Like a Pro: EPS Calculator & Stock Profit Calculator Guide

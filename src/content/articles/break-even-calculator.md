@@ -6,7 +6,7 @@ category: "Business"
 emoji: "📊"
 readTime: "13 min read"
 keywords: "break even calculator, break even analysis, break even point calculator, how to calculate break even point, break even formula, fixed costs vs variable costs, contribution margin calculator, business profitability calculator"
-author: "Cost Control Specialist & Internal Auditor"
+author: "Md. Merajul Islam - Cost Control Specialist & Internal Auditor"
 ---
 
 # Break-Even Calculator: Find Your Profit Point in 60 Seconds

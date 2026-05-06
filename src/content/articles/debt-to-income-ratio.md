@@ -6,7 +6,7 @@ category: "Loans"
 emoji: "⚖️"
 readTime: "12 min read"
 keywords: "dti ratio calculator, debt to income ratio calculator, how to calculate debt to income ratio, dti calculator mortgage, front end dti, back end dti, improve debt to income ratio, mortgage qualification calculator"
-author: "Cost Control Specialist & Internal Auditor"
+author: "Md. Merajul Islam - Cost Control Specialist & Internal Auditor"
 ---
 
 # DTI Ratio Calculator: Check Your Debt-to-Income & Qualify for Loans

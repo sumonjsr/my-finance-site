@@ -6,7 +6,7 @@ category: "E-commerce"
 emoji: "📦"
 readTime: "13 min read"
 keywords: "ecommerce profit margin calculator, shopify profit calculator, amazon fba margin calculator, margin vs markup, online store profitability, gross profit margin, net profit margin, ecommerce break even calculator, how to calculate profit margin"
-author: "Cost Control Specialist & Internal Auditor"
+author: "Md. Merajul Islam - Cost Control Specialist & Internal Auditor"
 ---
 
 # E-commerce Profit Margin Calculator: Shopify & Amazon FBA Guide

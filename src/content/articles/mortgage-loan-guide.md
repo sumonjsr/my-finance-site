@@ -6,7 +6,7 @@ category: "Loans"
 emoji: "🏠"
 readTime: "15 min read"
 keywords: "mortgage calculator, home loan EMI calculator, loan amortization schedule, mortgage payment calculator, debt-to-income ratio, how to calculate mortgage, reduce mortgage interest, home loan calculator, mortgage prepayment calculator"
-author: "Cost Control Specialist & Internal Auditor"
+author: "Md. Merajul Islam - Cost Control Specialist & Internal Auditor"
 ---
 
 # Mortgage Calculator: Calculate Your Home Loan Payments & Save Thousands
