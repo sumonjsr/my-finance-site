@@ -11,7 +11,7 @@ author: "Certified Financial Planner & Wealth Accumulation Strategist"
 
 # SIP Calculator: Calculate Your Systematic Investment Plan Returns
 
-**Are you investing ₹10,000 per month in an SIP but have no idea what it will be worth in 20 years?** Worse — are you calculating your corpus without accounting for inflation, making your retirement target dangerously underfunded?
+**Are you investing $10,000 per month in an SIP but have no idea what it will be worth in 20 years?** Worse — are you calculating your corpus without accounting for inflation, making your retirement target dangerously underfunded?
 
 In 2026, over 68% of SIP investors miscalculate their future wealth because they ignore two critical variables: **annual step-up** and **inflation erosion**. The result? They reach retirement with a corpus that looks large on paper but can't sustain their lifestyle for even 10 years.
 
