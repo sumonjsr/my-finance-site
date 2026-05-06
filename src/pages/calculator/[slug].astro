@@ -15,17 +15,13 @@ if (!calc) {
   return Astro.redirect('/404');
 }
 
-// SEO ডেটা সেটআপ
 const seoTitle = calc.seo?.title || `${calc.name} | QuickFinCalc`;
 const seoDescription = calc.seo?.meta_description || calc.description;
 
-// ✨ RELATED CALCULATORS - Same type এর অন্য calculators খুঁজে বের করা
 const relatedCalcs = calculators
   .filter(c => c.type === calc.type && c.slug !== calc.slug)
   .slice(0, 3);
 
-// ✨ SCHEMA MARKUP GENERATION
-// 1. FAQPage Schema
 const faqPageSchema = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
@@ -39,7 +35,6 @@ const faqPageSchema = {
   })) || []
 };
 
-// 2. HowTo Schema
 const howToSteps = calc.how_to_use.split('\n').filter(line => line.trim()).map((step, index) => ({
   "@type": "HowToStep",
   "position": index + 1,
@@ -56,7 +51,6 @@ const howToSchema = {
   "step": howToSteps
 };
 
-// 3. WebApplication Schema
 const webAppSchema = {
   "@context": "https://schema.org",
   "@type": "WebApplication",
@@ -76,7 +70,6 @@ const webAppSchema = {
   }
 };
 
-// 4. BreadcrumbList Schema
 const breadcrumbSchema = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
@@ -104,22 +97,14 @@ const breadcrumbSchema = {
 ---
 
 <Layout title={seoTitle} description={seoDescription}>
-  {/* ✨ ALL SCHEMA MARKUPS */}
-  {/* 1. SoftwareApplication Schema (from JSON) */}
   <script type="application/ld+json" set:html={JSON.stringify(calc.seo.schema)} />
   
-  {/* 2. FAQPage Schema */}
   {calc.seo.faqs && calc.seo.faqs.length > 0 && (
     <script type="application/ld+json" set:html={JSON.stringify(faqPageSchema)} />
   )}
   
-  {/* 3. HowTo Schema */}
   <script type="application/ld+json" set:html={JSON.stringify(howToSchema)} />
-  
-  {/* 4. WebApplication Schema */}
   <script type="application/ld+json" set:html={JSON.stringify(webAppSchema)} />
-  
-  {/* 5. BreadcrumbList Schema */}
   <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
   
   <div class="container">
@@ -127,7 +112,6 @@ const breadcrumbSchema = {
       <a href="/">Home</a> / <a href="/">Calculators</a> / {calc.name}
     </nav>
 
-    {/* Main Content with Sidebar Layout */}
     <div class="main-wrapper">
       {/* LEFT SIDE - Calculator */}
       <div class="calc-main">
@@ -150,6 +134,23 @@ const breadcrumbSchema = {
               <>
                 <label for="v3">{calc.label3}</label>
                 <input type="number" id="v3" class="calc-input" placeholder="0.00" step="any" />
+              </>
+            )}
+
+            {/* ✨ SIP-only extra inputs: Step-Up & Inflation */}
+            {calc.formula === 'sip' && (
+              <>
+                <label for="v4">
+                  Annual Step-Up (%)
+                  <span style="font-weight:400; color:#94a3b8; margin-left:6px;">(0 = no step-up)</span>
+                </label>
+                <input type="number" id="v4" class="calc-input" placeholder="e.g. 10" step="any" min="0" max="100" />
+
+                <label for="v5">
+                  Inflation Rate (% p.a.)
+                  <span style="font-weight:400; color:#94a3b8; margin-left:6px;">(0 = ignore inflation)</span>
+                </label>
+                <input type="number" id="v5" class="calc-input" placeholder="e.g. 6" step="any" min="0" max="30" />
               </>
             )}
 
@@ -203,7 +204,7 @@ const breadcrumbSchema = {
         </div>
       </div>
 
-      {/* RIGHT SIDE - Related Calculators Sidebar */}
+      {/* RIGHT SIDE - Sidebar */}
       {relatedCalcs.length > 0 && (
         <aside class="sidebar">
           <div class="sidebar-box">
@@ -248,7 +249,6 @@ const breadcrumbSchema = {
       text-decoration: underline; 
     }
 
-    /* Main Wrapper - Grid Layout */
     .main-wrapper {
       display: grid;
       grid-template-columns: 1fr 320px;
@@ -310,6 +310,7 @@ const breadcrumbSchema = {
       font-size: 1.1rem; 
       background: #f8fafc; 
       transition: border-color 0.2s;
+      box-sizing: border-box;
     }
     
     .calc-input:focus {
@@ -355,14 +356,8 @@ const breadcrumbSchema = {
     }
 
     @keyframes slideIn {
-      from {
-        opacity: 0;
-        transform: translateY(-10px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+      from { opacity: 0; transform: translateY(-10px); }
+      to   { opacity: 1; transform: translateY(0); }
     }
     
     .rich-content { 
@@ -412,7 +407,6 @@ const breadcrumbSchema = {
       color: #475569; 
     }
 
-    /* ✨ SIDEBAR STYLES */
     .sidebar {
       position: sticky;
       top: 100px;
@@ -469,19 +463,17 @@ const breadcrumbSchema = {
       left: -100%;
       width: 100%;
       height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(212, 163, 115, 0.15), transparent);
+      background: linear-gradient(90deg, transparent, rgba(212,163,115,0.15), transparent);
       transition: left 0.5s ease;
     }
 
     .sidebar-card:hover {
       border-color: #d4a373;
-      box-shadow: 0 12px 30px rgba(30, 58, 138, 0.15);
+      box-shadow: 0 12px 30px rgba(30,58,138,0.15);
       transform: translateX(5px);
     }
 
-    .sidebar-card:hover::before {
-      left: 100%;
-    }
+    .sidebar-card:hover::before { left: 100%; }
 
     .card-name {
       color: #1e3a8a;
@@ -512,25 +504,12 @@ const breadcrumbSchema = {
       z-index: 1;
     }
 
-    .sidebar-card:hover .card-arrow {
-      transform: translateX(3px);
-    }
+    .sidebar-card:hover .card-arrow { transform: translateX(3px); }
 
-    /* Tablet - 2 Column Layout */
     @media (max-width: 1024px) {
-      .main-wrapper {
-        grid-template-columns: 1fr;
-      }
-
-      .sidebar {
-        position: static;
-        margin-top: 20px;
-      }
-
-      .sidebar-box {
-        padding: 25px;
-      }
-
+      .main-wrapper { grid-template-columns: 1fr; }
+      .sidebar { position: static; margin-top: 20px; }
+      .sidebar-box { padding: 25px; }
       .sidebar-cards {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
@@ -538,39 +517,15 @@ const breadcrumbSchema = {
       }
     }
 
-    /* Mobile */
     @media (max-width: 768px) {
-      .container { 
-        padding: 20px 15px; 
-      }
-      
-      .calc-box { 
-        padding: 30px 20px; 
-      }
-      
-      h1 { 
-        font-size: 1.8rem; 
-      }
-      
-      .rich-content { 
-        padding: 30px 20px; 
-      }
-
-      .main-wrapper {
-        grid-template-columns: 1fr;
-      }
-
-      .sidebar-cards {
-        grid-template-columns: 1fr;
-      }
-
-      .sidebar-box {
-        padding: 20px;
-      }
-
-      .sidebar-title {
-        font-size: 1.1rem;
-      }
+      .container { padding: 20px 15px; }
+      .calc-box { padding: 30px 20px; }
+      h1 { font-size: 1.8rem; }
+      .rich-content { padding: 30px 20px; }
+      .main-wrapper { grid-template-columns: 1fr; }
+      .sidebar-cards { grid-template-columns: 1fr; }
+      .sidebar-box { padding: 20px; }
+      .sidebar-title { font-size: 1.1rem; }
     }
   </style>
 
@@ -578,12 +533,11 @@ const breadcrumbSchema = {
     import Chart from 'chart.js/auto';
 
     let myChart = null;
+
     function updateChart(labels, data) {
       const ctx = document.getElementById('resultChart');
       document.getElementById('chartWrapper').style.display = 'block';
-
       if (myChart) { myChart.destroy(); }
-
       myChart = new Chart(ctx, {
         type: 'doughnut',
         data: {
@@ -604,137 +558,301 @@ const breadcrumbSchema = {
       });
     }
 
-    const btn = document.getElementById('calcBtn');
+    const btn    = document.getElementById('calcBtn');
     const resDiv = document.getElementById('result');
-    const fmt = (num) => new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(num);
-    const pct = (num) => isFinite(num) ? num.toFixed(2) + '%' : '0.00%';
+    const fmt    = (num) => new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(num);
+    const pct    = (num) => isFinite(num) ? num.toFixed(2) + '%' : '0.00%';
+    const fmtShort = (v) => {
+      if (v >= 1_000_000) return '$' + (v / 1_000_000).toFixed(2) + 'M';
+      if (v >= 1_000)     return '$' + (v / 1_000).toFixed(1) + 'K';
+      return fmt(v);
+    };
 
     btn.addEventListener('click', () => {
       const v1 = parseFloat(document.getElementById('v1')?.value || 0);
       const v2 = parseFloat(document.getElementById('v2')?.value || 0);
       const v3 = parseFloat(document.getElementById('v3')?.value || 0);
-      
-      const formula = window.currentFormula;
-      const calcName = window.currentName;
-      
-      let out = "";
+
+      const formula  = window.currentFormula;
+
+      let out     = '';
       let cLabels = [];
-      let cData = [];
+      let cData   = [];
 
       switch (formula) {
-        case 'loan':
-          const r = (v2 / 12) / 100;
-          const emi = r > 0 ? (v1 * r * Math.pow(1 + r, v3)) / (Math.pow(1 + r, v3) - 1) : v1 / v3;
+
+        // ─── SIP with Step-Up & Inflation ───────────────────────────────────
+        case 'sip': {
+          const v4 = parseFloat(document.getElementById('v4')?.value || 0);
+          const v5 = parseFloat(document.getElementById('v5')?.value || 0);
+
+          if (!v1 || !v2 || !v3) {
+            resDiv.innerHTML = '⚠️ Please fill in Monthly SIP, Return Rate, and Duration.';
+            resDiv.style.display = 'block';
+            break;
+          }
+
+          const months      = Math.round(v3) * 12;
+          const monthlyRate = Math.pow(1 + v2 / 100, 1 / 12) - 1;
+          const stepupOn    = v4 > 0;
+          const inflOn      = v5 > 0;
+
+          let corpus = 0, invested = 0, currentSip = v1;
+          const yearlyCorpus   = [];
+          const yearlyInvested = [];
+          const yearlyReal     = [];
+
+          for (let m = 1; m <= months; m++) {
+            if (stepupOn && m > 1 && (m - 1) % 12 === 0) {
+              currentSip *= (1 + v4 / 100);
+            }
+            corpus    = (corpus + currentSip) * (1 + monthlyRate);
+            invested += currentSip;
+
+            if (m % 12 === 0) {
+              const yr   = m / 12;
+              const real = inflOn ? corpus / Math.pow(1 + v5 / 100, yr) : corpus;
+              yearlyCorpus.push(Math.round(corpus));
+              yearlyInvested.push(Math.round(invested));
+              yearlyReal.push(Math.round(real));
+            }
+          }
+
+          const gains      = corpus - invested;
+          const realCorpus = inflOn ? corpus / Math.pow(1 + v5 / 100, v3) : corpus;
+
+          out = `
+            Total Corpus: ${fmt(corpus)}<br/>
+            Total Invested: ${fmt(invested)}<br/>
+            Estimated Gains: ${fmt(gains)}
+            ${inflOn ? `<br/><span style="font-size:1rem;color:#92400e;font-weight:700;">💰 Real Value (today's money): ${fmt(realCorpus)}</span>` : ''}
+          `;
+
+          // Stacked bar + optional inflation line chart
+          const years      = Math.round(v3);
+          const chartLabels = Array.from({ length: years }, (_, i) => `Yr ${i + 1}`);
+          const chartWrapper = document.getElementById('chartWrapper');
+          chartWrapper.style.display = 'block';
+          if (myChart) { myChart.destroy(); }
+
+          const datasets = [
+            {
+              label: 'Invested',
+              data: yearlyInvested,
+              backgroundColor: 'rgba(30, 58, 138, 0.60)',
+              borderWidth: 0,
+              borderRadius: 3,
+              stack: 'corpus',
+            },
+            {
+              label: 'Gains',
+              data: yearlyCorpus.map((v, i) => v - yearlyInvested[i]),
+              backgroundColor: 'rgba(29, 158, 117, 0.70)',
+              borderWidth: 0,
+              borderRadius: 3,
+              stack: 'corpus',
+            },
+          ];
+
+          if (inflOn) {
+            datasets.push({
+              label: 'Real Value (inflation-adj.)',
+              data: yearlyReal,
+              type: 'line',
+              borderColor: '#d4a373',
+              backgroundColor: 'transparent',
+              borderWidth: 2,
+              borderDash: [5, 4],
+              pointRadius: 0,
+              tension: 0.4,
+            });
+          }
+
+          myChart = new Chart(document.getElementById('resultChart'), {
+            type: 'bar',
+            data: { labels: chartLabels, datasets },
+            options: {
+              responsive: true,
+              interaction: { mode: 'index', intersect: false },
+              plugins: {
+                legend: {
+                  position: 'bottom',
+                  labels: { padding: 20, font: { size: 12, weight: 'bold' } },
+                },
+                tooltip: {
+                  callbacks: {
+                    label: (ctx) => ` ${ctx.dataset.label}: ${fmtShort(ctx.raw)}`,
+                  },
+                },
+              },
+              scales: {
+                x: {
+                  stacked: true,
+                  ticks: { maxTicksLimit: 12, font: { size: 11 } },
+                  grid: { display: false },
+                },
+                y: {
+                  stacked: true,
+                  ticks: {
+                    font: { size: 11 },
+                    callback: (v) => fmtShort(v),
+                  },
+                  grid: { color: 'rgba(0,0,0,0.05)' },
+                },
+              },
+            },
+          });
+
+          // Skip generic updateChart — already handled above
+          cLabels = [];
+          cData   = [];
+          break;
+        }
+
+        // ─── Loan / EMI ─────────────────────────────────────────────────────
+        case 'loan': {
+          const r        = (v2 / 12) / 100;
+          const emi      = r > 0 ? (v1 * r * Math.pow(1 + r, v3)) / (Math.pow(1 + r, v3) - 1) : v1 / v3;
           const totalInt = (emi * v3) - v1;
-          out = `Monthly Payment: ${fmt(emi)} <br/> Total Repayment: ${fmt(emi * v3)}`;
+          out     = `Monthly Payment: ${fmt(emi)} <br/> Total Repayment: ${fmt(emi * v3)}`;
           cLabels = ['Principal Amount', 'Total Interest'];
-          cData = [v1, totalInt];
+          cData   = [v1, totalInt];
           break;
+        }
 
-        case 'roi':
+        // ─── ROI ────────────────────────────────────────────────────────────
+        case 'roi': {
           const profitRoi = v1 - v2;
-          out = `ROI: ${pct((profitRoi / v2) * 100)} <br/> Profit: ${fmt(profitRoi)}`;
+          out     = `ROI: ${pct((profitRoi / v2) * 100)} <br/> Profit: ${fmt(profitRoi)}`;
           cLabels = ['Investment Cost', 'Net Profit'];
-          cData = [v2, profitRoi > 0 ? profitRoi : 0];
+          cData   = [v2, profitRoi > 0 ? profitRoi : 0];
           break;
+        }
 
-        case 'runway':
+        // ─── Runway ─────────────────────────────────────────────────────────
+        case 'runway': {
           const burn = v2 - v3;
           if (burn <= 0) {
-            out = `Runway: Infinite <br/> Status: Profitable`;
+            out     = `Runway: Infinite <br/> Status: Profitable`;
             cLabels = ['Cash in Hand', 'Monthly Revenue'];
-            cData = [v1, v3];
+            cData   = [v1, v3];
           } else {
-            out = `Runway: ${(v1 / burn).toFixed(1)} Months <br/> Burn: ${fmt(burn)}`;
+            out     = `Runway: ${(v1 / burn).toFixed(1)} Months <br/> Burn: ${fmt(burn)}`;
             cLabels = ['Remaining Cash', 'Monthly Net Burn'];
-            cData = [v1, burn];
+            cData   = [v1, burn];
           }
           break;
+        }
 
-        case 'margin':
+        // ─── Margin ─────────────────────────────────────────────────────────
+        case 'margin': {
           const netMargin = v1 - v2;
-          out = `Margin: ${pct((netMargin / v1) * 100)} <br/> Profit: ${fmt(netMargin)}`;
+          out     = `Margin: ${pct((netMargin / v1) * 100)} <br/> Profit: ${fmt(netMargin)}`;
           cLabels = ['Total Cost', 'Net Profit'];
-          cData = [v2, netMargin > 0 ? netMargin : 0];
+          cData   = [v2, netMargin > 0 ? netMargin : 0];
           break;
+        }
 
-        case 'stock':
+        // ─── Stock ──────────────────────────────────────────────────────────
+        case 'stock': {
           const stockProfit = (v2 - v1) * v3;
-          out = `Gain/Loss: ${fmt(stockProfit)} <br/> Return: ${pct(((v2-v1)/v1)*100)}`;
+          out     = `Gain/Loss: ${fmt(stockProfit)} <br/> Return: ${pct(((v2 - v1) / v1) * 100)}`;
           cLabels = ['Total Investment', 'Total Gain'];
-          cData = [v1 * v3, stockProfit > 0 ? stockProfit : 0];
+          cData   = [v1 * v3, stockProfit > 0 ? stockProfit : 0];
           break;
+        }
 
-        case 'tax':
+        // ─── Tax ────────────────────────────────────────────────────────────
+        case 'tax': {
           const taxAmt = v1 * (v2 / 100);
-          out = `Tax Amount: ${fmt(taxAmt)} <br/> Total: ${fmt(v1 + taxAmt)}`;
+          out     = `Tax Amount: ${fmt(taxAmt)} <br/> Total: ${fmt(v1 + taxAmt)}`;
           cLabels = ['Base Price', 'Tax Amount'];
-          cData = [v1, taxAmt];
+          cData   = [v1, taxAmt];
           break;
+        }
 
-        case 'compound':
+        // ─── Compound Interest ──────────────────────────────────────────────
+        case 'compound': {
           const compoundTotal = v1 * Math.pow(1 + (v2 / 100) / 12, 12 * v3);
-          const compInt = compoundTotal - v1;
-          out = `Future Value: ${fmt(compoundTotal)} <br/> Interest Earned: ${fmt(compInt)}`;
+          const compInt       = compoundTotal - v1;
+          out     = `Future Value: ${fmt(compoundTotal)} <br/> Interest Earned: ${fmt(compInt)}`;
           cLabels = ['Initial Deposit', 'Total Interest'];
-          cData = [v1, compInt];
+          cData   = [v1, compInt];
           break;
+        }
 
-        case 'dividend':
-          out = `Yield: ${pct((v1 / v2) * 100)} <br/> Annual Payout: ${fmt(v1 * v3)}`;
+        // ─── Dividend ───────────────────────────────────────────────────────
+        case 'dividend': {
+          out     = `Yield: ${pct((v1 / v2) * 100)} <br/> Annual Payout: ${fmt(v1 * v3)}`;
           cLabels = ['Stock Price', 'Annual Dividend'];
-          cData = [v2, v1 * v3];
+          cData   = [v2, v1 * v3];
           break;
+        }
 
-        case 'ratio':
+        // ─── Ratio (Current Ratio, etc.) ────────────────────────────────────
+        case 'ratio': {
           const ratioVal = v1 / v2;
-          out = `Ratio: ${ratioVal.toFixed(2)}`;
+          out     = `Ratio: ${ratioVal.toFixed(2)}`;
           cLabels = ['Numerator', 'Denominator'];
-          cData = [v1, v2];
+          cData   = [v1, v2];
           break;
+        }
 
-        case 'fee':
+        // ─── Fee ────────────────────────────────────────────────────────────
+        case 'fee': {
           const feeAmt = v1 * (v2 / 100) + v3;
-          out = `Fee: ${fmt(feeAmt)} <br/> Net Amount: ${fmt(v1 - feeAmt)}`;
+          out     = `Fee: ${fmt(feeAmt)} <br/> Net Amount: ${fmt(v1 - feeAmt)}`;
           cLabels = ['Fee Amount', 'Net Received'];
-          cData = [feeAmt, v1 - feeAmt];
+          cData   = [feeAmt, v1 - feeAmt];
           break;
+        }
 
-        case 'break_even':
+        // ─── Break Even ─────────────────────────────────────────────────────
+        case 'break_even': {
           const brkeven = v1 / (v3 - v2);
-          out = `Break-Even: ${brkeven.toFixed(0)} units <br/> Revenue Needed: ${fmt(brkeven * v3)}`;
+          out     = `Break-Even: ${brkeven.toFixed(0)} units <br/> Revenue Needed: ${fmt(brkeven * v3)}`;
           cLabels = ['Fixed Costs', 'Profit Per Unit'];
-          cData = [v1, v3 - v2];
+          cData   = [v1, v3 - v2];
           break;
+        }
 
-        case 'property_roi':
+        // ─── Property ROI ───────────────────────────────────────────────────
+        case 'property_roi': {
           const propRoi = (v1 / v2) * 100;
-          out = `Cap Rate: ${pct(propRoi)} <br/> Annual Income: ${fmt(v1)}`;
+          out     = `Cap Rate: ${pct(propRoi)} <br/> Annual Income: ${fmt(v1)}`;
           cLabels = ['Property Value', 'Annual Income'];
-          cData = [v2, v1];
+          cData   = [v2, v1];
           break;
+        }
 
-        case 'basic':
-          out = `Result: ${fmt(v1 * v2)}`;
+        // ─── Basic ──────────────────────────────────────────────────────────
+        case 'basic': {
+          out     = `Result: ${fmt(v1 * v2)}`;
           cLabels = ['Value 1', 'Value 2'];
-          cData = [v1, v2];
+          cData   = [v1, v2];
           break;
+        }
 
-        default:
-          out = `Result: ${fmt(v1 * v2)}`;
+        // ─── Default ────────────────────────────────────────────────────────
+        default: {
+          out     = `Result: ${fmt(v1 * v2)}`;
           cLabels = ['Value 1', 'Value 2'];
-          cData = [v1, v2];
+          cData   = [v1, v2];
+        }
       }
 
-      resDiv.innerHTML = out;
-      resDiv.style.display = 'block';
+      resDiv.innerHTML      = out;
+      resDiv.style.display  = 'block';
+
+      // Only call generic doughnut if cData was populated (non-SIP formulas)
       if (cData.length > 0) updateChart(cLabels, cData);
+
       resDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
     });
   </script>
 
   <script define:vars={{ f: calc.formula, n: calc.name }}>
     window.currentFormula = f;
-    window.currentName = n;
+    window.currentName    = n;
   </script>
 </Layout>

@@ -2998,5 +2998,72 @@
         "offers": { "price": "0", "priceCurrency": "USD" }
       }
     }
+  },
+  {
+  "slug": "sip-calculator",
+  "formula": "sip",
+  "type": "investment",
+  "name": "SIP Calculator with Step-Up & Inflation",
+  "description": "Calculate your SIP returns with annual step-up and real inflation-adjusted corpus.",
+  "label1": "Monthly SIP Amount ($)",
+  "label2": "Expected Annual Return (%)",
+  "label3": "Investment Duration (Years)",
+  "label4": "Annual Step-Up (%)",
+  "label5": "Inflation Rate (% p.a.)",
+  "what_is": "A Systematic Investment Plan (SIP) lets you invest a fixed amount every month into a mutual fund or investment vehicle. The Step-Up SIP feature automatically increases your monthly contribution by a fixed percentage each year — ideal when your income grows annually. Inflation adjustment shows you the real purchasing power of your future corpus, stripping away the effect of rising prices so you know what your money is actually worth at retirement.",
+  "who_use": "Salaried professionals planning retirement, young investors starting their first mutual fund, financial advisors projecting client wealth, and anyone comparing whether their savings will outpace inflation should use this calculator. The step-up feature is especially valuable for people expecting regular salary increments who want to match their investment growth to income growth.",
+  "how_to_use": "1. Enter your starting monthly SIP amount.\n2. Set the expected annual return rate (equity funds: 10–15%, debt funds: 6–8%).\n3. Set your investment duration in years.\n4. Enable Step-Up and enter your annual increment percentage (e.g. 10% if your SIP grows by 10% every year).\n5. Enable Inflation and enter the expected inflation rate (6–7% for South Asia, 2–4% for US/Europe).\n6. Click Calculate to see total corpus, invested amount, estimated gains, and inflation-adjusted real value.",
+  "how_to_read": "The Total Corpus is your nominal future value — the raw number your investment grows to. The Invested Amount is the sum of all your SIP contributions over the years. The difference is your Estimated Gains. When inflation adjustment is on, the Real Value shows what that corpus is worth in today's money — this is the number that truly matters for retirement planning. A corpus of $500,000 that inflates to a real value of $280,000 means you'll have the purchasing power of $280,000 in today's terms.",
+  "pro_tip": "Even a 10% annual step-up can double your corpus compared to a flat SIP over 20 years — the compounding effect on both the investment and the step-up is powerful. Start with a step-up percentage equal to your expected annual salary hike. Always check the inflation-adjusted real value before declaring your retirement goal achieved — nominal numbers can be deceptively large!",
+  "seo": {
+    "title": "SIP Calculator with Step-Up & Inflation Adjustment | QuickFinCalc",
+    "meta_description": "Calculate SIP returns with annual step-up and inflation adjustment. See your real corpus value, total invested, and estimated gains with our free SIP calculator.",
+    "h1": "SIP Calculator with Step-Up & Inflation",
+    "primary_keyword": "sip calculator",
+    "secondary_keywords": [
+      "step up sip calculator",
+      "sip with inflation calculator",
+      "systematic investment plan calculator",
+      "sip return calculator",
+      "inflation adjusted sip"
+    ],
+    "h2_structure": [
+      "What Is a SIP and Why Use Step-Up?",
+      "Who Should Use This SIP Calculator?",
+      "How to Use the SIP Calculator",
+      "How to Read Your SIP Results",
+      "Frequently Asked Questions"
+    ],
+    "faqs": [
+      {
+        "question": "What is a Step-Up SIP?",
+        "answer": "A Step-Up SIP (also called Top-Up SIP) automatically increases your monthly investment by a fixed percentage each year. For example, if you start at $500/month with a 10% annual step-up, your contribution becomes $550 in year 2, $605 in year 3, and so on. This mirrors income growth and significantly boosts your final corpus through compounding."
+      },
+      {
+        "question": "Why does inflation adjustment matter in SIP planning?",
+        "answer": "Inflation erodes purchasing power over time. A corpus of $1,000,000 after 25 years at 6% inflation is only worth about $233,000 in today's money. The inflation-adjusted (real) value tells you whether your investment goal will actually meet your future lifestyle needs — not just the nominal number."
+      },
+      {
+        "question": "What return rate should I use for SIP calculations?",
+        "answer": "For equity mutual funds, a 10–14% annual return is a reasonable long-term assumption (though not guaranteed). For balanced/hybrid funds, use 8–10%. For debt funds, 6–8%. Always use a conservative estimate so you are not caught short. Past performance does not guarantee future returns."
+      },
+      {
+        "question": "How is SIP different from a lump sum investment?",
+        "answer": "In a SIP, you invest a fixed amount every month — this practice of rupee/dollar-cost averaging means you buy more units when prices are low and fewer when prices are high, reducing timing risk. A lump sum investment places all your capital at once, which can be more profitable in a consistently rising market but riskier if markets fall right after you invest."
+      },
+      {
+        "question": "Is there a minimum SIP amount?",
+        "answer": "Most mutual funds allow SIPs starting from as low as $10–$25 (or ₹100–₹500 in India). This calculator works for any amount. The key is consistency — staying invested through market cycles matters far more than the starting amount."
+      }
+    ],
+    "schema": {
+      "type": "SoftwareApplication",
+      "applicationCategory": "FinanceApplication",
+      "name": "SIP Calculator with Step-Up & Inflation",
+      "description": "Calculate your SIP returns with annual step-up and real inflation-adjusted corpus.",
+      "url": "https://quickfincalc.com/calculator/sip-calculator",
+      "offers": { "price": "0", "priceCurrency": "USD" }
+    }
   }
+}
 ]
