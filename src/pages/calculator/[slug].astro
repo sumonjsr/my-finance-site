@@ -779,6 +779,80 @@ case 'margin': {
           break;
         }
 
+        // ─── Uk Pension ──────────────────────────────────────────────────────────
+       case 'uk_pension': {
+    const pot = v1; 
+    const withdrawal = v2;
+    const taxYear = v3;
+
+    // ১. ২০২৬/২৭ ট্যাক্স ব্যান্ড এবং LSA লিমিট (আর্টিকেল অনুযায়ী)
+    const personalAllowance = 12570;
+    const basicRateLimit = 50270;
+    const lsaLimit = 268275; // Lump Sum Allowance post-2023 rules
+
+    const taxFreePart = Math.min(withdrawal * 0.25, lsaLimit); 
+    const taxablePart = withdrawal - taxFreePart;
+
+    const calcTax = (amt) => {
+        if (amt <= personalAllowance) return 0;
+        if (amt <= basicRateLimit) return (amt - personalAllowance) * 0.20;
+        if (amt <= 125140) return (37700 * 0.20) + (amt - 50270) * 0.40;
+        return (37700 * 0.20) + (74870 * 0.40) + (amt - 125140) * 0.45;
+    };
+
+    const currentTax = calcTax(taxablePart);
+    const takeHome = withdrawal - currentTax;
+    
+    // এমার্জেন্সি ট্যাক্স ক্যালকুলেশন (HMRC Month 1 Code - আর্টিকেলের রিকোয়ারমেন্ট)
+    const emergencyTax = (taxablePart * 0.40); // Rough estimate of Month 1 impact
+
+    out = `
+        <div style="background:linear-gradient(135deg, #1e3a8a, #1e40af); color:white; padding:20px; border-radius:12px; margin-bottom:20px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);">
+            <div style="display:flex; justify-content:space-between; align-items:center;">
+                <div>
+                    <p style="margin:0; opacity:0.9;">Take-Home Amount</p>
+                    <h2 style="margin:5px 0; font-size:2rem; color:white;">£${takeHome.toLocaleString()}</h2>
+                </div>
+                <div style="text-align:right;">
+                    <p style="margin:0; opacity:0.9;">Tax-Free Cash</p>
+                    <h3 style="margin:5px 0; color:#60a5fa;">£${taxFreePart.toLocaleString()}</h3>
+                </div>
+            </div>
+        </div>
+
+        <div style="background:#fff7ed; border-left:4px solid #f97316; padding:15px; border-radius:8px; margin-bottom:20px;">
+            <p style="margin:0; color:#9a3412; font-weight:bold;">⚠️ Emergency Tax Warning</p>
+            <p style="margin:5px 0; font-size:0.9rem; color:#c2410c;">HMRC may apply a 'Month 1' code. You could initially pay <strong>£${emergencyTax.toLocaleString()}</strong> in tax. You can claim a rebate of <strong>£${(emergencyTax - currentTax).toLocaleString()}</strong> later.</p>
+        </div>
+
+        <h4 style="color:#1e3a8a; margin-bottom:10px;">Tax-Efficient Withdrawal Strategies</h4>
+        <div style="border:1px solid #e2e8f0; border-radius:8px; overflow:hidden;">
+            <table style="width:100%; border-collapse:collapse; font-size:0.9rem;">
+                <tr style="background:#f8fafc;">
+                    <th style="padding:12px; text-align:left; border-bottom:1px solid #e2e8f0;">Strategy</th>
+                    <th style="padding:12px; text-align:right; border-bottom:1px solid #e2e8f0;">Total Tax Cost</th>
+                </tr>
+                <tr>
+                    <td style="padding:12px; border-bottom:1px solid #e2e8f0;">Withdraw Entire Pot Now</td>
+                    <td style="padding:12px; text-align:right; color:#dc2626; border-bottom:1px solid #e2e8f0;">£${calcTax(pot * 0.75).toLocaleString()}</td>
+                </tr>
+                <tr style="background:#f0fdf4;">
+                    <td style="padding:12px; font-weight:bold;">Spread over 5 Years (Optimal)</td>
+                    <td style="padding:12px; text-align:right; color:#166534; font-weight:bold;">£${(calcTax((pot/5) * 0.75) * 5).toLocaleString()}</td>
+                </tr>
+            </table>
+        </div>
+
+        <div style="margin-top:20px; text-align:center;">
+            <a href="#" style="display:inline-block; background:#1e3a8a; color:white; padding:10px 20px; border-radius:5px; text-decoration:none; font-weight:bold;">Get Professional Tax Report (PDF)</a>
+        </div>
+    `;
+
+    cLabels = ['Tax-Free Cash', 'Income Tax', 'Net Cash'];
+    cData = [taxFreePart, currentTax, takeHome];
+    break;
+    }
+
         // ─── Tax ────────────────────────────────────────────────────────────
         case 'tax': {
           const taxAmt = v1 * (v2 / 100);

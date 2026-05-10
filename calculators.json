@@ -1979,6 +1979,67 @@
       }
     }
   },
+{
+  "slug": "uk-pension-tax-calculator",
+  "formula": "uk_pension",
+  "type": "tax",
+  "name": "UK Pension Tax Calculator",
+  "description": "Calculate tax on UK pension withdrawals, including 25% tax-free lump sums and 2026/27 emergency tax estimates.",
+  "label1": "Total Pension Pot (£)",
+  "label2": "Desired Withdrawal Amount (£)",
+  "label3": "Select Tax Year",
+  "v3_type": "select",
+  "v3_options": [
+    {"label": "2026/27 (Current Rules)", "value": 2026},
+    {"label": "2025/26 (Previous Year)", "value": 2025}
+  ],
+  "what_is": "The UK Pension Tax Calculator is designed for the new 'Pension Freedom' rules. Since 2023/24, major changes like the abolition of the Lifetime Allowance (LTA) and the introduction of the Lump Sum Allowance (LSA) have made withdrawals more complex. This tool calculates your 25% tax-free portion and applies marginal income tax rates to the rest.",
+  "who_use": "This tool is essential for UK workers aged 55+ planning retirement, individuals considering a large lump sum withdrawal to pay off debts, and financial advisors seeking a clean, mobile-friendly interface for client scenario modeling.",
+  "how_to_use": "1. Enter your current total pension value. 2. Input the lump sum or income amount you want to withdraw. 3. Select the applicable tax year to see instant, real-time tax breakdowns and efficiency strategies.",
+  "how_to_read": "The 'Net Take Home' shows what ends up in your bank account. Pay close attention to the 'Emergency Tax Warning'—this estimates the temporary overpayment often triggered by HMRC's Month 1 tax code.",
+  "pro_tip": "Don't withdraw your entire pot at once! Spreading withdrawals over several tax years can keep you in a lower tax bracket (20% instead of 40% or 45%), potentially saving you tens of thousands in tax.",
+  "seo": {
+    "title": "UK Pension Tax Calculator - Lump Sum & Emergency Tax 2026",
+    "meta_description": "Calculate tax on UK pension withdrawals instantly. Includes 25% tax-free lump sum rules, 2026 tax brackets, and strategies to avoid emergency tax.",
+    "h1": "UK Pension Tax Calculator",
+    "primary_keyword": "pension tax calculator uk",
+    "secondary_keywords": [
+      "pension lump sum tax calculator",
+      "avoid emergency tax on pension withdrawal",
+      "pension tax rules 2026",
+      "pension withdrawal strategy UK"
+    ],
+    "h2_structure": [
+      "How Pension Tax Works Under 2026 Rules",
+      "Calculating Your 25% Tax-Free Lump Sum (LSA)",
+      "How to Avoid the HMRC Emergency Tax Trap",
+      "Lump Sum vs. Monthly Drawdown: Tax Comparison",
+      "Case Study: Tax Savings by Spreading Withdrawals"
+    ],
+    "faqs": [
+      {
+        "question": "What is the Lump Sum Allowance (LSA) in 2026?",
+        "answer": "The LSA is the maximum tax-free cash you can take from all your pensions, currently capped at £268,275 for most people."
+      },
+      {
+        "question": "How do I claim back emergency tax on my pension?",
+        "answer": "If HMRC overcharges you on your first withdrawal, you can claim a rebate using forms P55 (if pot isn't emptied) or P53/P50Z (if pot is emptied)."
+      },
+      {
+        "question": "Does my pension withdrawal affect my Personal Allowance?",
+        "answer": "Yes. If your total taxable income (including pension) exceeds £100,000, your £12,570 Personal Allowance starts to taper down."
+      }
+    ],
+    "schema": {
+      "type": "SoftwareApplication",
+      "applicationCategory": "FinanceApplication",
+      "name": "UK Pension Tax Calculator",
+      "description": "Advanced UK pension tax tool with scenario comparison and emergency tax rebate estimates.",
+      "url": "https://quickfincalc.com/uk-pension-tax-calculator",
+      "offers": { "price": "0", "priceCurrency": "GBP" }
+    }
+  }
+},
   {
     "slug": "vat-uk-calculator",
     "formula": "tax",
