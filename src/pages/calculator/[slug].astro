@@ -744,14 +744,31 @@ const breadcrumbSchema = {
           break;
         }
 
-        // ─── Margin ─────────────────────────────────────────────────────────
-        case 'margin': {
-          const netMargin = v1 - v2;
-          out     = `Margin: ${pct((netMargin / v1) * 100)} <br/> Profit: ${fmt(netMargin)}`;
-          cLabels = ['Total Cost', 'Net Profit'];
-          cData   = [v2, netMargin > 0 ? netMargin : 0];
-          break;
-        }
+        // ─── Margin & EBITDA ──────────────────────────────────────────────────
+case 'margin': {
+  const currentCalcName = window.currentName ? window.currentName.toLowerCase() : "";
+  
+  if (currentCalcName.includes('ebitda')) {
+    // v1 = Net Income, v2 = Interest/Taxes/DA, v3 = Total Revenue
+    const ebitda = v1 + v2; 
+    const ebitdaMargin = v3 !== 0 ? (ebitda / v3) * 100 : 0;
+    
+    out = `EBITDA: ${fmt(ebitda)} <br/> EBITDA Margin: ${pct(ebitdaMargin)}`;
+    
+    cLabels = ['Net Income', 'Int+Tax+D&A', 'Other Costs'];
+    const otherCosts = v3 - ebitda;
+    cData = [v1, v2, otherCosts > 0 ? otherCosts : 0];
+  } else {
+    // সাধারণ প্রফিট মার্জিন (v1 = Revenue, v2 = Cost)
+    const netMargin = v1 - v2;
+    const marginPct = v1 !== 0 ? (netMargin / v1) * 100 : 0;
+    
+    out = `Margin: ${pct(marginPct)} <br/> Profit: ${fmt(netMargin)}`;
+    cLabels = ['Total Cost', 'Net Profit'];
+    cData = [v2, netMargin > 0 ? netMargin : 0];
+  }
+  break;
+}
 
         // ─── Stock ──────────────────────────────────────────────────────────
         case 'stock': {

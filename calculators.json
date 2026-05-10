@@ -2882,7 +2882,7 @@
   {
     "slug": "ebitda-margin-calc",
     "formula": "margin",
-    "type": "salary",
+    "type": "marketing",
     "name": "EBITDA Margin Calculator",
     "description": "Professional earnings analysis for businesses and investors.",
     "label1": "Net Income ($)",
