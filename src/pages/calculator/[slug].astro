@@ -852,6 +852,69 @@ case 'margin': {
     cData = [taxFreePart, currentTax, takeHome];
     break;
     }
+         // ─── Salary Sacrifice ──────────────────────────────────────────────────────────
+       case 'salary_sacrifice': {
+    const salary = v1;
+    const sacrificePct = v2 / 100;
+    const loanPlan = v3;
+
+    const sacrificedAmount = salary * sacrificePct;
+    const newSalary = salary - sacrificedAmount;
+
+    const calcTaxAndNI = (income) => {
+        // ২০২৬/২৭ ইনকাম ট্যাক্স
+        let tax = 0;
+        if (income > 12570) {
+            tax += Math.min(income - 12570, 37700) * 0.20;
+            if (income > 50270) {
+                tax += Math.min(income - 50270, 74870) * 0.40;
+                if (income > 125140) tax += (income - 125140) * 0.45;
+            }
+        }
+        
+        // ২০২৬/২৭ ন্যাশনাল ইন্স্যুরেন্স (Employee 8% & 2%)
+        let ni = 0;
+        if (income > 12570) {
+            ni += Math.min(income - 12570, 37700) * 0.08;
+            if (income > 50270) ni += (income - 50270) * 0.02;
+        }
+
+        // স্টুডেন্ট লোন ২০২৬ থ্রেশহোল্ড (Plan 1-5)
+        let loan = 0;
+        const thresholds = { 1: 26900, 2: 29385, 4: 33795, 5: 25000, 6: 21000 };
+        const rates = { 1: 0.09, 2: 0.09, 4: 0.09, 5: 0.09, 6: 0.06 };
+        if (loanPlan > 0 && income > thresholds[loanPlan]) {
+            loan = (income - thresholds[loanPlan]) * rates[loanPlan];
+        }
+
+        return { tax, ni, loan, takeHome: income - tax - ni - loan };
+    };
+
+    const before = calcTaxAndNI(salary);
+    const after = calcTaxAndNI(newSalary);
+    
+    // Employer Savings (২০২৬ রেট ১৫%)
+    const employerSavedNI = sacrificedAmount * 0.15;
+
+    out = `
+        <div style="display:grid; grid-template-columns: 1fr 1fr; gap:15px; margin-bottom:20px;">
+            <div style="background:#f1f5f9; padding:15px; border-radius:8px; border-left:4px solid #64748b;">
+                <p style="margin:0; font-size:0.8rem;">Current Take-Home</p>
+                <h3 style="margin:5px 0;">£${Math.round(before.takeHome / 12).toLocaleString()}/mo</h3>
+            </div>
+            <div style="background:#f0fdf4; padding:15px; border-radius:8px; border-left:4px solid #22c55e;">
+                <p style="margin:0; font-size:0.8rem;">New Take-Home</p>
+                <h3 style="margin:5px 0;">£${Math.round(after.takeHome / 12).toLocaleString()}/mo</h3>
+            </div>
+        </div>
+
+        <div style="background:#fff7ed; padding:15px; border-radius:8px; border:1px solid #ffedd5; margin-bottom:20px;">
+            <p style="margin:0; color:#9a3412; font-weight:bold;">Negotiation Leverage 🤝</p>
+            <p style="margin:5px 0; font-size:0.9rem;">Your employer saves <strong>£${Math.round(employerSavedNI).toLocaleString()}</strong> per year in NI. Ask them to add this to your pension!</p>
+        </div>
+    `;
+    break;
+    }
 
         // ─── Tax ────────────────────────────────────────────────────────────
         case 'tax': {

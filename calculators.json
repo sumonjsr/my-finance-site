@@ -2040,6 +2040,58 @@
     }
   }
 },
+{
+  "slug": "salary-sacrifice-calculator",
+  "formula": "salary_sacrifice",
+  "type": "tax",
+  "name": "Salary Sacrifice Pension Calculator",
+  "description": "Calculate your take-home pay after salary sacrifice and see how much you and your employer save on National Insurance (NI).",
+  "label1": "Gross Annual Salary (£)",
+  "label2": "Sacrifice Amount (%)",
+  "label3": "Student Loan Plan",
+  "v3_type": "select",
+  "v3_options": [
+    {"label": "No Student Loan", "value": 0},
+    {"label": "Plan 1 (Pre-2012)", "value": 1},
+    {"label": "Plan 2 (Post-2012)", "value": 2},
+    {"label": "Plan 4 (Scotland)", "value": 4},
+    {"label": "Plan 5 (New 2026 Rules)", "value": 5},
+    {"label": "Postgraduate Loan", "value": 6}
+  ],
+  "what_is": "Salary sacrifice is an agreement between you and your employer where you give up a part of your gross salary in exchange for a non-cash benefit, most commonly a pension contribution. Because your gross pay is lower, you pay less Income Tax and National Insurance (NI).",
+  "who_use": "Employees in the UK who want to maximize their pension contributions while minimizing the impact on their take-home pay, and HR managers looking to demonstrate the benefits of salary sacrifice schemes to staff.",
+  "how_to_use": "1. Enter your gross salary. 2. Choose the percentage you want to sacrifice into your pension. 3. Select your student loan plan if applicable. Our tool will instantly show your tax savings and the 'Employer NI' leverage you can negotiate.",
+  "how_to_read": "Compare the 'Before' and 'After' sections. Pay close attention to the 'Employer NI Savings'—some companies pass this saving (usually 15% in 2026/27) back into your pension pot!",
+  "pro_tip": "If you earn between £60,000 and £80,000, salary sacrifice can help you avoid or reduce the 'High Income Child Benefit Charge' by lowering your adjusted net income below the threshold.",
+  "seo": {
+    "title": "Salary Sacrifice Calculator UK - Pension & NI Savings 2026",
+    "meta_description": "Use our 2026 Salary Sacrifice Calculator to see your NI savings, student loan impact, and employer contribution boost. Optimized for the 2026/27 tax year.",
+    "h1": "Salary Sacrifice Pension Calculator",
+    "primary_keyword": "salary sacrifice calculator",
+    "secondary_keywords": [
+      "salary sacrifice pension calculator",
+      "NI savings salary sacrifice 2026",
+      "student loan plan 5 salary sacrifice",
+      "employer NI savings calculator"
+    ],
+    "h2_structure": [
+      "How Salary Sacrifice Works in 2026",
+      "Employee vs. Employer National Insurance Savings",
+      "Impact on Student Loan Repayments (Plans 1-5)",
+      "How to Save Your Child Benefit with Salary Sacrifice"
+    ],
+    "faqs": [
+      {
+        "question": "How much National Insurance do I save with salary sacrifice?",
+        "answer": "For the 2026/27 tax year, most employees save 8% on earnings between £12,570 and £50,270, and 2% on earnings above that."
+      },
+      {
+        "question": "Will salary sacrifice reduce my student loan repayments?",
+        "answer": "Yes, because student loan repayments are calculated on your gross pay *after* the sacrifice, your monthly repayments will decrease."
+      }
+    ]
+  }
+},
   {
     "slug": "vat-uk-calculator",
     "formula": "tax",
