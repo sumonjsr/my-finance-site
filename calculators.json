@@ -1920,65 +1920,60 @@
     }
   },
   {
-    "slug": "sales-tax-usa",
-    "formula": "tax",
-    "type": "tax",
-    "name": "USA Sales Tax Calculator",
-    "description": "Quickly add the correct sales tax to your product prices.",
-    "label1": "Product Price ($)",
-    "label2": "State Sales Tax Rate (%)",
-    "label3": "",
-    "what_is": "Sales tax in the United States varies by state, county, and sometimes city — making it one of the most confusing pricing elements for businesses and shoppers alike. This calculator instantly adds the correct sales tax to any product price so you always charge and collect the right amount.",
-    "who_use": "US small business owners selling in-person or online, e-commerce sellers with nexus in multiple states, and shoppers wanting to know the final cost of a purchase before checkout will all use this tool regularly.",
-    "how_to_use": "1. Enter the base price of your product or service. 2. Input your applicable state (or combined state + local) sales tax rate. 3. Click calculate to see the tax amount and total price including tax.",
-    "how_to_read": "Your result shows both the tax amount in dollars and the total final price. For businesses, this is the amount you need to collect from customers and remit to your state tax authority.",
-    "pro_tip": "If you sell online across multiple states, you may have economic nexus obligations in states where you have never set foot. Research each state's sales threshold and use this calculator to estimate your tax collection requirements per state!",
-    "seo": {
-      "title": "US Sales Tax Calculator – Add State Sales Tax to Any Price | QuickFinCalc",
-      "meta_description": "Add the correct US state sales tax to any product price instantly. Free sales tax calculator for all 50 states — perfect for business owners and online sellers.",
-      "h1": "USA Sales Tax Calculator",
-      "primary_keyword": "US sales tax calculator",
-      "secondary_keywords": [
-        "sales tax calculator",
-        "state tax calculator",
-        "sales tax by state",
-        "USA tax calculator"
-      ],
-      "h2_structure": [
-        "What Is US Sales Tax?",
-        "Who Needs a Sales Tax Calculator?",
-        "How to Calculate Sales Tax",
-        "How to Use Your Sales Tax Results",
-        "Frequently Asked Questions"
-      ],
-      "faqs": [
-        {
-          "question": "Which US states have no sales tax?",
-          "answer": "Five states have no state sales tax: Alaska, Delaware, Montana, New Hampshire, and Oregon. However, some Alaska localities levy local sales taxes. Always verify local rates in addition to state rates."
-        },
-        {
-          "question": "What is economic nexus for online sellers?",
-          "answer": "Most states require online sellers to collect sales tax once they exceed $100,000 in annual sales or 200 transactions in that state — regardless of physical presence."
-        },
-        {
-          "question": "Do I charge sales tax on shipping?",
-          "answer": "It depends on the state. Some states tax shipping separately; others exempt it when separately stated on the invoice. Check your state's specific rules."
-        },
-        {
-          "question": "How often do I remit collected sales tax?",
-          "answer": "Filing frequency depends on your sales volume — monthly for high-volume sellers, quarterly or annually for smaller sellers. Your state's department of revenue assigns your filing frequency when you register."
-        }
-      ],
-      "schema": {
-        "type": "SoftwareApplication",
-        "applicationCategory": "FinanceApplication",
-        "name": "USA Sales Tax Calculator",
-        "description": "Quickly add the correct sales tax to your product prices.",
-        "url": "https://quickfincalc.com/sales-tax-usa",
-        "offers": { "price": "0", "priceCurrency": "USD" }
+  "slug": "sales-tax-usa",
+  "formula": "usa_sales_tax",
+  "type": "tax",
+  "name": "USA Sales Tax Calculator",
+  "description": "Calculate state sales tax instantly or reverse-calculate tax from total prices.",
+  "label1": "Amount ($)",
+  "label2": "Select US State (Rate %)",
+  "v2_type": "select",
+  "v2_options": [
+    {"label": "Manual Entry (Custom %)", "value": 0},
+    {"label": "California (7.25%)", "value": 7.25},
+    {"label": "Texas (6.25%)", "value": 6.25},
+    {"label": "Florida (6.00%)", "value": 6.00},
+    {"label": "New York (4.00%)", "value": 4.00},
+    {"label": "Illinois (6.25%)", "value": 6.25},
+    {"label": "Pennsylvania (6.00%)", "value": 6.00},
+    {"label": "Ohio (5.75%)", "value": 5.75},
+    {"label": "Georgia (4.00%)", "value": 4.00},
+    {"label": "No Tax State (AK, DE, MT, NH, OR)", "value": 0}
+  ],
+  "label3": "Calculation Mode",
+  "v3_type": "select",
+  "v3_options": [
+    {"label": "Add Tax to Price", "value": 1},
+    {"label": "Remove Tax from Total", "value": 2}
+  ],
+  "what_is": "US sales tax is a consumption tax imposed by state and local governments. Unlike VAT, it's added at the point of sale. This tool helps you find the exact tax amount or 'reverse calculate' the base price from a tax-inclusive total.",
+  "who_use": "Small business owners, Amazon/Etsy sellers managing nexus, and shoppers in states like California or New York who need to know their final checkout price.",
+  "how_to_use": "1. Enter the dollar amount. 2. Select your state to auto-fill the tax rate or choose 'Manual Entry'. 3. Choose 'Add Tax' to find the final price, or 'Remove Tax' to find the original price before tax was added.",
+  "how_to_read": "The result displays the Base Price, the Tax Amount, and the Final Total. For 'Remove Tax' mode, it shows you how much of your total payment was actually tax.",
+  "pro_tip": "Local taxes (city/county) can add 1-5% on top of the state rate. If your city has a local tax, choose 'Manual Entry' and input the combined rate (e.g., 7.25% state + 1.5% local = 8.75%).",
+  "seo": {
+    "title": "USA Sales Tax Calculator 2026 - Add or Remove State Tax",
+    "meta_description": "Calculate US sales tax for all states including CA, TX, and NY. Features tax inclusion/exclusion modes and 2026/27 state tax rates.",
+    "h1": "USA Sales Tax Calculator",
+    "primary_keyword": "US sales tax calculator",
+    "secondary_keywords": [
+      "reverse sales tax calculator usa",
+      "sales tax calculator california",
+      "add sales tax to price",
+      "state and local tax calculator"
+    ],
+    "faqs": [
+      {
+        "question": "How do I calculate sales tax backwards?",
+        "answer": "To remove tax from a total, select 'Remove Tax from Total' in our tool. The formula is: Total Price / (1 + Tax Rate)."
+      },
+      {
+        "question": "What are the states with 0% sales tax?",
+        "answer": "Alaska, Delaware, Montana, New Hampshire, and Oregon do not have a general state-level sales tax."
       }
-    }
-  },
+    ]
+  }
+},
 {
   "slug": "uk-pension-tax-calculator",
   "formula": "uk_pension",
