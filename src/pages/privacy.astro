@@ -68,6 +68,9 @@ const schema = {
         .highlight-gold { background: var(--bg-light); border-left-color: var(--accent-gold); color: #92400e; }
         .highlight-blue { background: #f0f7ff; border-left-color: var(--primary); color: var(--primary); }
 
+        /* ✅ NEW: Children's privacy highlight style */
+        .highlight-green { background: #f0fdf4; border-left-color: #16a34a; color: #15803d; }
+
         .contact-card { background: #f8fafc; border-radius: 12px; padding: 30px; border: 1px solid var(--border-soft); margin-top: 20px; }
         .contact-card p { margin-bottom: 8px; color: var(--secondary); font-weight: 500; }
         .contact-card a { color: var(--primary); font-weight: 700; text-decoration: underline; }
@@ -85,7 +88,7 @@ const schema = {
 
     <div class="container">
         <div class="meta-bar">
-            <span class="badge">📅 Last Revised: April 9, 2026</span>
+            <span class="badge">📅 Last Revised: May 20, 2026</span>
             <span class="badge badge-gold">🔒 Browser-Side Compute</span>
             <span class="badge">⚖️ GDPR & CCPA Compliant</span>
         </div>
@@ -97,6 +100,7 @@ const schema = {
                 <li><a href="#local-calculation">Local Calculation Security</a></li>
                 <li><a href="#cookies-ads">AdSense & Third-Party Cookies</a></li>
                 <li><a href="#compliance">Regulatory Compliance</a></li>
+                <li><a href="#children-privacy">Children's Privacy (COPPA)</a></li>
                 <li><a href="#contact">Privacy Enquiries</a></li>
             </ol>
         </div>
@@ -104,7 +108,7 @@ const schema = {
         <section class="section" id="data-processing">
             <h2><span class="section-num">1</span> Data Processing Philosophy</h2>
             <p>At <strong>Quick Financial Calculator</strong>, we believe your financial plans are your own business. Our application is architected to prioritize user privacy above all else.</p>
-            <div class="highlight-gold">
+            <div class="highlight-box highlight-gold">
                 <strong>Zero-Storage Policy:</strong> We do not store, log, or transmit any financial data you enter into our calculators. No databases are used to collect your private numbers.
             </div>
         </section>
@@ -112,30 +116,49 @@ const schema = {
         <section class="section" id="local-calculation">
             <h2><span class="section-num">2</span> Local Calculation Security</h2>
             <p>Every tool on this platform—from mortgage amortizations to tax estimators—executes calculations locally on your device using client-side JavaScript.</p>
-            <div class="highlight-blue">
+            <div class="highlight-box highlight-blue">
                 🔒 <strong>On-Device Only:</strong> Your inputs never leave your browser. This ensures that even if our servers were compromised, your financial information remains safe because it was never there to begin with.
             </div>
         </section>
 
         <section class="section" id="cookies-ads">
             <h2><span class="section-num">3</span> Google AdSense & Third-Party Cookies</h2>
-            <p>To keep our tools free for everyone, we display advertisements via Google AdSense. Google uses cookies to serve ads based on your prior visits to our website or other websites.</p>
-            <p>Google’s use of advertising cookies enables it and its partners to serve ads to you based on your visit to Quick Financial Calculator and/or other sites on the Internet.</p>
-            <p>Users may opt out of personalized advertising by visiting <a href="https://www.google.com/settings/ads" target="_blank">Google Ads Settings</a>.</p>
+            <p>To keep our tools free for everyone, we display advertisements via <strong>Google AdSense</strong>. Google uses cookies to serve ads based on your prior visits to our website or other websites on the Internet.</p>
+            <p>Google's use of advertising cookies enables it and its partners to serve ads to you based on your visit to Quick Financial Calculator and/or other sites on the Internet. These cookies are used to improve relevance of the advertisements shown.</p>
+            <p>We also use the <strong>Google DoubleClick cookie</strong>, which enables Google and its partners to serve ads to users based on their visit to this site and/or other sites on the Internet.</p>
+            <p>Users may opt out of personalized advertising at any time by visiting <a href="https://www.google.com/settings/ads" target="_blank" rel="noopener noreferrer">Google Ads Settings</a>. Alternatively, users can opt out of third-party vendor cookies by visiting <a href="https://www.networkadvertising.org/choices/" target="_blank" rel="noopener noreferrer">Network Advertising Initiative opt-out page</a>.</p>
+            <div class="highlight-box highlight-blue">
+                📌 <strong>Note:</strong> Opting out of personalized ads does not mean you will no longer see advertisements. It means the ads you see will not be tailored to your interests.
+            </div>
         </section>
 
         <section class="section" id="compliance">
             <h2><span class="section-num">4</span> Regulatory Compliance</h2>
-            <p>We respect international privacy standards, including the GDPR (Europe) and CCPA (California). Since we do not collect personal identifiable information (PII) through our tools, our footprint is minimal.</p>
+            <p>We respect international privacy standards, including the <strong>GDPR</strong> (Europe) and <strong>CCPA</strong> (California). Since we do not collect personal identifiable information (PII) through our tools, our privacy footprint is minimal.</p>
+            <p>Under GDPR, users in the European Economic Area (EEA) have the right to access, correct, or request deletion of personal data. Since we collect no personal data through our calculators, there is nothing to access or delete on our end. For data processed by Google AdSense on our behalf, please refer to <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google's Privacy Policy</a>.</p>
+            <p>California residents under CCPA have the right to know what personal data is collected, the right to request deletion, and the right to opt out of the sale of personal data. Quick Financial Calculator does not sell any personal data.</p>
+        </section>
+
+        {/* ✅ NEW SECTION — Children's Privacy / COPPA */}
+        <section class="section" id="children-privacy">
+            <h2><span class="section-num">5</span> Children's Privacy (COPPA)</h2>
+            <p>The safety and privacy of children is extremely important to us. Quick Financial Calculator is designed for a general adult audience and is <strong>not directed at children under the age of 13</strong>.</p>
+            <div class="highlight-box highlight-green">
+                👶 <strong>No Data from Minors:</strong> Quick Financial Calculator does not knowingly collect, solicit, or store any personal data or information from children under the age of 13. All calculations are performed locally on the user's device and no data of any kind is transmitted to our servers.
+            </div>
+            <p>If you are a parent or guardian and believe your child under the age of 13 has provided us with any personal information, please contact us immediately at <a href="mailto:support@quickfincalc.com"><strong>support@quickfincalc.com</strong></a> so we can take appropriate action. We will promptly investigate and, if confirmed, take steps to remove such information.</p>
+            <p>We comply fully with the <strong>Children's Online Privacy Protection Act (COPPA)</strong> and related international regulations governing the online collection of data from minors.</p>
         </section>
 
         <section class="section" id="contact">
-            <h2><span class="section-num">5</span> Privacy Enquiries</h2>
+            <h2><span class="section-num">6</span> Privacy Enquiries</h2>
             <div class="contact-card">
                 <p><strong>Technical Data Controller</strong></p>
                 <p>👤 <strong>Md. Merajul Islam</strong></p>
                 <p>🔗 Website: <a href="https://quickfincalc.com">quickfincalc.com</a></p>
-                <p>📬 Contact: <a href="/contact/">Official Support Channel</a></p>
+                {/* ✅ UPDATED — Direct email added alongside the contact page link */}
+                <p>📧 Email: <a href="mailto:support@quickfincalc.com"><strong>support@quickfincalc.com</strong></a></p>
+                <p>📬 Support Page: <a href="/contact/">Official Support Channel</a></p>
                 <p style="font-size: 0.8rem; color: #64748b; margin-top: 15px;">We review and respond to all privacy-related concerns within 48–72 hours.</p>
             </div>
         </section>

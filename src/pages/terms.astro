@@ -49,6 +49,14 @@ const schema = {
         .meta-bar { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 35px; justify-content: center; }
         .badge { padding: 8px 16px; border-radius: 6px; font-size: 0.75rem; font-weight: 700; border: 1px solid var(--border-soft); background: white; color: var(--primary); text-transform: uppercase; letter-spacing: 0.5px; }
 
+        /* TOC */
+        .toc { background: white; border: 1px solid var(--border-soft); border-radius: 12px; padding: 25px; margin-bottom: 35px; }
+        .toc h2 { font-size: 0.9rem; text-transform: uppercase; margin-bottom: 15px; color: var(--primary); letter-spacing: 1px; font-weight: 800; }
+        .toc ol { padding-left: 20px; color: var(--text-slate); }
+        .toc li { margin-bottom: 8px; }
+        .toc a { color: var(--primary); text-decoration: none; font-size: 0.95rem; font-weight: 600; transition: color 0.2s; }
+        .toc a:hover { color: var(--accent-gold); }
+
         /* Content Sections */
         .section { background: white; border-radius: 16px; padding: 40px; border: 1px solid var(--border-soft); margin-bottom: 24px; box-shadow: 0 4px 12px rgba(0,0,0,0.03); }
         .section h2 { color: var(--primary); font-family: 'Crimson Pro', serif; font-size: 1.6rem; border-bottom: 2px solid var(--bg-light); padding-bottom: 12px; margin-bottom: 20px; display: flex; align-items: center; gap: 12px; }
@@ -58,6 +66,14 @@ const schema = {
         .section li { margin-bottom: 10px; line-height: 1.6; }
 
         .disclaimer-box { background: #fffbeb; border: 1px solid #fde68a; border-left: 5px solid #d97706; border-radius: 10px; padding: 22px; margin: 25px 0; color: #92400e; font-size: 0.95rem; }
+
+        /* ✅ NEW: Governing law highlight box */
+        .governing-box { background: #f0f7ff; border: 1px solid #bfdbfe; border-left: 5px solid var(--primary); border-radius: 10px; padding: 22px; margin: 25px 0; color: var(--primary); font-size: 0.95rem; line-height: 1.7; }
+
+        /* ✅ NEW: Contact footer card */
+        .contact-footer { background: #f8fafc; border-radius: 12px; padding: 28px 30px; border: 1px solid var(--border-soft); text-align: center; }
+        .contact-footer p { color: var(--text-slate); font-size: 0.9rem; margin-bottom: 10px; line-height: 1.7; }
+        .contact-footer a { color: var(--primary); font-weight: 700; text-decoration: underline; }
 
         @media (max-width: 640px) {
             .section { padding: 25px; }
@@ -72,47 +88,95 @@ const schema = {
 
     <div class="container">
         <div class="meta-bar">
-            <span class="badge">Effective Date: April 9, 2026</span>
-            <span class="badge">Version 1.2</span>
+            <span class="badge">📅 Effective Date: May 20, 2026</span>
+            <span class="badge">Version 1.3</span>
         </div>
 
-        <section class="section">
+        {/* ✅ NEW: Table of Contents for SEO and UX */}
+        <div class="toc">
+            <h2>Quick Navigation</h2>
+            <ol>
+                <li><a href="#acceptance">Acceptance of Terms</a></li>
+                <li><a href="#nature-of-service">Nature of Service</a></li>
+                <li><a href="#accuracy">Accuracy of Results</a></li>
+                <li><a href="#intellectual-property">Intellectual Property</a></li>
+                <li><a href="#limitation">Limitation of Liability</a></li>
+                <li><a href="#governing-law">Governing Law</a></li>
+                <li><a href="#contact-terms">Contact & Support</a></li>
+            </ol>
+        </div>
+
+        <section class="section" id="acceptance">
             <h2><span class="section-num">1</span> Acceptance of Terms</h2>
-            <p>By accessing and using <strong>Quick Financial Calculator</strong>, you acknowledge that you have read, understood, and agree to be bound by these Terms & Conditions. If you do not agree, please refrain from using our tools.</p>
+            <p>By accessing and using <strong>Quick Financial Calculator</strong> (available at <a href="https://quickfincalc.com" style="color: var(--primary); font-weight: 600;">quickfincalc.com</a>), you acknowledge that you have read, understood, and agree to be bound by these Terms & Conditions. If you do not agree to any part of these terms, please refrain from using our tools and services.</p>
+            <p>We reserve the right to update these Terms at any time. Continued use of the site after changes constitutes your acceptance of the revised terms.</p>
         </section>
 
-        <section class="section">
+        <section class="section" id="nature-of-service">
             <h2><span class="section-num">2</span> Nature of Service</h2>
             <p>The calculators provided on this platform are for <strong>educational and informational purposes only</strong>. They are designed to assist in preliminary financial planning and do not constitute professional financial, tax, or legal advice.</p>
             <div class="disclaimer-box">
-                <strong>Professional Consultation:</strong> We strongly recommend consulting with a certified financial planner or auditor before making significant financial decisions based on these results.
+                <strong>⚠️ Professional Consultation:</strong> We strongly recommend consulting with a certified financial planner, tax professional, or licensed auditor before making significant financial decisions based on these results. Quick Financial Calculator shall not be held responsible for financial outcomes resulting from the use of our tools.
             </div>
         </section>
 
-        <section class="section">
+        <section class="section" id="accuracy">
             <h2><span class="section-num">3</span> Accuracy of Results</h2>
-            <p>While we strive for audit-grade accuracy in our formulas, Quick Financial Calculator does not guarantee that the results are error-free or applicable to your specific regional banking laws. Financial variables such as taxes, insurance, and closing costs are often estimates.</p>
+            <p>While we strive for audit-grade accuracy in our formulas, Quick Financial Calculator does not guarantee that the results are error-free or applicable to your specific regional banking laws, tax codes, or financial regulations. Financial variables such as taxes, insurance, and closing costs are often estimates.</p>
+            <p>Results should be treated as approximations only. Always verify critical figures with an official financial institution or licensed professional.</p>
         </section>
 
-        <section class="section">
+        <section class="section" id="intellectual-property">
             <h2><span class="section-num">4</span> Intellectual Property</h2>
-            <p>All content, design elements, and logic within this platform are the property of <strong>Md. Merajul Islam</strong> unless otherwise stated. You may:</p>
+            <p>All content, design elements, branding, and logic within this platform are the intellectual property of <strong>Md. Merajul Islam</strong> unless otherwise stated. You may:</p>
             <ul>
-                <li>Use the calculators for personal or small business needs.</li>
-                <li>Share links to our tools.</li>
+                <li>Use the calculators freely for personal, educational, or small business needs.</li>
+                <li>Share links to our tools on websites, blogs, or social media.</li>
             </ul>
-            <p>You may <strong>not</strong> scrape our formulas or redistribute our source code without explicit written permission.</p>
+            <p>You may <strong>not</strong>:</p>
+            <ul>
+                <li>Scrape, copy, or reverse-engineer our formulas or calculation logic.</li>
+                <li>Redistribute or resell our source code without explicit written permission.</li>
+                <li>Use our brand name or logo in a way that implies official endorsement.</li>
+            </ul>
         </section>
 
-        <section class="section">
+        <section class="section" id="limitation">
             <h2><span class="section-num">5</span> Limitation of Liability</h2>
-            <p>Under no circumstances shall the maintainer of Quick Financial Calculator be liable for any financial loss, damage, or legal issues arising from the use or inability to use our tools. Users assume full responsibility for the data entered and the decisions made thereafter.</p>
+            <p>Under no circumstances shall <strong>Md. Merajul Islam</strong> or Quick Financial Calculator be liable for any direct, indirect, incidental, consequential, or punitive damages — including financial loss, data loss, or legal complications — arising from the use or inability to use our tools.</p>
+            <p>Users assume full responsibility for all data entered into our calculators and all decisions made based on the results generated. Quick Financial Calculator provides tools on an <strong>"as is"</strong> and <strong>"as available"</strong> basis without warranties of any kind, express or implied.</p>
         </section>
 
-        <section class="section">
-            <p style="text-align: center; font-size: 0.85rem; color: #94a3b8;">
-                If you have questions regarding these terms, please contact us via the <a href="/contact/" style="color: var(--primary); text-decoration: underline;">Support Page</a>.
-            </p>
+        {/* ✅ UPDATED SECTION — Governing Law (International / Delaware, USA) */}
+        <section class="section" id="governing-law">
+            <h2><span class="section-num">6</span> Governing Law</h2>
+            <p>These Terms & Conditions and any disputes arising out of or in connection with the use of Quick Financial Calculator shall be governed by and construed in accordance with internationally recognized legal principles applicable to digital services and online platforms.</p>
+            <div class="governing-box">
+                ⚖️ <strong>Jurisdiction:</strong> To the extent that any governing law is required to be specified, these Terms shall be governed by the laws of the <strong>State of Delaware, United States</strong>, without regard to its conflict of law provisions. This choice reflects standard practice for internationally accessible web platforms and does not imply any geographic restriction on use of the service.
+            </div>
+            <p>Users accessing Quick Financial Calculator from outside the United States are responsible for ensuring compliance with their local laws and regulations. We make no representation that the content or tools available on this site are appropriate or available for use in all jurisdictions.</p>
+            <p>If any provision of these Terms is found to be unenforceable or invalid under applicable law, such provision will be modified to the minimum extent necessary, and the remaining provisions shall remain in full force and effect.</p>
         </section>
+
+        {/* ✅ UPDATED — Contact section with direct email */}
+        <section class="section" id="contact-terms">
+            <h2><span class="section-num">7</span> Contact & Support</h2>
+            <div class="contact-footer">
+                <p>If you have questions, concerns, or feedback regarding these Terms & Conditions, please reach out through any of the following channels:</p>
+                <p>
+                    📧 <strong>Email:</strong> <a href="mailto:support@quickfincalc.com">support@quickfincalc.com</a>
+                </p>
+                <p>
+                    📬 <strong>Support Page:</strong> <a href="/contact/">quickfincalc.com/contact/</a>
+                </p>
+                <p>
+                    🔗 <strong>Website:</strong> <a href="https://quickfincalc.com">quickfincalc.com</a>
+                </p>
+                <p style="font-size: 0.8rem; color: #94a3b8; margin-top: 12px;">
+                    We aim to respond to all inquiries within <strong>48–72 hours</strong> during business days.
+                </p>
+            </div>
+        </section>
+
     </div>
 </Layout>
