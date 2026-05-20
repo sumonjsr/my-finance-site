@@ -15,7 +15,8 @@ author: "Md. Merajul Islam - Cost Control Specialist & Internal Auditor"
 
 In 2026, over 68% of SIP investors miscalculate their future wealth because they ignore two critical variables: **annual step-up** and **inflation erosion**. The result? They reach retirement with a corpus that looks large on paper but can't sustain their lifestyle for even 10 years.
 
-As a **Certified Financial Planner** who has built retirement plans for hundreds of individuals, I've found one consistent truth: the gap between a comfortable retirement and a financially stressed one almost always comes down to whether you planned with a step-up SIP or a flat SIP — and whether you tracked real returns rather than nominal ones.
+As an **internal auditor who regularly reviews financial statements and investment disclosures**, I have seen firsthand how SIP miscalculations create significant gaps between projected and actual 
+retirement outcomes. This guide reflects those observations.
 
 This guide — and our **free [SIP Calculator with Step-Up & Inflation](/calculator/sip-calculator)** — will fix that permanently.
 
@@ -25,7 +26,7 @@ This guide — and our **free [SIP Calculator with Step-Up & Inflation](/calcula
 
 ✅ **SIP Formula:** M = P × [{(1 + r)^n – 1} / r] × (1 + r)  
 ✅ **Step-Up Power:** A 10% annual step-up can 2–3x your final corpus vs. a flat SIP  
-✅ **Inflation Reality:** A ₹1 Crore corpus at 6% inflation is worth only ₹23 Lakhs in today's money after 25 years  
+✅ **Inflation Reality:** A ₹1 Crore corpus at 6% inflation is worth only $23 Lakhs in today's money after 25 years  
 ✅ **Good SIP Return:** 10–14% p.a. for equity mutual funds (long-term historical average)  
 ✅ **Quick Win:** Start early — investing 5 years earlier can double your final corpus through compounding  
 
@@ -350,7 +351,7 @@ Before you set your expected return in the calculator, understand what's realist
 
 ## 7 Common SIP Mistakes Destroying Your Returns
 
-After building hundreds of financial plans, these are the errors I see most often:
+In my work reviewing financial statements and investment disclosures, these are the recurring errors I observe most frequently in SIP-related decisions:
 
 ### 1. ❌ Stopping SIP During Market Crashes
 
@@ -361,6 +362,13 @@ After building hundreds of financial plans, these are the errors I see most ofte
 **Impact:** Investors who stopped SIP during the 2020 COVID crash and restarted 6 months later earned 35–40% less than those who continued without interruption.
 
 **Rule:** Treat SIP like a utility bill — non-negotiable, automatic, paid every month regardless of headlines.
+
+> **From my audit experience:** The most striking pattern I notice 
+> is not that investors panic — it is that they had no written plan 
+> for what they would do during a downturn. A SIP continued through 
+> the 2020 COVID crash recovered and grew significantly within 
+> 18 months. Those who cancelled faced both the loss and the 
+> psychological barrier of re-entering at higher prices.
 
 ### 2. ❌ Not Increasing SIP with Income Growth
 
@@ -759,7 +767,7 @@ Continue building your financial knowledge:
 
 ---
 
-**About the Author:** As a Certified Financial Planner with 14 years of experience building retirement and wealth accumulation strategies for individuals and families across South Asia, Southeast Asia, and the US, I've seen firsthand how a single SIP decision — started early, stepped up annually, and protected from panic selling — can transform financial futures. My mission is to bring institutional-quality financial planning tools to everyday investors.
+**About the Author:** Md. Merajul Islam is an Internal Audit Professional with hands-on experience reviewing financial records, investment disclosures, and tax positions. He built QuickFinCalc to provide individuals with the same calculation precision used in professional audit engagements — applied to personal financial planning. Contact: merajul.audit@gmail.com
 
 ---
 
