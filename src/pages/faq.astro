@@ -403,7 +403,7 @@ const typeLabels = {
             </div>
             <div class="faq-answer">
               <div class="faq-answer-content">
-                <p>{faq.answer}</p>
+                <p>{faq.answer.slice(0, 150)}...</p>
                 <a href={`/calculator/${faq.calculatorSlug}`} class="calculator-link">
                   → Try {faq.calculatorName}
                 </a>
