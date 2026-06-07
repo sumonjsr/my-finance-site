@@ -806,7 +806,7 @@
       "applicationCategory": "FinanceApplication",
       "name": "Global Loan Amortization Schedule Calculator",
       "description": "Generate comprehensive amortization schedules and principal vs. interest breakdown tables worldwide.",
-      "url": "https://quickfincalc.com/loan-amortization-schedule",
+      "url": "https://quickfincalc.com/calculator/loan-amortization-schedule",
       "offers": { "price": "0", "priceCurrency": "USD" }
      }
     }
@@ -866,7 +866,7 @@
       "applicationCategory": "FinanceApplication",
       "name": "Global Marketing ROI Calculator",
       "description": "Calculate investment returns and ROAS performance splits for digital marketing campaigns globally.",
-      "url": "https://quickfincalc.com/roi-marketing-calculator",
+      "url": "https://quickfincalc.com/calculator/roi-marketing-calculator",
       "offers": { "price": "0", "priceCurrency": "USD" }
       }
     }
@@ -926,7 +926,7 @@
         "applicationCategory": "FinanceApplication",
         "name": "Global Rental Property ROI Calculator",
         "description": "Calculate annual return on investment and cap rates for rental properties globally.",
-        "url": "https://quickfincalc.com/real-estate-roi",
+        "url": "https://quickfincalc.com/calculator/real-estate-roi",
         "offers": { "price": "0", "priceCurrency": "USD" }
       }
     }
@@ -986,7 +986,7 @@
         "applicationCategory": "FinanceApplication",
         "name": "Global Stock Profit Calculator",
         "description": "Calculate realized capital gains, losses, and return percentages from equity and stock market trading globally.",
-        "url": "https://quickfincalc.com/stock-profit-calculator",
+        "url": "https://quickfincalc.com/calculator/stock-profit-calculator",
         "offers": { "price": "0", "priceCurrency": "USD" }
       }
     }
@@ -1046,7 +1046,7 @@
         "applicationCategory": "FinanceApplication",
         "name": "Global Crypto Profit & Loss Calculator",
         "description": "Calculate realized capital gains, losses, and percentage returns for cryptocurrencies and digital assets globally.",
-        "url": "https://quickfincalc.com/crypto-profit-calculator",
+        "url": "https://quickfincalc.com/calculator/crypto-profit-calculator",
         "offers": { "price": "0", "priceCurrency": "USD" }
       }
     }
@@ -1106,7 +1106,7 @@
         "applicationCategory": "FinanceApplication",
         "name": "Global Dividend Yield Calculator",
         "description": "Calculate annual dividend distributions, yields, and project DRIP compounding for equity investors globally.",
-        "url": "https://quickfincalc.com/dividend-reinvestment-calc",
+        "url": "https://quickfincalc.com/calculator/dividend-reinvestment-calc",
         "offers": { "price": "0", "priceCurrency": "USD" }
       }
     }
@@ -1166,7 +1166,7 @@
         "applicationCategory": "FinanceApplication",
         "name": "Global Cap Rate Calculator",
         "description": "Calculate capitalization rates and evaluate commercial property investment returns worldwide.",
-        "url": "https://quickfincalc.com/cap-rate-real-estate",
+        "url": "https://quickfincalc.com/calculator/cap-rate-real-estate",
         "offers": { "price": "0", "priceCurrency": "USD" }
       }
     }
@@ -1226,7 +1226,7 @@
         "applicationCategory": "FinanceApplication",
         "name": "Global Compound Interest Calculator",
         "description": "Calculate compound interest growth trajectories and future values with customizable monthly compounding terms globally.",
-        "url": "https://quickfincalc.com/compound-interest-savings",
+        "url": "https://quickfincalc.com/calculator/compound-interest-savings",
         "offers": { "price": "0", "priceCurrency": "USD" }
       }
     }
@@ -1286,7 +1286,7 @@
         "applicationCategory": "FinanceApplication",
         "name": "Global Savings Goal Calculator",
         "description": "Reverse-engineer saving milestones and calculate required monthly cash contributions globally.",
-        "url": "https://quickfincalc.com/savings-goal-calculator",
+        "url": "https://quickfincalc.com/calculator/savings-goal-calculator",
         "offers": { "price": "0", "priceCurrency": "USD" }
       }
     }
@@ -1346,7 +1346,7 @@
       "applicationCategory": "FinanceApplication",
       "name": "Global Retirement Fund Goal Calculator",
       "description": "Calculate necessary retirement nest eggs and long-term investment milestone targets globally.",
-      "url": "https://quickfincalc.com/retirement-nest-egg",
+      "url": "https://quickfincalc.com/calculator/retirement-nest-egg",
       "offers": { "price": "0", "priceCurrency": "USD" }
      }
     }
@@ -1406,7 +1406,7 @@
         "applicationCategory": "FinanceApplication",
         "name": "Global Business Valuation Calculator",
         "description": "Estimate business market worth and enterprise valuations based on earnings multiples globally.",
-        "url": "https://quickfincalc.com/business-valuation",
+        "url": "https://quickfincalc.com/calculator/business-valuation",
         "offers": { "price": "0", "priceCurrency": "USD" }
       }
     }
@@ -1466,7 +1466,7 @@
         "applicationCategory": "FinanceApplication",
         "name": "Global Earnings Per Share Calculator",
         "description": "Calculate basic corporate earnings per share ratios for fundamental equity analysis globally.",
-        "url": "https://quickfincalc.com/eps-earnings-per-share",
+        "url": "https://quickfincalc.com/calculator/eps-earnings-per-share",
         "offers": { "price": "0", "priceCurrency": "USD" }
       }
     }
@@ -1526,7 +1526,7 @@
         "applicationCategory": "FinanceApplication",
         "name": "Global Return on Equity Calculator",
         "description": "Calculate corporate return on equity percentages to evaluate management efficiency globally.",
-        "url": "https://quickfincalc.com/return-on-equity-roe",
+        "url": "https://quickfincalc.com/calculator/return-on-equity-roe",
         "offers": { "price": "0", "priceCurrency": "USD" }
       }
     }
@@ -1586,7 +1586,7 @@
         "applicationCategory": "FinanceApplication",
         "name": "Global Shopify Profit Margin Calculator",
         "description": "Calculate net profit margins and e-commerce transactional fees for Shopify storefronts globally.",
-        "url": "https://quickfincalc.com/shopify-margin-calculator",
+        "url": "https://quickfincalc.com/calculator/shopify-margin-calculator",
         "offers": { "price": "0", "priceCurrency": "USD" }
       }
     }
@@ -1646,7 +1646,7 @@
         "applicationCategory": "FinanceApplication",
         "name": "Global Amazon FBA Fee Margin Calculator",
         "description": "Calculate realized unit profits and net margin returns after automated FBA logistical fees globally.",
-        "url": "https://quickfincalc.com/amazon-fba-calculator",
+        "url": "https://quickfincalc.com/calculator/amazon-fba-calculator",
         "offers": { "price": "0", "priceCurrency": "USD" }
       }
     }
@@ -1706,71 +1706,72 @@
         "applicationCategory": "FinanceApplication",
         "name": "Global eBay Profit Calculator",
         "description": "Calculate net take-home profits, commissions, and final value margins for eBay store listings globally.",
-        "url": "https://quickfincalc.com/ebay-fee-calculator",
+        "url": "https://quickfincalc.com/calculator/ebay-fee-calculator",
         "offers": { "price": "0", "priceCurrency": "USD" }
       }
     }
   },
   {
-    "slug": "gross-profit-margin",
-    "formula": "margin",
-    "type": "ecommerce",
-    "name": "Global Gross Profit Margin Calculator",
-    "description": "Calculate the percentage of operational revenue remaining above your cost of goods sold globally.",
-    "label1": "Gross Revenue",
-    "label2": "Cost of Goods Sold (COGS)",
-    "label3": "",
-    "what_is": "Gross profit margin tracks the exact percentage of your sales revenue that remains intact after subtracting the direct costs of producing or purchasing your items. It acts as the core baseline metric for any product-centric enterprise and serves as the primary starting point for all fundamental corporate profitability analysis.",
-    "who_use": "E-commerce store owners, retail managers, supply chain wholesale directors, and manufacturing executives use gross margin metrics to baseline product pricing, negotiate with suppliers, and rank inventory performance.",
-    "how_to_use": "1. Enter your total gross revenue for the selected fiscal period (supports all global currencies). 2. Input your total Cost of Goods Sold (COGS). 3. Click calculate to analyze your gross margin ratio.",
-    "how_to_read": "A higher numerical gross margin signifies that more liquid capital remains to comfortably cover fixed operating expenses and fuel net profits. Sector baselines shift radically; modern software vendors routinely scale past 70%, whereas thin grocery distribution networks navigate around 25%.",
-    "pro_tip": "If your gross margin is steadily compressing quarter-over-quarter, it signals that your supplier costs are climbing faster than your retail prices. This global calculator flags that structural leak early—long before it transforms into a localized cash flow bottleneck. Execute this calculation monthly!",
-    "seo": {
-      "title": "Free Gross Profit Margin Calculator 2026 – Revenue minus COGS | QuickFinCalc",
-      "meta_description": "Calculate your gross profit margin percentage instantly. Input corporate revenue and cost of goods sold to audit product-line profitability frameworks for free.",
-      "h1": "Global Gross Profit Margin Calculator",
-      "primary_keyword": "gross profit margin calculator",
-      "secondary_keywords": [
-        "gross margin calculator free",
-        "profit margin calculator 2026",
-        "COGS calculator online",
-        "product margin baseline tool"
-      ],
-      "h2_structure": [
-        "What Is Gross Profit Margin Exactly?",
-        "Who Needs to Track Product Gross Margins?",
-        "How to Calculate Gross Profit Margins Accurately",
-        "How to Benchmarking Your Core Margin Metrics",
-        "Frequently Asked Questions"
-      ],
-      "faqs": [
-        {
-          "question": "What is classified as a strong gross profit margin target in 2026?",
-          "answer": "Strong margins are completely dependent on your specific industry layer. Digital software and SaaS business models regularly maintain 70% to 80%+ boundaries. E-commerce retail typically balances between 25% to 50%, while heavy grocery and agricultural frameworks hover tightly within 25% to 35%. Always map against your exact global niche peer group."
-        },
-        {
-          "question": "What operational metrics are legally included inside Cost of Goods Sold (COGS)?",
-          "answer": "COGS aggregates the direct inputs required to construct or source your physical product: raw material purchasing, direct factory labor, assembly manufacturing overhead, and initial freight logistics to move the stock. It strictly excludes indirect overhead like administrative office rent, marketing ads, or corporate salaries."
-        },
-        {
-          "question": "What is the true structural difference between Gross Margin and Net Margin?",
-          "answer": "Gross margin isolates revenue purely against raw COGS factors. Net margin takes every single business expenditure into account—including fixed overhead, loan interest, and state taxes. Gross margin calculates structural product viability; net margin evaluates the overall health of the entire corporate enterprise."
-        },
-        {
-          "question": "How can an enterprise systematically optimize its gross profit margin parameters?",
-          "answer": "To optimize your gross margins, negotiate bulk-tier pricing discounts with factories, optimize assembly workflows, elevate retail pricing tiers, optimize return rates, or pivot marketing focus toward higher-margin assets in your current product catalog."
-        }
-      ],
-      "schema": {
-        "type": "SoftwareApplication",
-        "applicationCategory": "FinanceApplication",
-        "name": "Global Gross Profit Margin Calculator",
-        "description": "Calculate gross profit margins and product-line revenue ratios globally.",
-        "url": "https://quickfincalc.com/gross-profit-margin",
-        "offers": { "price": "0", "priceCurrency": "USD" }
+  "slug": "gross-profit-margin",
+  "formula": "margin",
+  "type": "ecommerce",
+  "name": "Gross Profit Margin Calculator",
+  "description": "Calculate the percentage of revenue remaining after subtracting your cost of goods sold (COGS). Instant results for any currency.",
+  "label1": "Gross Revenue",
+  "label2": "Cost of Goods Sold (COGS)",
+  "label3": "",
+  "what_is": "Gross profit margin shows what percentage of your revenue remains after paying for the direct costs of making or buying your products. It is the first and most important profitability metric for any product-based business — telling you whether your pricing is fundamentally sound before any other expenses are considered.",
+  "who_use": "E-commerce store owners, retail managers, wholesale directors, and manufacturing executives use gross margin to evaluate product pricing, negotiate with suppliers, and identify which products are most profitable.",
+  "how_to_use": "1. Enter your total revenue for the period. 2. Enter your total Cost of Goods Sold (COGS) — materials, direct labor, and manufacturing costs. 3. Click Calculate to instantly see your gross profit margin percentage.",
+  "how_to_read": "A higher gross margin means more revenue is available to cover operating costs and generate profit. Software companies typically achieve 70–80%+, e-commerce stores 25–50%, and grocery retailers around 20–25%. Compare your result to your industry average to see where you stand.",
+  "pro_tip": "If your gross margin is shrinking month over month, your supplier costs are rising faster than your prices. Calculate this monthly — catching the problem early prevents a cash flow crisis later.",
+  "seo": {
+    "title": "Gross Profit Margin Calculator 2026 – Free | QuickFinCalc",
+    "meta_description": "Calculate your gross profit margin instantly. Enter revenue and COGS to see what percentage of each sale you actually keep. Free, works for any currency.",
+    "h1": "Gross Profit Margin Calculator",
+    "primary_keyword": "gross profit margin calculator",
+    "secondary_keywords": [
+      "gross margin calculator free",
+      "profit margin calculator 2026",
+      "COGS calculator online",
+      "gross profit percentage calculator",
+      "how to calculate gross profit margin"
+    ],
+    "h2_structure": [
+      "What Is Gross Profit Margin?",
+      "Who Should Track Gross Margin?",
+      "How to Calculate Gross Profit Margin",
+      "What Is a Good Gross Profit Margin?",
+      "Frequently Asked Questions"
+    ],
+    "faqs": [
+      {
+        "question": "What is a good gross profit margin in 2026?",
+        "answer": "It depends on your industry. Software and SaaS businesses typically achieve 70–80%+. E-commerce and retail usually falls between 25–50%. Grocery and food businesses operate around 20–30%. Always compare your margin to businesses in your specific industry rather than a generic benchmark."
+      },
+      {
+        "question": "What is included in Cost of Goods Sold (COGS)?",
+        "answer": "COGS includes all direct costs of producing or purchasing your product: raw materials, direct labor, manufacturing costs, and freight to receive inventory. It does not include rent, marketing, salaries for office staff, or other operating expenses — those are counted later in operating profit."
+      },
+      {
+        "question": "What is the difference between gross margin and net margin?",
+        "answer": "Gross margin measures profit after subtracting only the direct cost of goods. Net margin measures profit after subtracting all expenses — including rent, salaries, marketing, loan interest, and taxes. Gross margin tells you if your product pricing works. Net margin tells you if the whole business is profitable."
+      },
+      {
+        "question": "How can I improve my gross profit margin?",
+        "answer": "There are four main levers: raise your selling prices, negotiate lower costs with suppliers, order in larger quantities to get volume discounts, or shift your sales focus toward higher-margin products in your catalog. Even a 2–3% improvement in gross margin has a significant impact on overall profitability."
       }
-    }
-  },
+    ],
+    "schema": {
+      "type": "SoftwareApplication",
+      "applicationCategory": "FinanceApplication",
+      "name": "Gross Profit Margin Calculator",
+      "description": "Calculate gross profit margin percentage instantly by entering revenue and cost of goods sold.",
+      "url": "https://quickfincalc.com/calculator/gross-profit-margin",
+      "offers": { "price": "0", "priceCurrency": "USD" }
+        }
+      }
+    },
   {
     "slug": "net-profit-margin",
     "formula": "margin",
@@ -1826,7 +1827,7 @@
         "applicationCategory": "FinanceApplication",
         "name": "Global Net Profit Margin Calculator",
         "description": "Calculate corporate net profit margins and total financial health ratios globally.",
-        "url": "https://quickfincalc.com/net-profit-margin",
+        "url": "https://quickfincalc.com/calculator/net-profit-margin",
         "offers": { "price": "0", "priceCurrency": "USD" }
       }
     }
@@ -1886,7 +1887,7 @@
         "applicationCategory": "FinanceApplication",
         "name": "Global Price Markup Calculator",
         "description": "Calculate required product selling prices and markup percentages to hit margin goals globally.",
-        "url": "https://quickfincalc.com/markup-percentage-calc",
+        "url": "https://quickfincalc.com/calculator/markup-percentage-calc",
         "offers": { "price": "0", "priceCurrency": "USD" }
       }
     }
@@ -1946,7 +1947,7 @@
         "applicationCategory": "FinanceApplication",
         "name": "Global Break-Even Sales Volume Calculator",
         "description": "Calculate unit and revenue break-even targets for businesses and startups globally.",
-        "url": "https://quickfincalc.com/break-even-sales",
+        "url": "https://quickfincalc.com/calculator/break-even-sales",
         "offers": { "price": "0", "priceCurrency": "USD" }
       }
     }
@@ -2006,7 +2007,7 @@
         "applicationCategory": "FinanceApplication",
         "name": "Global Startup Burn Rate Calculator",
         "description": "Calculate startup net burn metrics and cash runway lifespans globally.",
-        "url": "https://quickfincalc.com/startup-burn-rate",
+        "url": "https://quickfincalc.com/calculator/startup-burn-rate",
         "offers": { "price": "0", "priceCurrency": "USD" }
       }
     }
@@ -2066,7 +2067,7 @@
         "applicationCategory": "FinanceApplication",
         "name": "Global Inventory Turnover Ratio Calculator",
         "description": "Calculate annualized inventory turnover ratios and stock movement coefficients globally.",
-        "url": "https://quickfincalc.com/inventory-turnover",
+        "url": "https://quickfincalc.com/calculator/inventory-turnover",
         "offers": { "price": "0", "priceCurrency": "USD" }
       }
     }
@@ -2126,7 +2127,7 @@
         "applicationCategory": "FinanceApplication",
         "name": "Global Working Capital Ratio Calculator",
         "description": "Calculate current liquidity ratios and working capital coefficients globally.",
-        "url": "https://quickfincalc.com/working-capital-ratio",
+        "url": "https://quickfincalc.com/calculator/working-capital-ratio",
         "offers": { "price": "0", "priceCurrency": "USD" }
       }
     }
@@ -2196,7 +2197,7 @@
         "applicationCategory": "FinanceApplication",
         "name": "USA Sales Tax Calculator",
         "description": "Calculate forward and backward US state and local sales tax configurations.",
-        "url": "https://quickfincalc.com/sales-tax-usa",
+        "url": "https://quickfincalc.com/calculator/sales-tax-usa",
         "offers": { "price": "0", "priceCurrency": "USD" }
       }
     }
@@ -2257,7 +2258,7 @@
         "applicationCategory": "FinanceApplication",
         "name": "UK Pension Tax Calculator",
         "description": "Advanced UK pension withdrawal tax scenario tool tracking LSA rules and emergency tax deductions.",
-        "url": "https://quickfincalc.com/uk-pension-tax-calculator",
+        "url": "https://quickfincalc.com/calculator/uk-pension-tax-calculator",
         "offers": { "price": "0", "priceCurrency": "GBP" }
       }
     }
@@ -2322,7 +2323,7 @@
         "applicationCategory": "FinanceApplication",
         "name": "Salary Sacrifice Pension Calculator",
         "description": "UK-centric pension salary sacrifice tool evaluating income tax adjustments, plan 5 student loans, and employer NI allocations.",
-        "url": "https://quickfincalc.com/salary-sacrifice-calculator",
+        "url": "https://quickfincalc.com/calculator/salary-sacrifice-calculator",
         "offers": { "price": "0", "priceCurrency": "GBP" }
       }
     }
@@ -2382,7 +2383,7 @@
         "applicationCategory": "FinanceApplication",
         "name": "UK VAT Calculator",
         "description": "Calculate 20% and 5% UK VAT forward or reverse for commercial invoices.",
-        "url": "https://quickfincalc.com/vat-uk-calculator",
+        "url": "https://quickfincalc.com/calculator/vat-uk-calculator",
         "offers": { "price": "0", "priceCurrency": "GBP" }
       }
     }
@@ -2442,7 +2443,7 @@
         "applicationCategory": "FinanceApplication",
         "name": "Canada GST/HST Calculator",
         "description": "Estimate goods and services tax, PST, and combined Harmonized Sales Tax for Canadian provinces.",
-        "url": "https://quickfincalc.com/gst-canada-calculator",
+        "url": "https://quickfincalc.com/calculator/gst-canada-calculator",
         "offers": { "price": "0", "priceCurrency": "CAD" }
       }
     }
@@ -2502,7 +2503,7 @@
         "applicationCategory": "FinanceApplication",
         "name": "US Payroll Tax Estimator",
         "description": "Estimate employer-side statutory payroll taxes and FICA obligations.",
-        "url": "https://quickfincalc.com/payroll-tax-usa",
+        "url": "https://quickfincalc.com/calculator/payroll-tax-usa",
         "offers": { "price": "0", "priceCurrency": "USD" }
       }
     }
@@ -2562,7 +2563,7 @@
         "applicationCategory": "FinanceApplication",
         "name": "Freelance Tax Estimator",
         "description": "Estimate self-employment and income tax burdens for 1099 independent contractors.",
-        "url": "https://quickfincalc.com/freelance-tax-estimator",
+        "url": "https://quickfincalc.com/calculator/freelance-tax-estimator",
         "offers": { "price": "0", "priceCurrency": "USD" }
       }
     }
@@ -2622,7 +2623,7 @@
         "applicationCategory": "FinanceApplication",
         "name": "PayPal Fee Calculator",
         "description": "Calculate processing fees for international and domestic merchant transactions.",
-        "url": "https://quickfincalc.com/paypal-fee-international",
+        "url": "https://quickfincalc.com/calculator/paypal-fee-international",
         "offers": { "price": "0", "priceCurrency": "USD" }
       }
     }
@@ -2682,7 +2683,7 @@
         "applicationCategory": "FinanceApplication",
         "name": "Stripe Fee Calculator",
         "description": "Estimate net transactional revenue and payout margins after Stripe payment gateway deductions.",
-        "url": "https://quickfincalc.com/stripe-fee-calculator",
+        "url": "https://quickfincalc.com/calculator/stripe-fee-calculator",
         "offers": { "price": "0", "priceCurrency": "USD" }
       }
     }
@@ -2742,7 +2743,7 @@
         "applicationCategory": "FinanceApplication",
         "name": "Invoice Discount Calculator",
         "description": "Calculate net invoice totals, tax layers, and absolute savings after applying trade or commercial promotional discounts.",
-        "url": "https://quickfincalc.com/invoice-discount-calc",
+        "url": "https://quickfincalc.com/calculator/invoice-discount-calc",
         "offers": { "price": "0", "priceCurrency": "USD" }
       }
     }
@@ -2802,7 +2803,7 @@
         "applicationCategory": "FinanceApplication",
         "name": "Straight-Line Depreciation Calculator",
         "description": "Calculate annual asset depreciation and track written-down values for financial reporting.",
-        "url": "https://quickfincalc.com/asset-depreciation-calc",
+        "url": "https://quickfincalc.com/calculator/asset-depreciation-calc",
         "offers": { "price": "0", "priceCurrency": "USD" }
       }
     }
@@ -2862,7 +2863,7 @@
         "applicationCategory": "FinanceApplication",
         "name": "Customer Acquisition Cost (CAC) Calculator",
         "description": "Calculate the true fully loaded operational expense required to acquire a single new customer profile.",
-        "url": "https://quickfincalc.com/cac-customer-acquisition",
+        "url": "https://quickfincalc.com/calculator/cac-customer-acquisition",
         "offers": { "price": "0", "priceCurrency": "USD" }
       }
     }
@@ -2922,7 +2923,7 @@
         "applicationCategory": "FinanceApplication",
         "name": "Customer Lifetime Value (CLV) Calculator",
         "description": "Estimate total gross revenue or profit potential generated by a single customer profile.",
-        "url": "https://quickfincalc.com/clv-lifetime-value",
+        "url": "https://quickfincalc.com/calculator/clv-lifetime-value",
         "offers": { "price": "0", "priceCurrency": "USD" }
       }
     }
@@ -2982,7 +2983,7 @@
         "applicationCategory": "FinanceApplication",
         "name": "Marketing Expense Ratio Calculator",
         "description": "Monitor and analyze your total sales and marketing spend relative to gross corporate revenues.",
-        "url": "https://quickfincalc.com/marketing-expense-ratio",
+        "url": "https://quickfincalc.com/calculator/marketing-expense-ratio",
         "offers": { "price": "0", "priceCurrency": "USD" }
       }
     }
@@ -3042,7 +3043,7 @@
         "applicationCategory": "FinanceApplication",
         "name": "Customer Retention Rate Calculator",
         "description": "Measure the net percentage of your customer base that remains loyal and engaged across designated operational windows.",
-        "url": "https://quickfincalc.com/customer-retention-rate",
+        "url": "https://quickfincalc.com/calculator/customer-retention-rate",
         "offers": { "price": "0", "priceCurrency": "USD" }
       }
     }
@@ -3102,7 +3103,7 @@
         "applicationCategory": "FinanceApplication",
         "name": "Email Open Rate ROI Calculator",
         "description": "Evaluate email marketing performance metrics, audience open rates, and true financial return on investment tracking parameters.",
-        "url": "https://quickfincalc.com/email-open-rate-roi",
+        "url": "https://quickfincalc.com/calculator/email-open-rate-roi",
         "offers": { "price": "0", "priceCurrency": "USD" }
       }
     }
@@ -3162,7 +3163,7 @@
         "applicationCategory": "FinanceApplication",
         "name": "Hourly to Salary Calculator",
         "description": "Convert hourly wage rates into an equivalent annualized gross salary total for objective compensation comparison.",
-        "url": "https://quickfincalc.com/hourly-to-salary",
+        "url": "https://quickfincalc.com/calculator/hourly-to-salary",
         "offers": { "price": "0", "priceCurrency": "USD" }
       }
     }
@@ -3222,7 +3223,7 @@
         "applicationCategory": "FinanceApplication",
         "name": "Employee Turnover Rate Calculator",
         "description": "Calculate the annualized rate at which employees depart your workforce to analyze corporate retention efficiency.",
-        "url": "https://quickfincalc.com/employee-turnover-rate",
+        "url": "https://quickfincalc.com/calculator/employee-turnover-rate",
         "offers": { "price": "0", "priceCurrency": "USD" }
       }
     }
@@ -3282,7 +3283,7 @@
         "applicationCategory": "FinanceApplication",
         "name": "EBITDA Margin Calculator",
         "description": "Examine operational profitability independent of capital structure, tax environments, and non-cash accounting provisions.",
-        "url": "https://quickfincalc.com/ebitda-margin-calc",
+        "url": "https://quickfincalc.com/calculator/ebitda-margin-calc",
         "offers": { "price": "0", "priceCurrency": "USD" }
       }
     }
@@ -3342,7 +3343,7 @@
         "applicationCategory": "FinanceApplication",
         "name": "Current Ratio Analysis Calculator",
         "description": "Evaluate short-term liquidity thresholds and corporate financial strength to satisfy near-term operational commitments.",
-        "url": "https://quickfincalc.com/current-ratio-analysis",
+        "url": "https://quickfincalc.com/calculator/current-ratio-analysis",
         "offers": { "price": "0", "priceCurrency": "USD" }
       }
     }
