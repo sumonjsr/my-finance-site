@@ -235,7 +235,7 @@
         "applicationCategory": "FinanceApplication",
         "name": "Global Mortgage & Home Loan Calculator",
         "description": "Calculate monthly mortgage payments, total interest, and amortization schedules worldwide.",
-        "url": "https://quickfincalc.com/mortgage-calculator",
+        "url": "https://quickfincalc.com/calculator/mortgage-calculator",
         "offers": {
           "price": "0",
           "priceCurrency": "USD"
@@ -308,7 +308,7 @@
       "applicationCategory": "FinanceApplication",
       "name": "Global Auto Loan EMI Calculator",
       "description": "Estimate monthly installment payments for new, used, or refinanced cars globally.",
-      "url": "https://quickfincalc.com/car-loan-calculator",
+      "url": "https://quickfincalc.com/calculator/car-loan-calculator",
       "offers": { "price": "0", "priceCurrency": "USD" }
     }
   }
@@ -386,7 +386,7 @@
       "applicationCategory": "FinanceApplication",
       "name": "Personal Loan & EMI Calculator",
       "description": "Free online calculator to estimate monthly personal loan payments, total interest charged, and full repayment cost. Supports all currencies and lender types worldwide.",
-      "url": "https://quickfincalc.com/personal-loan-calculator",
+      "url": "https://quickfincalc.com/calculator/personal-loan-calculator",
       "offers": { "price": "0", "priceCurrency": "USD" }
     }
   }
@@ -446,7 +446,7 @@
       "applicationCategory": "FinanceApplication",
       "name": "SBA 7(a) Business Loan Calculator",
       "description": "Specialized payment calculator for US Small Business Administration commercial loans.",
-      "url": "https://quickfincalc.com/sba-7a-loan-calculator",
+      "url": "https://quickfincalc.com/calculator/sba-7a-loan-calculator",
       "offers": { "price": "0", "priceCurrency": "USD" }
     }
   }
@@ -506,7 +506,7 @@
       "applicationCategory": "FinanceApplication",
       "name": "Global Student Loan Repayment & Refinance Calculator",
       "description": "Plan student debt payoff strategies and calculate refinancing savings globally.",
-      "url": "https://quickfincalc.com/student-loan-refinance",
+      "url": "https://quickfincalc.com/calculator/student-loan-refinance",
       "offers": { "price": "0", "priceCurrency": "USD" }
     }
   }
@@ -566,7 +566,7 @@
       "applicationCategory": "FinanceApplication",
       "name": "Global Credit Card Payoff Calculator",
       "description": "Calculate interest costs and generate custom debt payoff timelines for global credit cards.",
-      "url": "https://quickfincalc.com/credit-card-payoff",
+      "url": "https://quickfincalc.com/calculator/credit-card-payoff",
       "offers": { "price": "0", "priceCurrency": "USD" }
     }
   }
@@ -626,7 +626,7 @@
       "applicationCategory": "FinanceApplication",
       "name": "Global Equipment Lease Calculator",
       "description": "Calculate monthly lease payments and interest costs for business machinery globally.",
-      "url": "https://quickfincalc.com/equipment-lease-payment",
+      "url": "https://quickfincalc.com/calculator/equipment-lease-payment",
       "offers": { "price": "0", "priceCurrency": "USD" }
     }
   }
@@ -686,7 +686,7 @@
       "applicationCategory": "FinanceApplication",
       "name": "Global Debt-to-Income Ratio Calculator",
       "description": "Calculate debt-to-income ratios and verify mortgage or loan eligibility worldwide.",
-      "url": "https://quickfincalc.com/debt-to-income-ratio",
+      "url": "https://quickfincalc.com/calculator/debt-to-income-ratio",
       "offers": { "price": "0", "priceCurrency": "USD" }
     }
   }
@@ -746,7 +746,7 @@
       "applicationCategory": "FinanceApplication",
       "name": "Global Debt Service Coverage Ratio (DSCR) Calculator",
       "description": "Calculate debt service coverage ratios and commercial loan eligibility for businesses and investment properties globally.",
-      "url": "https://quickfincalc.com/debt-service-coverage",
+      "url": "https://quickfincalc.com/calculator/debt-service-coverage",
       "offers": { "price": "0", "priceCurrency": "USD" }
       }
     }
