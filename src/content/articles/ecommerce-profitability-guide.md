@@ -9,7 +9,7 @@ keywords: "ecommerce profit margin calculator, shopify profit calculator, amazon
 author: "Md. Merajul Islam - Cost Control Specialist & Internal Auditor"
 ---
 
-# E-commerce Profit Margin Calculator: Shopify & Amazon FBA Guide
+## E-commerce Profit Margin Calculator: Shopify & Amazon FBA Guide
 
 **Are you making $50,000/month on Shopify or Amazon FBA but barely breaking even?** You're not alone. In 2026, 67% of e-commerce sellers don't know their true profit margins—and it's costing them thousands in hidden losses.
 

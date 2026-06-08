@@ -9,7 +9,7 @@ keywords: "SIP calculator, step up SIP calculator, SIP with inflation, systemati
 author: "Md. Merajul Islam - Cost Control Specialist & Internal Auditor"
 ---
 
-# SIP Calculator: Calculate Your Systematic Investment Plan Returns
+## SIP Calculator: Calculate Your Systematic Investment Plan Returns
 
 **Are you investing $10,000 per month in an SIP but have no idea what it will be worth in 20 years?** Worse — are you calculating your corpus without accounting for inflation, making your retirement target dangerously underfunded?
 

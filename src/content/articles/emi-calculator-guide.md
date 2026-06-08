@@ -9,7 +9,7 @@ keywords: "emi calculator, how banks calculate emi, loan emi calculator, emi for
 author: "Md. Merajul Islam - Cost Control Specialist & Internal Auditor"
 ---
 
-# EMI Calculator: How Banks Calculate Your Loan Payment (2026 Guide)
+## EMI Calculator: How Banks Calculate Your Loan Payment (2026 Guide)
 
 You walk into a bank, apply for a loan, and the officer tells you: *"Your monthly EMI will be $847."*
 

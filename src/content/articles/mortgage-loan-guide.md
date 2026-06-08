@@ -9,7 +9,7 @@ keywords: "mortgage calculator, home loan EMI calculator, loan amortization sche
 author: "Md. Merajul Islam - Cost Control Specialist & Internal Auditor"
 ---
 
-# Mortgage Calculator: Calculate Your Home Loan Payments & Save Thousands (2026)
+## Mortgage Calculator: Calculate Your Home Loan Payments & Save Thousands (2026)
 
 Most people who take out a mortgage focus on one number: the monthly payment. Can I afford $1,800 a month? Yes? Great, let's sign.
 

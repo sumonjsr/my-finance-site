@@ -9,7 +9,7 @@ keywords: "hourly to salary calculator, employee turnover rate calculator, EBITD
 author: "Md. Merajul Islam - Cost Control Specialist & Internal Auditor"
 ---
 
-# Salary & HR Calculators: The Complete Business Financial Health Toolkit
+## Salary & HR Calculators: The Complete Business Financial Health Toolkit
 
 **Is your business paying employees fairly, retaining talent efficiently, generating real profit, and maintaining the liquidity to survive a slow quarter?** Most business owners can answer one of those four questions. Very few can answer all of them — and the gap is costing them money every single month.
 

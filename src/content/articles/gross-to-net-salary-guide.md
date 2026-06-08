@@ -9,7 +9,7 @@ keywords: "gross to net salary calculator, how to calculate net salary, gross sa
 author: "Md. Merajul Islam - Cost Control Specialist & Internal Auditor"
 ---
 
-# How to Calculate Employee Gross to Net Salary (2026 Guide)
+## How to Calculate Employee Gross to Net Salary (2026 Guide)
 
 Every month, millions of employees look at their payslip and wonder the same thing: I was told my salary is $60,000 a year — so why does my bank account show something completely different?
 

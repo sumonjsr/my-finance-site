@@ -9,7 +9,7 @@ keywords: "ROI calculator, return on investment calculator, how to calculate ROI
 author: "Md. Merajul Islam - Cost Control Specialist & Internal Auditor"
 ---
 
-# ROI Calculator: How to Calculate Return on Investment (2026 Guide)
+## ROI Calculator: How to Calculate Return on Investment (2026 Guide)
 
 Most investors make the same mistake. They look at their portfolio and see a 20% gain — and they celebrate. But when I sit down with them as an auditor and we go through the real numbers — after fees, after taxes, after inflation — that 20% often becomes 11% or 12%. Sometimes less.
 

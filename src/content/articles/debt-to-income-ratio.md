@@ -9,7 +9,7 @@ keywords: "dti ratio calculator, debt to income ratio calculator, how to calcula
 author: "Md. Merajul Islam - Cost Control Specialist & Internal Auditor"
 ---
 
-# DTI Ratio Calculator: Check Your Debt-to-Income & Qualify for Loans
+## DTI Ratio Calculator: Check Your Debt-to-Income & Qualify for Loans
 
 **Are you getting rejected for mortgages, auto loans, or credit cards without knowing why?** The culprit is likely your **Debt-to-Income (DTI) Ratio**—and 73% of borrowers don't even know what their DTI is until they're denied.
 

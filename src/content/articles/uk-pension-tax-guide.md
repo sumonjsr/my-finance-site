@@ -9,7 +9,7 @@ keywords: "pension tax calculator uk, pension lump sum tax calculator, HMRC pens
 author: "Md. Merajul Islam - Cost Control Specialist & Internal Auditor"
 ---
 
-# UK Pension Tax Guide 2026: Navigating New HMRC Rules & Maximizing Your Retirement Pay
+## UK Pension Tax Guide 2026: Navigating New HMRC Rules & Maximizing Your Retirement Pay
 
 **Last Updated:** May 2026 | **Compliance Level:** HMRC 2026/27 Tax Year Standards
 

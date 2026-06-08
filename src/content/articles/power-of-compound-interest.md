@@ -9,7 +9,7 @@ keywords: "compound interest calculator, how does compound interest work, compou
 author: "Md. Merajul Islam - Cost Control Specialist & Internal Auditor"
 ---
 
-# Compound Interest Calculator: Watch Your Money Multiply
+## Compound Interest Calculator: Watch Your Money Multiply
 
 **What if I told you that investing just $200/month for 30 years could grow to over $340,000?** Most people underestimate the exponential power of compound interest—what Einstein allegedly called "the eighth wonder of the world."
 

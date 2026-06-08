@@ -9,7 +9,7 @@ keywords: "salary sacrifice pension calculator, salary sacrifice tax relief, pen
 author: "Md. Merajul Islam - Pension Tax Specialist & Internal Auditor"
 ---
 
-# Salary Sacrifice Pension Calculator 2026: Maximize Tax Savings & Boost Retirement
+## Salary Sacrifice Pension Calculator 2026: Maximize Tax Savings & Boost Retirement
 
 **Last Updated:** May 2026 | **Tax Year:** 2026/27
 

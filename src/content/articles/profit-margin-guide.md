@@ -9,7 +9,7 @@ keywords: "profit margin calculator, how to calculate profit margin, gross profi
 author: "Md. Merajul Islam - Cost Control Specialist & Internal Auditor"
 ---
 
-# How to Calculate Profit Margin for Small Business (2026 Guide)
+## How to Calculate Profit Margin for Small Business (2026 Guide)
 
 Here's a question every small business owner should be able to answer in 30 seconds: *What is your profit margin?*
 
