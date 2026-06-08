@@ -1075,7 +1075,16 @@ const breadcrumbSchema = {
           cData   = [v2, v1];
           break;
         }
-
+        // ─── Hourly to Annual Salary ─────────────────────────────────────
+        case 'multiply3': {
+        const annual = v1 * v2 * v3;
+        const monthly = annual / 12;
+         const weekly = v1 * v2;
+          out = `Annual Salary: ${fmt(annual)} <br/> Monthly: ${fmt(monthly)} <br/> Weekly: ${fmt(weekly)}`;
+          cLabels = ['Annual Salary', 'Monthly Pay'];
+          cData = [annual, monthly];
+          break;
+        }
         // ─── Basic ──────────────────────────────────────────────────────────
         case 'basic': {
           out     = `Result: ${fmt(v1 * v2)}`;

@@ -2938,7 +2938,7 @@
   },
   {
     "slug": "hourly-to-salary",
-    "formula": "basic",
+    "formula": "multiply3",
     "type": "salary",
     "name": "Hourly to Salary Calculator",
     "description": "Convert hourly wage rates into an equivalent annualized gross salary total for objective compensation comparison.",
