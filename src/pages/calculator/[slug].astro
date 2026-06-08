@@ -1085,6 +1085,69 @@ const breadcrumbSchema = {
           cData = [annual, monthly];
           break;
         }
+
+        // ─── Crypto Profit ──────────────────────────────────────────────
+        case 'crypto': {
+          const cryptoProfit = v2 - v1;
+          const cryptoReturn = v1 > 0 ? (cryptoProfit / v1) * 100 : 0;
+          out = `Gain/Loss: ${fmt(cryptoProfit)} <br/> Return: ${pct(cryptoReturn)}`;
+          cLabels = ['Total Invested', 'Gain/Loss'];
+          cData = [v1, cryptoProfit > 0 ? cryptoProfit : 0];
+          break;
+        }
+
+        // ─── Customer Lifetime Value ─────────────────────────────────────
+        case 'clv': {
+          const clv = v1 * v2 * v3;
+          const monthly = clv / (v3 * 12);
+          out = `Lifetime Value: ${fmt(clv)} <br/> Monthly Revenue: ${fmt(monthly)}`;
+          cLabels = ['Annual Revenue', 'Total Lifetime Value'];
+          cData = [v1 * v2, clv];
+          break;
+        }
+
+        // ─── Asset Depreciation ──────────────────────────────────────────
+        case 'depreciation': {
+          const depreciable = v1 - v2;
+          const annual = depreciable / v3;
+          const monthly = annual / 12;
+          out = `Annual Depreciation: ${fmt(annual)} <br/> Monthly: ${fmt(monthly)} <br/> Total Depreciable: ${fmt(depreciable)}`;
+          cLabels = ['Salvage Value', 'Total Depreciation'];
+          cData = [v2, depreciable];
+          break;
+        }
+
+        // ─── Earnings Per Share ──────────────────────────────────────────
+        case 'eps': {
+          const earnings = v1 - v2;
+          const epsVal = earnings / v3;
+          out = `EPS: ${fmt(epsVal)} <br/> Total Earnings: ${fmt(earnings)}`;
+          cLabels = ['Preferred Dividends', 'Net Earnings'];
+          cData = [v2, earnings > 0 ? earnings : 0];
+          break;
+        }
+
+        // ─── Customer Retention Rate ─────────────────────────────────────
+        case 'retention': {
+          const retained = v3 - v2;
+          const retentionRate = (retained / v1) * 100;
+          const churnRate = 100 - retentionRate;
+          out = `Retention Rate: ${pct(retentionRate)} <br/> Churn Rate: ${pct(churnRate)} <br/> Retained Customers: ${retained.toFixed(0)}`;
+          cLabels = ['Retained', 'Churned'];
+          cData = [retained > 0 ? retained : 0, v1 - retained > 0 ? v1 - retained : 0];
+          break;
+        }
+
+        // ─── Real Estate ROI ─────────────────────────────────────────────
+        case 'real_estate': {
+          const netIncome = v1 - v2;
+          const roiPct = v3 > 0 ? (netIncome / v3) * 100 : 0;
+          const capRate = roiPct;
+          out = `Annual Net Income: ${fmt(netIncome)} <br/> ROI / Cap Rate: ${pct(capRate)} <br/> Property Value: ${fmt(v3)}`;
+          cLabels = ['Operating Expenses', 'Net Income'];
+          cData = [v2, netIncome > 0 ? netIncome : 0];
+          break;
+        }
         // ─── Basic ──────────────────────────────────────────────────────────
         case 'basic': {
           out     = `Result: ${fmt(v1 * v2)}`;
