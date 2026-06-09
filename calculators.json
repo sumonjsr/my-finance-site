@@ -1061,7 +1061,7 @@
   },
   {
     "slug": "savings-goal-calculator",
-    "formula": "compound",
+    "formula": "savings_goal",
     "type": "investment",
     "name": "Global Savings Goal & Target Calculator",
     "description": "Reverse-engineer your financial targets to discover the exact monthly savings required to hit your deadline.",
@@ -1121,7 +1121,7 @@
   },
   {
   "slug": "retirement-nest-egg",
-  "formula": "compound",
+  "formula": "retirement",
   "type": "investment",
   "name": "Global Retirement Fund Goal Calculator",
   "description": "Calculate your total required retirement nest egg and long-term financial target for a comfortable post-career life worldwide.",
@@ -1361,7 +1361,7 @@
   },
   {
     "slug": "shopify-margin-calculator",
-    "formula": "margin",
+    "formula": "platform_margin",
     "type": "ecommerce",
     "name": "Global Shopify Profit Margin Calculator",
     "description": "Calculate your store's gross profit margin, platform costs, and true product profitability after fees globally.",
@@ -1421,7 +1421,7 @@
   },
   {
     "slug": "amazon-fba-calculator",
-    "formula": "margin",
+    "formula": "platform_margin",
     "type": "ecommerce",
     "name": "Global Amazon FBA Fee Margin Calculator",
     "description": "Estimate net unit profits after factoring in Amazon FBA fulfillment architectures and category referral fees globally.",
@@ -1481,7 +1481,7 @@
   },
   {
     "slug": "ebay-fee-calculator",
-    "formula": "margin",
+    "formula": "platform_margin",
     "type": "ecommerce",
     "name": "Global eBay Profit Calculator",
     "description": "Calculate your net take-home profit and return margins after factoring in eBay final value fees and managed payments globally.",
@@ -1662,7 +1662,7 @@
   },
   {
     "slug": "markup-percentage-calc",
-    "formula": "margin",
+    "formula": "markup",
     "type": "ecommerce",
     "name": "Global Price Markup Calculator",
     "description": "Determine the exact retail markup percentage and selling price required to reach your target profit margin goals globally.",
@@ -2278,7 +2278,7 @@
   },
   {
     "slug": "payroll-tax-usa",
-    "formula": "tax",
+    "formula": "payroll_tax",
     "type": "tax",
     "name": "US Payroll Tax Estimator",
     "description": "Estimate employer-side statutory payroll taxes, FICA obligations, and total real employment overhead costs.",
@@ -2338,7 +2338,7 @@
   },
   {
     "slug": "freelance-tax-estimator",
-    "formula": "tax",
+    "formula": "freelance_tax",
     "type": "tax",
     "name": "Freelance Tax Estimator",
     "description": "Estimate self-employment and income tax burdens for 1099 independent contractors and gig workers.",
@@ -2518,7 +2518,7 @@
   },
   {
     "slug": "invoice-discount-calc",
-    "formula": "tax",
+    "formula": "invoice_discount",
     "type": "tax",
     "name": "Invoice Discount Calculator",
     "description": "Calculate net invoice totals, tax layers, and absolute savings after applying trade or commercial promotional discounts.",
@@ -2878,7 +2878,7 @@
   },
   {
     "slug": "email-open-rate-roi",
-    "formula": "roi",
+    "formula": "email_roi",
     "type": "marketing",
     "name": "Email Open Rate ROI Calculator",
     "description": "Evaluate email marketing performance metrics, audience open rates, and true financial return on investment tracking parameters.",

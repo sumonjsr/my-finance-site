@@ -1148,6 +1148,111 @@ const breadcrumbSchema = {
           cData = [v2, netIncome > 0 ? netIncome : 0];
           break;
         }
+
+        // ─── Shopify / Amazon/ eBay/Platform Margin ───────────────────────────────────
+        case 'platform_margin': {
+          const grossProfit = v1 - v2 - v3;
+          const marginPct = v1 > 0 ? (grossProfit / v1) * 100 : 0;
+          out = `Net Profit: ${fmt(grossProfit)} <br/> Profit Margin: ${pct(marginPct)} <br/> Total Costs: ${fmt(v2 + v3)}`;
+          cLabels = ['COGS', 'Platform Fees', 'Net Profit'];
+          cData = [v2, v3, grossProfit > 0 ? grossProfit : 0];
+          break;
+        }
+
+        // ─── Savings Goal (PMT) ──────────────────────────────────────────
+        case 'savings_goal': {
+          const r = (v2 / 100) / 12;
+          const n = v3;
+          let monthly;
+          if (r === 0) {
+           monthly = v1 / n;
+          } else {
+          monthly = (v1 * r) / (Math.pow(1 + r, n) - 1);
+        }
+        const totalSaved = monthly * n;
+          const totalInterest = v1 - totalSaved;
+          out = `Monthly Savings Needed: ${fmt(monthly)} <br/> Total You Save: ${fmt(totalSaved)} <br/> Interest Earned: ${fmt(Math.abs(totalInterest))}`;
+          cLabels = ['Your Contributions', 'Interest Earned'];
+          cData = [totalSaved, Math.abs(totalInterest)];
+          break;
+        }
+
+        // ─── Retirement Nest Egg ─────────────────────────────────────────
+        case 'retirement': {
+          const annualExpense = v1 * 12;
+          const nestEgg = v3 > 0 ? (annualExpense / v3) * 100 : annualExpense * 25;
+          const totalExpense = annualExpense * v2;
+          out = `Required Nest Egg: ${fmt(nestEgg)} <br/> Annual Expense: ${fmt(annualExpense)} <br/> Total Over ${v2} Years: ${fmt(totalExpense)}`;
+          cLabels = ['Nest Egg Needed', 'Total Expenses'];
+          cData = [nestEgg, totalExpense];
+          break;
+        }
+
+        // ─── Freelance Tax ───────────────────────────────────────────────
+        case 'freelance_tax': {
+          const netIncome = v1 - v2;
+          const seTax = netIncome * 0.153;
+          const seTaxDeduction = seTax * 0.5;
+          const taxableIncome = netIncome - seTaxDeduction;
+          const incomeTax = taxableIncome * (v3 / 100);
+          const totalTax = seTax + incomeTax;
+          const takeHome = netIncome - totalTax;
+          out = `Take-Home Pay: ${fmt(takeHome)} <br/> Self-Employment Tax: ${fmt(seTax)} <br/> Income Tax: ${fmt(incomeTax)} <br/> Total Tax: ${fmt(totalTax)}`;
+          cLabels = ['Take-Home', 'SE Tax', 'Income Tax'];
+          cData = [takeHome > 0 ? takeHome : 0, seTax, incomeTax];
+          break;
+        }
+
+        // ─── Invoice Discount ────────────────────────────────────────────
+        case 'invoice_discount': {
+          const discount = v1 * (v2 / 100);
+          const afterDiscount = v1 - discount;
+          const taxAmount = afterDiscount * (v3 / 100);
+          const finalTotal = afterDiscount + taxAmount;
+          out = `Final Invoice: ${fmt(finalTotal)} <br/> Discount Saved: ${fmt(discount)} <br/> Tax Amount: ${fmt(taxAmount)} <br/> After Discount: ${fmt(afterDiscount)}`;
+          cLabels = ['After Discount', 'Tax', 'Discount Saved'];
+          cData = [afterDiscount, taxAmount, discount];
+          break;
+        }
+
+        // ─── Price Markup ────────────────────────────────────────────────
+        case 'markup': {
+          const sellingPrice = v1 / (1 - v2 / 100);
+          const markupPct = ((sellingPrice - v1) / v1) * 100;
+          const profit = sellingPrice - v1;
+          out = `Selling Price: ${fmt(sellingPrice)} <br/> Markup: ${pct(markupPct)} <br/> Profit: ${fmt(profit)}`;
+          cLabels = ['Cost Price', 'Profit'];
+          cData = [v1, profit];
+          break;
+        }
+
+        // ─── Email Open Rate ROI ─────────────────────────────────────────
+        case 'email_roi': {
+          const openRate = v1 > 0 ? (v2 / v1) * 100 : 0;
+          const revenuePerEmail = v1 > 0 ? v3 / v1 : 0;
+          const revenuePerOpen = v2 > 0 ? v3 / v2 : 0;
+          out = `Open Rate: ${pct(openRate)} <br/> Revenue per Email: ${fmt(revenuePerEmail)} <br/> Revenue per Open: ${fmt(revenuePerOpen)} <br/> Total Revenue: ${fmt(v3)}`;
+          cLabels = ['Opened', 'Not Opened'];
+          cData = [v2, v1 - v2];
+          break;
+        }
+
+        // ─── US Payroll Tax ──────────────────────────────────────────────
+        case 'payroll_tax': {
+          const salary = v1;
+          const payPeriods = v2 > 0 ? v2 : 12;
+          const ssCap = 176100;
+          const socialSecurity = Math.min(salary, ssCap) * 0.062;
+          const medicare = salary * 0.0145;
+          const futa = Math.min(salary, 7000) * 0.06;
+          const totalTax = socialSecurity + medicare + futa;
+          const totalCost = salary + totalTax;
+          const perPeriod = totalCost / payPeriods;
+          out = `Total Employer Cost: ${fmt(totalCost)} <br/> Social Security: ${fmt(socialSecurity)} <br/> Medicare: ${fmt(medicare)} <br/> FUTA: ${fmt(futa)} <br/> Per Pay Period: ${fmt(perPeriod)}`;
+          cLabels = ['Base Salary', 'SS Tax', 'Medicare', 'FUTA'];
+          cData = [salary, socialSecurity, medicare, futa];
+          break;
+        }
         // ─── Basic ──────────────────────────────────────────────────────────
         case 'basic': {
           out     = `Result: ${fmt(v1 * v2)}`;
