@@ -85,8 +85,8 @@
   "slug": "car-loan-calculator",
   "formula": "loan",
   "type": "loan",
-  "name": "Global Auto Loan & Car EMI Calculator",
-  "description": "Estimate monthly installment payments and interest rates for new or used cars worldwide.",
+  "name": "Auto Loan & Car EMI Calculator",
+  "description": "Estimate monthly EMI payments and interest rates for new or used cars worldwide.",
   "label1": "Vehicle Price / Loan Amount",
   "label2": "Annual Interest Rate (APR %)",
   "label3": "Loan Term (Months)",
@@ -98,7 +98,7 @@
   "seo": {
     "title": "Free Auto Loan EMI Calculator 2026 – Car Payment Estimator | QuickFinCalc",
     "meta_description": "Calculate your monthly car loan payment instantly. Works for new, used, or refinanced vehicles globally. Accurate, free, and optimized with APR interest rates.",
-    "h1": "Global Auto Loan & Car EMI Calculator",
+    "h1": "Auto Loan & Car EMI Calculator",
     "primary_keyword": "auto loan EMI calculator",
     "secondary_keywords": [
       "car loan calculator",
@@ -108,7 +108,7 @@
     ],
     "h2_structure": [
       "What Is an Auto Loan EMI Calculator?",
-      "Who Should Use This Global Car Loan Tool?",
+      "Who Should Use This Car Loan Tool?",
       "How to Calculate Your Monthly Car Payment",
       "How to Understand Your Vehicle Loan Results",
       "Frequently Asked Questions"
@@ -134,7 +134,7 @@
     "schema": {
       "type": "SoftwareApplication",
       "applicationCategory": "FinanceApplication",
-      "name": "Global Auto Loan EMI Calculator",
+      "name": "Auto Loan EMI Calculator",
       "description": "Estimate monthly installment payments for new, used, or refinanced cars globally.",
       "url": "https://quickfincalc.com/calculator/car-loan-calculator",
       "offers": { "price": "0", "priceCurrency": "USD" }
@@ -283,7 +283,7 @@
   "slug": "student-loan-refinance",
   "formula": "loan",
   "type": "loan",
-  "name": "Global Student Loan Repayment & Refinance Calculator",
+  "name": "Student Loan Repayment & Refinance Calculator",
   "description": "Plan your student debt payoff strategy, estimate monthly payments, and calculate refinance savings worldwide.",
   "label1": "Total Loan Balance",
   "label2": "Annual Interest Rate (%)",
@@ -296,7 +296,7 @@
   "seo": {
     "title": "Free Student Loan Repayment Calculator 2026 – Payoff Estimator | QuickFinCalc",
     "meta_description": "Plan your student loan payoff or refinance strategy instantly. Enter your balance, APR interest rate, and term to see your monthly payments and interest savings globally.",
-    "h1": "Global Student Loan Repayment & Refinance Calculator",
+    "h1": "Student Loan Repayment & Refinance Calculator",
     "primary_keyword": "student loan repayment calculator",
     "secondary_keywords": [
       "student loan payoff calculator",
@@ -306,7 +306,7 @@
     ],
     "h2_structure": [
       "What Is a Student Loan Repayment & Refinance Calculator?",
-      "Who Should Use This Global Student Debt Tool?",
+      "Who Should Use This Student Debt Tool?",
       "How to Plan and Calculate Your Student Loan Payoff",
       "How to Analyze Your Refinancing and Repayment Results",
       "Frequently Asked Questions"
@@ -332,7 +332,7 @@
     "schema": {
       "type": "SoftwareApplication",
       "applicationCategory": "FinanceApplication",
-      "name": "Global Student Loan Repayment & Refinance Calculator",
+      "name": "Student Loan Repayment & Refinance Calculator",
       "description": "Plan student debt payoff strategies and calculate refinancing savings globally.",
       "url": "https://quickfincalc.com/calculator/student-loan-refinance",
       "offers": { "price": "0", "priceCurrency": "USD" }
@@ -343,7 +343,7 @@
   "slug": "credit-card-payoff",
   "formula": "loan",
   "type": "loan",
-  "name": "Global Credit Card Payoff & Debt Calculator",
+  "name": "Credit Card Payoff & Debt Calculator",
   "description": "Plan your journey to becoming debt-free, calculate credit card interest, and map out your payoff timeline worldwide.",
   "label1": "Total Card Balance",
   "label2": "Annual Interest Rate (APR %)",
@@ -356,7 +356,7 @@
   "seo": {
     "title": "Free Credit Card Payoff Calculator 2026 – Get Debt-Free | QuickFinCalc",
     "meta_description": "Calculate exactly when you will be credit card debt-free. Input your current balance, APR interest rate, and target monthly payment to generate a free payoff timeline globally.",
-    "h1": "Global Credit Card Payoff & Debt Calculator",
+    "h1": "Credit Card Payoff & Debt Calculator",
     "primary_keyword": "credit card payoff calculator",
     "secondary_keywords": [
       "credit card debt calculator",
@@ -392,7 +392,7 @@
     "schema": {
       "type": "SoftwareApplication",
       "applicationCategory": "FinanceApplication",
-      "name": "Global Credit Card Payoff Calculator",
+      "name": "Credit Card Payoff Calculator",
       "description": "Calculate interest costs and generate custom debt payoff timelines for global credit cards.",
       "url": "https://quickfincalc.com/calculator/credit-card-payoff",
       "offers": { "price": "0", "priceCurrency": "USD" }
@@ -403,7 +403,7 @@
   "slug": "equipment-lease-payment",
   "formula": "loan",
   "type": "loan",
-  "name": "Global Equipment Lease & Financing Calculator",
+  "name": "Equipment Lease & Financing Calculator",
   "description": "Calculate monthly lease costs, estimated financing interest, and buyout values for business machinery and tools worldwide.",
   "label1": "Equipment Value / Market Price",
   "label2": "Annual Interest Rate (%)",
@@ -416,7 +416,7 @@
   "seo": {
     "title": "Free Equipment Lease Calculator 2026 – Lease vs Buy Tool | QuickFinCalc",
     "meta_description": "Calculate monthly equipment lease payments instantly. Enter vehicle or machinery value, interest rate, and term to compare corporate leasing vs buying decisions globally.",
-    "h1": "Global Equipment Lease & Financing Calculator",
+    "h1": "Equipment Lease & Financing Calculator",
     "primary_keyword": "equipment lease calculator",
     "secondary_keywords": [
       "business equipment lease calculator",
@@ -426,7 +426,7 @@
     ],
     "h2_structure": [
       "What Is an Equipment Lease Calculator?",
-      "Who Should Use This Global Machinery Lease Tool?",
+      "Who Should Use This Machinery Lease Tool?",
       "How to Calculate Commercial Lease Payments",
       "Lease vs. Buy: Analyzing Your Asset Financing Results",
       "Frequently Asked Questions"
@@ -452,7 +452,7 @@
     "schema": {
       "type": "SoftwareApplication",
       "applicationCategory": "FinanceApplication",
-      "name": "Global Equipment Lease Calculator",
+      "name": "Equipment Lease Calculator",
       "description": "Calculate monthly lease payments and interest costs for business machinery globally.",
       "url": "https://quickfincalc.com/calculator/equipment-lease-payment",
       "offers": { "price": "0", "priceCurrency": "USD" }
@@ -463,7 +463,7 @@
   "slug": "debt-to-income-ratio",
   "formula": "ratio",
   "type": "loan",
-  "name": "Global Debt-to-Income (DTI) Ratio Calculator",
+  "name": "Debt-to-Income (DTI) Ratio Calculator",
   "description": "Check your loan eligibility, mortgage approval chances, and financial health with our DTI ratio calculator.",
   "label1": "Total Monthly Debt Payments",
   "label2": "Gross Monthly Income (Before Tax)",
@@ -476,7 +476,7 @@
   "seo": {
     "title": "Free Debt-to-Income Ratio Calculator 2026 – Check DTI | QuickFinCalc",
     "meta_description": "Calculate your debt-to-income ratio instantly to evaluate loan eligibility. Learn if your DTI ratio qualifies you for a global mortgage or loan before you apply.",
-    "h1": "Global Debt-to-Income (DTI) Ratio Calculator",
+    "h1": "Debt-to-Income (DTI) Ratio Calculator",
     "primary_keyword": "debt-to-income ratio calculator",
     "secondary_keywords": [
       "DTI calculator free",
@@ -488,7 +488,7 @@
       "What Is a Debt-to-Income (DTI) Ratio?",
       "Who Should Calculate Their DTI Percentage?",
       "How to Calculate Your Debt-to-Income Ratio",
-      "How Banks and Global Lenders Read Your DTI Score",
+      "How Banks and Lenders Read Your DTI Score",
       "Frequently Asked Questions"
     ],
     "faqs": [
@@ -512,7 +512,7 @@
     "schema": {
       "type": "SoftwareApplication",
       "applicationCategory": "FinanceApplication",
-      "name": "Global Debt-to-Income Ratio Calculator",
+      "name": "Debt-to-Income Ratio Calculator",
       "description": "Calculate debt-to-income ratios and verify mortgage or loan eligibility worldwide.",
       "url": "https://quickfincalc.com/calculator/debt-to-income-ratio",
       "offers": { "price": "0", "priceCurrency": "USD" }
@@ -523,7 +523,7 @@
   "slug": "debt-service-coverage",
   "formula": "ratio",
   "type": "loan",
-  "name": "Global Debt Service Coverage Ratio (DSCR) Calculator",
+  "name": "Debt Service Coverage Ratio (DSCR) Calculator",
   "description": "Essential commercial loan approval analysis tool for businesses, real estate investors, and rental properties worldwide.",
   "label1": "Net Operating Income (NOI)",
   "label2": "Annual Debt Service",
@@ -536,7 +536,7 @@
   "seo": {
     "title": "Free DSCR Calculator 2026 – Commercial Loan Eligibility Tool | QuickFinCalc",
     "meta_description": "Calculate your Debt Service Coverage Ratio (DSCR) instantly. Check if your commercial business, rental property, or real estate cash flow qualifies for loan approval globally.",
-    "h1": "Global Debt Service Coverage Ratio (DSCR) Calculator",
+    "h1": "Debt Service Coverage Ratio (DSCR) Calculator",
     "primary_keyword": "DSCR calculator",
     "secondary_keywords": [
       "debt service coverage ratio calculator",
@@ -546,7 +546,7 @@
     ],
     "h2_structure": [
       "What Is DSCR and Why Does It Matter for Commercial Loans?",
-      "Who Needs to Use a Global DSCR Calculator?",
+      "Who Needs to Use a DSCR Calculator?",
       "How to Correctly Calculate Your DSCR Score",
       "How Underwriters Interpret Your Debt Service Coverage Ratio",
       "Frequently Asked Questions"
@@ -572,7 +572,7 @@
     "schema": {
       "type": "SoftwareApplication",
       "applicationCategory": "FinanceApplication",
-      "name": "Global Debt Service Coverage Ratio (DSCR) Calculator",
+      "name": "Debt Service Coverage Ratio (DSCR) Calculator",
       "description": "Calculate debt service coverage ratios and commercial loan eligibility for businesses and investment properties globally.",
       "url": "https://quickfincalc.com/calculator/debt-service-coverage",
       "offers": { "price": "0", "priceCurrency": "USD" }
@@ -583,7 +583,7 @@
   "slug": "loan-amortization-schedule",
   "formula": "loan",
   "type": "loan",
-  "name": "Global Loan Amortization Schedule Calculator",
+  "name": "Loan Amortization Schedule Calculator",
   "description": "Generate a full payment schedule showing the exact principal vs. interest breakdown for every monthly installment worldwide.",
   "label1": "Total Loan Amount",
   "label2": "Annual Interest Rate (%)",
@@ -596,7 +596,7 @@
   "seo": {
     "title": "Free Loan Amortization Schedule Calculator 2026 – Table Breakdown | QuickFinCalc",
     "meta_description": "Generate a complete loan amortization schedule table showing principal vs. interest splits for every payment. Free global tool for mortgages, auto, and business loans.",
-    "h1": "Global Loan Amortization Schedule Calculator",
+    "h1": "Loan Amortization Schedule Calculator",
     "primary_keyword": "loan amortization schedule calculator",
     "secondary_keywords": [
       "amortization calculator free",
@@ -632,7 +632,7 @@
     "schema": {
       "type": "SoftwareApplication",
       "applicationCategory": "FinanceApplication",
-      "name": "Global Loan Amortization Schedule Calculator",
+      "name": "Loan Amortization Schedule Calculator",
       "description": "Generate comprehensive amortization schedules and principal vs. interest breakdown tables worldwide.",
       "url": "https://quickfincalc.com/calculator/loan-amortization-schedule",
       "offers": { "price": "0", "priceCurrency": "USD" }
@@ -643,7 +643,7 @@
   "slug": "roi-marketing-calculator",
   "formula": "roi",
   "type": "investment",
-  "name": "Global Marketing ROI & Campaign Calculator",
+  "name": "Marketing ROI & Campaign Calculator",
   "description": "Measure the net profit and return on your ad spend (ROAS), digital marketing campaigns, and growth promotions worldwide.",
   "label1": "Total Revenue Generated",
   "label2": "Total Marketing / Ad Cost",
@@ -656,7 +656,7 @@
   "seo": {
     "title": "Free Marketing ROI Calculator 2026 – Campaign Ad Spend Tool | QuickFinCalc",
     "meta_description": "Measure the true return on every digital marketing dollar spent. Calculate your campaign ROI and ROAS instantly with our free global marketing calculator.",
-    "h1": "Global Marketing ROI & Campaign Calculator",
+    "h1": "Marketing ROI & Campaign Calculator",
     "primary_keyword": "marketing ROI calculator",
     "secondary_keywords": [
       "ad spend ROI calculator",
@@ -692,7 +692,7 @@
     "schema": {
       "type": "SoftwareApplication",
       "applicationCategory": "FinanceApplication",
-      "name": "Global Marketing ROI Calculator",
+      "name": "Marketing ROI Calculator",
       "description": "Calculate investment returns and ROAS performance splits for digital marketing campaigns globally.",
       "url": "https://quickfincalc.com/calculator/roi-marketing-calculator",
       "offers": { "price": "0", "priceCurrency": "USD" }
@@ -703,7 +703,7 @@
     "slug": "real-estate-roi",
     "formula": "real_estate",
     "type": "investment",
-    "name": "Global Rental Property ROI Calculator",
+    "name": "Rental Property ROI Calculator",
     "description": "Calculate annual return on investment (ROI), net cash flow, and cap rates for rental properties worldwide.",
     "label1": "Annual Rental Income",
     "label2": "Annual Operating Expenses",
@@ -716,7 +716,7 @@
     "seo": {
       "title": "Free Rental Property ROI Calculator 2026 – Real Estate Yield Tool | QuickFinCalc",
       "meta_description": "Calculate the annual ROI and cash flow on any rental property globally. Enter income, expenses, and asset value to evaluate your real estate investment returns.",
-      "h1": "Global Rental Property ROI Calculator",
+      "h1": "Rental Property ROI Calculator",
       "primary_keyword": "rental property ROI calculator",
       "secondary_keywords": [
         "real estate ROI calculator",
@@ -752,7 +752,7 @@
       "schema": {
         "type": "SoftwareApplication",
         "applicationCategory": "FinanceApplication",
-        "name": "Global Rental Property ROI Calculator",
+        "name": "Rental Property ROI Calculator",
         "description": "Calculate annual return on investment and cap rates for rental properties globally.",
         "url": "https://quickfincalc.com/calculator/real-estate-roi",
         "offers": { "price": "0", "priceCurrency": "USD" }
@@ -763,7 +763,7 @@
     "slug": "stock-profit-calculator",
     "formula": "stock",
     "type": "investment",
-    "name": "Global Stock Profit & Return Calculator",
+    "name": "Stock Profit & Return Calculator",
     "description": "Calculate your exact capital gains, transaction fees, and return percentages from stock market trading activities.",
     "label1": "Purchase Price per Share",
     "label2": "Selling Price per Share",
@@ -776,7 +776,7 @@
     "seo": {
       "title": "Free Stock Profit Calculator 2026 – Trade Capital Gains Tool | QuickFinCalc",
       "meta_description": "Calculate your exact net profit or loss on any global stock trade. Enter buy price, sell price, and volume to view capital gains and return percentages instantly.",
-      "h1": "Global Stock Profit & Return Calculator",
+      "h1": "Stock Profit & Return Calculator",
       "primary_keyword": "stock profit calculator",
       "secondary_keywords": [
         "stock gain calculator free",
@@ -812,7 +812,7 @@
       "schema": {
         "type": "SoftwareApplication",
         "applicationCategory": "FinanceApplication",
-        "name": "Global Stock Profit Calculator",
+        "name": "Stock Profit Calculator",
         "description": "Calculate realized capital gains, losses, and return percentages from equity and stock market trading globally.",
         "url": "https://quickfincalc.com/calculator/stock-profit-calculator",
         "offers": { "price": "0", "priceCurrency": "USD" }
@@ -823,7 +823,7 @@
     "slug": "crypto-profit-calculator",
     "formula": "crypto",
     "type": "investment",
-    "name": "Global Crypto Profit & Loss Calculator",
+    "name": "Crypto Profit & Loss Calculator",
     "description": "Track your exact net profits, losses, and percentage returns for Bitcoin (BTC), Ethereum (ETH), and altcoins worldwide.",
     "label1": "Total Capital Investment",
     "label2": "Current / Exit Value",
@@ -836,7 +836,7 @@
     "seo": {
       "title": "Free Crypto Profit Calculator 2026 – Track BTC & ETH Gains | QuickFinCalc",
       "meta_description": "Calculate your cryptocurrency profits and losses instantly. Input investment capital and exit value to track crypto gains, losses, and returns for any token globally.",
-      "h1": "Global Crypto Profit & Loss Calculator",
+      "h1": "Crypto Profit & Loss Calculator",
       "primary_keyword": "crypto profit calculator",
       "secondary_keywords": [
         "crypto gains calculator free",
@@ -872,7 +872,7 @@
       "schema": {
         "type": "SoftwareApplication",
         "applicationCategory": "FinanceApplication",
-        "name": "Global Crypto Profit & Loss Calculator",
+        "name": "Crypto Profit & Loss Calculator",
         "description": "Calculate realized capital gains, losses, and percentage returns for cryptocurrencies and digital assets globally.",
         "url": "https://quickfincalc.com/calculator/crypto-profit-calculator",
         "offers": { "price": "0", "priceCurrency": "USD" }
@@ -883,7 +883,7 @@
     "slug": "dividend-reinvestment-calc",
     "formula": "dividend",
     "type": "investment",
-    "name": "Global Dividend Yield & Income Calculator",
+    "name": "Dividend Yield & Income Calculator",
     "description": "Calculate annual dividend yields, passive cash flow distributions, and project DRIP compound returns from stock portfolios globally.",
     "label1": "Annual Dividend Per Share",
     "label2": "Current Share Price",
@@ -896,7 +896,7 @@
     "seo": {
       "title": "Free Dividend Yield Calculator 2026 – DRIP Stock Estimator | QuickFinCalc",
       "meta_description": "Calculate your stock dividend yield and estimated annual cash flow. Input dividend per share, market price, and share count to track your income portfolio globally.",
-      "h1": "Global Dividend Yield & Income Calculator",
+      "h1": "Dividend Yield & Income Calculator",
       "primary_keyword": "dividend yield calculator",
       "secondary_keywords": [
         "dividend income calculator free",
@@ -932,7 +932,7 @@
       "schema": {
         "type": "SoftwareApplication",
         "applicationCategory": "FinanceApplication",
-        "name": "Global Dividend Yield Calculator",
+        "name": "Dividend Yield Calculator",
         "description": "Calculate annual dividend distributions, yields, and project DRIP compounding for equity investors globally.",
         "url": "https://quickfincalc.com/calculator/dividend-reinvestment-calc",
         "offers": { "price": "0", "priceCurrency": "USD" }
@@ -943,7 +943,7 @@
     "slug": "cap-rate-real-estate",
     "formula": "property_roi",
     "type": "investment",
-    "name": "Global Capitalization Rate (Cap Rate) Calculator",
+    "name": "Capitalization Rate (Cap Rate) Calculator",
     "description": "Evaluate commercial real estate investment returns, property yields, and asset values independent of mortgage financing globally.",
     "label1": "Net Operating Income (NOI)",
     "label2": "Current Property Value / Purchase Price",
@@ -956,7 +956,7 @@
     "seo": {
       "title": "Free Cap Rate Calculator 2026 – Commercial Real Estate Yield | QuickFinCalc",
       "meta_description": "Calculate the capitalization rate (Cap Rate) on any commercial or residential investment property instantly. Enter NOI and asset value to evaluate real estate returns.",
-      "h1": "Global Capitalization Rate (Cap Rate) Calculator",
+      "h1": "Capitalization Rate (Cap Rate) Calculator",
       "primary_keyword": "cap rate calculator",
       "secondary_keywords": [
         "capitalization rate calculator free",
@@ -992,7 +992,7 @@
       "schema": {
         "type": "SoftwareApplication",
         "applicationCategory": "FinanceApplication",
-        "name": "Global Cap Rate Calculator",
+        "name": "Cap Rate Calculator",
         "description": "Calculate capitalization rates and evaluate commercial property investment returns worldwide.",
         "url": "https://quickfincalc.com/calculator/cap-rate-real-estate",
         "offers": { "price": "0", "priceCurrency": "USD" }
@@ -1003,7 +1003,7 @@
     "slug": "compound-interest-savings",
     "formula": "compound",
     "type": "investment",
-    "name": "Global Compound Interest Calculator",
+    "name": "Compound Interest Calculator",
     "description": "See how your savings and portfolios scale over time using the compound interest model with monthly interest intervals.",
     "label1": "Initial Principal Balance",
     "label2": "Annual Interest Rate (%)",
@@ -1016,7 +1016,7 @@
     "seo": {
       "title": "Free Compound Interest Calculator 2026 – Savings Growth Tool | QuickFinCalc",
       "meta_description": "Calculate how your wealth multiplies over time with compound interest. Input principal, annual rates, and investment years to see your future balance with monthly compounding.",
-      "h1": "Global Compound Interest Calculator",
+      "h1": "Compound Interest Calculator",
       "primary_keyword": "compound interest calculator",
       "secondary_keywords": [
         "savings growth calculator free",
@@ -1052,7 +1052,7 @@
       "schema": {
         "type": "SoftwareApplication",
         "applicationCategory": "FinanceApplication",
-        "name": "Global Compound Interest Calculator",
+        "name": "Compound Interest Calculator",
         "description": "Calculate compound interest growth trajectories and future values with customizable monthly compounding terms globally.",
         "url": "https://quickfincalc.com/calculator/compound-interest-savings",
         "offers": { "price": "0", "priceCurrency": "USD" }
@@ -1063,7 +1063,7 @@
     "slug": "savings-goal-calculator",
     "formula": "savings_goal",
     "type": "investment",
-    "name": "Global Savings Goal & Target Calculator",
+    "name": "Savings Goal & Target Calculator",
     "description": "Reverse-engineer your financial targets to discover the exact monthly savings required to hit your deadline.",
     "label1": "Target Savings Goal",
     "label2": "Expected Annual Interest Rate (%)",
@@ -1076,7 +1076,7 @@
     "seo": {
       "title": "Free Savings Goal Calculator 2026 – Target Planner | QuickFinCalc",
       "meta_description": "Find out exactly how much currency to save each month to achieve your financial milestones. Input target values, rates, and deadlines to map your personal savings path.",
-      "h1": "Global Savings Goal & Target Calculator",
+      "h1": "Savings Goal & Target Calculator",
       "primary_keyword": "savings goal calculator",
       "secondary_keywords": [
         "how much to save calculator free",
@@ -1112,7 +1112,7 @@
       "schema": {
         "type": "SoftwareApplication",
         "applicationCategory": "FinanceApplication",
-        "name": "Global Savings Goal Calculator",
+        "name": "Savings Goal Calculator",
         "description": "Reverse-engineer saving milestones and calculate required monthly cash contributions globally.",
         "url": "https://quickfincalc.com/calculator/savings-goal-calculator",
         "offers": { "price": "0", "priceCurrency": "USD" }
@@ -1123,7 +1123,7 @@
   "slug": "retirement-nest-egg",
   "formula": "retirement",
   "type": "investment",
-  "name": "Global Retirement Fund Goal Calculator",
+  "name": "Retirement Fund Goal Calculator",
   "description": "Calculate your total required retirement nest egg and long-term financial target for a comfortable post-career life worldwide.",
   "label1": "Estimated Monthly Retirement Expense",
   "label2": "Expected Years in Retirement",
@@ -1136,7 +1136,7 @@
   "seo": {
     "title": "Free Retirement Calculator 2026 – Nest Egg Target | QuickFinCalc",
     "meta_description": "Calculate the exact retirement nest egg you need based on your target monthly lifestyle and retirement years. Plan your global retirement savings goal for free.",
-    "h1": "Global Retirement Fund Goal Calculator",
+    "h1": "Retirement Fund Goal Calculator",
     "primary_keyword": "retirement calculator",
     "secondary_keywords": [
       "retirement savings calculator free",
@@ -1172,7 +1172,7 @@
     "schema": {
       "type": "SoftwareApplication",
       "applicationCategory": "FinanceApplication",
-      "name": "Global Retirement Fund Goal Calculator",
+      "name": "Retirement Fund Goal Calculator",
       "description": "Calculate necessary retirement nest eggs and long-term investment milestone targets globally.",
       "url": "https://quickfincalc.com/calculator/retirement-nest-egg",
       "offers": { "price": "0", "priceCurrency": "USD" }
@@ -1183,7 +1183,7 @@
     "slug": "business-valuation",
     "formula": "basic",
     "type": "investment",
-    "name": "Global Business Valuation Calculator",
+    "name": "Business Valuation Calculator",
     "description": "Estimate the fair market value of your small business or enterprise using the industry earnings multiple method globally.",
     "label1": "Annual Net Profit",
     "label2": "Industry Multiple",
@@ -1196,7 +1196,7 @@
     "seo": {
       "title": "Free Business Valuation Calculator 2026 – Enterprise Worth Tool | QuickFinCalc",
       "meta_description": "Estimate the fair market value of your small business using the industry earnings multiple framework. Enter annual net profits and multiples to benchmark worth instantly.",
-      "h1": "Global Business Valuation Calculator",
+      "h1": "Business Valuation Calculator",
       "primary_keyword": "business valuation calculator",
       "secondary_keywords": [
         "small business valuation calculator free",
@@ -1232,7 +1232,7 @@
       "schema": {
         "type": "SoftwareApplication",
         "applicationCategory": "FinanceApplication",
-        "name": "Global Business Valuation Calculator",
+        "name": "Business Valuation Calculator",
         "description": "Estimate business market worth and enterprise valuations based on earnings multiples globally.",
         "url": "https://quickfincalc.com/calculator/business-valuation",
         "offers": { "price": "0", "priceCurrency": "USD" }
@@ -1243,7 +1243,7 @@
     "slug": "eps-earnings-per-share",
     "formula": "eps",
     "type": "investment",
-    "name": "Global Earnings Per Share (EPS) Calculator",
+    "name": "Earnings Per Share (EPS) Calculator",
     "description": "Calculate a corporation's earnings per share (EPS) to analyze equity profitability and market valuation metrics.",
     "label1": "Net Income",
     "label2": "Preferred Dividends Paid",
@@ -1256,7 +1256,7 @@
     "seo": {
       "title": "Free EPS Calculator 2026 – Earnings Per Share Stock Tool | QuickFinCalc",
       "meta_description": "Calculate Earnings Per Share (EPS) for any stock instantly. Input net income, preferred dividends, and shares outstanding to evaluate corporate profitability.",
-      "h1": "Global Earnings Per Share (EPS) Calculator",
+      "h1": "Earnings Per Share (EPS) Calculator",
       "primary_keyword": "EPS calculator",
       "secondary_keywords": [
         "earnings per share calculator free",
@@ -1292,7 +1292,7 @@
       "schema": {
         "type": "SoftwareApplication",
         "applicationCategory": "FinanceApplication",
-        "name": "Global Earnings Per Share Calculator",
+        "name": "Earnings Per Share Calculator",
         "description": "Calculate basic corporate earnings per share ratios for fundamental equity analysis globally.",
         "url": "https://quickfincalc.com/calculator/eps-earnings-per-share",
         "offers": { "price": "0", "priceCurrency": "USD" }
@@ -1303,7 +1303,7 @@
     "slug": "return-on-equity-roe",
     "formula": "ratio",
     "type": "investment",
-    "name": "Global Return on Equity (ROE) Calculator",
+    "name": "Return on Equity (ROE) Calculator",
     "description": "Measure how effectively a company's executive leadership deploys shareholder equity to generate corporate net profits globally.",
     "label1": "Annual Net Income",
     "label2": "Total Shareholder Equity",
@@ -1316,7 +1316,7 @@
     "seo": {
       "title": "Free ROE Calculator 2026 – Return on Equity Ratio Tool | QuickFinCalc",
       "meta_description": "Calculate Return on Equity (ROE) instantly to evaluate how efficiently corporate management deploys shareholder capital. Free analysis tool for global investors.",
-      "h1": "Global Return on Equity (ROE) Calculator",
+      "h1": "Return on Equity (ROE) Calculator",
       "primary_keyword": "return on equity calculator",
       "secondary_keywords": [
         "ROE calculator free",
@@ -1352,7 +1352,7 @@
       "schema": {
         "type": "SoftwareApplication",
         "applicationCategory": "FinanceApplication",
-        "name": "Global Return on Equity Calculator",
+        "name": "Return on Equity Calculator",
         "description": "Calculate corporate return on equity percentages to evaluate management efficiency globally.",
         "url": "https://quickfincalc.com/calculator/return-on-equity-roe",
         "offers": { "price": "0", "priceCurrency": "USD" }
@@ -1363,7 +1363,7 @@
     "slug": "shopify-margin-calculator",
     "formula": "platform_margin",
     "type": "ecommerce",
-    "name": "Global Shopify Profit Margin Calculator",
+    "name": "Shopify Profit Margin Calculator",
     "description": "Calculate your store's gross profit margin, platform costs, and true product profitability after fees globally.",
     "label1": "Total Gross Revenue",
     "label2": "Cost of Goods Sold (COGS)",
@@ -1376,7 +1376,7 @@
     "seo": {
       "title": "Free Shopify Profit Margin Calculator 2026 – True Store Profit | QuickFinCalc",
       "meta_description": "Calculate your real Shopify store profit margin after COGS and payment processor fees. Free diagnostic tool for global e-commerce merchants to scale profitably.",
-      "h1": "Global Shopify Profit Margin Calculator",
+      "h1": "Shopify Profit Margin Calculator",
       "primary_keyword": "Shopify profit margin calculator",
       "secondary_keywords": [
         "Shopify fee calculator free",
@@ -1412,7 +1412,7 @@
       "schema": {
         "type": "SoftwareApplication",
         "applicationCategory": "FinanceApplication",
-        "name": "Global Shopify Profit Margin Calculator",
+        "name": "Shopify Profit Margin Calculator",
         "description": "Calculate net profit margins and e-commerce transactional fees for Shopify storefronts globally.",
         "url": "https://quickfincalc.com/calculator/shopify-margin-calculator",
         "offers": { "price": "0", "priceCurrency": "USD" }
@@ -1423,7 +1423,7 @@
     "slug": "amazon-fba-calculator",
     "formula": "platform_margin",
     "type": "ecommerce",
-    "name": "Global Amazon FBA Fee Margin Calculator",
+    "name": "Amazon FBA Fee Margin Calculator",
     "description": "Estimate net unit profits after factoring in Amazon FBA fulfillment architectures and category referral fees globally.",
     "label1": "Retail Sale Price",
     "label2": "Sourcing Cost + Shipping (COGS)",
@@ -1436,7 +1436,7 @@
     "seo": {
       "title": "Free Amazon FBA Calculator 2026 – Margin & Fee Tool | QuickFinCalc",
       "meta_description": "Calculate your true Amazon FBA net profit per unit after referral fees, fulfillment costs, and landed COGS. Essential tool for global Amazon sellers.",
-      "h1": "Global Amazon FBA Fee & Profit Calculator",
+      "h1": "Amazon FBA Fee & Profit Calculator",
       "primary_keyword": "Amazon FBA calculator",
       "secondary_keywords": [
         "Amazon FBA fee calculator free",
@@ -1472,7 +1472,7 @@
       "schema": {
         "type": "SoftwareApplication",
         "applicationCategory": "FinanceApplication",
-        "name": "Global Amazon FBA Fee Margin Calculator",
+        "name": "Amazon FBA Fee Margin Calculator",
         "description": "Calculate realized unit profits and net margin returns after automated FBA logistical fees globally.",
         "url": "https://quickfincalc.com/calculator/amazon-fba-calculator",
         "offers": { "price": "0", "priceCurrency": "USD" }
@@ -1483,7 +1483,7 @@
     "slug": "ebay-fee-calculator",
     "formula": "platform_margin",
     "type": "ecommerce",
-    "name": "Global eBay Profit Calculator",
+    "name": "eBay Profit Calculator",
     "description": "Calculate your net take-home profit and return margins after factoring in eBay final value fees and managed payments globally.",
     "label1": "Final Sale Price",
     "label2": "Product Sourcing Cost",
@@ -1496,7 +1496,7 @@
     "seo": {
       "title": "Free eBay Profit Calculator 2026 – Track Net Seller Fees | QuickFinCalc",
       "meta_description": "Calculate your actual eBay profit margins after all seller deductions. Input retail price, sourcing costs, and final value fees to track take-home profits instantly.",
-      "h1": "Global eBay Profit & Fee Calculator",
+      "h1": "eBay Profit & Fee Calculator",
       "primary_keyword": "eBay profit calculator",
       "secondary_keywords": [
         "eBay fee calculator free",
@@ -1532,7 +1532,7 @@
       "schema": {
         "type": "SoftwareApplication",
         "applicationCategory": "FinanceApplication",
-        "name": "Global eBay Profit Calculator",
+        "name": "eBay Profit Calculator",
         "description": "Calculate net take-home profits, commissions, and final value margins for eBay store listings globally.",
         "url": "https://quickfincalc.com/calculator/ebay-fee-calculator",
         "offers": { "price": "0", "priceCurrency": "USD" }
@@ -1604,7 +1604,7 @@
     "slug": "net-profit-margin",
     "formula": "margin",
     "type": "ecommerce",
-    "name": "Global Net Profit Margin Calculator",
+    "name": "Net Profit Margin Calculator",
     "description": "Discover your definitive bottom-line profitability percentage after accounting for all corporate expenses globally.",
     "label1": "Total Revenue",
     "label2": "Total Operating Expenses (All Costs)",
@@ -1617,7 +1617,7 @@
     "seo": {
       "title": "Free Net Profit Margin Calculator 2026 – Bottom-Line Tool | QuickFinCalc",
       "meta_description": "Calculate your net profit margin after all business expenditures. Enter total revenue and full operational expenses to find your true bottom-line profitability.",
-      "h1": "Global Net Profit Margin Calculator",
+      "h1": "Net Profit Margin Calculator",
       "primary_keyword": "net profit margin calculator",
       "secondary_keywords": [
         "profit margin calculator free",
@@ -1653,7 +1653,7 @@
       "schema": {
         "type": "SoftwareApplication",
         "applicationCategory": "FinanceApplication",
-        "name": "Global Net Profit Margin Calculator",
+        "name": "Net Profit Margin Calculator",
         "description": "Calculate corporate net profit margins and total financial health ratios globally.",
         "url": "https://quickfincalc.com/calculator/net-profit-margin",
         "offers": { "price": "0", "priceCurrency": "USD" }
@@ -1664,7 +1664,7 @@
     "slug": "markup-percentage-calc",
     "formula": "markup",
     "type": "ecommerce",
-    "name": "Global Price Markup Calculator",
+    "name": "Price Markup Calculator",
     "description": "Determine the exact retail markup percentage and selling price required to reach your target profit margin goals globally.",
     "label1": "Cost Price (Wholesale)",
     "label2": "Desired Profit Margin (%)",
@@ -1677,7 +1677,7 @@
     "seo": {
       "title": "Free Price Markup Calculator 2026 – Markup vs Margin Tool | QuickFinCalc",
       "meta_description": "Calculate your exact retail selling price and markup percentages to hit your target profit margins. Free tool for global retailers, wholesalers, and online brands.",
-      "h1": "Global Price Markup Calculator",
+      "h1": "Price Markup Calculator",
       "primary_keyword": "price markup calculator",
       "secondary_keywords": [
         "markup calculator free",
@@ -1713,7 +1713,7 @@
       "schema": {
         "type": "SoftwareApplication",
         "applicationCategory": "FinanceApplication",
-        "name": "Global Price Markup Calculator",
+        "name": "Price Markup Calculator",
         "description": "Calculate required product selling prices and markup percentages to hit margin goals globally.",
         "url": "https://quickfincalc.com/calculator/markup-percentage-calc",
         "offers": { "price": "0", "priceCurrency": "USD" }
@@ -1724,7 +1724,7 @@
     "slug": "break-even-sales",
     "formula": "break_even",
     "type": "ecommerce",
-    "name": "Global Break-Even Sales Volume Calculator",
+    "name": "Break-Even Sales Volume Calculator",
     "description": "Find the exact minimum number of product units or revenue volume you must secure to cover all fixed and variable costs globally.",
     "label1": "Total Fixed Costs",
     "label2": "Variable Cost Per Unit",
@@ -1737,7 +1737,7 @@
     "seo": {
       "title": "Free Break-Even Calculator 2026 – Sales Volume Tool | QuickFinCalc",
       "meta_description": "Find your business break-even point instantly. Input fixed costs, variable unit costs, and retail pricing to isolate the minimum units needed to cover expenses.",
-      "h1": "Global Break-Even Sales Volume Calculator",
+      "h1": "Break-Even Sales Volume Calculator",
       "primary_keyword": "break-even calculator",
       "secondary_keywords": [
         "break even point calculator free",
@@ -1773,7 +1773,7 @@
       "schema": {
         "type": "SoftwareApplication",
         "applicationCategory": "FinanceApplication",
-        "name": "Global Break-Even Sales Volume Calculator",
+        "name": "Break-Even Sales Volume Calculator",
         "description": "Calculate unit and revenue break-even targets for businesses and startups globally.",
         "url": "https://quickfincalc.com/calculator/break-even-sales",
         "offers": { "price": "0", "priceCurrency": "USD" }
@@ -1784,7 +1784,7 @@
     "slug": "startup-burn-rate",
     "formula": "runway",
     "type": "ecommerce",
-    "name": "Global Startup Burn Rate Calculator",
+    "name": "Startup Burn Rate Calculator",
     "description": "Calculate your startup's monthly net burn rate and total runway longevity to protect your capital reserves globally.",
     "label1": "Current Total Cash Reserves",
     "label2": "Average Monthly Expenses",
@@ -1797,7 +1797,7 @@
     "seo": {
       "title": "Free Startup Burn Rate Calculator 2026 – Cash Runway Tool | QuickFinCalc",
       "meta_description": "Calculate your startup's monthly net burn rate and cash runway longevity in months. Enter cash balances, outlays, and revenue to project runway accurately.",
-      "h1": "Global Startup Burn Rate & Runway Calculator",
+      "h1": "Startup Burn Rate & Runway Calculator",
       "primary_keyword": "startup burn rate calculator",
       "secondary_keywords": [
         "burn rate calculator free",
@@ -1833,7 +1833,7 @@
       "schema": {
         "type": "SoftwareApplication",
         "applicationCategory": "FinanceApplication",
-        "name": "Global Startup Burn Rate Calculator",
+        "name": "Startup Burn Rate Calculator",
         "description": "Calculate startup net burn metrics and cash runway lifespans globally.",
         "url": "https://quickfincalc.com/calculator/startup-burn-rate",
         "offers": { "price": "0", "priceCurrency": "USD" }
@@ -1844,7 +1844,7 @@
     "slug": "inventory-turnover",
     "formula": "ratio",
     "type": "ecommerce",
-    "name": "Global Inventory Turnover Ratio Calculator",
+    "name": "Inventory Turnover Ratio Calculator",
     "description": "Measure the velocity and capital efficiency of your business inventory management systems globally.",
     "label1": "Cost of Goods Sold (COGS)",
     "label2": "Average Inventory Value",
@@ -1857,7 +1857,7 @@
     "seo": {
       "title": "Free Inventory Turnover Ratio Calculator 2026 – Stock Tool | QuickFinCalc",
       "meta_description": "Calculate your inventory turnover ratio to audit stock efficiency. Input COGS and average inventory values to flag slow-moving product streams instantly.",
-      "h1": "Global Inventory Turnover Ratio Calculator",
+      "h1": "Inventory Turnover Ratio Calculator",
       "primary_keyword": "inventory turnover ratio calculator",
       "secondary_keywords": [
         "inventory turnover calculator free",
@@ -1893,7 +1893,7 @@
       "schema": {
         "type": "SoftwareApplication",
         "applicationCategory": "FinanceApplication",
-        "name": "Global Inventory Turnover Ratio Calculator",
+        "name": "Inventory Turnover Ratio Calculator",
         "description": "Calculate annualized inventory turnover ratios and stock movement coefficients globally.",
         "url": "https://quickfincalc.com/calculator/inventory-turnover",
         "offers": { "price": "0", "priceCurrency": "USD" }
@@ -1904,7 +1904,7 @@
     "slug": "working-capital-ratio",
     "formula": "ratio",
     "type": "ecommerce",
-    "name": "Global Working Capital Ratio Calculator",
+    "name": "Working Capital Ratio Calculator",
     "description": "Check your corporate liquidity depth and short-term financial stability index globally.",
     "label1": "Total Current Assets",
     "label2": "Total Current Liabilities",
@@ -1917,7 +1917,7 @@
     "seo": {
       "title": "Free Working Capital Ratio Calculator 2026 – Liquidity Tool | QuickFinCalc",
       "meta_description": "Calculate your working capital ratio to audit short-term corporate liquidity. Input current assets and liabilities to check your business solvency score for free.",
-      "h1": "Global Working Capital Ratio Calculator",
+      "h1": "Working Capital Ratio Calculator",
       "primary_keyword": "working capital ratio calculator",
       "secondary_keywords": [
         "current ratio calculator free",
@@ -1953,7 +1953,7 @@
       "schema": {
         "type": "SoftwareApplication",
         "applicationCategory": "FinanceApplication",
-        "name": "Global Working Capital Ratio Calculator",
+        "name": "Working Capital Ratio Calculator",
         "description": "Calculate current liquidity ratios and working capital coefficients globally.",
         "url": "https://quickfincalc.com/calculator/working-capital-ratio",
         "offers": { "price": "0", "priceCurrency": "USD" }
@@ -2406,7 +2406,7 @@
     "label2": "PayPal Fee Rate Percentage (%)",
     "label3": "Fixed Transaction Charge",
     "what_is": "PayPal enforces a dual-layered merchant fee architecture composed of a variable percentage relative to the transaction volume, paired with a flat, currency-specific fixed execution charge on every processed payment. These operational rates shift dynamically depending on account classification, localized cross-border boundaries, and inter-currency conversions. This advanced calculator isolates the exact fee margins to reveal your absolute net settlement.",
-    "who_use": "Global freelancers invoicing international clients, e-commerce storefront networks accepting digital wallet merchant checkouts, and cross-border service providers who need to calculate the precise net payouts arriving in their linked business accounts rely on this engine.",
+    "who_use": "Freelancers invoicing international clients, e-commerce storefront networks accepting digital wallet merchant checkouts, and cross-border service providers who need to calculate the precise net payouts arriving in their linked business accounts rely on this engine.",
     "how_to_use": "1. Enter the total raw payment amount expected from your client or customer (currency-agnostic field). 2. Input the merchant fee percentage assigned to your specific account location tier. 3. Enter the flat fixed fee standard applied per unique transaction sequence. 4. Process to view the true net take-home breakdown.",
     "how_to_read": "The computational ledger automatically separates the cumulative transaction deductions from the final net deposit. If your goal is to lock in a specific, non-negotiable target payment, use the inverse calculation feedback generated here to gross up your initial customer invoice smoothly.",
     "pro_tip": "To capture a distinct net payout target without losing margins to processing costs, use this definitive inverse formula: Gross Invoice Target = (Desired Net + Fixed Fee) / (1 - Percentage Rate expressed as a decimal). Alternatively, integrating a rolling 4% to 5% structural adjustment onto your base operational quotes effectively shields your micro-business from payment gateway leakage!",
