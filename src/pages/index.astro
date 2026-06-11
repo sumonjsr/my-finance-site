@@ -201,62 +201,6 @@ const categoryInfo = {
             text-align: center;
         }
 
-        /* ENHANCED BENEFITS SECTION */
-        .benefits-section {
-            margin: 80px 0;
-        }
-
-        .benefits-section h2 {
-            text-align: center;
-            color: var(--primary);
-            font-size: 1.8rem;
-            font-family: 'Crimson Pro', serif;
-            margin-bottom: 40px;
-            font-weight: 700;
-        }
-
-        .benefits-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
-            margin: 40px 0;
-        }
-
-        .benefit-card {
-            padding: 25px;
-            background: white;
-            border: 1px solid #e2e8f0;
-            border-radius: 10px;
-            transition: all 0.3s ease;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-        }
-
-        .benefit-card:hover {
-            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
-            transform: translateY(-5px);
-            border-color: var(--primary);
-        }
-
-        .benefit-icon {
-            font-size: 32px;
-            margin-bottom: 10px;
-            display: inline-block;
-        }
-
-        .benefit-card h3 {
-            color: var(--primary);
-            font-size: 1.1rem;
-            margin-bottom: 10px;
-            font-weight: 600;
-        }
-
-        .benefit-card p {
-            color: #64748b;
-            line-height: 1.6;
-            font-size: 0.95rem;
-            margin: 0;
-        }
-
         /* HOW IT WORKS SECTION */
         .how-it-works {
             padding: 60px 20px;
@@ -562,6 +506,14 @@ const categoryInfo = {
             align-items: center;
         }
 
+        .bio-photo {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+        }
+
         .placeholder-avatar {
             width: 180px;
             height: 180px;
@@ -775,6 +727,7 @@ const categoryInfo = {
             font-size: 1.1rem;
             opacity: 0.95;
             margin-bottom: 30px;
+            text-align: center;
         }
 
         .cta-button {
@@ -854,6 +807,36 @@ const categoryInfo = {
 
     <div class="main-container">
 
+        <!-- CALCULATORS BY CATEGORY — Option C: Full list per category -->
+        <div class="calculators-section" id="calculatorsSection">
+            <h2 class="section-title">Browse All Calculators by Category</h2>
+
+            {Object.entries(calcsByType).map(([type, calcs]) => {
+                const info = categoryInfo[type] || { title: type, emoji: '📊', description: 'Financial calculators', color: '#d4a373' };
+                return (
+                    <div class="category-block" style={`--cat-color: ${info.color}`}>
+                        <div class="category-block-header">
+                            <span class="category-block-emoji">{info.emoji}</span>
+                            <h3 class="category-block-title">{info.title}</h3>
+                            <span class="category-block-count">{calcs.length} Tools</span>
+                        </div>
+                        <p class="category-block-desc">{info.description}</p>
+                        <div class="calc-list-grid">
+                            {calcs.map(calc => (
+                                <a href={`/calculator/${calc.slug}`} class="calc-list-item">
+                                    <div class="calc-list-info">
+                                        <span class="calc-list-name">{calc.name}</span>
+                                        <span class="calc-list-desc">{calc.description}</span>
+                                    </div>
+                                    <span class="calc-list-arrow">→</span>
+                                </a>
+                            ))}
+                        </div>
+                    </div>
+                );
+            })}
+        </div>
+
         <!-- WHY QUICKFINCALC SECTION -->
         <div class="why-section" id="whySection">
             <h2>Why Choose QuickFinCalc?</h2>
@@ -881,42 +864,43 @@ const categoryInfo = {
             </div>
         </div>
 
-        <!-- ENHANCED BENEFITS SECTION -->
-        <div class="benefits-section" id="benefitsSection">
-            <h2>Built for Your Financial Success</h2>
-            <div class="benefits-container">
-                <div class="benefit-card">
-                    <div class="benefit-icon">✓</div>
-                    <h3>100% Free & No Registration</h3>
-                    <p>Access all 53 calculators instantly without creating an account or paying a dime</p>
+        <!-- FIX 5: Replace fake testimonials with real use cases -->
+        <section class="usecases-section" id="usecasesSection">
+            <h2>Who Uses QuickFinCalc?</h2>
+            <p class="usecases-subtitle">Built for professionals who need fast, reliable financial answers</p>
+            <div class="usecases-grid">
+                <div class="usecase-card">
+                    <span class="usecase-icon">🏢</span>
+                    <h3>Small Business Owners</h3>
+                    <p>Calculate break-even points, profit margins, and loan EMIs before making investment decisions. Know your numbers before you commit.</p>
                 </div>
-                <div class="benefit-card">
-                    <div class="benefit-icon">⚡</div>
-                    <h3>Instant Results</h3>
-                    <p>Get accurate financial calculations in seconds, not hours. Real-time updates as you adjust values</p>
+                <div class="usecase-card">
+                    <span class="usecase-icon">🛍️</span>
+                    <h3>E-commerce Sellers</h3>
+                    <p>Calculate Amazon FBA fees, Shopify margins, and eBay profits instantly. Know exactly what you keep from every sale before listing.</p>
                 </div>
-                <div class="benefit-card">
-                    <div class="benefit-icon">📱</div>
-                    <h3>Mobile Friendly</h3>
-                    <p>Use on any device — smartphone, tablet, or desktop. Optimized for on-the-go calculations</p>
+                <div class="usecase-card">
+                    <span class="usecase-icon">💼</span>
+                    <h3>Finance & Audit Professionals</h3>
+                    <p>Run quick ratio checks, depreciation schedules, EPS calculations, and EBITDA analysis — without opening a spreadsheet.</p>
                 </div>
-                <div class="benefit-card">
-                    <div class="benefit-icon">🎯</div>
-                    <h3>Accurate Calculations</h3>
-                    <p>Professional-grade accuracy built on standard financial formulas used by accountants worldwide</p>
+                <div class="usecase-card">
+                    <span class="usecase-icon">🏠</span>
+                    <h3>Real Estate Investors</h3>
+                    <p>Evaluate rental ROI, cap rates, mortgage payments, and DSCR in seconds. Compare properties and deals with real numbers.</p>
                 </div>
-                <div class="benefit-card">
-                    <div class="benefit-icon">⭐</div>
-                    <h3>Professional Tools</h3>
-                    <p>Enterprise-level calculators designed for entrepreneurs, accountants, and finance professionals</p>
+                <div class="usecase-card">
+                    <span class="usecase-icon">💻</span>
+                    <h3>Freelancers & Contractors</h3>
+                    <p>Estimate self-employment tax, convert hourly rates to annual salary, and calculate invoice discounts — all in one place.</p>
                 </div>
-                <div class="benefit-card">
-                    <div class="benefit-icon">🔒</div>
-                    <h3>Secure & Private</h3>
-                    <p>SSL encrypted. Your calculations are private — we never collect or share your data</p>
+                <div class="usecase-card">
+                    <span class="usecase-icon">📊</span>
+                    <h3>Marketing Professionals</h3>
+                    <p>Track campaign ROI, customer acquisition cost, email open rate returns, and lifetime value to justify every marketing dollar spent.</p>
                 </div>
             </div>
-        </div>
+        </section>
 
         <!-- HOW IT WORKS SECTION -->
         <section class="how-it-works" id="howItWorksSection">
@@ -975,74 +959,6 @@ const categoryInfo = {
             </div>
         </section>
 
-        <!-- FIX 5: Replace fake testimonials with real use cases -->
-        <section class="usecases-section" id="usecasesSection">
-            <h2>Who Uses QuickFinCalc?</h2>
-            <p class="usecases-subtitle">Built for professionals who need fast, reliable financial answers</p>
-            <div class="usecases-grid">
-                <div class="usecase-card">
-                    <span class="usecase-icon">🏢</span>
-                    <h3>Small Business Owners</h3>
-                    <p>Calculate break-even points, profit margins, and loan EMIs before making investment decisions. Know your numbers before you commit.</p>
-                </div>
-                <div class="usecase-card">
-                    <span class="usecase-icon">🛍️</span>
-                    <h3>E-commerce Sellers</h3>
-                    <p>Calculate Amazon FBA fees, Shopify margins, and eBay profits instantly. Know exactly what you keep from every sale before listing.</p>
-                </div>
-                <div class="usecase-card">
-                    <span class="usecase-icon">💼</span>
-                    <h3>Finance & Audit Professionals</h3>
-                    <p>Run quick ratio checks, depreciation schedules, EPS calculations, and EBITDA analysis — without opening a spreadsheet.</p>
-                </div>
-                <div class="usecase-card">
-                    <span class="usecase-icon">🏠</span>
-                    <h3>Real Estate Investors</h3>
-                    <p>Evaluate rental ROI, cap rates, mortgage payments, and DSCR in seconds. Compare properties and deals with real numbers.</p>
-                </div>
-                <div class="usecase-card">
-                    <span class="usecase-icon">💻</span>
-                    <h3>Freelancers & Contractors</h3>
-                    <p>Estimate self-employment tax, convert hourly rates to annual salary, and calculate invoice discounts — all in one place.</p>
-                </div>
-                <div class="usecase-card">
-                    <span class="usecase-icon">📊</span>
-                    <h3>Marketing Professionals</h3>
-                    <p>Track campaign ROI, customer acquisition cost, email open rate returns, and lifetime value to justify every marketing dollar spent.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- CALCULATORS BY CATEGORY — Option C: Full list per category -->
-        <div class="calculators-section" id="calculatorsSection">
-            <h2 class="section-title">Browse All Calculators by Category</h2>
-
-            {Object.entries(calcsByType).map(([type, calcs]) => {
-                const info = categoryInfo[type] || { title: type, emoji: '📊', description: 'Financial calculators', color: '#d4a373' };
-                return (
-                    <div class="category-block" style={`--cat-color: ${info.color}`}>
-                        <div class="category-block-header">
-                            <span class="category-block-emoji">{info.emoji}</span>
-                            <h3 class="category-block-title">{info.title}</h3>
-                            <span class="category-block-count">{calcs.length} Tools</span>
-                        </div>
-                        <p class="category-block-desc">{info.description}</p>
-                        <div class="calc-list-grid">
-                            {calcs.map(calc => (
-                                <a href={`/calculator/${calc.slug}`} class="calc-list-item">
-                                    <div class="calc-list-info">
-                                        <span class="calc-list-name">{calc.name}</span>
-                                        <span class="calc-list-desc">{calc.description}</span>
-                                    </div>
-                                    <span class="calc-list-arrow">→</span>
-                                </a>
-                            ))}
-                        </div>
-                    </div>
-                );
-            })}
-        </div>
-
         <!-- TRUST & SECURITY SECTION -->
         <section class="trust-security" id="trustSection">
             <h2>Your Financial Data is Safe</h2>
@@ -1093,6 +1009,10 @@ const categoryInfo = {
         <section class="author-bio" id="authorSection">
             <div class="bio-container">
                 <div class="bio-image">
+                    {/* To add your photo: place image in public/images/merajul.jpg
+                        then replace the div below with:
+                        <img src="/images/merajul.jpg" alt="Md Merajul Islam" class="bio-photo" />
+                    */}
                     <div class="placeholder-avatar">MD</div>
                 </div>
                 <div class="bio-content">
@@ -1124,6 +1044,7 @@ const categoryInfo = {
         </section>
 
     </div>
+
 
     <script is:inline>
         function filterCalculators() {
