@@ -2,408 +2,462 @@
 import Layout from '../layouts/Layout.astro';
 import calculators from '../../calculators.json';
 
-const title = "Frequently Asked Questions | Quick Financial Calculator";
-const description = "Find expert answers to common questions about mortgages, loans, ROI, taxes, investments, and financial planning tools on Quick Financial Calculator.";
+// ✅ SEO - Optimized (no manual brand name)
+const title = "FAQ | Financial Calculator Questions Answered";
+const description = "Get answers to common questions about our financial calculators including EMI, ROI, tax, mortgage & investment tools. Free calculator support & help.";
 
 // Extract all FAQs from calculators
 const allFaqs = [];
 calculators.forEach(calc => {
-  if (calc.seo?.faqs) {
+  if (calc.seo?.faqs && Array.isArray(calc.seo.faqs)) {
     calc.seo.faqs.forEach(faq => {
       allFaqs.push({
-        question: faq.question,
-        answer: faq.answer,
-        calculatorName: calc.name,
-        calculatorSlug: calc.slug
+        question: faq.question || '',
+        answer: faq.answer || '',
+        calculatorName: calc.name || '',
+        calculatorSlug: calc.slug || ''
       });
     });
   }
 });
 
-// Group FAQs by calculator type for organization
+// Group FAQs by calculator type
 const faqsByType = {};
 calculators.forEach(calc => {
   if (calc.seo?.faqs && calc.seo.faqs.length > 0) {
-    const type = calc.type;
+    const type = calc.type || 'general';
     if (!faqsByType[type]) {
       faqsByType[type] = [];
     }
     calc.seo.faqs.forEach(faq => {
       faqsByType[type].push({
-        question: faq.question,
-        answer: faq.answer,
-        calculatorName: calc.name,
-        calculatorSlug: calc.slug
+        question: faq.question || '',
+        answer: faq.answer || '',
+        calculatorName: calc.name || '',
+        calculatorSlug: calc.slug || ''
       });
     });
   }
 });
 
-// Generate FAQPage Schema
+// ✅ Generate Complete FAQPage Schema (full answers, not truncated)
 const faqPageSchema = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
-  "mainEntity": allFaqs.slice(0, 20).map(faq => ({
+  "mainEntity": allFaqs.slice(0, 30).map(faq => ({
     "@type": "Question",
     "name": faq.question,
     "acceptedAnswer": {
       "@type": "Answer",
-      "text": faq.answer
+      "text": faq.answer // ✅ Full answer, not truncated
     }
   }))
 };
 
-// Type labels
+// ✅ Breadcrumb Schema
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://quickfincalc.com"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "FAQ",
+      "item": "https://quickfincalc.com/faq"
+    }
+  ]
+};
+
+// ✅ Type labels with fallback
 const typeLabels = {
   'loan': '💰 Loans & EMI',
   'investment': '📈 Investments & Returns',
   'tax': '📊 Taxes & Compliance',
   'ecommerce': '🛍️ E-commerce & Margins',
   'marketing': '📢 Marketing & Customer Metrics',
-  'salary': '💼 Salary & HR'
+  'salary': '💼 Salary & HR',
+  'business': '🏢 Business & Finance',
+  'general': '❓ General Questions'
 };
+
+const getTypeLabel = (type) => typeLabels[type] || `📌 ${type.charAt(0).toUpperCase() + type.slice(1)}`;
 ---
 
 <Layout title={title} description={description}>
-  {/* FAQPage Schema Markup */}
-  <script type="application/ld+json" set:html={JSON.stringify(faqPageSchema)} />
+
+  <!-- ✅ Schema Markup - Both FAQ & Breadcrumb -->
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(faqPageSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+    
+    <!-- ✅ Page-specific OG tags -->
+    <meta property="og:title" content={`${title} | QuickFinCalc`} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content="https://quickfincalc.com/faq" />
+    <link rel="canonical" href="https://quickfincalc.com/faq" />
+  </Fragment>
 
   <style>
-    /* FAQ Page Optimized Styles */
     :root {
-        --deep-navy: #0a1628;
-        --accent-gold: #d4a373;
-        --soft-white: #fdfbf7;
-        --serif: 'Crimson Pro', serif;
-        --primary: #1e3a8a;
+      --deep-navy: #0a1628;
+      --accent-gold: #d4a373;
+      --soft-white: #fdfbf7;
+      --serif: 'Crimson Pro', serif;
+      --primary: #1e3a8a;
     }
 
+    /* ✅ Hero Section */
     .hero {
-        background: linear-gradient(135deg, var(--deep-navy) 0%, #1e3a8a 100%);
-        color: var(--soft-white);
-        padding: 5rem 2rem;
-        text-align: center;
-        border-bottom: 4px solid var(--accent-gold);
+      background: linear-gradient(135deg, var(--deep-navy) 0%, #1e3a8a 100%);
+      color: var(--soft-white);
+      padding: 5rem 2rem;
+      text-align: center;
+      border-bottom: 4px solid var(--accent-gold);
     }
 
     .hero h1 {
-        font-family: var(--serif);
-        font-size: 3.2rem;
-        margin-bottom: 1rem;
-        font-weight: 800;
+      font-family: var(--serif);
+      font-size: 3.2rem;
+      margin-bottom: 1rem;
+      font-weight: 800;
     }
 
     .hero p {
-        font-size: 1.2rem;
-        opacity: 0.95;
-        max-width: 600px;
-        margin: 0 auto;
+      font-size: 1.2rem;
+      opacity: 0.95;
+      max-width: 650px;
+      margin: 0 auto;
+      line-height: 1.6;
     }
 
-    /* Search Box Updated */
+    /* ✅ Search Box */
     .search-container {
-        max-width: 700px;
-        margin: -2.5rem auto 3rem;
-        padding: 0 20px;
-        position: relative;
-        z-index: 10;
+      max-width: 700px;
+      margin: -2.5rem auto 3rem;
+      padding: 0 20px;
+      position: relative;
+      z-index: 10;
     }
 
     .search-box {
-        width: 100%;
-        padding: 1.3rem 1.8rem;
-        font-size: 1.1rem;
-        border: 2px solid var(--accent-gold);
-        border-radius: 12px;
-        background: white;
-        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
-        outline: none;
-        transition: 0.3s;
+      width: 100%;
+      padding: 1.3rem 1.8rem;
+      font-size: 1.1rem;
+      border: 2px solid var(--accent-gold);
+      border-radius: 12px;
+      background: white;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+      outline: none;
+      transition: 0.3s;
     }
 
     .search-box:focus {
-        box-shadow: 0 10px 40px rgba(212, 163, 115, 0.2);
-        border-color: #d4a373;
+      box-shadow: 0 10px 40px rgba(212, 163, 115, 0.2);
+      border-color: #d4a373;
     }
 
-    /* FAQ Items */
+    /* ✅ FAQ Container */
     .faq-container {
-        max-width: 900px;
-        margin: 0 auto;
-        padding: 1rem 20px 5rem;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 1rem 20px 5rem;
     }
 
     .category-section {
-        margin-bottom: 4rem;
+      margin-bottom: 4rem;
     }
 
     .category-title {
-        font-family: var(--serif);
-        font-size: 1.8rem;
-        color: var(--deep-navy);
-        margin: 3rem 0 1.5rem;
-        padding-bottom: 12px;
-        border-bottom: 3px solid var(--accent-gold);
-        display: inline-block;
-        font-weight: 800;
+      font-family: var(--serif);
+      font-size: 1.8rem;
+      color: var(--deep-navy);
+      margin: 3rem 0 1.5rem;
+      padding-bottom: 12px;
+      border-bottom: 3px solid var(--accent-gold);
+      display: inline-block;
+      font-weight: 800;
     }
 
     .category-subtitle {
-        color: #64748b;
-        font-size: 0.95rem;
-        margin-top: 0.5rem;
-        margin-bottom: 1.5rem;
+      color: #64748b;
+      font-size: 0.95rem;
+      margin-top: 0.5rem;
+      margin-bottom: 1.5rem;
     }
 
     .faq-count {
-        display: inline-block;
-        background: #f1f5f9;
-        color: var(--primary);
-        padding: 4px 12px;
-        border-radius: 20px;
-        font-size: 0.85rem;
-        font-weight: 700;
-        margin-left: 10px;
+      display: inline-block;
+      background: #f1f5f9;
+      color: var(--primary);
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      margin-left: 10px;
     }
 
+    /* ✅ FAQ Items */
     .faq-item {
-        background: white;
-        border-radius: 12px;
-        margin-bottom: 1.2rem;
-        border: 1px solid #e2e8f0;
-        overflow: hidden;
-        transition: all 0.3s ease;
+      background: white;
+      border-radius: 12px;
+      margin-bottom: 1.2rem;
+      border: 1px solid #e2e8f0;
+      overflow: hidden;
+      transition: all 0.3s ease;
     }
 
     .faq-item:hover {
-        border-color: var(--accent-gold);
-        box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+      border-color: var(--accent-gold);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.08);
     }
 
     .faq-question {
-        padding: 1.5rem;
-        cursor: pointer;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        font-weight: 700;
-        color: var(--deep-navy);
-        user-select: none;
-        font-size: 1.05rem;
-        background: #fafbfc;
-        transition: background 0.2s;
+      padding: 1.5rem;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: 700;
+      color: var(--deep-navy);
+      user-select: none;
+      font-size: 1.05rem;
+      background: #fafbfc;
+      transition: background 0.2s;
     }
 
     .faq-question:hover {
-        background: #f0f5fb;
+      background: #f0f5fb;
+    }
+
+    .faq-question:focus {
+      outline: 2px solid var(--accent-gold);
+      outline-offset: -2px;
     }
 
     .faq-icon {
-        font-size: 1.4rem;
-        transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        color: var(--accent-gold);
-        background: #fff3e0;
-        width: 36px;
-        height: 36px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border-radius: 8px;
-        flex-shrink: 0;
+      font-size: 1.4rem;
+      transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      color: var(--accent-gold);
+      background: #fff3e0;
+      width: 36px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 8px;
+      flex-shrink: 0;
     }
 
     .faq-item.active {
-        border-color: var(--accent-gold);
-        background: #fffbf7;
+      border-color: var(--accent-gold);
+      background: #fffbf7;
     }
 
     .faq-item.active .faq-icon {
-        transform: rotate(45deg);
-        background: var(--accent-gold);
-        color: white;
+      transform: rotate(45deg);
+      background: var(--accent-gold);
+      color: white;
     }
 
     .faq-answer {
-        max-height: 0;
-        overflow: hidden;
-        transition: max-height 0.4s ease-in-out;
-        background: #fcfcfc;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease-in-out;
+      background: #fcfcfc;
     }
 
     .faq-item.active .faq-answer {
-        max-height: 1500px;
+      max-height: 2000px; /* ✅ Increased for longer answers */
     }
 
     .faq-answer-content {
-        padding: 0 1.5rem 1.8rem;
-        color: #475569;
-        line-height: 1.8;
-        font-size: 1rem;
+      padding: 0 1.5rem 1.8rem;
+      color: #475569;
+      line-height: 1.8;
+      font-size: 1rem;
     }
 
     .faq-answer-content p {
-        margin-bottom: 12px;
+      margin-bottom: 12px;
     }
 
     .calculator-link {
-        display: inline-flex;
-        align-items: center;
-        gap: 6px;
-        margin-top: 15px;
-        color: var(--primary);
-        text-decoration: none;
-        font-weight: 700;
-        font-size: 0.95rem;
-        padding: 8px 12px;
-        background: #e0e7ff;
-        border-radius: 6px;
-        transition: all 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 15px;
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.95rem;
+      padding: 8px 12px;
+      background: #e0e7ff;
+      border-radius: 6px;
+      transition: all 0.2s;
     }
 
     .calculator-link:hover {
-        background: var(--accent-gold);
-        color: white;
-        transform: translateX(3px);
+      background: var(--accent-gold);
+      color: white;
+      transform: translateX(3px);
     }
 
+    /* ✅ FAQ Stats */
     .faq-stats {
-        background: #f0fdf4;
-        border: 1px solid #86efac;
-        border-radius: 12px;
-        padding: 20px;
-        margin-bottom: 40px;
-        text-align: center;
+      background: #f0fdf4;
+      border: 1px solid #86efac;
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 40px;
+      text-align: center;
     }
 
     .stats-number {
-        font-size: 2.5rem;
-        font-weight: 800;
-        color: #15803d;
-        font-family: var(--serif);
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: #15803d;
+      font-family: var(--serif);
     }
 
     .stats-text {
-        color: #4b5563;
-        margin-top: 8px;
+      color: #4b5563;
+      margin-top: 8px;
     }
 
-    /* CTA Section */
+    /* ✅ CTA Section - Updated text */
     .cta-section {
-        background: linear-gradient(135deg, var(--deep-navy) 0%, #1e3a8a 100%);
-        color: white;
-        padding: 4rem 2rem;
-        text-align: center;
-        border-top: 5px solid var(--accent-gold);
-        margin-top: 5rem;
+      background: linear-gradient(135deg, var(--deep-navy) 0%, #1e3a8a 100%);
+      color: white;
+      padding: 4rem 2rem;
+      text-align: center;
+      border-top: 5px solid var(--accent-gold);
+      margin-top: 5rem;
     }
 
     .cta-section h2 {
-        font-family: var(--serif);
-        font-size: 2.2rem;
-        margin-bottom: 1rem;
+      font-family: var(--serif);
+      font-size: 2.2rem;
+      margin-bottom: 1rem;
     }
 
     .cta-section p {
-        font-size: 1.1rem;
-        opacity: 0.95;
-        margin-bottom: 1.5rem;
+      font-size: 1.1rem;
+      opacity: 0.95;
+      margin-bottom: 1.5rem;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
     }
 
     .cta-button {
-        display: inline-block;
-        padding: 1.1rem 2.5rem;
-        background: var(--accent-gold);
-        color: var(--deep-navy);
-        text-decoration: none;
-        font-weight: 800;
-        border-radius: 10px;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        transition: 0.3s;
-        font-size: 0.95rem;
+      display: inline-block;
+      padding: 1.1rem 2.5rem;
+      background: var(--accent-gold);
+      color: var(--deep-navy);
+      text-decoration: none;
+      font-weight: 800;
+      border-radius: 10px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: 0.3s;
+      font-size: 0.95rem;
     }
 
     .cta-button:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 15px 30px rgba(212, 163, 115, 0.4);
+      transform: translateY(-3px);
+      box-shadow: 0 15px 30px rgba(212, 163, 115, 0.4);
     }
 
-    /* No results message */
+    /* ✅ No Results */
     .no-results {
-        text-align: center;
-        padding: 3rem 2rem;
-        color: #64748b;
+      text-align: center;
+      padding: 3rem 2rem;
+      color: #64748b;
     }
 
     .no-results-icon {
-        font-size: 3rem;
-        margin-bottom: 1rem;
+      font-size: 3rem;
+      margin-bottom: 1rem;
     }
 
-    /* Mobile responsive */
+    /* ✅ Mobile Responsive */
     @media (max-width: 768px) {
-        .hero h1 {
-            font-size: 2.2rem;
-        }
-
-        .category-title {
-            font-size: 1.4rem;
-        }
-
-        .faq-question {
-            font-size: 0.95rem;
-            padding: 1.2rem;
-        }
-
-        .cta-section {
-            padding: 3rem 1.5rem;
-        }
-
-        .cta-section h2 {
-            font-size: 1.6rem;
-        }
+      .hero h1 { font-size: 2.2rem; }
+      .category-title { font-size: 1.4rem; }
+      .faq-question { font-size: 0.95rem; padding: 1.2rem; }
+      .cta-section { padding: 3rem 1.5rem; }
+      .cta-section h2 { font-size: 1.6rem; }
     }
   </style>
 
+  <!-- ✅ Hero - Better description -->
   <section class="hero">
     <h1>Frequently Asked Questions</h1>
-    <p>Expert answers to your financial calculation and planning questions — all powered by our comprehensive calculator suite.</p>
+    <p>
+      Find quick answers to common questions about our 50+ free financial calculators. 
+      Learn how to calculate EMI, ROI, taxes, margins & more.
+    </p>
   </section>
 
+  <!-- ✅ Search Box -->
   <div class="search-container">
     <input 
       type="text" 
       class="search-box" 
       id="faqSearch" 
       placeholder="🔍 Search FAQs... (e.g., 'interest', 'tax', 'ROI')"
+      aria-label="Search FAQs"
     />
   </div>
 
   <div class="faq-container">
-    {/* Stats Section */}
-    <div class="faq-stats">
-      <div class="stats-number">{allFaqs.length}+</div>
-      <div class="stats-text">Expert-Answered Questions from {Object.keys(faqsByType).length} Calculator Categories</div>
-    </div>
 
-    {/* FAQ Categories */}
+    <!-- ✅ Stats Section -->
+    {allFaqs.length > 0 && (
+      <div class="faq-stats">
+        <div class="stats-number">{allFaqs.length}+</div>
+        <div class="stats-text">
+          Expert Answers from {Object.keys(faqsByType).length} Calculator Categories
+        </div>
+      </div>
+    )}
+
+    <!-- ✅ FAQ Categories -->
     {Object.entries(faqsByType).map(([type, faqs]) => (
       <div class="category-section" data-category={type}>
         <h2 class="category-title">
-          {typeLabels[type] || type}
-          <span class="faq-count">{faqs.length} FAQs</span>
+          {getTypeLabel(type)}
+          <span class="faq-count">{faqs.length} FAQ{faqs.length !== 1 ? 's' : ''}</span>
         </h2>
-        <p class="category-subtitle">Questions from {faqs.length} calculator{faqs.length !== 1 ? 's' : ''} in this category</p>
+        <p class="category-subtitle">
+          Common questions from our {type} calculators
+        </p>
         
         {faqs.map((faq, index) => (
-          <div class="faq-item" data-question={faq.question.toLowerCase()}>
-            <div class="faq-question">
+          <div 
+            class="faq-item" 
+            data-question={faq.question.toLowerCase()}
+            data-answer={faq.answer.toLowerCase()}
+          >
+            <div 
+              class="faq-question" 
+              role="button" 
+              tabindex="0"
+              aria-expanded="false"
+            >
               <span>{faq.question}</span>
-              <span class="faq-icon">+</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
             </div>
-            <div class="faq-answer">
+            <div class="faq-answer" role="region">
               <div class="faq-answer-content">
-                <p>{faq.answer.slice(0, 150)}...</p>
+                {/* ✅ Full answer, no truncation */}
+                <p>{faq.answer}</p>
                 <a href={`/calculator/${faq.calculatorSlug}`} class="calculator-link">
                   → Try {faq.calculatorName}
                 </a>
@@ -414,37 +468,57 @@ const typeLabels = {
       </div>
     ))}
 
-    {/* No Results Message */}
-    <div id="noResults" class="no-results" style="display: none;">
+    <!-- ✅ No Results Message -->
+    <div id="noResults" class="no-results" style="display: none;" role="status">
       <div class="no-results-icon">🔍</div>
       <h3>No FAQs Found</h3>
-      <p>Try searching with different keywords or explore all our calculators.</p>
+      <p>Try searching with different keywords or <a href="/">explore all calculators</a>.</p>
     </div>
   </div>
 
+  <!-- ✅ CTA Section - Updated copy -->
   <section class="cta-section">
     <h2>Still Have Questions?</h2>
-    <p>Explore our complete suite of audit-grade financial calculators to find the perfect tool for your needs.</p>
+    <p>
+      Explore our complete suite of 50+ free financial calculators or contact our support team for help.
+    </p>
     <a href="/" class="cta-button">View All Calculators</a>
   </section>
 
   <script is:inline>
-    // FAQ Accordion Logic
+    // ✅ FAQ Accordion with Keyboard Support
     document.querySelectorAll('.faq-question').forEach(question => {
-      question.addEventListener('click', () => {
+      const toggle = () => {
         const item = question.parentElement;
         const wasActive = item.classList.contains('active');
         
-        // Close all items in the same category
+        // Close all items in same category
         const category = item.closest('.category-section');
-        category?.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
+        category?.querySelectorAll('.faq-item').forEach(i => {
+          i.classList.remove('active');
+          i.querySelector('.faq-question')?.setAttribute('aria-expanded', 'false');
+        });
         
-        // Open clicked item if it wasn't active
-        if (!wasActive) item.classList.add('active');
+        // Open clicked item if wasn't active
+        if (!wasActive) {
+          item.classList.add('active');
+          question.setAttribute('aria-expanded', 'true');
+        }
+      };
+
+      // Click event
+      question.addEventListener('click', toggle);
+
+      // ✅ Keyboard support (Enter & Space)
+      question.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          toggle();
+        }
       });
     });
 
-    // Improved Search Functionality
+    // ✅ Improved Search - searches in data attributes
     const searchInput = document.getElementById('faqSearch');
     const noResults = document.getElementById('noResults');
     
@@ -455,25 +529,32 @@ const typeLabels = {
       let totalVisible = 0;
       
       faqItems.forEach(item => {
-        const questionText = item.getAttribute('data-question') || item.innerText.toLowerCase();
-        const isMatch = questionText.includes(searchTerm);
+        const question = item.getAttribute('data-question') || '';
+        const answer = item.getAttribute('data-answer') || '';
+        const searchText = question + ' ' + answer;
+        
+        const isMatch = searchText.includes(searchTerm);
         item.style.display = isMatch ? 'block' : 'none';
         if (isMatch) totalVisible++;
       });
 
+      // Hide empty categories
       categories.forEach(cat => {
         const visibleItems = cat.querySelectorAll('.faq-item[style="display: block;"]');
-        const title = cat.querySelector('.category-title');
-        
-        if (searchTerm && visibleItems.length === 0) {
-          cat.style.display = 'none';
-        } else {
-          cat.style.display = 'block';
-        }
+        cat.style.display = (searchTerm && visibleItems.length === 0) ? 'none' : 'block';
       });
 
-      // Show/hide no results message
-      noResults.style.display = totalVisible === 0 && searchTerm ? 'block' : 'none';
+      // Show/hide no results
+      noResults.style.display = (totalVisible === 0 && searchTerm) ? 'block' : 'none';
+    });
+
+    // ✅ Auto-focus search on '/' key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === '/' && !e.ctrlKey && !e.metaKey) {
+        e.preventDefault();
+        searchInput?.focus();
+      }
     });
   </script>
+
 </Layout>
