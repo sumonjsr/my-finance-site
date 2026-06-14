@@ -2,13 +2,16 @@
 // src/layouts/Layout.astro
 const { 
     title, 
-    description = "Quick Financial Calculator offers 50+ professional tools for tax, loans, business analysis, and investment planning. Precise, fast, and free.",
+    description = "QuickFinCalc offers 50+ free financial tools for tax, loans, business & investment planning. Fast, accurate results with complete privacy—no signup needed.",
     url = Astro.url.pathname 
 } = Astro.props;
 
 const siteName = "QuickFinCalc";
 const siteUrl = "https://quickfincalc.com"; 
 const canonicalURL = new URL(url, siteUrl);
+
+// ✅ Full title with brand name for OG tags
+const fullTitle = `${title} | ${siteName}`;
 ---
 
 <!DOCTYPE html>
@@ -17,14 +20,67 @@ const canonicalURL = new URL(url, siteUrl);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
+    <!-- ✅ Primary SEO Tags -->
     <title>{title} | {siteName}</title>
     <meta name="description" content={description}>
     <meta name="author" content="Md Merajul Islam">
     <meta name="theme-color" content="#1e3a8a">
+    
+    <!-- ✅ Robots Meta - Indexing Control -->
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
 
+    <!-- ✅ Search Console Verification -->
     <meta name="google-site-verification" content="Tqp2-c0brhmsvO3x6Sb8y7puO8N78gikKDnE-qoENH8" />
     <meta name="msvalidate.01" content="A312F849A3771234656CD888FC30369E" />
 
+    <!-- ✅ Favicon & App Icons -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta name="apple-mobile-web-app-title" content="QuickFinCalc" />
+
+    <!-- ✅ Canonical URL -->
+    <link rel="canonical" href={canonicalURL} />
+
+    <!-- ✅ Open Graph Tags - Fixed & Complete -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content={canonicalURL}>
+    <meta property="og:title" content={fullTitle}>
+    <meta property="og:description" content={description}>
+    <meta property="og:site_name" content={siteName}>
+    <meta property="og:image" content={`${siteUrl}/og-image.png`}>
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="QuickFinCalc - Free Financial Calculator Tools">
+    <meta property="og:locale" content="en_US">
+
+    <!-- ✅ Twitter Card Tags - Fixed & Complete -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content={fullTitle}>
+    <meta name="twitter:description" content={description}>
+    <meta name="twitter:image" content={`${siteUrl}/og-image.png`}>
+    <meta name="twitter:image:alt" content="QuickFinCalc - Free Financial Calculator Tools">
+
+    <!-- ✅ Extra head slot - page specific meta tags inject করার জন্য -->
+    <slot name="head" />
+
+    <!-- ✅ Google Fonts - Preconnect for performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@700;800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <!-- ✅ Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5SEFVH6V0S"></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-5SEFVH6V0S');
+    </script>
+
+    <!-- ✅ Microsoft Clarity - Body এর আগে load হওয়া ঠিক আছে -->
     <script type="text/javascript">
     (function(c,l,a,r,i,t,y){
         c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
@@ -33,39 +89,7 @@ const canonicalURL = new URL(url, siteUrl);
     })(window, document, "clarity", "script", "x3pocygfb2");
     </script>
 
-    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-    <link rel="manifest" href="/site.webmanifest" />
-    <meta name="apple-mobile-web-app-title" content="QuickFinCalc" />
-
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5SEFVH6V0S"></script>
-    <script is:inline>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-
-      gtag('config', 'G-5SEFVH6V0S');
-    </script>
-
-    <meta property="og:type" content="website">
-    <meta property="og:url" content={canonicalURL}>
-    <meta property="og:title" content={title}>
-    <meta property="og:description" content={description}>
-    <meta property="og:site_name" content={siteName}>
-    <meta property="og:image" content="https://quickfincalc.com/og-image.png">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="630">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content="https://quickfincalc.com/og-image.png">
-
-    <link rel="canonical" href={canonicalURL} />
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@700;800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
-    
+    <!-- ✅ Global Styles -->
     <style is:global>
         :root {
             --brand-blue: #1e3a8a;      
@@ -76,13 +100,13 @@ const canonicalURL = new URL(url, siteUrl);
             --sans: 'DM Sans', sans-serif;
             --serif: 'Crimson Pro', serif;
         }
- 
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
- 
+
         body {
             font-family: var(--sans);
             background: var(--bg-warm);
@@ -92,23 +116,22 @@ const canonicalURL = new URL(url, siteUrl);
             flex-direction: column;
             min-height: 100vh;
         }
- 
+
         html { scroll-behavior: smooth; }
- 
-        /* ✅ Article Text Justify — desktop only */
-        p,
-            p {
+
+        /* ✅ Fixed: Duplicate selector removed */
+        p {
             text-align: justify;
             text-justify: inter-word;
         }
- 
+
         @media (max-width: 640px) {
-        p,
             p {
                 text-align: left;
             }
         }
- 
+
+        /* ✅ Header */
         header {
             background: var(--brand-blue);
             color: var(--white);
@@ -119,7 +142,7 @@ const canonicalURL = new URL(url, siteUrl);
             box-shadow: 0 4px 15px rgba(0,0,0,0.15);
             border-bottom: 2px solid var(--brand-accent);
         }
- 
+
         nav {
             max-width: 1200px;
             margin: 0 auto;
@@ -127,14 +150,14 @@ const canonicalURL = new URL(url, siteUrl);
             justify-content: space-between;
             align-items: center;
         }
- 
+
         .logo {
             text-decoration: none;
             display: flex;
             align-items: center;
             gap: 12px;
         }
- 
+
         .logo-box {
             background-color: var(--brand-accent);
             width: 38px;
@@ -148,7 +171,7 @@ const canonicalURL = new URL(url, siteUrl);
             flex-shrink: 0;
             box-shadow: 0 2px 4px rgba(0,0,0,0.2);
         }
- 
+
         .logo-box::before {
             content: 'Q';
             color: var(--white);
@@ -158,7 +181,7 @@ const canonicalURL = new URL(url, siteUrl);
             line-height: 1;
             z-index: 2;
         }
- 
+
         .logo-box::after {
             content: '';
             position: absolute;
@@ -170,20 +193,20 @@ const canonicalURL = new URL(url, siteUrl);
             transform: rotate(45deg);
             z-index: 1;
         }
- 
+
         .logo-text {
             display: flex;
             flex-direction: column;
             line-height: 1.1;
         }
- 
+
         .brand-main {
             font-size: 1.45rem;
             font-weight: 700;
             letter-spacing: -0.5px;
             color: var(--white);
         }
- 
+
         .brand-sub {
             font-size: 0.62rem;
             text-transform: uppercase;
@@ -191,13 +214,14 @@ const canonicalURL = new URL(url, siteUrl);
             color: var(--brand-accent);
             font-weight: 600;
         }
- 
+
+        /* ✅ Nav Links */
         .nav-links {
             display: flex;
             gap: 1.8rem;
             list-style: none;
         }
- 
+
         .nav-links a {
             color: var(--white);
             text-decoration: none;
@@ -206,12 +230,13 @@ const canonicalURL = new URL(url, siteUrl);
             transition: 0.3s;
             opacity: 0.85;
         }
- 
+
         .nav-links a:hover {
             color: var(--brand-accent);
             opacity: 1;
         }
- 
+
+        /* ✅ Mobile Menu Button */
         .menu-btn {
             display: none;
             background: none;
@@ -220,7 +245,7 @@ const canonicalURL = new URL(url, siteUrl);
             padding: 5px;
             z-index: 1001;
         }
- 
+
         .menu-btn span {
             display: block;
             width: 25px;
@@ -229,9 +254,10 @@ const canonicalURL = new URL(url, siteUrl);
             margin: 5px 0;
             transition: 0.3s;
         }
- 
+
         main { flex: 1; }
- 
+
+        /* ✅ Footer */
         footer {
             background: #0f172a;
             color: #cbd5e1;
@@ -239,13 +265,13 @@ const canonicalURL = new URL(url, siteUrl);
             margin-top: 3rem;
             border-top: 3px solid var(--brand-accent);
         }
- 
+
         .footer-container {
             max-width: 1000px;
             margin: 0 auto;
             text-align: center;
         }
- 
+
         .footer-brand {
             font-family: var(--serif);
             font-size: 1.3rem;
@@ -253,7 +279,7 @@ const canonicalURL = new URL(url, siteUrl);
             color: var(--white);
             margin-bottom: 0.5rem;
         }
- 
+
         .footer-tagline {
             font-size: 0.85rem;
             max-width: 500px;
@@ -261,7 +287,7 @@ const canonicalURL = new URL(url, siteUrl);
             opacity: 0.8;
             line-height: 1.4;
         }
- 
+
         .footer-links {
             display: flex;
             justify-content: center;
@@ -269,18 +295,18 @@ const canonicalURL = new URL(url, siteUrl);
             margin-bottom: 1.5rem;
             flex-wrap: wrap;
         }
- 
+
         .footer-links a {
             color: #94a3b8;
             text-decoration: none;
             font-size: 0.85rem;
             transition: 0.3s;
         }
- 
+
         .footer-links a:hover {
             color: var(--brand-accent);
         }
- 
+
         .copyright {
             border-top: 1px solid rgba(255,255,255,0.05);
             padding-top: 1rem;
@@ -288,7 +314,8 @@ const canonicalURL = new URL(url, siteUrl);
             color: #64748b;
             line-height: 1.5;
         }
- 
+
+        /* ✅ Mobile Responsive */
         @media (max-width: 768px) {
             header { padding: 0.6rem 1rem; }
             .menu-btn { display: block; }
@@ -308,9 +335,13 @@ const canonicalURL = new URL(url, siteUrl);
             }
             .nav-links.active { right: 0; }
             .nav-links a { font-size: 1.2rem; }
-            .menu-btn.active span:nth-child(1) { transform: rotate(-45deg) translate(-5px, 6px); }
+            .menu-btn.active span:nth-child(1) { 
+                transform: rotate(-45deg) translate(-5px, 6px); 
+            }
             .menu-btn.active span:nth-child(2) { opacity: 0; }
-            .menu-btn.active span:nth-child(3) { transform: rotate(45deg) translate(-5px, -6px); }
+            .menu-btn.active span:nth-child(3) { 
+                transform: rotate(45deg) translate(-5px, -6px); 
+            }
             .brand-main { font-size: 1.2rem; }
             .brand-sub { font-size: 0.55rem; }
         }
@@ -318,70 +349,87 @@ const canonicalURL = new URL(url, siteUrl);
 
 </head>
 <body>
+    <!-- ✅ Header with Accessibility -->
     <header>
-        <nav>
-            <a href="/" class="logo" title="Quick Financial Calculator Home">
+        <nav aria-label="Main Navigation">
+            <a href="/" class="logo" title="QuickFinCalc - Free Financial Calculator Tools">
                 <div class="logo-box"></div>
                 <div class="logo-text">
-                    <span class="brand-main">QuickFin<span style="color:var(--brand-accent)">Calc</span></span>
+                    <span class="brand-main">
+                        QuickFin<span style="color:var(--brand-accent)">Calc</span>
+                    </span>
                     <span class="brand-sub">Financial Calculator</span>
                 </div>
             </a>
 
-            <button class="menu-btn" id="mobile-menu-btn" aria-label="Toggle Navigation">
+            <button 
+                class="menu-btn" 
+                id="mobile-menu-btn" 
+                aria-label="Toggle Navigation Menu"
+                aria-expanded="false"
+                aria-controls="nav-menu"
+            >
                 <span></span>
                 <span></span>
                 <span></span>
             </button>
 
-            <ul class="nav-links" id="nav-menu">
-                <li><a href="/">Calculators</a></li>
-                <li><a href="/articles">Guides</a></li>
-                <li><a href="/faq">FAQ</a></li> 
-                <li><a href="/about">About</a></li>
-                <li><a href="/contact">Support</a></li>
+            <ul class="nav-links" id="nav-menu" role="menubar">
+                <li role="none"><a href="/" role="menuitem">Calculators</a></li>
+                <li role="none"><a href="/articles" role="menuitem">Guides</a></li>
+                <li role="none"><a href="/faq" role="menuitem">FAQ</a></li>
+                <li role="none"><a href="/about" role="menuitem">About</a></li>
+                <li role="none"><a href="/contact" role="menuitem">Support</a></li>
             </ul>
         </nav>
     </header>
 
+    <!-- ✅ Main Content -->
     <main>
         <slot /> 
     </main>
 
+    <!-- ✅ Footer - Updated Tagline -->
     <footer>
         <div class="footer-container">
             <div class="footer-brand">{siteName}</div>
             <p class="footer-tagline">
-                Precision-engineered financial tools for professionals and auditors worldwide.
+                Free professional financial tools for businesses, investors & individuals worldwide.
             </p>
             <div class="footer-links">
                 <a href="/">Home</a>
                 <a href="/articles">Guides</a>
-                <a href="/faq">FAQ</a> 
+                <a href="/faq">FAQ</a>
                 <a href="/privacy">Privacy</a>
                 <a href="/terms">Terms</a>
                 <a href="/contact">Support</a>
             </div>
             <div class="copyright">
                 &copy; {new Date().getFullYear()} {siteName}. All rights reserved. <br/>
-                <small style="opacity: 0.6;">Informational purposes only. Consult a professional for legal decisions.</small>
+                <small style="opacity: 0.6;">
+                    Informational purposes only. Consult a professional for legal decisions.
+                </small>
             </div>
         </div>
     </footer>
 
+    <!-- ✅ Mobile Menu Script - Updated with aria -->
     <script is:inline>
         const menuBtn = document.getElementById('mobile-menu-btn');
         const navMenu = document.getElementById('nav-menu');
 
         menuBtn.addEventListener('click', () => {
-            menuBtn.classList.toggle('active');
+            const isActive = menuBtn.classList.toggle('active');
             navMenu.classList.toggle('active');
+            // ✅ Accessibility - aria-expanded update
+            menuBtn.setAttribute('aria-expanded', isActive ? 'true' : 'false');
         });
 
         document.querySelectorAll('.nav-links a').forEach(link => {
             link.addEventListener('click', () => {
                 menuBtn.classList.remove('active');
                 navMenu.classList.remove('active');
+                menuBtn.setAttribute('aria-expanded', 'false');
             });
         });
     </script>

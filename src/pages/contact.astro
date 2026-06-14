@@ -1,219 +1,567 @@
 ---
 import Layout from '../layouts/Layout.astro';
 
-const title = "Contact Us | Quick Financial Calculator Support";
-const description = "Get in touch with the Quick Financial Calculator team. Report issues, suggest new tools, or ask questions about our verified financial formulas.";
+// ✅ SEO - Optimized (Brand name manually লেখা হয়নি)
+const title = "Contact Us | Financial Calculator Support";
+const description = "Have a question or found a formula error? Contact our support team. We respond within 24-48 hours. Report issues, suggest tools & more.";
 ---
 
 <Layout title={title} description={description}>
-    <style>
-        /* Contact Page Optimized Styles */
-        .hero { 
-            background: linear-gradient(135deg, #1e3a8a 0%, #0f172a 100%); 
-            padding: 70px 20px; 
-            text-align: center; 
-            color: white; 
-            border-bottom: 4px solid #d4a373;
+
+  <!-- ✅ SEO: Page-specific Schema & OG Tags -->
+  <Fragment slot="head">
+    <!-- ContactPage Schema -->
+    <script type="application/ld+json">
+      {JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "ContactPage",
+        "name": "Contact QuickFinCalc Support",
+        "description": "Contact page for QuickFinCalc financial calculator support",
+        "url": "https://quickfincalc.com/contact",
+        "mainEntity": {
+          "@type": "Organization",
+          "name": "QuickFinCalc",
+          "url": "https://quickfincalc.com",
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "contactType": "customer support",
+            "availableLanguage": "English",
+            "areaServed": "Worldwide"
+          }
         }
-        .hero h1 { 
-            font-size: 2.8rem; 
-            font-weight: 800; 
-            margin: 0 0 14px; 
-            font-family: 'Crimson Pro', serif; 
-        }
-        .hero p { opacity: 0.9; font-size: 1.1rem; margin: 0 auto; max-width: 550px; color: #cbd5e1; }
-
-        .container { max-width: 1000px; margin: 50px auto; padding: 0 20px; display: grid; grid-template-columns: 1fr 1.6fr; gap: 32px; }
-        @media (max-width: 768px) { .container { grid-template-columns: 1fr; } }
-
-        .info-col { display: flex; flex-direction: column; gap: 20px; }
-        .info-card { background: white; border-radius: 16px; padding: 28px; border: 1px solid #e2e8f0; box-shadow: 0 4px 20px rgba(0,0,0,0.04); }
-        .info-card h2 { color: #1e3a8a; font-size: 1.25rem; margin: 0 0 16px; font-family: 'Crimson Pro', serif; border-bottom: 2px solid #fdfbf7; padding-bottom: 8px; }
-        .info-card p { font-size: 0.9rem; color: #475569; margin-bottom: 10px; line-height: 1.5; }
-
-        .contact-item { display: flex; align-items: flex-start; gap: 14px; padding: 16px 0; border-bottom: 1px solid #f1f5f9; }
-        .contact-item:last-child { border-bottom: none; }
-        .contact-icon { width: 42px; height: 42px; border-radius: 10px; background: #fdfbf7; border: 1px solid #d4a373; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; flex-shrink: 0; }
-        .contact-label { font-size: 0.75rem; color: #64748b; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
-        .contact-value { font-size: 1rem; color: #1e3a8a; font-weight: 600; }
-        .response-badge { display: inline-flex; align-items: center; gap: 6px; background: #f0fdf4; color: #166534; border: 1px solid #bbf7d0; border-radius: 999px; padding: 6px 14px; font-size: 0.8rem; font-weight: 700; }
-
-        .form-card { background: white; border-radius: 20px; padding: 40px; border: 1px solid #e2e8f0; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
-        .form-group { margin-bottom: 20px; }
-        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 20px; }
-        @media (max-width: 500px) { .form-row { grid-template-columns: 1fr; } }
-
-        label { display: block; font-weight: 700; font-size: 0.85rem; margin-bottom: 8px; color: #334155; }
-        input, select, textarea { width: 100%; padding: 14px 16px; border: 1.5px solid #e2e8f0; border-radius: 10px; outline: none; transition: 0.3s; font-family: inherit; background: #f8fafc; }
-        input:focus, select:focus, textarea:focus { border-color: #d4a373; background: white; box-shadow: 0 0 0 4px rgba(212, 163, 115, 0.1); }
-
-        .submit-btn { width: 100%; padding: 18px; background: #1e3a8a; color: white; border: none; border-radius: 12px; font-weight: 700; cursor: pointer; transition: 0.3s; font-size: 1rem; letter-spacing: 0.5px; }
-        .submit-btn:hover { background: #0f172a; transform: translateY(-2px); box-shadow: 0 5px 15px rgba(30, 58, 138, 0.3); }
-
-        .success-msg { display: none; background: #f0fdf4; border: 2px solid #bbf7d0; border-radius: 14px; padding: 30px; text-align: center; color: #166534; }
-
-        .faq-section { max-width: 1000px; margin: 0 auto 60px; padding: 0 20px; }
-        .faq-section h2 { font-family: 'Crimson Pro', serif; color: #1e3a8a; margin-bottom: 25px; text-align: center; font-size: 2rem; }
-        .faq-item { background: white; border: 1px solid #e2e8f0; border-radius: 14px; margin-bottom: 12px; overflow: hidden; transition: 0.3s; }
-        .faq-item:hover { border-color: #d4a373; }
-        .faq-question { padding: 20px 24px; font-weight: 700; cursor: pointer; display: flex; justify-content: space-between; align-items: center; color: #1e3a8a; }
-        .faq-answer { padding: 0 24px; max-height: 0; overflow: hidden; transition: 0.3s ease-out; color: #475569; font-size: 0.95rem; line-height: 1.6; }
-        .faq-answer.open { max-height: 200px; padding-bottom: 20px; }
-    </style>
-
-    <section class="hero">
-        <h1>Connect with Us</h1>
-        <p>Expert support for your financial inquiries. We value your feedback on our audit-grade tools.</p>
-    </section>
-
-    <div class="container">
-        <aside class="info-col">
-            <div class="info-card">
-                <h2>Direct Support</h2>
-                <div class="contact-item">
-                    <div class="contact-icon">🏢</div>
-                    <div>
-                        <div class="contact-label">Managed By</div>
-                        <div class="contact-value">Md. Merajul Islam</div>
-                    </div>
-                </div>
-                <div class="contact-item">
-                    <div class="contact-icon">⚡</div>
-                    <div>
-                        <div class="contact-label">Typical Response</div>
-                        <div class="contact-value">
-                            <span class="response-badge">Within 24-48 Hours</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="info-card">
-                <h2>Audit Compliance</h2>
-                <p>QuickFinCalc tools follow standard financial logic. If you notice a formula discrepancy, please let us know immediately for a technical review.</p>
-            </div>
-        </aside>
-
-        <div class="form-card">
-            <h2 style="font-family: 'Crimson Pro', serif; color: #1e3a8a; margin-bottom: 25px;">Technical Inquiry Form</h2>
-            
-            <form id="contactForm" action="https://formspree.io/f/mvzdvypd" method="POST">
-                <div class="form-row">
-                    <div>
-                        <label for="firstName">First Name *</label>
-                        <input type="text" name="first_name" id="firstName" placeholder="Merajul" required />
-                    </div>
-                    <div>
-                        <label for="lastName">Last Name</label>
-                        <input type="text" name="last_name" id="lastName" placeholder="Islam" />
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="email">Email Address *</label>
-                    <input type="email" name="email" id="email" placeholder="name@example.com" required />
-                </div>
-                <div class="form-group">
-                    <label for="topic">Inquiry Topic *</label>
-                    <select name="topic" id="topic" required>
-                        <option value="" disabled selected>Choose a category...</option>
-                        <option value="bug">Report a Calculation Error</option>
-                        <option value="suggest">Request a New Tool</option>
-                        <option value="formula">Formula Verification</option>
-                        <option value="business">Business Partnership</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="message">Your Message *</label>
-                    <textarea name="message" id="message" rows="5" placeholder="Please describe your query in detail..." required maxlength="1000"></textarea>
-                    <div style="text-align: right; font-size: 0.75rem; color: #94a3b8; margin-top: 5px;" id="charCount">0 / 1000</div>
-                </div>
-                <button type="submit" class="submit-btn" id="submitBtn">Submit Inquiry →</button>
-            </form>
-
-            <div class="success-msg" id="successMsg">
-                <div style="font-size: 3rem; margin-bottom: 10px;">📩</div>
-                <h3 style="font-size: 1.5rem; margin-bottom: 10px;">Submission Received</h3>
-                <p>Thank you. Your inquiry has been logged. Our technical team will review it shortly.</p>
-            </div>
-        </div>
-    </div>
-
-    <div class="faq-section">
-        <h2>Expertise & Security FAQ</h2>
-        <div class="faq-item">
-            <div class="faq-question">
-                How accurate are the formulas used?
-                <span style="color: #d4a373;">▼</span>
-            </div>
-            <div class="faq-answer">
-                Our formulas are built based on international financial reporting standards (IFRS) and common banking practices. They are periodically reviewed by internal audit professionals.
-            </div>
-        </div>
-        <div class="faq-item">
-            <div class="faq-question">
-                Do you store any of my calculated data?
-                <span style="color: #d4a373;">▼</span>
-            </div>
-            <div class="faq-answer">
-                No. Quick Financial Calculator is a privacy-first platform. All inputs and results are processed entirely within your browser's memory and are never sent to our servers.
-            </div>
-        </div>
-    </div>
-
-    <script is:inline>
-        // Character counter
-        const msgArea = document.getElementById('message');
-        const charCount = document.getElementById('charCount');
-        msgArea?.addEventListener('input', () => {
-            charCount.textContent = `${msgArea.value.length} / 1000`;
-        });
-
-        // Formspree Submission Handling
-        const contactForm = document.getElementById('contactForm');
-        const successMsg = document.getElementById('successMsg');
-        const btn = document.getElementById('submitBtn');
-
-        contactForm?.addEventListener('submit', async (e) => {
-            e.preventDefault();
-            btn.textContent = 'Processing...';
-            btn.disabled = true;
-
-            const formData = new FormData(contactForm);
-
-            try {
-                const response = await fetch(contactForm.action, {
-                    method: 'POST',
-                    body: formData,
-                    headers: { 'Accept': 'application/json' }
-                });
-
-                if (response.ok) {
-                    contactForm.style.display = 'none';
-                    successMsg.style.display = 'block';
-                    window.scrollTo({ 
-                        top: document.querySelector('.form-card').offsetTop - 100, 
-                        behavior: 'smooth' 
-                    });
-                } else {
-                    alert('Oops! There was a problem submitting your form. Please try again.');
-                    btn.textContent = 'Submit Inquiry →';
-                    btn.disabled = false;
-                }
-            } catch (error) {
-                alert('Connection error. Please check your internet and try again.');
-                btn.textContent = 'Submit Inquiry →';
-                btn.disabled = false;
-            }
-        });
-
-        // FAQ Toggle
-        document.querySelectorAll('.faq-question').forEach(q => {
-            q.addEventListener('click', () => {
-                const ans = q.nextElementSibling;
-                const icon = q.querySelector('span');
-                ans.classList.toggle('open');
-                icon.style.transform = ans.classList.contains('open') ? 'rotate(180deg)' : 'rotate(0deg)';
-            });
-        });
+      })}
     </script>
+
+    <!-- OG Override for Contact Page -->
+    <meta property="og:title" content="Contact Us | QuickFinCalc Support" />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content="https://quickfincalc.com/contact" />
+    <link rel="canonical" href="https://quickfincalc.com/contact" />
+  </Fragment>
+
+  <style>
+    /* ✅ Hero Section */
+    .hero { 
+      background: linear-gradient(135deg, #1e3a8a 0%, #0f172a 100%); 
+      padding: 70px 20px; 
+      text-align: center; 
+      color: white; 
+      border-bottom: 4px solid #d4a373;
+    }
+    .hero h1 { 
+      font-size: 2.8rem; 
+      font-weight: 800; 
+      margin: 0 0 14px; 
+      font-family: 'Crimson Pro', serif; 
+    }
+    .hero p { 
+      opacity: 0.9; 
+      font-size: 1.1rem; 
+      margin: 0 auto; 
+      max-width: 550px; 
+      color: #cbd5e1; 
+    }
+
+    /* ✅ Layout Container */
+    .container { 
+      max-width: 1000px; 
+      margin: 50px auto; 
+      padding: 0 20px; 
+      display: grid; 
+      grid-template-columns: 1fr 1.6fr; 
+      gap: 32px; 
+    }
+    @media (max-width: 768px) { 
+      .container { grid-template-columns: 1fr; } 
+    }
+
+    /* ✅ Info Column */
+    .info-col { display: flex; flex-direction: column; gap: 20px; }
+    .info-card { 
+      background: white; 
+      border-radius: 16px; 
+      padding: 28px; 
+      border: 1px solid #e2e8f0; 
+      box-shadow: 0 4px 20px rgba(0,0,0,0.04); 
+    }
+    .info-card h2 { 
+      color: #1e3a8a; 
+      font-size: 1.25rem; 
+      margin: 0 0 16px; 
+      font-family: 'Crimson Pro', serif; 
+      border-bottom: 2px solid #fdfbf7; 
+      padding-bottom: 8px; 
+    }
+    .info-card p { 
+      font-size: 0.9rem; 
+      color: #475569; 
+      margin-bottom: 10px; 
+      line-height: 1.5; 
+    }
+
+    /* ✅ Contact Items */
+    .contact-item { 
+      display: flex; 
+      align-items: flex-start; 
+      gap: 14px; 
+      padding: 16px 0; 
+      border-bottom: 1px solid #f1f5f9; 
+    }
+    .contact-item:last-child { border-bottom: none; }
+    .contact-icon { 
+      width: 42px; 
+      height: 42px; 
+      border-radius: 10px; 
+      background: #fdfbf7; 
+      border: 1px solid #d4a373; 
+      display: flex; 
+      align-items: center; 
+      justify-content: center; 
+      font-size: 1.2rem; 
+      flex-shrink: 0; 
+    }
+    .contact-label { 
+      font-size: 0.75rem; 
+      color: #64748b; 
+      font-weight: 700; 
+      text-transform: uppercase; 
+      letter-spacing: 0.5px; 
+    }
+    .contact-value { 
+      font-size: 1rem; 
+      color: #1e3a8a; 
+      font-weight: 600; 
+    }
+    .response-badge { 
+      display: inline-flex; 
+      align-items: center; 
+      gap: 6px; 
+      background: #f0fdf4; 
+      color: #166534; 
+      border: 1px solid #bbf7d0; 
+      border-radius: 999px; 
+      padding: 6px 14px; 
+      font-size: 0.8rem; 
+      font-weight: 700; 
+    }
+
+    /* ✅ Form Card */
+    .form-card { 
+      background: white; 
+      border-radius: 20px; 
+      padding: 40px; 
+      border: 1px solid #e2e8f0; 
+      box-shadow: 0 10px 30px rgba(0,0,0,0.05); 
+    }
+    .form-card h2 {
+      font-family: 'Crimson Pro', serif; 
+      color: #1e3a8a; 
+      margin-bottom: 25px;
+      font-size: 1.5rem;
+    }
+    .form-group { margin-bottom: 20px; }
+    .form-row { 
+      display: grid; 
+      grid-template-columns: 1fr 1fr; 
+      gap: 16px; 
+      margin-bottom: 20px; 
+    }
+    @media (max-width: 500px) { 
+      .form-row { grid-template-columns: 1fr; } 
+    }
+
+    label { 
+      display: block; 
+      font-weight: 700; 
+      font-size: 0.85rem; 
+      margin-bottom: 8px; 
+      color: #334155; 
+    }
+    input, select, textarea { 
+      width: 100%; 
+      padding: 14px 16px; 
+      border: 1.5px solid #e2e8f0; 
+      border-radius: 10px; 
+      outline: none; 
+      transition: 0.3s; 
+      font-family: inherit; 
+      background: #f8fafc;
+      font-size: 0.95rem;
+    }
+    input:focus, select:focus, textarea:focus { 
+      border-color: #d4a373; 
+      background: white; 
+      box-shadow: 0 0 0 4px rgba(212, 163, 115, 0.1); 
+    }
+
+    /* ✅ Submit Button */
+    .submit-btn { 
+      width: 100%; 
+      padding: 18px; 
+      background: #1e3a8a; 
+      color: white; 
+      border: none; 
+      border-radius: 12px; 
+      font-weight: 700; 
+      cursor: pointer; 
+      transition: 0.3s; 
+      font-size: 1rem; 
+      letter-spacing: 0.5px; 
+    }
+    .submit-btn:hover { 
+      background: #0f172a; 
+      transform: translateY(-2px); 
+      box-shadow: 0 5px 15px rgba(30, 58, 138, 0.3); 
+    }
+    .submit-btn:disabled {
+      opacity: 0.7;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    /* ✅ Success Message */
+    .success-msg { 
+      display: none; 
+      background: #f0fdf4; 
+      border: 2px solid #bbf7d0; 
+      border-radius: 14px; 
+      padding: 30px; 
+      text-align: center; 
+      color: #166534; 
+    }
+
+    /* ✅ FAQ Section */
+    .faq-section { 
+      max-width: 1000px; 
+      margin: 0 auto 60px; 
+      padding: 0 20px; 
+    }
+    .faq-section h2 { 
+      font-family: 'Crimson Pro', serif; 
+      color: #1e3a8a; 
+      margin-bottom: 25px; 
+      text-align: center; 
+      font-size: 2rem; 
+    }
+    .faq-item { 
+      background: white; 
+      border: 1px solid #e2e8f0; 
+      border-radius: 14px; 
+      margin-bottom: 12px; 
+      overflow: hidden; 
+      transition: 0.3s; 
+    }
+    .faq-item:hover { border-color: #d4a373; }
+    .faq-question { 
+      padding: 20px 24px; 
+      font-weight: 700; 
+      cursor: pointer; 
+      display: flex; 
+      justify-content: space-between; 
+      align-items: center; 
+      color: #1e3a8a;
+      user-select: none;
+    }
+    .faq-icon {
+      color: #d4a373;
+      transition: transform 0.3s ease;
+      flex-shrink: 0;
+      margin-left: 10px;
+    }
+    .faq-answer { 
+      padding: 0 24px; 
+      max-height: 0; 
+      overflow: hidden; 
+      transition: 0.3s ease-out; 
+      color: #475569; 
+      font-size: 0.95rem; 
+      line-height: 1.6; 
+    }
+    .faq-answer.open { 
+      max-height: 200px; 
+      padding-bottom: 20px; 
+    }
+
+    /* ✅ Char count */
+    .char-count {
+      text-align: right; 
+      font-size: 0.75rem; 
+      color: #94a3b8; 
+      margin-top: 5px;
+    }
+  </style>
+
+  <!-- ✅ Hero - SEO Optimized H1 -->
+  <section class="hero">
+    <h1>Contact Our Support Team</h1>
+    <p>Have a question or found an error? We're here to help. Send us a message and we'll get back to you within 24-48 hours.</p>
+  </section>
+
+  <!-- ✅ Main Content Grid -->
+  <div class="container">
+
+    <!-- ✅ Info Sidebar -->
+    <aside class="info-col" aria-label="Contact Information">
+      <div class="info-card">
+        <h2>Direct Support</h2>
+        <div class="contact-item">
+          <div class="contact-icon" aria-hidden="true">🏢</div>
+          <div>
+            <div class="contact-label">Managed By</div>
+            <div class="contact-value">Md. Merajul Islam</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon" aria-hidden="true">⚡</div>
+          <div>
+            <div class="contact-label">Typical Response</div>
+            <div class="contact-value">
+              <span class="response-badge">✅ Within 24-48 Hours</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ✅ Updated: Plain language, no jargon -->
+      <div class="info-card">
+        <h2>Formula Accuracy</h2>
+        <p>
+          All QuickFinCalc tools are built on verified financial formulas following standard banking and accounting practices.
+        </p>
+        <p>
+          Found a calculation error? Let us know immediately and we'll review it within 24 hours.
+        </p>
+      </div>
+
+      <!-- ✅ New: Quick Tips Card -->
+      <div class="info-card">
+        <h2>Before You Write</h2>
+        <p>📌 For faster help, mention the <strong>calculator name</strong> and the <strong>values you entered</strong>.</p>
+        <p>🔒 We never store your financial data. All calculations are done in your browser.</p>
+      </div>
+    </aside>
+
+    <!-- ✅ Contact Form -->
+    <div class="form-card">
+      <h2>Send Us a Message</h2>
+
+      <form 
+        id="contactForm" 
+        action="https://formspree.io/f/mvzdvypd" 
+        method="POST"
+        novalidate
+        aria-label="Contact Form"
+      >
+        <!-- ✅ Honeypot - Spam Protection -->
+        <input 
+          type="text" 
+          name="_gotcha" 
+          style="display:none" 
+          tabindex="-1" 
+          autocomplete="off"
+        />
+
+        <div class="form-row">
+          <div>
+            <label for="firstName">First Name *</label>
+            <input 
+              type="text" 
+              name="first_name" 
+              id="firstName" 
+              placeholder="John" 
+              autocomplete="given-name"
+              required 
+            />
+          </div>
+          <div>
+            <label for="lastName">Last Name</label>
+            <input 
+              type="text" 
+              name="last_name" 
+              id="lastName" 
+              placeholder="Doe"
+              autocomplete="family-name"
+            />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email Address *</label>
+          <input 
+            type="email" 
+            name="email" 
+            id="email" 
+            placeholder="name@example.com"
+            autocomplete="email"
+            required 
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="topic">Inquiry Topic *</label>
+          <select name="topic" id="topic" required>
+            <option value="" disabled selected>Choose a category...</option>
+            <option value="bug">🐛 Report a Calculation Error</option>
+            <option value="suggest">💡 Request a New Tool</option>
+            <option value="formula">🔢 Formula Verification</option>
+            <option value="business">🤝 Business Partnership</option>
+            <option value="other">❓ Other Question</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="message">Your Message *</label>
+          <textarea 
+            name="message" 
+            id="message" 
+            rows="5" 
+            placeholder="Please describe your query in detail. If reporting an error, mention the calculator name and values used..." 
+            required 
+            maxlength="1000"
+            aria-describedby="charCount"
+          ></textarea>
+          <div class="char-count" id="charCount" aria-live="polite">0 / 1000</div>
+        </div>
+
+        <button type="submit" class="submit-btn" id="submitBtn">
+          Send Message →
+        </button>
+      </form>
+
+      <!-- ✅ Success Message -->
+      <div class="success-msg" id="successMsg" role="alert" aria-live="polite">
+        <div style="font-size: 3rem; margin-bottom: 10px;">📩</div>
+        <h3 style="font-size: 1.5rem; margin-bottom: 10px;">Message Received!</h3>
+        <p>Thank you for reaching out. We'll review your message and get back to you within 24-48 hours.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ✅ FAQ Section - Updated with more FAQs -->
+  <section class="faq-section" aria-label="Frequently Asked Questions">
+    <h2>Frequently Asked Questions</h2>
+
+    <div class="faq-item">
+      <div class="faq-question" role="button" tabindex="0" aria-expanded="false">
+        How accurate are the financial formulas?
+        <span class="faq-icon" aria-hidden="true">▼</span>
+      </div>
+      <div class="faq-answer" role="region">
+        Our formulas follow standard financial practices including IFRS and common banking methods. They are regularly reviewed to ensure accuracy. If you find an error, please report it immediately.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question" role="button" tabindex="0" aria-expanded="false">
+        Do you store my financial data?
+        <span class="faq-icon" aria-hidden="true">▼</span>
+      </div>
+      <div class="faq-answer" role="region">
+        No. QuickFinCalc is a privacy-first platform. All inputs and results are processed entirely within your browser and are never sent to our servers. Your data stays 100% private.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question" role="button" tabindex="0" aria-expanded="false">
+        Can I request a new calculator tool?
+        <span class="faq-icon" aria-hidden="true">▼</span>
+      </div>
+      <div class="faq-answer" role="region">
+        Absolutely! We love user suggestions. Select "Request a New Tool" from the inquiry topic dropdown and describe the calculator you need. We review all requests and prioritize based on demand.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question" role="button" tabindex="0" aria-expanded="false">
+        Are QuickFinCalc tools completely free?
+        <span class="faq-icon" aria-hidden="true">▼</span>
+      </div>
+      <div class="faq-answer" role="region">
+        Yes, all 50+ tools on QuickFinCalc are 100% free with no registration required. No hidden fees, no premium plans. Just open, calculate, and get instant results.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question" role="button" tabindex="0" aria-expanded="false">
+        How long does it take to get a response?
+        <span class="faq-icon" aria-hidden="true">▼</span>
+      </div>
+      <div class="faq-answer" role="region">
+        We typically respond within 24-48 hours on business days. For urgent formula errors, we prioritize those reports and aim to resolve them within 24 hours.
+      </div>
+    </div>
+  </section>
+
+  <script is:inline>
+    // ✅ Character Counter
+    const msgArea = document.getElementById('message');
+    const charCount = document.getElementById('charCount');
+    msgArea?.addEventListener('input', () => {
+      const len = msgArea.value.length;
+      charCount.textContent = `${len} / 1000`;
+      // ✅ Warning when near limit
+      charCount.style.color = len > 900 ? '#ef4444' : '#94a3b8';
+    });
+
+    // ✅ Form Submission Handler
+    const contactForm = document.getElementById('contactForm');
+    const successMsg = document.getElementById('successMsg');
+    const btn = document.getElementById('submitBtn');
+
+    contactForm?.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      btn.textContent = 'Sending...';
+      btn.disabled = true;
+
+      const formData = new FormData(contactForm);
+
+      try {
+        const response = await fetch(contactForm.action, {
+          method: 'POST',
+          body: formData,
+          headers: { 'Accept': 'application/json' }
+        });
+
+        if (response.ok) {
+          contactForm.style.display = 'none';
+          successMsg.style.display = 'block';
+          // ✅ Smooth scroll to success message
+          successMsg.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        } else {
+          alert('Oops! There was a problem submitting your form. Please try again.');
+          btn.textContent = 'Send Message →';
+          btn.disabled = false;
+        }
+      } catch (error) {
+        alert('Connection error. Please check your internet and try again.');
+        btn.textContent = 'Send Message →';
+        btn.disabled = false;
+      }
+    });
+
+    // ✅ FAQ Toggle - Updated with accessibility
+    document.querySelectorAll('.faq-question').forEach(q => {
+      const toggle = () => {
+        const ans = q.nextElementSibling;
+        const icon = q.querySelector('.faq-icon');
+        const isOpen = ans.classList.toggle('open');
+        
+        // ✅ Accessibility
+        q.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        // ✅ Icon rotation
+        icon.style.transform = isOpen ? 'rotate(180deg)' : 'rotate(0deg)';
+      };
+
+      // ✅ Click & Keyboard support
+      q.addEventListener('click', toggle);
+      q.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          toggle();
+        }
+      });
+    });
+  </script>
+
 </Layout>
