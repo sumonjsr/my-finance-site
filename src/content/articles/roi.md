@@ -1,5 +1,5 @@
 ---
-title: "ROI Calculator 2026 - How to Calculate Return on Investment"
+title: "Return on Investment (ROI) Calculator-2026"
 description: "Learn exactly how to calculate ROI with real examples, formulas, and benchmarks. Includes marketing, real estate & stock ROI. Free calculator included →"
 date: "April 13, 2026"
 category: "Investing"

@@ -1,6 +1,6 @@
 ---
-title: "E-commerce Profit Margin Calculator 2026 - Shopify & Amazon FBA"
-description: "Calculate true profit margins for your online store in 60 seconds. Free Shopify & Amazon FBA calculators. Master margin vs markup + strategies to boost margins 10-30% →"
+title: "E-commerce Profit Margin Calculator"
+description: "Calculate true profit margins for your online store instantly. Free Shopify and Amazon FBA calculators with margin vs markup guide and optimization strategies."
 date: "April 16, 2026"
 category: "E-commerce"
 emoji: "📦"

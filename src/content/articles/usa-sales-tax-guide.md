@@ -1,6 +1,6 @@
 ---
-title: "USA Sales Tax Calculator 2026 - All 50 States Guide & Free Tool"
-description: "Calculate USA sales tax instantly for all 50 states. Learn how sales tax works, which states charge zero tax, and avoid costly mistakes. Free calculator included →"
+title: "USA Sales Tax Guide & Calculator"
+description: "USA sales tax calculator for all 50 states. Learn how sales tax works, which states have zero tax, and stay compliant. Free instant calculation tool."
 date: "June 2, 2026"
 category: "Tax"
 emoji: "🧾"

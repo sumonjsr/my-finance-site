@@ -1,5 +1,5 @@
 ---
-title: "Compound Interest Calculator 2026 - Free Investment Growth Tool"
+title: "Compound Interest Calculator 2026 - Free Tool"
 description: "Calculate how your money grows with compound interest. Includes retirement planning, savings goals, and the Rule of 72. See $100K+ potential growth →"
 date: "April 15, 2026"
 category: "Investment"

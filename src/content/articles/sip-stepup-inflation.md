@@ -1,6 +1,6 @@
 ---
-title: "SIP Calculator 2026 - Calculate SIP Returns with Step-Up & Inflation"
-description: "Calculate SIP returns in 60 seconds with our free SIP calculator. Includes step-up SIP, inflation adjustment, mutual fund benchmarks & wealth-building strategies. Start now →"
+title: "SIP Calculator with Step-Up & Inflation"
+description: "Calculate SIP returns instantly with step-up increases and inflation adjustment. Free mutual fund calculator with wealth projections and investment benchmarks."
 date: "May 6, 2026"
 category: "Investing"
 emoji: "📈"

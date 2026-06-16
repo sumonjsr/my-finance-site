@@ -1,6 +1,6 @@
 ---
-title: "EMI Calculator: How Banks Calculate Your Loan Payment (2026 Guide)"
-description: "Discover exactly how banks calculate your EMI, what the formula means, and how to use a free EMI calculator to plan any loan. Includes real examples & money-saving tips."
+title: "EMI: How Banks Calculate Your Loan Payment"
+description: "Learn exactly how banks calculate your EMI and use our free calculator to plan any loan. Get monthly payment breakdowns and money-saving tips."
 date: "June 3, 2026"
 category: "Loans"
 emoji: "🏦"

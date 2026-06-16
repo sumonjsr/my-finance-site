@@ -1,5 +1,5 @@
 ---
-title: "How to Calculate Employee Gross to Net Salary (2026 Guide)"
+title: "How to Calculate Employee Gross to Net Salary"
 description: "Learn exactly how to calculate net salary from gross pay for USA, UK, and globally. Includes tax formulas, real examples, and a free salary calculator →"
 date: "June 8, 2026"
 category: "Salary"

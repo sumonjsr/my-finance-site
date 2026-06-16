@@ -1,6 +1,6 @@
 ---
-title: "Mortgage Calculator 2026 - Free Home Loan EMI & Amortization Tool"
-description: "Calculate your exact mortgage payment, see your full amortization schedule, and learn proven strategies to save thousands in interest. Free calculator included →"
+title: "Mortgage Calculator & Amortization Tool"
+description: "Calculate exact mortgage payments with our free calculator. View full amortization schedules, compare loan options, and discover strategies to save on interest."
 date: "April 14, 2026"
 category: "Loans"
 emoji: "🏠"

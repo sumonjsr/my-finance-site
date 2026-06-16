@@ -1,6 +1,6 @@
 ---
-title: "Salary & HR Calculators 2026 - Free Business Financial Tools"
-description: "Calculate hourly to salary conversions, employee turnover cost, EBITDA margin & current ratio in 60 seconds. Free HR & business finance calculators with expert benchmarks. Start now →"
+title: "Salary & HR Calculators for Business"
+description: "Calculate salary conversions, employee turnover costs, EBITDA margins & current ratios instantly. Free HR and business finance calculators with benchmarks."
 date: "May 6, 2026"
 category: "Business & HR"
 emoji: "💼"

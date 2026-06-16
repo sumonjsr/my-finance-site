@@ -1,6 +1,6 @@
 ---
-title: "Salary Sacrifice Pension Calculator 2026 - Maximize Tax Savings & Boost Retirement"
-description: "Calculate exact salary sacrifice pension savings in 60 seconds. See tax relief, National Insurance savings, net income impact & retirement boost. Free calculator inside →"
+title: "Salary Sacrifice Pension Calculator Guide"
+description: "Calculate salary sacrifice pension savings instantly. See tax relief, National Insurance savings, net income impact & retirement boost."
 date: "May 11, 2026"
 category: "Pensions"
 emoji: "💰"

@@ -1,6 +1,6 @@
 ---
-title: "UK Pension Tax Guide 2026 - Navigate HMRC Rules & Maximize Retirement Pay"
-description: "Complete UK pension tax guide 2026: Avoid emergency tax, understand LSA limits, optimize withdrawals. Real case studies + free calculator. Start now →"
+title: "UK Pension Tax Guide 2026"
+description: "Complete UK pension tax guide 2026. Avoid emergency tax, understand LSA limits, optimize withdrawals. Free calculator & real case studies included."
 date: "May 10, 2026"
 category: "Pensions"
 emoji: "💷"

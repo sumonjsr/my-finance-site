@@ -1,5 +1,5 @@
 ---
-title: "How to Calculate Profit Margin for Small Business (2026 Guide)"
+title: "Calculate Profit Margin for Small Business"
 description: "Learn how to calculate gross, operating & net profit margin for your small business. Includes real examples, formulas, and a free profit margin calculator →"
 date: "June 3, 2026"
 category: "Business"

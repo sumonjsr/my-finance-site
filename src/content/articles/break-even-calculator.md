@@ -1,6 +1,6 @@
 ---
-title: "Break-Even Calculator 2026 - Free Break-Even Analysis Tool"
-description: "Learn how to calculate your break-even point with real examples and formulas. Find exactly how many units you need to sell to become profitable. Free calculator →"
+title: "Break-Even Calculator - Free Analysis Tool"
+description: "Calculate your break-even point with real examples and formulas. Find minimum units and revenue needed to become profitable. Free calculator included."
 date: "April 18, 2026"
 category: "Business"
 emoji: "📊"

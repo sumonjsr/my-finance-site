@@ -1,5 +1,5 @@
 ---
-title: "DTI Ratio Calculator 2026 - Free Debt-to-Income Calculator"
+title: "Debt-to-Income Ratio (DTI) Calculator"
 description: "Calculate your debt-to-income ratio in 60 seconds. Check mortgage qualification, improve DTI score, and learn strategies to reduce debt by 30-50% →"
 date: "April 17, 2026"
 category: "Loans"
