@@ -1,5 +1,7 @@
 User-agent: *
 Allow: /
 Disallow: /_astro/
+Disallow: /*.html
+Disallow: /*/$
 
 Sitemap: https://quickfincalc.com/sitemap-index.xml

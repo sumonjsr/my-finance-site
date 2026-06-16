@@ -7,6 +7,6 @@ export default defineConfig({
   output: 'static',
   integrations: [sitemap()],
   build: {
-    format: 'file',
+    format: 'directory',
   }
 });
