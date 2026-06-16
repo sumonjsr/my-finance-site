@@ -1,7 +1,33 @@
+# Allow all crawlers by default
 User-agent: *
 Allow: /
 Disallow: /_astro/
 Disallow: /*.html
-Disallow: /*/$
+
+# Explicitly welcome AI/LLM bots
+User-agent: GPTBot
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Googlebot
+Allow: /
+
+# Block bad bots
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
 
 Sitemap: https://quickfincalc.com/sitemap-index.xml
