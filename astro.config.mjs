@@ -7,6 +7,6 @@ export default defineConfig({
   output: 'static',
   integrations: [sitemap()],
   build: {
-    format: 'directory',
+    format: 'file', // এটি 'directory' থেকে পরিবর্তন করে 'file' করা হলো
   }
 });
