@@ -8,7 +8,10 @@ const {
 
 const siteName = "QuickFinCalc";
 const siteUrl = "https://quickfincalc.com"; 
-const canonicalURL = new URL(url, siteUrl);
+
+// .html এক্সটেনশন বা শেষের স্ল্যাশ মুছে ক্লিন পাথ তৈরি করার লজিক
+const cleanPath = Astro.url.pathname.replace(/\.html$/, '').replace(/\/$/, '');
+const canonicalURL = new URL(cleanPath, Astro.site);
 
 // ✅ Full title with brand name for OG tags
 const fullTitle = `${title} | ${siteName}`;
