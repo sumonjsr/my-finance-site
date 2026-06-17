@@ -1,6 +1,6 @@
-# Redirect trailing slashes to non-trailing
-/calculator/*/ https://quickfincalc.com/:splat 301
-/articles/*/ https://quickfincalc.com/:splat 301
+# Redirect trailing slashes to non-trailing (Fixed)
+/calculator/*/ /calculator/:splat 301
+/articles/*/ /articles/:splat 301
 
 # Redirect all .html files to non-.html versions
 /calculator/*:splat.html /calculator/:splat 301
