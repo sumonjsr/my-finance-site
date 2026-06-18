@@ -1,5 +1,5 @@
 ---
-title: "Calculate Monthly Investment for $1M Goals"
+title: "SIP: Monthly Investment for $1M Goals"
 description: "Use our free SIP calculator to determine monthly savings needed to reach $1 million. See how consistent investing builds wealth through compound growth."
 date: "June 18, 2026"
 category: "investment"
