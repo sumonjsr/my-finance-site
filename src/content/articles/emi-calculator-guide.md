@@ -5,7 +5,7 @@ date: "2026-06-03"
 dateModified: "2026-06-03"
 category: "Loans"
 emoji: "🏦"
-readTime: "13 min read"
+readTime: "10 min read"
 keywords: "emi calculator, how banks calculate emi, loan emi calculator, emi formula, what is emi, personal loan emi, home loan emi calculator, emi calculation step by step, reduce emi"
 author: "Md. Merajul Islam"
 authorRole: "Internal Auditor & Cost Control Specialist"
@@ -90,7 +90,6 @@ canonical: "https://quickfincalc.com/articles/emi-calculator-guide"
 
 <link rel="canonical" href="https://quickfincalc.com/articles/emi-calculator-guide">
 
-# EMI Calculator: Loan Payment Formula Guide
 
 *Written by [Md. Merajul Islam](https://quickfincalc.com/#authorSection) — Internal Auditor & Cost Control Specialist | Updated June 2026*
 
