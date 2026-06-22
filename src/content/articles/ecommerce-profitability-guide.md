@@ -90,7 +90,6 @@ canonical: "https://quickfincalc.com/articles/ecommerce-profitability-guide"
 
 <link rel="canonical" href="https://quickfincalc.com/articles/ecommerce-profitability-guide">
 
-# E-commerce Profit Margin Calculator Guide
 
 *Written by [Md. Merajul Islam](https://quickfincalc.com/#authorSection) — Internal Auditor & Cost Control Specialist | Updated April 2026*
 
