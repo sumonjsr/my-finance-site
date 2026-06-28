@@ -9,30 +9,30 @@ const description = "Have a question or found a formula error? Contact our suppo
 <Layout title={title} description={description}>
 
   <!-- ✅ SEO: Page-specific Schema & OG Tags -->
-  <Fragment slot="head">
-    <!-- ContactPage Schema -->
-    <script type="application/ld+json">
-      {JSON.stringify({
-        "@context": "https://schema.org",
-        "@type": "ContactPage",
-        "name": "Contact QuickFinCalc Support",
-        "description": "Contact page for QuickFinCalc financial calculator support",
-        "url": "https://quickfincalc.com/contact",
-        "mainEntity": {
-          "@type": "Organization",
-          "name": "QuickFinCalc",
-          "url": "https://quickfincalc.com",
-          "contactPoint": {
-            "@type": "ContactPoint",
-            "contactType": "customer support",
-            "availableLanguage": "English",
-            "areaServed": "Worldwide"
-          }
+<Fragment slot="head">
+  <!-- ContactPage Schema -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ContactPage",
+      "name": "Contact QuickFinCalc Support",
+      "description": "Contact page for QuickFinCalc financial calculator support",
+      "url": "https://quickfincalc.com/contact",
+      "mainEntity": {
+        "@type": "Organization",
+        "name": "QuickFinCalc",
+        "url": "https://quickfincalc.com",
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "contactType": "customer support",
+          "availableLanguage": "English",
+          "areaServed": "Worldwide"
         }
-      })}
-    </script>
+      }
+    }
+  </script>
 
-    <!-- OG Override for Contact Page -->
+<!-- OG Override for Contact Page -->
     <meta property="og:title" content="Contact Us | QuickFinCalc Support" />
     <meta property="og:description" content={description} />
     <meta property="og:url" content="https://quickfincalc.com/contact" />
