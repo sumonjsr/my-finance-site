@@ -1,94 +1,68 @@
 {
-  "agents": [
+  "name": "QuickFinCalc",
+  "description": "Free professional financial calculator suite with 50+ tools for personal finance, business analysis, investment planning, and tax calculations.",
+  "website": "https://quickfincalc.com",
+  "author": {
+    "name": "Md. Merajul Islam",
+    "role": "Internal Auditor & Cost Control Specialist"
+  },
+  "tools": [
     {
-      "name": "QuickFinCalc AI Assistant",
-      "description": "Free professional financial calculator tools and guides for personal finance, business analysis, investment planning, and tax calculations",
-      "capabilities": [
-        "financial-calculator",
-        "investment-analysis",
-        "tax-planning",
-        "loan-amortization",
-        "retirement-planning",
-        "business-metrics",
-        "salary-calculation"
-      ],
-      "tools": [
-        {
-          "name": "SIP Calculator",
-          "description": "Calculate Systematic Investment Plan returns with step-up and inflation adjustments"
-        },
-        {
-          "name": "ROI Calculator",
-          "description": "Analyze return on investment for projects and capital allocation"
-        },
-        {
-          "name": "Profit Margin Calculator",
-          "description": "Calculate gross, net, and operating profit margins for business analysis"
-        },
-        {
-          "name": "EMI Calculator",
-          "description": "Calculate equated monthly installment for loans with amortization schedules"
-        },
-        {
-          "name": "Break-Even Calculator",
-          "description": "Determine break-even point for pricing and profitability analysis"
-        },
-        {
-          "name": "Compound Interest Calculator",
-          "description": "Project wealth accumulation with compounding over time"
-        },
-        {
-          "name": "UK Pension Tax Calculator",
-          "description": "Calculate UK pension withdrawal tax, lump sum allowance, and tax relief"
-        },
-        {
-          "name": "USA Sales Tax Calculator",
-          "description": "Calculate sales tax by state and city with nexus rules"
-        }
-      ],
-      "url": "https://quickfincalc.com",
-      "author": {
-        "name": "Md. Merajul Islam",
-        "role": "Internal Auditor & Cost Control Specialist",
-        "expertise": [
-          "Financial Analysis",
-          "Cost Control",
-          "Internal Audit",
-          "Business Finance"
-        ]
-      },
-      "categories": [
-        "finance",
-        "calculator",
-        "investment",
-        "tax",
-        "business",
-        "personal-finance"
-      ],
-      "documentation": "https://quickfincalc.com/articles",
-      "supportedLanguages": [
-        "en"
-      ],
-      "availability": "24/7",
-      "pricing": "Free",
-      "useCase": [
-        "Personal financial planning",
-        "Business analysis",
-        "Investment decision-making",
-        "Tax planning",
-        "Educational reference"
-      ]
+      "name": "SIP Calculator",
+      "description": "Calculate Systematic Investment Plan returns",
+      "url": "https://quickfincalc.com/calculator/sip-calculator"
+    },
+    {
+      "name": "ROI Calculator",
+      "description": "Return on Investment analysis",
+      "url": "https://quickfincalc.com/calculator/roi-calculator"
+    },
+    {
+      "name": "Profit Margin Calculator",
+      "description": "Business profitability analysis",
+      "url": "https://quickfincalc.com/calculator/profit-margin-calculator"
+    },
+    {
+      "name": "EMI Calculator",
+      "description": "Loan payment calculations",
+      "url": "https://quickfincalc.com/calculator/emi-calculator"
+    },
+    {
+      "name": "Break-Even Calculator",
+      "description": "Break-even sales analysis",
+      "url": "https://quickfincalc.com/calculator/break-even-calculator"
+    },
+    {
+      "name": "Compound Interest Calculator",
+      "description": "Wealth accumulation projections",
+      "url": "https://quickfincalc.com/calculator/compound-interest-calculator"
+    },
+    {
+      "name": "UK Pension Tax Calculator",
+      "description": "UK pension withdrawal tax planning",
+      "url": "https://quickfincalc.com/calculator/uk-pension-tax-calculator"
+    },
+    {
+      "name": "USA Sales Tax Calculator",
+      "description": "Multi-state sales tax compliance",
+      "url": "https://quickfincalc.com/calculator/sales-tax-calculator"
     }
   ],
-  "apiEndpoints": {
-    "calculators": "https://quickfincalc.com/calculator",
-    "articles": "https://quickfincalc.com/articles",
-    "sitemap": "https://quickfincalc.com/sitemap.xml"
-  },
-  "metadata": {
-    "version": "1.0",
-    "lastUpdated": "2026-06-30",
-    "format": "json",
-    "specification": "https://docs.anthropic.com/agents"
-  }
+  "capabilities": [
+    "financial-calculation",
+    "investment-analysis",
+    "tax-planning",
+    "business-metrics",
+    "loan-amortization"
+  ],
+  "categories": [
+    "finance",
+    "calculator",
+    "investment",
+    "tax",
+    "business"
+  ],
+  "pricing": "Free",
+  "availability": "24/7",
+  "privacy": "No data collection, calculations performed locally in browser"
 }
