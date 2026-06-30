@@ -3,7 +3,13 @@
 const { 
     title, 
     description = "QuickFinCalc offers 50+ free financial tools for tax, loans, business & investment planning. Fast, accurate results with complete privacy—no signup needed.",
-    url = Astro.url.pathname 
+    url = Astro.url.pathname,
+    // ✅ নতুন Props - Schema-এর জন্য
+    pageType = 'website', // 'article', 'calculator', 'website'
+    datePublished = undefined,
+    dateModified = undefined,
+    author = 'Md. Merajul Islam',
+    image = undefined,
 } = Astro.props;
 
 const siteName = "QuickFinCalc";
@@ -15,6 +21,115 @@ const canonicalURL = new URL(cleanPath, Astro.site);
 
 // ✅ Full title with brand name for OG tags
 const fullTitle = `${title} | ${siteName}`;
+
+// ✅ ডিফল্ট image
+const ogImage = image || `${siteUrl}/og-image.png`;
+
+// ✅ DYNAMIC SCHEMA GENERATION
+const generateSchema = () => {
+  // Organization Schema (সব page-এ থাকবে)
+  const organizationSchema = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": siteName,
+    "url": siteUrl,
+    "logo": `${siteUrl}/favicon.svg`,
+    "description": "Free professional financial calculator tools",
+    "sameAs": [
+      "https://twitter.com/quickfincalc",
+      "https://www.facebook.com/quickfincalc"
+    ],
+    "address": {
+      "@type": "PostalAddress",
+      "addressCountry": "BD"
+    }
+  };
+
+  // Page-specific Schema
+  let pageSchema;
+
+  if (pageType === 'article') {
+    // Article Schema (Guide articles-এর জন্য)
+    pageSchema = {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": title,
+      "description": description,
+      "image": ogImage,
+      "datePublished": datePublished || new Date().toISOString().split('T')[0],
+      "dateModified": dateModified || new Date().toISOString().split('T')[0],
+      "author": {
+        "@type": "Person",
+        "name": author,
+        "jobTitle": "Internal Auditor & Cost Control Specialist",
+        "url": `${siteUrl}/#authorSection`
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": siteName,
+        "logo": {
+          "@type": "ImageObject",
+          "url": `${siteUrl}/favicon.svg`
+        }
+      },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": canonicalURL.toString()
+      }
+    };
+  } else if (pageType === 'calculator') {
+    // SoftwareApplication Schema (Calculators-এর জন্য)
+    pageSchema = {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "applicationCategory": "FinanceApplication",
+      "name": title,
+      "description": description,
+      "url": canonicalURL.toString(),
+      "image": ogImage,
+      "operatingSystem": "Web",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/InStock"
+      },
+      "author": {
+        "@type": "Person",
+        "name": author,
+        "jobTitle": "Internal Auditor & Cost Control Specialist"
+      },
+      "creator": {
+        "@type": "Organization",
+        "name": siteName,
+        "url": siteUrl
+      },
+      "datePublished": datePublished || new Date().toISOString().split('T')[0],
+      "dateModified": dateModified || new Date().toISOString().split('T')[0],
+    };
+  } else {
+    // WebSite Schema (Homepage-এর জন্য)
+    pageSchema = {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": siteName,
+      "url": siteUrl,
+      "description": description,
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": `${siteUrl}/search?q={search_term_string}`
+        },
+        "query-input": "required name=search_term_string"
+      }
+    };
+  }
+
+  return { organizationSchema, pageSchema };
+};
+
+const { organizationSchema, pageSchema } = generateSchema();
 ---
 
 <!DOCTYPE html>
@@ -47,29 +162,35 @@ const fullTitle = `${title} | ${siteName}`;
     <!-- ✅ Canonical URL -->
     <link rel="canonical" href={canonicalURL} />
 
-    <!-- ✅ Open Graph Tags - Fixed & Complete -->
+    <!-- ✅ Open Graph Tags -->
     <meta property="og:type" content="website">
     <meta property="og:url" content={canonicalURL}>
     <meta property="og:title" content={fullTitle}>
     <meta property="og:description" content={description}>
     <meta property="og:site_name" content={siteName}>
-    <meta property="og:image" content={`${siteUrl}/og-image.png`}>
+    <meta property="og:image" content={ogImage}>
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
     <meta property="og:image:alt" content="QuickFinCalc - Free Financial Calculator Tools">
     <meta property="og:locale" content="en_US">
 
-    <!-- ✅ Twitter Card Tags - Fixed & Complete -->
+    <!-- ✅ Twitter Card Tags -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content={fullTitle}>
     <meta name="twitter:description" content={description}>
-    <meta name="twitter:image" content={`${siteUrl}/og-image.png`}>
+    <meta name="twitter:image" content={ogImage}>
     <meta name="twitter:image:alt" content="QuickFinCalc - Free Financial Calculator Tools">
 
-    <!-- ✅ Extra head slot - page specific meta tags inject করার জন্য -->
+    <!-- ✅ JSON-LD SCHEMA - ORGANIZATION (সব page-এ) -->
+    <script type="application/ld+json" set:html={JSON.stringify(organizationSchema)} />
+    
+    <!-- ✅ JSON-LD SCHEMA - PAGE-SPECIFIC (article/calculator/website) -->
+    <script type="application/ld+json" set:html={JSON.stringify(pageSchema)} />
+
+    <!-- ✅ Extra head slot -->
     <slot name="head" />
 
-    <!-- ✅ Google Fonts - Preconnect for performance -->
+    <!-- ✅ Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@700;800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
@@ -83,7 +204,7 @@ const fullTitle = `${title} | ${siteName}`;
       gtag('config', 'G-5SEFVH6V0S');
     </script>
 
-    <!-- ✅ Microsoft Clarity - Body এর আগে load হওয়া ঠিক আছে -->
+    <!-- ✅ Microsoft Clarity -->
     <script type="text/javascript">
     (function(c,l,a,r,i,t,y){
         c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
@@ -122,7 +243,6 @@ const fullTitle = `${title} | ${siteName}`;
 
         html { scroll-behavior: smooth; }
 
-        /* ✅ Fixed: Duplicate selector removed */
         p {
             text-align: justify;
             text-justify: inter-word;
@@ -352,7 +472,7 @@ const fullTitle = `${title} | ${siteName}`;
 
 </head>
 <body>
-    <!-- ✅ Header with Accessibility -->
+    <!-- ✅ Header -->
     <header>
         <nav aria-label="Main Navigation">
             <a href="/" class="logo" title="QuickFinCalc - Free Financial Calculator Tools">
@@ -392,7 +512,7 @@ const fullTitle = `${title} | ${siteName}`;
         <slot /> 
     </main>
 
-    <!-- ✅ Footer - Updated Tagline -->
+    <!-- ✅ Footer -->
     <footer>
         <div class="footer-container">
             <div class="footer-brand">{siteName}</div>
@@ -416,7 +536,7 @@ const fullTitle = `${title} | ${siteName}`;
         </div>
     </footer>
 
-    <!-- ✅ Mobile Menu Script - Updated with aria -->
+    <!-- ✅ Mobile Menu Script -->
     <script is:inline>
         const menuBtn = document.getElementById('mobile-menu-btn');
         const navMenu = document.getElementById('nav-menu');
@@ -424,7 +544,6 @@ const fullTitle = `${title} | ${siteName}`;
         menuBtn.addEventListener('click', () => {
             const isActive = menuBtn.classList.toggle('active');
             navMenu.classList.toggle('active');
-            // ✅ Accessibility - aria-expanded update
             menuBtn.setAttribute('aria-expanded', isActive ? 'true' : 'false');
         });
 
