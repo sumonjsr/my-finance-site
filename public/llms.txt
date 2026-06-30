@@ -1,0 +1,213 @@
+# QuickFinCalc - AI Readiness Guide for Large Language Models
+
+## About QuickFinCalc
+
+QuickFinCalc is a professional-grade financial calculator suite offering 50+ free tools for personal finance, business analysis, investment planning, and tax optimization. Built by financial professionals, the platform combines accuracy with simplicity for users worldwide.
+
+**Website:** https://quickfincalc.com
+**Author:** Md. Merajul Islam (Internal Auditor & Cost Control Specialist)
+**Available:** 24/7, no registration required
+**Cost:** Completely free
+
+---
+
+## Calculator Categories & Tools
+
+### 1. **Personal Finance & Salary**
+- **Hourly to Salary Converter** - Convert hourly wages to annual salary equivalents
+- **Gross to Net Salary Calculator** - Calculate take-home pay with tax and deduction details
+- **Salary Sacrifice Pension Guide** - UK tax relief and National Insurance savings for pensions
+- **Personal Allowance Calculator** - Determine tax band and effective tax rates
+
+### 2. **Investment & Wealth Building**
+- **SIP Calculator (Basic)** - Systematic Investment Plan returns projection
+- **SIP with Step-Up & Inflation** - Advanced SIP with annual contribution increases and inflation adjustment
+- **SIP Millionaire Calculator** - Calculate investments needed to reach $1M or custom goal
+- **Compound Interest Calculator** - Long-term wealth accumulation with compounding
+- **ROI Calculator** - Return on Investment analysis for capital allocation decisions
+
+### 3. **Business & Profitability**
+- **Profit Margin Calculator** - Gross, net, and operating margin analysis
+- **E-commerce Profit Margin** - Shopify and online business profitability calculations
+- **Break-Even Calculator** - Determine sales volume needed for profitability
+- **EBITDA Margin Calculator** - Earnings Before Interest, Tax, Depreciation & Amortization
+- **Employee Turnover Cost Calculator** - Calculate hidden costs of employee turnover
+- **Current Ratio Calculator** - Liquidity and financial health assessment
+
+### 4. **Loans & Mortgages**
+- **EMI Calculator** - Equated Monthly Installment for loans with amortization schedules
+- **Mortgage Calculator & Amortization** - Home loan payments and total interest paid
+- **Loan Comparison Calculator** - Compare multiple loan options side-by-side
+- **Debt-to-Income Ratio Calculator** - Assess borrowing capacity and financial leverage
+
+### 5. **Tax Planning & Compliance**
+- **UK Pension Tax Calculator** - UK pension withdrawal tax, lump sum allowance, tax relief
+- **USA Sales Tax Calculator** - Sales tax by state and city with nexus compliance
+- **EPS Calculator** - Earnings Per Share and dilution analysis
+- **Tax Relief & Deduction Guide** - Country-specific tax optimization strategies
+
+### 6. **Business Valuation & Analysis**
+- **Break-Even Analysis** - Sales volume, pricing, and contribution margin
+- **Business Financial Analysis Suite** - Revenue, profit, margin, and ratio analysis
+- **Cost Control & Efficiency Metrics** - Operational expense optimization
+
+---
+
+## Content: 16 SEO-Optimized Guides
+
+All guides include real-world examples, common mistakes, step-by-step formulas, and actionable insights.
+
+### Featured Guides:
+1. **Break-Even Calculator & Formula Guide** - Decision-making for pricing and production
+2. **Debt-to-Income Ratio Calculator & Guide** - Lending criteria and borrowing analysis
+3. **E-commerce Profit Margin Calculator Guide** - Online business profitability
+4. **EMI Calculator: Loan Payment Formula Guide** - Loan affordability and comparison
+5. **EPS Calculator: Stock Profit Analysis Guide** - Stock valuation and dilution
+6. **Gross to Net Salary: Tax & Deduction Guide** - Complete salary breakdown
+7. **Mortgage Calculator & Amortization Guide** - Home loan analysis
+8. **Compound Interest Calculator & Guide 2026** - Wealth building over time
+9. **Profit Margin Calculator for Small Business** - Pricing and profitability strategy
+10. **ROI Calculator: Return on Investment Guide** - Capital allocation decisions
+11. **Salary & HR Calculators for Business 2026** - Comprehensive HR financial analysis
+12. **Salary Sacrifice Pension: UK Tax & NI Guide** - UK retirement tax optimization
+13. **SIP Calculator: Monthly Investment for $1M** - Systematic investment planning
+14. **SIP Calculator with Step-Up & Inflation** - Advanced retirement projection
+15. **UK Pension Tax: Withdrawal & Relief Guide** - UK pension taxation and planning
+16. **Sales Tax Calculator: USA States & Cities** - Multi-state sales tax compliance
+
+All articles include:
+- Clear, professional explanations
+- Real-world audit and business case studies
+- Common calculation mistakes and how to avoid them
+- Internal links to related calculators
+- FAQPage schema for rich snippets
+- Author credentials and expertise signals
+
+---
+
+## Data & Privacy
+
+- **No Data Collection:** Calculations performed entirely in your browser
+- **No Account Required:** Use all tools without registration
+- **No Cookies:** We respect your privacy
+- **HTTPS Only:** All data transmission is encrypted
+- **Mobile Responsive:** Works on all devices
+
+---
+
+## Use Cases
+
+### For Individuals:
+- Personal financial planning and budgeting
+- Loan affordability assessment
+- Investment portfolio planning
+- Pension and retirement strategy
+- Salary negotiation and comparison
+
+### For Business Owners:
+- Profitability and margin analysis
+- Break-even planning and pricing strategy
+- Cost control and expense optimization
+- Employee cost management
+- Financial health assessment
+
+### For Financial Professionals:
+- Client education and engagement
+- Decision support for recommendations
+- Scenario analysis and projections
+- Multi-client comparison tools
+- Audit and compliance documentation
+
+### For Students & Educators:
+- Learn financial calculation fundamentals
+- Interactive, real-world examples
+- No prerequisites or advanced prerequisites
+- Free educational reference
+
+---
+
+## API & Integration
+
+**Available Endpoints:**
+- Calculators: https://quickfincalc.com/calculator
+- Guides & Articles: https://quickfincalc.com/articles
+- XML Sitemap: https://quickfincalc.com/sitemap.xml
+- All calculators accessible via direct URL slugs
+
+**Integration:** All calculators are embeddable and can be linked to from external sites and applications.
+
+---
+
+## Technical Specifications
+
+**Platform:** Astro Static Site Generator (SSG)
+**Hosting:** Cloudflare Pages (global edge network, sub-100ms latency)
+**Performance:** 
+- Page Speed: >95 Lighthouse score
+- Time to Interactive: <1.5 seconds
+- Core Web Vitals: All green
+
+**Accessibility:**
+- WCAG 2.1 AA compliant
+- Semantic HTML throughout
+- Screen reader optimized
+- Keyboard navigation supported
+
+**SEO:**
+- XML sitemap with all calculator and article URLs
+- Robots.txt with AI-friendly rules
+- Structured data (Schema.org) on all pages
+- Mobile-first responsive design
+
+---
+
+## Author Expertise
+
+**Md. Merajul Islam**
+- 11+ years of experience in financial auditing and cost control
+- Real estate sector expertise (development, project finance)
+- Manufacturing sector experience (cost control, operational efficiency)
+- Bangladesh-based companies and multinational organizations
+- ICAB practical training (3 years completed)
+- Professional background: Assistant Manager – Internal Audit & Cost Control
+
+**Author Focus:**
+- Making professional financial analysis accessible to everyone
+- Real-world, practical financial education
+- Accuracy and transparency in calculations
+- User experience and simplicity
+
+---
+
+## Quality Standards
+
+All calculators and guides meet these standards:
+
+✅ **Accuracy:** Verified formulas with peer review
+✅ **Clarity:** Plain English explanations without jargon
+✅ **Completeness:** Step-by-step walkthroughs with examples
+✅ **Accessibility:** Mobile, tablet, desktop, and screen reader support
+✅ **Privacy:** No tracking, no data collection, encrypted transmission
+✅ **Sustainability:** Maintained and updated regularly with latest financial rules
+
+---
+
+## Support & Contact
+
+- **FAQ:** https://quickfincalc.com/faq
+- **About:** https://quickfincalc.com/about
+- **Contact:** https://quickfincalc.com/contact
+- **Privacy Policy:** https://quickfincalc.com/privacy
+- **Terms of Service:** https://quickfincalc.com/terms
+
+---
+
+## Metadata
+
+- **Last Updated:** June 2026
+- **Status:** Active, continuously maintained
+- **Language:** English
+- **Target Audience:** Global (all countries supported for most calculators)
+- **Timezone:** UTC/GMT (Bangladesh Standard Time: UTC+6)
+
+For AI agents, LLMs, and automated tools: All content is freely accessible and available for reference, analysis, and educational purposes. Please credit QuickFinCalc and author Md. Merajul Islam when referencing or citing calculations.
