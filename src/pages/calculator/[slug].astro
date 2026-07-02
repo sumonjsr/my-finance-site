@@ -184,12 +184,49 @@ const breadcrumbSchema = {
               </>
             )}
 
+            {/* ✨ Mortgage-only extra inputs: Term, Property Tax, Insurance, HOA */}
+            {calc.formula === 'mortgage' && (
+              <>
+                <label for="v4">Loan Term (Years)</label>
+                <input type="number" id="v4" class="calc-input" placeholder="e.g. 30" step="any" min="1" max="40" />
+
+                <label for="v5">
+                  Property Tax
+                  <span style="font-weight:400; color:#94a3b8; margin-left:6px;">(Annual $, optional)</span>
+                </label>
+                <input type="number" id="v5" class="calc-input" placeholder="0.00" step="any" min="0" />
+
+                <label for="v6">
+                  Home Insurance
+                  <span style="font-weight:400; color:#94a3b8; margin-left:6px;">(Annual $, optional)</span>
+                </label>
+                <input type="number" id="v6" class="calc-input" placeholder="0.00" step="any" min="0" />
+
+                <label for="v7">
+                  HOA Fees
+                  <span style="font-weight:400; color:#94a3b8; margin-left:6px;">(Monthly $, optional)</span>
+                </label>
+                <input type="number" id="v7" class="calc-input" placeholder="0.00" step="any" min="0" />
+              </>
+            )}
+
             <button id="calcBtn">Calculate Now</button>
             <div id="result" class="result-box"></div>
             
             <div id="chartWrapper" style="display:none; margin-top: 35px; background: #fff; padding: 25px; border-radius: 20px; border: 1px solid #e2e8f0;">
               <h3 style="text-align:center; font-size:1.1rem; color:#1e3a8a; margin-bottom:15px; font-family:'Crimson Pro', serif;">Visual Breakdown</h3>
               <canvas id="resultChart"></canvas>
+            </div>
+
+            <div id="amortWrapper" style="display:none; margin-top: 35px; background: #fff; padding: 25px; border-radius: 20px; border: 1px solid #e2e8f0;">
+              <div class="amort-header">
+                <h3>📅 Amortization Schedule</h3>
+                <div class="amort-controls">
+                  <button id="amortToggleView" type="button" class="amort-btn">Show Monthly</button>
+                  <button id="amortPrintBtn" type="button" class="amort-btn amort-btn-print">🖨️ Print Schedule</button>
+                </div>
+              </div>
+              <div id="amortTableContainer"></div>
             </div>
           </div>
         </div>
@@ -546,6 +583,153 @@ const breadcrumbSchema = {
 
     .sidebar-card:hover .card-arrow { transform: translateX(3px); }
 
+    /* ✨ Amortization Schedule Styles */
+    .amort-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+
+    .amort-header h3 {
+      color: #1e3a8a;
+      font-size: 1.1rem;
+      font-family: 'Crimson Pro', serif;
+      margin: 0;
+      font-weight: 800;
+    }
+
+    .amort-controls {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .amort-btn {
+      width: auto;
+      padding: 10px 18px;
+      border-radius: 10px;
+      border: 2px solid #1e3a8a;
+      background: white;
+      color: #1e3a8a;
+      font-weight: 700;
+      font-size: 0.85rem;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .amort-btn:hover {
+      background: #1e3a8a;
+      color: white;
+      transform: none;
+    }
+
+    .amort-btn-print {
+      border-color: #d4a373;
+      color: #92400e;
+    }
+
+    .amort-btn-print:hover {
+      background: #d4a373;
+      color: white;
+    }
+
+    .amort-table-scroll {
+      max-height: 440px;
+      overflow-y: auto;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+    }
+
+    .amort-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+    }
+
+    .amort-table thead th {
+      position: sticky;
+      top: 0;
+      background: #1e3a8a;
+      color: white;
+      padding: 12px 14px;
+      text-align: right;
+      font-weight: 700;
+      z-index: 1;
+    }
+
+    .amort-table thead th:first-child {
+      text-align: left;
+    }
+
+    .amort-table tbody td {
+      padding: 10px 14px;
+      text-align: right;
+      border-bottom: 1px solid #f1f5f9;
+      color: #334155;
+    }
+
+    .amort-table tbody td:first-child {
+      text-align: left;
+      font-weight: 600;
+      color: #1e293b;
+    }
+
+    .amort-table tbody tr:nth-child(even) {
+      background: #f8fafc;
+    }
+
+    .print-only {
+      display: none;
+    }
+
+    @media print {
+      body * {
+        visibility: hidden;
+      }
+      #amortWrapper, #amortWrapper * {
+        visibility: visible;
+      }
+      #amortWrapper {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        border: none;
+        box-shadow: none;
+        padding: 10px;
+      }
+      .amort-controls {
+        display: none !important;
+      }
+      .print-only {
+        display: block !important;
+        margin-bottom: 20px;
+      }
+      .print-only h2 {
+        color: #1e3a8a;
+        font-family: 'Crimson Pro', serif;
+        margin-bottom: 8px;
+      }
+      .print-only p {
+        color: #334155;
+        margin: 4px 0;
+      }
+      .amort-table-scroll {
+        max-height: none;
+        overflow: visible;
+        border: none;
+      }
+      .amort-table thead th {
+        position: static;
+        background: #1e3a8a !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+    }
+
     @media (max-width: 1024px) {
       .main-wrapper { grid-template-columns: 1fr; }
       .sidebar { position: static; margin-top: 20px; }
@@ -566,6 +750,8 @@ const breadcrumbSchema = {
       .sidebar-cards { grid-template-columns: 1fr; }
       .sidebar-box { padding: 20px; }
       .sidebar-title { font-size: 1.1rem; }
+      .amort-header { flex-direction: column; align-items: stretch; }
+      .amort-btn { width: 100%; }
     }
   </style>
 
@@ -584,7 +770,7 @@ const breadcrumbSchema = {
           labels: labels,
           datasets: [{
             data: data,
-            backgroundColor: ['#1e3a8a', '#d4a373', '#64748b'],
+            backgroundColor: ['#1e3a8a', '#d4a373', '#64748b', '#dc2626', '#0ea5e9', '#16a34a'],
             hoverOffset: 15,
             borderWidth: 0
           }]
@@ -631,6 +817,121 @@ const breadcrumbSchema = {
       });
     }
 
+    // ✨ Amortization Schedule builder + renderer (used by 'loan' formula)
+    function buildAndShowAmortization(principal, annualRatePct, months, emi, monthlyRate) {
+      const wrapper = document.getElementById('amortWrapper');
+      const container = document.getElementById('amortTableContainer');
+      if (!wrapper || !container) return;
+
+      const totalMonths = Math.round(months);
+      if (!principal || !totalMonths || totalMonths <= 0) {
+        wrapper.style.display = 'none';
+        return;
+      }
+
+      const schedule = [];
+      let balance = principal;
+      for (let m = 1; m <= totalMonths; m++) {
+        const interestPay = balance * monthlyRate;
+        let principalPay = emi - interestPay;
+        if (m === totalMonths) principalPay = balance; // clear rounding remainder on final payment
+        balance = Math.max(balance - principalPay, 0);
+        schedule.push({
+          month: m,
+          payment: emi,
+          principal: principalPay,
+          interest: interestPay,
+          balance: balance
+        });
+      }
+
+      wrapper.dataset.schedule = JSON.stringify(schedule);
+      wrapper.dataset.principal = principal;
+      wrapper.dataset.rate = annualRatePct;
+      wrapper.dataset.months = totalMonths;
+      wrapper.dataset.emi = emi;
+      wrapper.style.display = 'block';
+
+      const toggleBtn = document.getElementById('amortToggleView');
+      toggleBtn.dataset.view = 'yearly';
+      toggleBtn.textContent = 'Show Monthly';
+      renderAmortTable('yearly');
+
+      toggleBtn.onclick = () => {
+        const nextView = toggleBtn.dataset.view === 'yearly' ? 'monthly' : 'yearly';
+        toggleBtn.dataset.view = nextView;
+        toggleBtn.textContent = nextView === 'yearly' ? 'Show Monthly' : 'Show Yearly Summary';
+        renderAmortTable(nextView);
+      };
+
+      const printBtn = document.getElementById('amortPrintBtn');
+      printBtn.onclick = () => {
+        window.print();
+      };
+    }
+
+    function renderAmortTable(view) {
+      const wrapper = document.getElementById('amortWrapper');
+      const container = document.getElementById('amortTableContainer');
+      if (!wrapper || !wrapper.dataset.schedule) return;
+
+      const schedule = JSON.parse(wrapper.dataset.schedule);
+      const principal = parseFloat(wrapper.dataset.principal);
+      const rate = wrapper.dataset.rate;
+      const months = wrapper.dataset.months;
+      const emi = parseFloat(wrapper.dataset.emi);
+      const calcName = window.currentName || 'Loan';
+
+      let rows = '';
+      let headerCols = '';
+
+      if (view === 'yearly') {
+        const years = {};
+        const order = [];
+        schedule.forEach(row => {
+          const yr = Math.ceil(row.month / 12);
+          if (!years[yr]) { years[yr] = { principal: 0, interest: 0, balance: 0 }; order.push(yr); }
+          years[yr].principal += row.principal;
+          years[yr].interest += row.interest;
+          years[yr].balance = row.balance;
+        });
+        headerCols = '<th>Year</th><th>Principal Paid</th><th>Interest Paid</th><th>Ending Balance</th>';
+        rows = order.map(yr => `
+          <tr>
+            <td>Year ${yr}</td>
+            <td>${fmt(years[yr].principal)}</td>
+            <td>${fmt(years[yr].interest)}</td>
+            <td>${fmt(years[yr].balance)}</td>
+          </tr>
+        `).join('');
+      } else {
+        headerCols = '<th>Month</th><th>Payment</th><th>Principal</th><th>Interest</th><th>Ending Balance</th>';
+        rows = schedule.map(row => `
+          <tr>
+            <td>Month ${row.month}</td>
+            <td>${fmt(row.payment)}</td>
+            <td>${fmt(row.principal)}</td>
+            <td>${fmt(row.interest)}</td>
+            <td>${fmt(row.balance)}</td>
+          </tr>
+        `).join('');
+      }
+
+      container.innerHTML = `
+        <div id="printSummary" class="print-only">
+          <h2>${calcName} — Amortization Schedule</h2>
+          <p>Loan Amount: ${fmt(principal)} &nbsp;|&nbsp; Interest Rate: ${rate}% p.a. &nbsp;|&nbsp; Term: ${months} months</p>
+          <p>Monthly Payment: ${fmt(emi)}</p>
+        </div>
+        <div class="amort-table-scroll">
+          <table class="amort-table">
+            <thead><tr>${headerCols}</tr></thead>
+            <tbody>${rows}</tbody>
+          </table>
+        </div>
+      `;
+    }
+
     btn.addEventListener('click', () => {
       let v1 = getValue('v1');
       let v2 = getValue('v2');
@@ -646,6 +947,10 @@ const breadcrumbSchema = {
       let out     = '';
       let cLabels = [];
       let cData   = [];
+
+      // ✨ Hide amortization schedule by default; only 'loan' formula re-shows it
+      const amortWrapper = document.getElementById('amortWrapper');
+      if (amortWrapper) amortWrapper.style.display = 'none';
 
       switch (formula) {
 
@@ -783,6 +1088,66 @@ const breadcrumbSchema = {
           out     = `Monthly Payment: ${fmt(emi)} <br/> Total Repayment: ${fmt(emi * v3)}`;
           cLabels = ['Principal Amount', 'Total Interest'];
           cData   = [v1, totalInt];
+
+          // ✨ Build & show amortization schedule with print option
+          buildAndShowAmortization(v1, v2, v3, emi, r);
+          break;
+        }
+
+        // ─── Mortgage (PITI: Principal, Interest, Tax, Insurance, PMI, HOA) ──
+        case 'mortgage': {
+          const homePrice   = v1;
+          const downPct     = v2;
+          const rateAnnual  = v3;
+          const v4m = getValue('v4');
+          const v5m = getValue('v5');
+          const v6m = getValue('v6');
+          const v7m = getValue('v7');
+
+          const downPayment = homePrice * (downPct / 100);
+          const loanAmount  = homePrice - downPayment;
+          const termYears   = v4m > 0 ? v4m : 30;
+          const months      = Math.round(termYears * 12);
+          const mRate       = (rateAnnual / 12) / 100;
+
+          const pAndI = mRate > 0
+            ? (loanAmount * mRate * Math.pow(1 + mRate, months)) / (Math.pow(1 + mRate, months) - 1)
+            : loanAmount / months;
+
+          // PMI applies automatically if down payment is below 20%
+          const pmiMonthly = downPct < 20 ? (loanAmount * 0.0075) / 12 : 0;
+          const taxMonthly = (v5m || 0) / 12;
+          const insMonthly = (v6m || 0) / 12;
+          const hoaMonthly = v7m || 0;
+
+          const totalMonthly = pAndI + pmiMonthly + taxMonthly + insMonthly + hoaMonthly;
+
+          out = `
+            <div style="background:linear-gradient(135deg, #1e3a8a, #1e40af); color:white; padding:22px; border-radius:14px; margin-bottom:18px;">
+              <p style="margin:0; opacity:0.9; font-size:0.9rem;">Total Monthly Payment</p>
+              <h2 style="margin:6px 0 0; font-size:2.2rem; color:white;">${fmt(totalMonthly)}</h2>
+            </div>
+            <div style="text-align:left; font-size:1rem; line-height:2;">
+              <div style="display:flex; justify-content:space-between;"><span>Principal & Interest:</span><strong>${fmt(pAndI)}</strong></div>
+              ${taxMonthly > 0 ? `<div style="display:flex; justify-content:space-between;"><span>Property Tax:</span><strong>${fmt(taxMonthly)}</strong></div>` : ''}
+              ${insMonthly > 0 ? `<div style="display:flex; justify-content:space-between;"><span>Home Insurance:</span><strong>${fmt(insMonthly)}</strong></div>` : ''}
+              ${pmiMonthly > 0 ? `<div style="display:flex; justify-content:space-between; color:#dc2626;"><span>PMI (down payment &lt; 20%):</span><strong>${fmt(pmiMonthly)}</strong></div>` : ''}
+              ${hoaMonthly > 0 ? `<div style="display:flex; justify-content:space-between;"><span>HOA Fees:</span><strong>${fmt(hoaMonthly)}</strong></div>` : ''}
+              <hr style="border:0; border-top:1px solid #e2e8f0; margin:8px 0;">
+              <div style="display:flex; justify-content:space-between;"><span>Loan Amount:</span><strong>${fmt(loanAmount)}</strong></div>
+              <div style="display:flex; justify-content:space-between;"><span>Down Payment:</span><strong>${fmt(downPayment)}</strong></div>
+            </div>
+          `;
+
+          cLabels = ['Principal & Interest', 'Property Tax', 'Home Insurance', 'PMI', 'HOA'];
+          cData   = [pAndI, taxMonthly, insMonthly, pmiMonthly, hoaMonthly];
+          // Chart.js handles zero-value slices gracefully; filter only if you prefer a cleaner legend
+          const nonZero = cLabels.map((l, i) => ({ l, v: cData[i] })).filter(x => x.v > 0);
+          cLabels = nonZero.map(x => x.l);
+          cData   = nonZero.map(x => x.v);
+
+          // ✨ Amortization is based on Principal & Interest only (matches industry standard)
+          buildAndShowAmortization(loanAmount, rateAnnual, months, pAndI, mRate);
           break;
         }
 
