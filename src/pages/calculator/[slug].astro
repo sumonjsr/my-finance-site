@@ -127,7 +127,15 @@ const breadcrumbSchema = {
             {/* Field 2 - Dropdown or Input */}
             {calc.label2 && (
               <>
-                <label for="v2">{calc.label2}</label>
+                <label for="v2" class="label-with-toggle">
+                  <span>{calc.label2}</span>
+                  {calc.formula === 'mortgage' && (
+                    <span class="dp-toggle" id="dpToggle" data-mode="pct">
+                      <button type="button" class="dp-toggle-btn active" data-mode-btn="pct">%</button>
+                      <button type="button" class="dp-toggle-btn" data-mode-btn="amt">$</button>
+                    </span>
+                  )}
+                </label>
                 {calc.v2_type === 'select' && calc.v2_options ? (
                   <>
                     <select id="v2" class="calc-input">
@@ -366,6 +374,36 @@ const breadcrumbSchema = {
       font-weight: 700; 
       margin-bottom: 10px; 
       color: #1e293b; 
+    }
+
+    .label-with-toggle {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .dp-toggle {
+      display: inline-flex;
+      border: 2px solid #cbd5e1;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .dp-toggle-btn {
+      width: auto;
+      padding: 4px 12px;
+      background: white;
+      color: #64748b;
+      border: none;
+      border-radius: 0;
+      font-weight: 700;
+      font-size: 0.8rem;
+      cursor: pointer;
+    }
+
+    .dp-toggle-btn.active {
+      background: #1e3a8a;
+      color: white;
     }
     
     .calc-input { 
@@ -817,6 +855,23 @@ const breadcrumbSchema = {
       });
     }
 
+    // ✨ Down Payment $ / % toggle (mortgage only)
+    const dpToggle = document.getElementById('dpToggle');
+    if (dpToggle) {
+      dpToggle.querySelectorAll('.dp-toggle-btn').forEach((b) => {
+        b.addEventListener('click', () => {
+          dpToggle.querySelectorAll('.dp-toggle-btn').forEach((x) => x.classList.remove('active'));
+          b.classList.add('active');
+          dpToggle.dataset.mode = b.dataset.modeBtn;
+          const v2input = document.getElementById('v2');
+          if (v2input) {
+            v2input.placeholder = b.dataset.modeBtn === 'pct' ? 'e.g. 20' : 'e.g. 20000';
+            v2input.value = '';
+          }
+        });
+      });
+    }
+
     // ✨ Amortization Schedule builder + renderer (used by 'loan' formula)
     function buildAndShowAmortization(principal, annualRatePct, months, emi, monthlyRate) {
       const wrapper = document.getElementById('amortWrapper');
@@ -1097,15 +1152,35 @@ const breadcrumbSchema = {
         // ─── Mortgage (PITI: Principal, Interest, Tax, Insurance, PMI, HOA) ──
         case 'mortgage': {
           const homePrice   = v1;
-          const downPct     = v2;
+          const dpRaw       = v2;
           const rateAnnual  = v3;
           const v4m = getValue('v4');
           const v5m = getValue('v5');
           const v6m = getValue('v6');
           const v7m = getValue('v7');
 
-          const downPayment = homePrice * (downPct / 100);
-          const loanAmount  = homePrice - downPayment;
+          const dpToggleEl = document.getElementById('dpToggle');
+          const dpMode     = dpToggleEl ? dpToggleEl.dataset.mode : 'pct';
+
+          let downPayment = dpMode === 'amt' ? dpRaw : homePrice * (dpRaw / 100);
+          downPayment = Math.max(downPayment, 0);
+
+          // ✨ Validation guard — prevents negative loan amounts from bad input
+          if (!homePrice || homePrice <= 0) {
+            resDiv.innerHTML = '⚠️ Please enter a valid home price.';
+            resDiv.style.display = 'block';
+            resDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            return;
+          }
+          if (downPayment >= homePrice) {
+            resDiv.innerHTML = `⚠️ Your down payment (${fmt(downPayment)}) cannot be equal to or greater than the home price (${fmt(homePrice)}). Please check whether you meant % or $ using the toggle above the Down Payment field.`;
+            resDiv.style.display = 'block';
+            resDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            return;
+          }
+
+          const loanAmount     = homePrice - downPayment;
+          const downPctEffective = (downPayment / homePrice) * 100;
           const termYears   = v4m > 0 ? v4m : 30;
           const months      = Math.round(termYears * 12);
           const mRate       = (rateAnnual / 12) / 100;
@@ -1114,8 +1189,8 @@ const breadcrumbSchema = {
             ? (loanAmount * mRate * Math.pow(1 + mRate, months)) / (Math.pow(1 + mRate, months) - 1)
             : loanAmount / months;
 
-          // PMI applies automatically if down payment is below 20%
-          const pmiMonthly = downPct < 20 ? (loanAmount * 0.0075) / 12 : 0;
+          // PMI applies automatically if effective down payment is below 20%
+          const pmiMonthly = downPctEffective < 20 ? (loanAmount * 0.0075) / 12 : 0;
           const taxMonthly = (v5m || 0) / 12;
           const insMonthly = (v6m || 0) / 12;
           const hoaMonthly = v7m || 0;
@@ -1135,7 +1210,7 @@ const breadcrumbSchema = {
               ${hoaMonthly > 0 ? `<div style="display:flex; justify-content:space-between;"><span>HOA Fees:</span><strong>${fmt(hoaMonthly)}</strong></div>` : ''}
               <hr style="border:0; border-top:1px solid #e2e8f0; margin:8px 0;">
               <div style="display:flex; justify-content:space-between;"><span>Loan Amount:</span><strong>${fmt(loanAmount)}</strong></div>
-              <div style="display:flex; justify-content:space-between;"><span>Down Payment:</span><strong>${fmt(downPayment)}</strong></div>
+              <div style="display:flex; justify-content:space-between;"><span>Down Payment:</span><strong>${fmt(downPayment)} (${downPctEffective.toFixed(1)}%)</strong></div>
             </div>
           `;
 
