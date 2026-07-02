@@ -6,7 +6,7 @@
   "name": "Mortgage Payment Calculator",
   "description": "Calculate monthly mortgage payments including property tax, insurance & PMI. Free tool for any currency worldwide.",
   "label1": "Home Price / Property Value ($)",
-  "label2": "Down Payment (%)",
+  "label2": "Down Payment",
   "label3": "Interest Rate (Annual %)",
   "what_is": "A mortgage calculator estimates your true total monthly home loan payment — not just principal and interest, but also property tax, homeowners insurance, PMI, and HOA fees (together known as PITI). It helps you understand the real cost of borrowing before you commit to one of the largest financial decisions of your life.",
   "who_use": "First-time homebuyers checking affordability, real estate investors analyzing financing costs, and anyone comparing loan terms, down payment sizes, or interest rates before applying for a mortgage.",
