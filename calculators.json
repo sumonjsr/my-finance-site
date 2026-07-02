@@ -1,85 +1,85 @@
 [
-  {
-    "slug": "mortgage-calculator",
-    "formula": "loan",
-    "type": "loan",
-    "name": "Mortgage Payment Calculator",
-    "description": "Calculate monthly mortgage payments, total interest & home loan costs. Free tool for any currency worldwide.",
-    "label1": "Home Price / Property Value",
-    "label2": "Annual Interest Rate (%)",
-    "label3": "Loan Tenure (Months)",
-    "what_is": "A mortgage calculator estimates your fixed monthly home loan payment based on the property value, interest rate, and loan term. It helps you understand the true cost of borrowing before you commit to one of the largest financial decisions of your life.",
-    "who_use": "First-time homebuyers checking affordability, real estate investors analyzing financing costs, and anyone comparing loan terms or interest rates before applying for a mortgage.",
-    "how_to_use": "1. Enter the total property price or loan amount. 2. Input your lender's annual interest rate. 3. Enter the loan term in months (e.g. 360 for 30 years). 4. Click Calculate to see your monthly payment breakdown.",
-    "how_to_read": "The result shows your fixed monthly principal and interest payment. Add your local property taxes and homeowners insurance to get your true total monthly housing cost. Keep total housing costs below 28% of your gross monthly income for a healthy financial position.",
-    "pro_tip": "Even a 1% difference in interest rate has a massive impact over 30 years. On a $300,000 loan, the difference between 6.5% and 7.5% is over $60,000 in total interest. Always compare rates from at least 3 lenders before committing.",
-    "seo": {
-      "title": "Mortgage Payment Calculator | Monthly Home Loan Tool",
-      "meta_description": "Calculate monthly mortgage payments, total interest & loan costs instantly. Free tool works for any currency. Get accurate home loan estimates now.",
-      "h1": "Mortgage Payment Calculator",
-      "primary_keyword": "mortgage payment calculator",
-      "secondary_keywords": [
-        "mortgage calculator",
-        "monthly mortgage payment calculator",
-        "home loan calculator",
-        "mortgage EMI calculator"
-      ],
-      "h2_structure": [
-        "What Is a Mortgage Payment Calculator?",
-        "How to Calculate Your Monthly Mortgage Payment",
-        "What Affects Your Mortgage Payment?",
-        "15-Year vs 30-Year Mortgage Comparison",
-        "Frequently Asked Questions"
-      ],
-      "faqs": [
-        {
-          "question": "What is a safe monthly mortgage payment?",
-          "answer": "Most financial advisors follow the 28% rule — your total monthly housing costs should not exceed 28% of your gross monthly income. For example, on a $7,000 monthly income, keep housing costs below $1,960."
-        },
-        {
-          "question": "How is a monthly mortgage payment calculated?",
-          "answer": "Mortgage payments use the amortization formula: M = P[r(1+r)^n]/[(1+r)^n-1], where P is loan amount, r is monthly interest rate, and n is number of payments."
-        },
-        {
-          "question": "What is the difference between a 15-year and 30-year mortgage?",
-          "answer": "A 15-year mortgage has higher monthly payments but saves significantly on total interest. A 30-year mortgage has lower monthly payments but costs more over time."
-        },
-        {
-          "question": "Does this calculator include property tax and insurance?",
-          "answer": "This calculator shows principal and interest only. Add local property taxes, homeowners insurance, and PMI if applicable to estimate total monthly housing cost."
-        },
-        {
-          "question": "Can making extra mortgage payments save money?",
-          "answer": "Yes. Extra payments reduce your loan principal, lower total interest, and may shorten your repayment term by several years."
-        },
-        {
-          "question": "Does this calculator work for different currencies?",
-          "answer": "Yes. Mortgage formulas work the same in any currency. Enter your values in your local currency to estimate monthly payment."
-        }
-      ],
-      "schema": {
-        "type": "SoftwareApplication",
-        "applicationCategory": "FinanceApplication",
-        "name": "Mortgage Payment Calculator",
-        "description": "Free online mortgage calculator to estimate monthly payments, loan costs, and total interest.",
-        "url": "https://quickfincalc.com/calculator/mortgage-calculator",
-        "offers": {
-          "price": "0",
-          "priceCurrency": "USD"
-        }
+ {
+  "slug": "mortgage-calculator",
+  "formula": "mortgage",
+  "type": "loan",
+  "name": "Mortgage Payment Calculator",
+  "description": "Calculate monthly mortgage payments including property tax, insurance & PMI. Free tool for any currency worldwide.",
+  "label1": "Home Price / Property Value ($)",
+  "label2": "Down Payment (%)",
+  "label3": "Interest Rate (Annual %)",
+  "what_is": "A mortgage calculator estimates your true total monthly home loan payment — not just principal and interest, but also property tax, homeowners insurance, PMI, and HOA fees (together known as PITI). It helps you understand the real cost of borrowing before you commit to one of the largest financial decisions of your life.",
+  "who_use": "First-time homebuyers checking affordability, real estate investors analyzing financing costs, and anyone comparing loan terms, down payment sizes, or interest rates before applying for a mortgage.",
+  "how_to_use": "1. Enter the total home price. 2. Enter your down payment as a percentage of the home price. 3. Input your lender's annual interest rate. 4. Enter the loan term in years (e.g. 30). 5. Optionally add annual property tax, annual home insurance, and monthly HOA fees for a complete monthly payment estimate. 6. Click Calculate to see your full PITI breakdown.",
+  "how_to_read": "The result shows your total monthly housing payment broken into Principal & Interest, Property Tax, Home Insurance, PMI (automatically added if your down payment is below 20%), and HOA fees. Keep your total housing cost below 28% of your gross monthly income for a healthy financial position. The amortization schedule below tracks your Principal & Interest portion only, matching how most lenders present it.",
+  "pro_tip": "A down payment below 20% triggers Private Mortgage Insurance (PMI), an extra monthly cost with no equity benefit. If you're close to the 20% threshold, it's often worth delaying your purchase slightly to save the difference — this calculator shows exactly how much PMI adds to your monthly payment.",
+  "seo": {
+    "title": "Mortgage Payment Calculator | Monthly Home Loan Tool",
+    "meta_description": "Calculate monthly mortgage payments with property tax, insurance & PMI included. Free tool works for any currency. Get accurate estimates now.",
+    "h1": "Mortgage Payment Calculator",
+    "primary_keyword": "mortgage payment calculator",
+    "secondary_keywords": [
+      "mortgage calculator",
+      "monthly mortgage payment calculator",
+      "home loan calculator",
+      "PITI mortgage calculator"
+    ],
+    "h2_structure": [
+      "What Is a Mortgage Payment Calculator?",
+      "How to Calculate Your Monthly Mortgage Payment",
+      "What Affects Your Mortgage Payment?",
+      "15-Year vs 30-Year Mortgage Comparison",
+      "Frequently Asked Questions"
+    ],
+    "faqs": [
+      {
+        "question": "What is a safe monthly mortgage payment?",
+        "answer": "Most financial advisors follow the 28% rule — your total monthly housing costs (PITI) should not exceed 28% of your gross monthly income. For example, on a $7,000 monthly income, keep housing costs below $1,960."
       },
-      "open_graph": {
-        "og:title": "Mortgage Payment Calculator | Free Home Loan Tool",
-        "og:description": "Calculate monthly mortgage payments, total interest & loan costs instantly with our free calculator.",
-        "og:image": "https://quickfincalc.com/og-image.png"
+      {
+        "question": "How is a monthly mortgage payment calculated?",
+        "answer": "Principal and interest use the amortization formula M = P[r(1+r)^n]/[(1+r)^n-1], where P is loan amount, r is monthly interest rate, and n is number of payments. Property tax, insurance, PMI, and HOA are added on top."
       },
-      "twitter_card": {
-        "twitter:title": "Mortgage Payment Calculator | Free Tool",
-        "twitter:description": "Calculate monthly mortgage payments and total interest instantly.",
-        "twitter:card": "summary_large_image"
+      {
+        "question": "What is PMI and when do I have to pay it?",
+        "answer": "Private Mortgage Insurance (PMI) is typically required when your down payment is below 20% of the home price. It protects the lender, not you, and can usually be removed once you reach 20% equity."
+      },
+      {
+        "question": "Does this calculator include property tax and insurance?",
+        "answer": "Yes. This calculator includes property tax, home insurance, PMI, and HOA fees alongside principal and interest, giving you a complete PITI monthly payment estimate."
+      },
+      {
+        "question": "What is the difference between a 15-year and 30-year mortgage?",
+        "answer": "A 15-year mortgage has higher monthly payments but saves significantly on total interest. A 30-year mortgage has lower monthly payments but costs more over time."
+      },
+      {
+        "question": "Does this calculator work for different currencies?",
+        "answer": "Yes. Mortgage formulas work the same in any currency. Enter your values in your local currency to estimate monthly payment."
       }
+    ],
+    "schema": {
+      "type": "SoftwareApplication",
+      "applicationCategory": "FinanceApplication",
+      "name": "Mortgage Payment Calculator",
+      "description": "Free online mortgage calculator to estimate monthly payments including property tax, insurance, PMI and HOA.",
+      "url": "https://quickfincalc.com/calculator/mortgage-calculator",
+      "offers": {
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    "open_graph": {
+      "og:title": "Mortgage Payment Calculator | Free Home Loan Tool",
+      "og:description": "Calculate monthly mortgage payments with property tax, insurance & PMI included.",
+      "og:image": "https://quickfincalc.com/og-image.png"
+    },
+    "twitter_card": {
+      "twitter:title": "Mortgage Payment Calculator | Free Tool",
+      "twitter:description": "Calculate your full monthly mortgage payment including PITI.",
+      "twitter:card": "summary_large_image"
     }
-  },
+  }
+},
   
   {
     "slug": "car-loan-calculator",
