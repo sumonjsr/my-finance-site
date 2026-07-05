@@ -21,7 +21,7 @@ canonical: "https://quickfincalc.com/articles/sip-calculator-millionaire-guide"
   "description": "Calculate exactly how much to invest monthly to reach $1 million. Real SIP math, starting age comparison, dollar-cost averaging & free millionaire calculator.",
   "image": "https://quickfincalc.com/images/sip-calculator-millionaire.jpg",
   "datePublished": "2026-06-18",
-  "dateModified": "2026-06-18",
+  "dateModified": "2026-07-05",
   "author": {
     "@type": "Person",
     "name": "Md. Merajul Islam",

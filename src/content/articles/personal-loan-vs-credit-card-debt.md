@@ -2,7 +2,7 @@
 title: "Personal Loan vs Credit Card: Which Wins?"
 description: "Personal loan vs credit card debt — compare real interest costs, payoff speed & monthly payments to see which saves you more. Calculate instantly →"
 date: "2026-07-02"
-dateModified: "2026-07-02"
+dateModified: "2026-07-05"
 category: "Loans"
 emoji: "💳"
 readTime: "7 min read"

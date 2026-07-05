@@ -2,7 +2,7 @@
 title: "Profit Margin Calculator for Small Business"
 description: "Calculate gross, operating & net profit margins for your small business. Includes real examples, industry benchmarks & proven strategies to improve margins →"
 date: "2026-06-03"
-dateModified: "2026-06-03"
+dateModified: "2026-07-05"
 category: "Business"
 emoji: "📈"
 readTime: "10 min read"
@@ -21,7 +21,7 @@ canonical: "https://quickfincalc.com/articles/profit-margin-guide"
   "description": "Calculate gross, operating & net profit margins for your small business. Includes real examples, industry benchmarks & proven strategies to improve margins.",
   "image": "https://quickfincalc.com/images/profit-margin-guide.jpg",
   "datePublished": "2026-06-03",
-  "dateModified": "2026-06-03",
+  "dateModified": "2026-07-05",
   "author": {
     "@type": "Person",
     "name": "Md. Merajul Islam",

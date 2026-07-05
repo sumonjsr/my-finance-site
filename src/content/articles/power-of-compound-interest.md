@@ -2,7 +2,7 @@
 title: "Compound Interest Calculator & Guide 2026"
 description: "Calculate how money grows with compound interest. Includes Rule of 72, daily vs annual compounding, retirement projections & 3 silent wealth killers →"
 date: "2026-04-15"
-dateModified: "2026-04-15"
+dateModified: "2026-07-05"
 category: "Investment"
 emoji: "🪄"
 readTime: "15 min read"
@@ -21,7 +21,7 @@ canonical: "https://quickfincalc.com/articles/power-of-compound-interest"
   "description": "Calculate how money grows with compound interest. Includes Rule of 72, daily vs annual compounding, retirement projections & 3 silent wealth killers.",
   "image": "https://quickfincalc.com/images/compound-interest-calculator.jpg",
   "datePublished": "2026-04-15",
-  "dateModified": "2026-04-15",
+  "dateModified": "2026-07-05",
   "author": {
     "@type": "Person",
     "name": "Md. Merajul Islam",

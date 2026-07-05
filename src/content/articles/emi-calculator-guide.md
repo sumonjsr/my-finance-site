@@ -2,7 +2,7 @@
 title: "EMI Calculator: Loan Payment Formula Guide"
 description: "See exactly how banks calculate your EMI. Free loan calculator with amortization schedule, flat vs reducing rate comparison & money-saving strategies →"
 date: "2026-06-03"
-dateModified: "2026-06-03"
+dateModified: "2026-07-05"
 category: "Loans"
 emoji: "🏦"
 readTime: "10 min read"
@@ -21,7 +21,7 @@ canonical: "https://quickfincalc.com/articles/emi-calculator-guide"
   "description": "See exactly how banks calculate your EMI. Free loan calculator with amortization schedule, flat vs reducing rate comparison & money-saving strategies.",
   "image": "https://quickfincalc.com/images/emi-calculator-guide.jpg",
   "datePublished": "2026-06-03",
-  "dateModified": "2026-06-03",
+  "dateModified": "2026-07-05",
   "author": {
     "@type": "Person",
     "name": "Md. Merajul Islam",

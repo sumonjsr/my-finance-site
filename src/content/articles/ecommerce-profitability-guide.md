@@ -2,7 +2,7 @@
 title: "E-commerce Profit Margin Calculator Guide"
 description: "Calculate true e-commerce profit margins for Shopify & Amazon FBA. Avoid hidden fee traps, fix margin vs markup errors & boost your net profit by 10-30% →"
 date: "2026-04-16"
-dateModified: "2026-04-16"
+dateModified: "2026-07-05"
 category: "E-commerce"
 emoji: "📦"
 readTime: "13 min read"
@@ -21,7 +21,7 @@ canonical: "https://quickfincalc.com/articles/ecommerce-profitability-guide"
   "description": "Calculate true e-commerce profit margins for Shopify & Amazon FBA. Avoid hidden fee traps, fix margin vs markup errors & boost your net profit by 10-30%.",
   "image": "https://quickfincalc.com/images/ecommerce-profit-margin.jpg",
   "datePublished": "2026-04-16",
-  "dateModified": "2026-04-16",
+  "dateModified": "2026-07-05",
   "author": {
     "@type": "Person",
     "name": "Md. Merajul Islam",

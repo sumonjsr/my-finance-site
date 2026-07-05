@@ -2,7 +2,7 @@
 title: "ROI Calculator: Return on Investment Guide"
 description: "Calculate true ROI on any investment — stocks, real estate, marketing & business. Includes annualized ROI, fee impact & proven strategies to maximize returns →"
 date: "2026-04-13"
-dateModified: "2026-04-13"
+dateModified: "2026-07-05"
 category: "Investing"
 emoji: "📈"
 readTime: "13 min read"
@@ -21,7 +21,7 @@ canonical: "https://quickfincalc.com/articles/roi"
   "description": "Calculate true ROI on any investment — stocks, real estate, marketing & business. Includes annualized ROI, fee impact & proven strategies to maximize returns.",
   "image": "https://quickfincalc.com/images/roi-calculator-guide.jpg",
   "datePublished": "2026-04-13",
-  "dateModified": "2026-04-13",
+  "dateModified": "2026-07-05",
   "author": {
     "@type": "Person",
     "name": "Md. Merajul Islam",

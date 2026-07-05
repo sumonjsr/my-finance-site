@@ -2,7 +2,7 @@
 title: "SIP Calculator with Step-Up & Inflation"
 description: "Calculate SIP returns with annual step-up increases and inflation adjustment. See real vs nominal corpus, fund benchmarks & strategies to maximize wealth →"
 date: "2026-05-06"
-dateModified: "2026-05-06"
+dateModified: "2026-07-05"
 category: "Investing"
 emoji: "📈"
 readTime: "16 min read"
@@ -21,7 +21,7 @@ canonical: "https://quickfincalc.com/articles/sip-stepup-inflation"
   "description": "Calculate SIP returns with annual step-up increases and inflation adjustment. See real vs nominal corpus, fund benchmarks & strategies to maximize wealth.",
   "image": "https://quickfincalc.com/images/sip-stepup-inflation.jpg",
   "datePublished": "2026-05-06",
-  "dateModified": "2026-05-06",
+  "dateModified": "2026-07-05",
   "author": {
     "@type": "Person",
     "name": "Md. Merajul Islam",

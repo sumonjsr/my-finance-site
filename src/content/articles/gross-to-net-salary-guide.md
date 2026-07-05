@@ -2,7 +2,7 @@
 title: "Gross to Net Salary: Tax & Deduction Guide"
 description: "Calculate exact take-home pay from any gross salary. Covers USA & UK tax formulas, pre-tax deduction strategies, real payslip examples & free calculator →"
 date: "2026-06-08"
-dateModified: "2026-06-08"
+dateModified: "2026-07-05"
 category: "Salary"
 emoji: "💼"
 readTime: "10 min read"
@@ -21,7 +21,7 @@ canonical: "https://quickfincalc.com/articles/gross-to-net-salary-guide"
   "description": "Calculate exact take-home pay from any gross salary. Covers USA & UK tax formulas, pre-tax deduction strategies, real payslip examples & free calculator.",
   "image": "https://quickfincalc.com/images/gross-to-net-salary-guide.jpg",
   "datePublished": "2026-06-08",
-  "dateModified": "2026-06-08",
+  "dateModified": "2026-07-05",
   "author": {
     "@type": "Person",
     "name": "Md. Merajul Islam",

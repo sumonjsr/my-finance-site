@@ -2,7 +2,7 @@
 title: "Salary Sacrifice Pension: UK Tax & NI Guide"
 description: "Calculate salary sacrifice pension savings instantly. See tax relief, National Insurance savings, net income impact & how to maximize your retirement pot →"
 date: "2026-05-11"
-dateModified: "2026-05-11"
+dateModified: "2026-07-05"
 category: "Pensions"
 emoji: "💰"
 readTime: "12 min read"
@@ -21,7 +21,7 @@ canonical: "https://quickfincalc.com/articles/salary-sacrifice-pension-guide"
   "description": "Calculate salary sacrifice pension savings instantly. See tax relief, National Insurance savings, net income impact & how to maximize your retirement pot.",
   "image": "https://quickfincalc.com/images/salary-sacrifice-pension-guide.jpg",
   "datePublished": "2026-05-11",
-  "dateModified": "2026-05-11",
+  "dateModified": "2026-07-05",
   "author": {
     "@type": "Person",
     "name": "Md. Merajul Islam",

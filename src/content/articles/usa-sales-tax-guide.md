@@ -2,7 +2,7 @@
 title: "Sales Tax Calculator: USA States & Cities"
 description: "Calculate sales tax by state and city instantly. Includes nexus rules, exemptions, compliance strategies & real e-commerce sales tax examples for 2026 →"
 date: "2026-06-12"
-dateModified: "2026-06-12"
+dateModified: "2026-07-05"
 category: "Business & Tax"
 emoji: "🛒"
 readTime: "15 min read"
@@ -21,7 +21,7 @@ canonical: "https://quickfincalc.com/articles/usa-sales-tax-guide"
   "description": "Calculate sales tax by state and city instantly. Includes nexus rules, exemptions, compliance strategies & real e-commerce sales tax examples for 2026.",
   "image": "https://quickfincalc.com/images/sales-tax-calculator-guide.jpg",
   "datePublished": "2026-06-12",
-  "dateModified": "2026-06-12",
+  "dateModified": "2026-07-05",
   "author": {
     "@type": "Person",
     "name": "Md. Merajul Islam",

@@ -2,7 +2,7 @@
 title: "UK Pension Tax: Withdrawal & Relief Guide"
 description: "Calculate UK pension tax on withdrawals and understand tax relief. Covers Lump Sum Allowance, HMRC rules, withdrawal tax rates & tax planning strategies →"
 date: "2026-05-20"
-dateModified: "2026-05-20"
+dateModified: "2026-07-05"
 category: "Pensions"
 emoji: "📊"
 readTime: "14 min read"
@@ -21,7 +21,7 @@ canonical: "https://quickfincalc.com/articles/uk-pension-tax-guide"
   "description": "Calculate UK pension tax on withdrawals and understand tax relief. Covers Lump Sum Allowance, HMRC rules, withdrawal tax rates & tax planning strategies.",
   "image": "https://quickfincalc.com/images/uk-pension-tax-guide.jpg",
   "datePublished": "2026-05-20",
-  "dateModified": "2026-05-20",
+  "dateModified": "2026-07-05",
   "author": {
     "@type": "Person",
     "name": "Md. Merajul Islam",

@@ -2,7 +2,7 @@
 title: "Salary & HR Calculators for Business 2026"
 description: "Free HR calculators for salary conversion, employee turnover cost, EBITDA margin & current ratio. Includes 2026 industry benchmarks & optimization tips →"
 date: "2026-05-06"
-dateModified: "2026-05-06"
+dateModified: "2026-07-05"
 category: "Business & HR"
 emoji: "💼"
 readTime: "18 min read"
@@ -21,7 +21,7 @@ canonical: "https://quickfincalc.com/articles/salary-hr-calculators"
   "description": "Free HR calculators for salary conversion, employee turnover cost, EBITDA margin & current ratio. Includes 2026 industry benchmarks & optimization tips.",
   "image": "https://quickfincalc.com/images/salary-hr-calculators.jpg",
   "datePublished": "2026-05-06",
-  "dateModified": "2026-05-06",
+  "dateModified": "2026-07-05",
   "author": {
     "@type": "Person",
     "name": "Md. Merajul Islam",

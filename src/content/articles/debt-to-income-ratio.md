@@ -2,7 +2,7 @@
 title: "Debt-to-Income Ratio Calculator & Guide"
 description: "Calculate your DTI ratio instantly. Check mortgage, FHA & auto loan qualification thresholds, see front-end vs back-end DTI & proven ways to lower it →"
 date: "2026-04-17"
-dateModified: "2026-04-17"
+dateModified: "2026-07-05"
 category: "Loans"
 emoji: "⚖️"
 readTime: "12 min read"
@@ -21,7 +21,7 @@ canonical: "https://quickfincalc.com/articles/debt-to-income-ratio"
   "description": "Calculate your DTI ratio instantly. Check mortgage, FHA & auto loan qualification thresholds, see front-end vs back-end DTI & proven ways to lower it.",
   "image": "https://quickfincalc.com/images/debt-to-income-ratio.jpg",
   "datePublished": "2026-04-17",
-  "dateModified": "2026-04-17",
+  "dateModified": "2026-07-05",
   "author": {
     "@type": "Person",
     "name": "Md. Merajul Islam",

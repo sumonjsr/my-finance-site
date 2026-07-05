@@ -2,7 +2,7 @@
 title: "EPS Calculator: Stock Profit Analysis Guide"
 description: "Calculate earnings per share & stock profit instantly. Learn basic vs diluted EPS, avoid the top 5 valuation mistakes & evaluate any stock like a pro →"
 date: "2026-04-20"
-dateModified: "2026-04-20"
+dateModified: "2026-07-05"
 category: "Investing"
 emoji: "📈"
 readTime: "13 min read"
@@ -21,7 +21,7 @@ canonical: "https://quickfincalc.com/articles/eps-guide"
   "description": "Calculate earnings per share & stock profit instantly. Learn basic vs diluted EPS, avoid the top 5 valuation mistakes & evaluate any stock like a pro.",
   "image": "https://quickfincalc.com/images/eps-calculator-guide.jpg",
   "datePublished": "2026-04-20",
-  "dateModified": "2026-04-20",
+  "dateModified": "2026-07-05",
   "author": {
     "@type": "Person",
     "name": "Md. Merajul Islam",

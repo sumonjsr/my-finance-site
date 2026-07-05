@@ -2,7 +2,7 @@
 title: "Mortgage Calculator & Amortization Guide"
 description: "Calculate exact mortgage payments & see full amortization schedule. Compare fixed vs ARM, 15 vs 30-year loans & discover strategies to save thousands →"
 date: "2026-04-14"
-dateModified: "2026-04-14"
+dateModified: "2026-07-05"
 category: "Loans"
 emoji: "🏠"
 readTime: "12 min read"
@@ -21,7 +21,7 @@ canonical: "https://quickfincalc.com/articles/mortgage-loan-guide"
   "description": "Calculate exact mortgage payments & see full amortization schedule. Compare fixed vs ARM, 15 vs 30-year loans & discover strategies to save thousands.",
   "image": "https://quickfincalc.com/images/mortgage-loan-guide.jpg",
   "datePublished": "2026-04-14",
-  "dateModified": "2026-04-14",
+  "dateModified": "2026-07-05",
   "author": {
     "@type": "Person",
     "name": "Md. Merajul Islam",
