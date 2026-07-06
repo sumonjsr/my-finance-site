@@ -140,11 +140,58 @@ const categoryInfo = {
             padding: 0 20px;
         }
 
+        /* ✨ CATEGORY JUMP NAVIGATION */
+        .category-nav-wrapper {
+            position: sticky;
+            top: 0;
+            z-index: 900;
+            background: rgba(253, 251, 247, 0.95);
+            backdrop-filter: blur(6px);
+            border-bottom: 1px solid var(--border);
+            padding: 12px 20px;
+            margin-bottom: 40px;
+        }
+
+        .category-nav {
+            max-width: 1300px;
+            margin: 0 auto;
+            display: flex;
+            gap: 10px;
+            overflow-x: auto;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+
+        .category-nav::-webkit-scrollbar { display: none; }
+
+        .category-nav-pill {
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 16px;
+            background: white;
+            border: 1.5px solid var(--border);
+            border-radius: 20px;
+            color: var(--primary);
+            text-decoration: none;
+            font-size: 0.82rem;
+            font-weight: 700;
+            white-space: nowrap;
+            transition: all 0.2s ease;
+        }
+
+        .category-nav-pill:hover {
+            border-color: var(--secondary);
+            background: #fdfaf5;
+            transform: translateY(-2px);
+        }
+
         /* WHY QUICKFINCALC SECTION */
         .why-section {
             background: linear-gradient(135deg, #f8f9ff 0%, #f0f4ff 100%);
             padding: 40px 20px;
-            margin: -50px auto 80px;
+            margin: 0 auto 80px;
             border-radius: 12px;
             border-left: 4px solid var(--primary);
             max-width: 1000px;
@@ -616,6 +663,7 @@ const categoryInfo = {
 
         .category-block {
             margin-bottom: 55px;
+            scroll-margin-top: 80px;
         }
 
         .category-block-header {
@@ -657,29 +705,64 @@ const categoryInfo = {
         .calc-list-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-            gap: 10px;
+            gap: 12px;
         }
 
+        /* ✨ Redesigned calculator card — icon badge + premium shine hover */
         .calc-list-item {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
             background: white;
             border: 1px solid var(--border);
             border-left: 3px solid var(--cat-color, var(--secondary));
-            border-radius: 8px;
-            padding: 12px 14px;
+            border-radius: 10px;
+            padding: 14px 16px;
             text-decoration: none;
-            transition: all 0.2s ease;
+            transition: all 0.25s ease;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+        }
+
+        .calc-list-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(212,163,115,0.15), transparent);
+            transition: left 0.5s ease;
+            pointer-events: none;
+        }
+
+        .calc-list-item:hover::before {
+            left: 100%;
         }
 
         .calc-list-item:hover {
             background: #f8fafc;
-            box-shadow: 0 4px 12px rgba(30,58,138,0.09);
-            transform: translateX(4px);
+            box-shadow: 0 10px 25px rgba(30,58,138,0.12);
+            transform: translateY(-3px);
+            border-color: var(--cat-color, var(--secondary));
         }
 
-        .calc-list-info { flex: 1; min-width: 0; }
+        .calc-list-icon {
+            flex-shrink: 0;
+            width: 38px;
+            height: 38px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f1f5f9;
+            border-radius: 9px;
+            font-size: 1.1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .calc-list-info { flex: 1; min-width: 0; position: relative; z-index: 1; }
 
         .calc-list-name {
             color: var(--primary);
@@ -705,6 +788,30 @@ const categoryInfo = {
             color: var(--cat-color, var(--secondary));
             font-size: 0.9rem;
             flex-shrink: 0;
+            position: relative;
+            z-index: 1;
+            transition: transform 0.25s ease;
+        }
+
+        .calc-list-item:hover .calc-list-arrow {
+            transform: translateX(4px);
+        }
+
+        /* ✨ No results message for search */
+        .no-results-message {
+            display: none;
+            text-align: center;
+            padding: 50px 20px;
+            color: var(--text-light);
+            font-size: 1rem;
+        }
+
+        .no-results-message strong {
+            color: var(--primary);
+            display: block;
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+            font-family: 'Crimson Pro', serif;
         }
 
         /* CTA SECTION */
@@ -768,7 +875,7 @@ const categoryInfo = {
             .section-title { font-size: 1.8rem; margin-bottom: 30px; }
             .cta-section { padding: 40px 20px; }
             .cta-section h2 { font-size: 1.6rem; }
-            .why-section { padding: 30px 20px; margin: -30px auto 60px; }
+            .why-section { padding: 30px 20px; margin: 0 auto 60px; }
             .why-section h2 { font-size: 1.4rem; }
             .quick-stats { grid-template-columns: repeat(2, 1fr); }
             .benefits-section h2 { font-size: 1.4rem; }
@@ -805,6 +912,21 @@ const categoryInfo = {
         </div>
     </section>
 
+    <!-- ✨ CATEGORY JUMP NAVIGATION -->
+    <div class="category-nav-wrapper">
+        <nav class="category-nav" aria-label="Jump to category">
+            {Object.entries(calcsByType).map(([type, calcs]) => {
+                const info = categoryInfo[type] || { title: type, emoji: '📊' };
+                return (
+                    <a href={`#cat-${type}`} class="category-nav-pill">
+                        <span>{info.emoji}</span>
+                        <span>{info.title}</span>
+                    </a>
+                );
+            })}
+        </nav>
+    </div>
+
     <div class="main-container">
 
         <!-- CALCULATORS BY CATEGORY — Option C: Full list per category -->
@@ -814,7 +936,7 @@ const categoryInfo = {
             {Object.entries(calcsByType).map(([type, calcs]) => {
                 const info = categoryInfo[type] || { title: type, emoji: '📊', description: 'Financial calculators', color: '#d4a373' };
                 return (
-                    <div class="category-block" style={`--cat-color: ${info.color}`}>
+                    <div class="category-block" id={`cat-${type}`} style={`--cat-color: ${info.color}`}>
                         <div class="category-block-header">
                             <span class="category-block-emoji">{info.emoji}</span>
                             <h3 class="category-block-title">{info.title}</h3>
@@ -824,6 +946,7 @@ const categoryInfo = {
                         <div class="calc-list-grid">
                             {calcs.map(calc => (
                                 <a href={`/calculator/${calc.slug}`} class="calc-list-item">
+                                    <span class="calc-list-icon">{info.emoji}</span>
                                     <div class="calc-list-info">
                                         <span class="calc-list-name">{calc.name}</span>
                                         <span class="calc-list-desc">{calc.description}</span>
@@ -835,6 +958,11 @@ const categoryInfo = {
                     </div>
                 );
             })}
+
+            <div class="no-results-message" id="noResultsMessage">
+                <strong>No matching calculators found</strong>
+                Try a different keyword, or clear the search to browse all 53 tools.
+            </div>
         </div>
 
         <!-- WHY QUICKFINCALC SECTION -->
@@ -1050,6 +1178,8 @@ const categoryInfo = {
         function filterCalculators() {
             const searchTerm = document.getElementById('searchInput').value.toLowerCase().trim();
             const blocks = document.querySelectorAll('.category-block');
+            const noResultsMessage = document.getElementById('noResultsMessage');
+            let anyVisible = false;
 
             blocks.forEach(block => {
                 const items = block.querySelectorAll('.calc-list-item');
@@ -1064,7 +1194,12 @@ const categoryInfo = {
                 });
 
                 block.style.display = searchTerm === '' || blockMatch ? 'block' : 'none';
+                if (searchTerm === '' || blockMatch) anyVisible = true;
             });
+
+            if (noResultsMessage) {
+                noResultsMessage.style.display = (!anyVisible && searchTerm !== '') ? 'block' : 'none';
+            }
 
             if (searchTerm !== '') {
                 const section = document.getElementById('calculatorsSection');
