@@ -132,7 +132,7 @@ const breadcrumbSchema = {
                 <div class="field">
                   <label for="v2" class="label-with-toggle">
                     <span>{calc.label2}</span>
-                    {calc.formula === 'mortgage' && (
+                    {(calc.formula === 'mortgage' || calc.formula === 'car_loan') && (
                       <span class="dp-toggle" id="dpToggle" data-mode="pct">
                         <button type="button" class="dp-toggle-btn active" data-mode-btn="pct">%</button>
                         <button type="button" class="dp-toggle-btn" data-mode-btn="amt">$</button>
@@ -231,6 +231,51 @@ const breadcrumbSchema = {
                     <input type="number" id="v7" class="calc-input" placeholder="0.00" step="any" min="0" />
                   </div>
                 </>
+              )}
+
+              {/* ✨ Car Loan-only extra inputs: Term, Trade-in, Sales Tax, Fees */}
+              {calc.formula === 'car_loan' && (
+                <>
+                  <div class="field">
+                    <label for="v4">Loan Term (Months)</label>
+                    <input type="number" id="v4" class="calc-input" placeholder="e.g. 60" step="any" min="1" max="120" />
+                  </div>
+
+                  <div class="field">
+                    <label for="v5">
+                      Trade-in Value
+                      <span style="font-weight:400; color:#94a3b8; margin-left:6px;">($, optional)</span>
+                    </label>
+                    <input type="number" id="v5" class="calc-input" placeholder="0.00" step="any" min="0" />
+                  </div>
+
+                  <div class="field">
+                    <label for="v6">
+                      Sales Tax Rate
+                      <span style="font-weight:400; color:#94a3b8; margin-left:6px;">(%, optional)</span>
+                    </label>
+                    <input type="number" id="v6" class="calc-input" placeholder="e.g. 6" step="any" min="0" max="20" />
+                  </div>
+
+                  <div class="field">
+                    <label for="v7">
+                      Title & Registration Fees
+                      <span style="font-weight:400; color:#94a3b8; margin-left:6px;">($, optional)</span>
+                    </label>
+                    <input type="number" id="v7" class="calc-input" placeholder="0.00" step="any" min="0" />
+                  </div>
+                </>
+              )}
+
+              {/* ✨ Personal Loan-only extra input: Origination Fee */}
+              {calc.formula === 'personal_loan' && (
+                <div class="field">
+                  <label for="v4">
+                    Origination Fee
+                    <span style="font-weight:400; color:#94a3b8; margin-left:6px;">(%, optional)</span>
+                  </label>
+                  <input type="number" id="v4" class="calc-input" placeholder="e.g. 3" step="any" min="0" max="15" />
+                </div>
               )}
             </div>
 
@@ -1250,6 +1295,120 @@ const breadcrumbSchema = {
 
           // ✨ Amortization is based on Principal & Interest only (matches industry standard)
           buildAndShowAmortization(loanAmount, rateAnnual, months, pAndI, mRate);
+          break;
+        }
+
+        // ─── Car Loan (Amount Financed = Price − Down Payment − Trade-in + Tax + Fees) ──
+        case 'car_loan': {
+          const vehiclePrice = v1;
+          const dpRaw = v2;
+          const rateAnnual = v3;
+          const v4c = getValue('v4'); // term months
+          const v5c = getValue('v5'); // trade-in
+          const v6c = getValue('v6'); // sales tax %
+          const v7c = getValue('v7'); // fees
+
+          const dpToggleEl = document.getElementById('dpToggle');
+          const dpMode = dpToggleEl ? dpToggleEl.dataset.mode : 'pct';
+          let downPaymentCar = dpMode === 'amt' ? dpRaw : vehiclePrice * (dpRaw / 100);
+          downPaymentCar = Math.max(downPaymentCar, 0);
+
+          if (!vehiclePrice || vehiclePrice <= 0) {
+            resDiv.innerHTML = '⚠️ Please enter a valid vehicle price.';
+            resDiv.style.display = 'block';
+            resDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            return;
+          }
+
+          const tradeIn = Math.max(v5c || 0, 0);
+          const taxableAmount = Math.max(vehiclePrice - tradeIn, 0);
+          const salesTax = taxableAmount * ((v6c || 0) / 100);
+          const fees = v7c || 0;
+
+          const amountFinanced = vehiclePrice - downPaymentCar - tradeIn + salesTax + fees;
+
+          if (amountFinanced <= 0) {
+            resDiv.innerHTML = `⚠️ Your down payment and trade-in value together (${fmt(downPaymentCar + tradeIn)}) cover the full vehicle cost. Nothing left to finance — please check your entries if this wasn't intended.`;
+            resDiv.style.display = 'block';
+            resDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            return;
+          }
+
+          const monthsCar = Math.round(v4c) > 0 ? Math.round(v4c) : 60;
+          const rCar = (rateAnnual / 12) / 100;
+          const emiCar = rCar > 0
+            ? (amountFinanced * rCar * Math.pow(1 + rCar, monthsCar)) / (Math.pow(1 + rCar, monthsCar) - 1)
+            : amountFinanced / monthsCar;
+          const totalIntCar = (emiCar * monthsCar) - amountFinanced;
+
+          out = `
+            <div style="background:linear-gradient(135deg, #1e3a8a, #1e40af); color:white; padding:22px; border-radius:14px; margin-bottom:18px;">
+              <p style="margin:0; opacity:0.9; font-size:0.9rem;">Monthly Payment</p>
+              <h2 style="margin:6px 0 0; font-size:2.2rem; color:white;">${fmt(emiCar)}</h2>
+            </div>
+            <div style="text-align:left; font-size:1rem; line-height:2;">
+              <div style="display:flex; justify-content:space-between;"><span>Vehicle Price:</span><strong>${fmt(vehiclePrice)}</strong></div>
+              <div style="display:flex; justify-content:space-between;"><span>Down Payment:</span><strong>-${fmt(downPaymentCar)}</strong></div>
+              ${tradeIn > 0 ? `<div style="display:flex; justify-content:space-between;"><span>Trade-in Value:</span><strong>-${fmt(tradeIn)}</strong></div>` : ''}
+              ${salesTax > 0 ? `<div style="display:flex; justify-content:space-between;"><span>Sales Tax:</span><strong>+${fmt(salesTax)}</strong></div>` : ''}
+              ${fees > 0 ? `<div style="display:flex; justify-content:space-between;"><span>Title & Registration Fees:</span><strong>+${fmt(fees)}</strong></div>` : ''}
+              <hr style="border:0; border-top:1px solid #e2e8f0; margin:8px 0;">
+              <div style="display:flex; justify-content:space-between;"><span>Amount Financed:</span><strong>${fmt(amountFinanced)}</strong></div>
+              <div style="display:flex; justify-content:space-between;"><span>Total Interest:</span><strong>${fmt(totalIntCar)}</strong></div>
+              <div style="display:flex; justify-content:space-between;"><span>Total Repayment:</span><strong>${fmt(emiCar * monthsCar)}</strong></div>
+            </div>
+          `;
+
+          cLabels = ['Amount Financed', 'Total Interest'];
+          cData = [amountFinanced, totalIntCar];
+
+          buildAndShowAmortization(amountFinanced, rateAnnual, monthsCar, emiCar, rCar);
+          break;
+        }
+
+        // ─── Personal Loan (with optional Origination Fee) ──
+        case 'personal_loan': {
+          const loanAmountP = v1;
+          const rateAnnualP = v2;
+          const monthsP = v3;
+          const originationPct = getValue('v4');
+
+          if (!loanAmountP || loanAmountP <= 0) {
+            resDiv.innerHTML = '⚠️ Please enter a valid loan amount.';
+            resDiv.style.display = 'block';
+            resDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            return;
+          }
+
+          const rP = (rateAnnualP / 12) / 100;
+          const emiP = rP > 0
+            ? (loanAmountP * rP * Math.pow(1 + rP, monthsP)) / (Math.pow(1 + rP, monthsP) - 1)
+            : loanAmountP / monthsP;
+          const totalIntP = (emiP * monthsP) - loanAmountP;
+          const feeAmount = loanAmountP * ((originationPct || 0) / 100);
+          const netDisbursed = loanAmountP - feeAmount;
+          const totalCostP = totalIntP + feeAmount;
+
+          out = `
+            <div style="background:linear-gradient(135deg, #1e3a8a, #1e40af); color:white; padding:22px; border-radius:14px; margin-bottom:18px;">
+              <p style="margin:0; opacity:0.9; font-size:0.9rem;">Monthly Payment</p>
+              <h2 style="margin:6px 0 0; font-size:2.2rem; color:white;">${fmt(emiP)}</h2>
+            </div>
+            <div style="text-align:left; font-size:1rem; line-height:2;">
+              <div style="display:flex; justify-content:space-between;"><span>Loan Amount:</span><strong>${fmt(loanAmountP)}</strong></div>
+              ${feeAmount > 0 ? `<div style="display:flex; justify-content:space-between; color:#dc2626;"><span>Origination Fee (${originationPct}%):</span><strong>-${fmt(feeAmount)}</strong></div>` : ''}
+              ${feeAmount > 0 ? `<div style="display:flex; justify-content:space-between;"><span>You'll Actually Receive:</span><strong>${fmt(netDisbursed)}</strong></div>` : ''}
+              <hr style="border:0; border-top:1px solid #e2e8f0; margin:8px 0;">
+              <div style="display:flex; justify-content:space-between;"><span>Total Interest:</span><strong>${fmt(totalIntP)}</strong></div>
+              <div style="display:flex; justify-content:space-between;"><span>Total Repayment:</span><strong>${fmt(emiP * monthsP)}</strong></div>
+              <div style="display:flex; justify-content:space-between;"><span>Total Cost of Loan (Interest + Fee):</span><strong>${fmt(totalCostP)}</strong></div>
+            </div>
+          `;
+
+          cLabels = feeAmount > 0 ? ['Principal', 'Total Interest', 'Origination Fee'] : ['Principal Amount', 'Total Interest'];
+          cData = feeAmount > 0 ? [loanAmountP, totalIntP, feeAmount] : [loanAmountP, totalIntP];
+
+          buildAndShowAmortization(loanAmountP, rateAnnualP, monthsP, emiP, rP);
           break;
         }
 

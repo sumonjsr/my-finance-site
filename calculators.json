@@ -82,140 +82,140 @@
 },
   
   {
-    "slug": "car-loan-calculator",
-    "formula": "loan",
-    "type": "loan",
-    "name": "Auto Loan & Car EMI Calculator",
-    "description": "Calculate monthly car loan EMI, total interest & auto financing costs. Free for new, used & refinanced vehicles.",
-    "label1": "Vehicle Price / Loan Amount",
-    "label2": "Annual Interest Rate (APR %)",
-    "label3": "Loan Term (Months)",
-    "what_is": "Getting behind the wheel of a new vehicle is exciting, but your monthly finance bill should never come as a surprise. This free global auto loan calculator estimates your Equated Monthly Installment (EMI) or monthly car payment instantly, whether you are buying from a private seller, a local dealership, or exploring vehicle refinancing options.",
-    "who_use": "This tool is perfect for global car buyers financing through banks, credit unions, or auto lenders. It is also highly useful for buyers looking to check reasonable APRs based on their credit score or existing car owners considering refinancing their current loan.",
-    "how_to_use": "1. Type in the total vehicle price or loan amount (works with $, £, €, or any currency). 2. Enter your lender's annual interest rate (APR). 3. Select the loan duration or tenure in months. 4. Click calculate to view your fixed payment.",
-    "how_to_read": "Your result displays the exact fixed amount you need to set aside every month. Look closely at the lifetime interest figure—this tells you exactly how much extra you are paying for the convenience of vehicle financing.",
-    "pro_tip": "To stay financially healthy, aim for a car loan term of 48 months or less to avoid paying more in interest than the car's depreciated value. Use this calculator to see how much money you save by shortening your loan term by just 12 months!",
-    "seo": {
-      "title": "Auto Loan Calculator | Car EMI & Payment Estimator",
-      "meta_description": "Calculate monthly car loan payments instantly. Works for new, used & refinanced vehicles. Free auto loan EMI calculator with accurate APR rates.",
-      "h1": "Auto Loan & Car EMI Calculator",
-      "primary_keyword": "auto loan calculator",
-      "secondary_keywords": [
-        "car loan calculator",
-        "monthly car payment calculator",
-        "vehicle loan calculator",
-        "car EMI calculator"
-      ],
-      "h2_structure": [
-        "What Is an Auto Loan EMI Calculator?",
-        "Who Should Use This Car Loan Tool?",
-        "How to Calculate Your Monthly Car Payment",
-        "How to Understand Your Vehicle Loan Results",
-        "Frequently Asked Questions"
-      ],
-      "faqs": [
-        {
-          "question": "What is a reasonable APR for a car loan?",
-          "answer": "Auto loan APRs typically range from 5% to 8% for excellent credit scores. Subprime lenders may offer higher rates for first-time buyers. Always calculate your EMI beforehand."
-        },
-        {
-          "question": "How long should my car loan term be?",
-          "answer": "Most experts recommend 48 to 60 months. Shorter terms mean higher monthly payments but significantly lower total interest costs."
-        },
-        {
-          "question": "Can I use this calculator for used cars and refinancing?",
-          "answer": "Absolutely. Enter the purchase price of the used vehicle or your remaining refinance principal, input the interest rate, and select your term."
-        },
-        {
-          "question": "Does this tool support different currencies?",
-          "answer": "Yes. The standard loan formula works across all currencies. You can input Dollars, Pounds, Euros, or any global currency seamlessly."
-        }
-      ],
-      "schema": {
-        "type": "SoftwareApplication",
-        "applicationCategory": "FinanceApplication",
-        "name": "Auto Loan EMI Calculator",
-        "description": "Calculate monthly car loan payments for new, used, or refinanced vehicles globally.",
-        "url": "https://quickfincalc.com/calculator/car-loan-calculator",
-        "offers": {
-          "price": "0",
-          "priceCurrency": "USD"
-        }
+  "slug": "car-loan-calculator",
+  "formula": "car_loan",
+  "type": "loan",
+  "name": "Auto Loan & Car EMI Calculator",
+  "description": "Calculate monthly car loan payments including down payment, trade-in, sales tax & fees. Free for new, used & refinanced vehicles.",
+  "label1": "Vehicle Price",
+  "label2": "Down Payment",
+  "label3": "Interest Rate (Annual APR %)",
+  "what_is": "Getting behind the wheel of a new vehicle is exciting, but your monthly finance bill should never come as a surprise. This free auto loan calculator computes your true Amount Financed — vehicle price plus sales tax and fees, minus your down payment and trade-in value — then estimates your exact monthly payment (EMI), whether you are buying from a private seller, a local dealership, or refinancing an existing loan.",
+  "who_use": "This tool is perfect for car buyers financing through banks, credit unions, or dealership lenders. It is especially useful for buyers with a trade-in vehicle, buyers in states that charge sales tax on vehicle purchases, and anyone comparing loan offers that roll title and registration fees into the loan.",
+  "how_to_use": "1. Enter the vehicle price. 2. Enter your down payment (toggle between % or $). 3. Enter your lender's annual interest rate (APR). 4. Enter the loan term in months. 5. Optionally add your trade-in value, local sales tax rate, and title/registration fees for a complete Amount Financed calculation. 6. Click Calculate to see your monthly payment and full breakdown.",
+  "how_to_read": "Your result shows the exact fixed amount you need to set aside every month, along with a full breakdown of how your Amount Financed was calculated (price, down payment, trade-in, tax, and fees). Look closely at the total interest figure — this tells you exactly how much extra you are paying for the convenience of vehicle financing.",
+  "pro_tip": "In most states, sales tax is calculated on the price after your trade-in value is subtracted — but a few states tax the full vehicle price regardless of trade-in. Check your local rule before entering your tax rate, since it can meaningfully change your Amount Financed.",
+  "seo": {
+    "title": "Auto Loan Calculator | Car EMI & Payment Estimator",
+    "meta_description": "Calculate monthly car loan payments with down payment, trade-in, sales tax & fees included. Free auto loan EMI calculator with accurate results.",
+    "h1": "Auto Loan & Car EMI Calculator",
+    "primary_keyword": "auto loan calculator",
+    "secondary_keywords": [
+      "car loan calculator",
+      "monthly car payment calculator",
+      "car loan calculator with trade-in",
+      "car loan calculator with tax and fees"
+    ],
+    "h2_structure": [
+      "What Is an Auto Loan EMI Calculator?",
+      "Who Should Use This Car Loan Tool?",
+      "How to Calculate Your Monthly Car Payment",
+      "How to Understand Your Vehicle Loan Results",
+      "Frequently Asked Questions"
+    ],
+    "faqs": [
+      {
+        "question": "What is a reasonable APR for a car loan?",
+        "answer": "Auto loan APRs typically range from 5% to 8% for excellent credit scores. Subprime lenders may offer higher rates for first-time buyers. Always calculate your EMI beforehand."
+      },
+      {
+        "question": "Does trade-in value reduce my sales tax?",
+        "answer": "In most U.S. states, yes — sales tax is calculated on the price after your trade-in value is subtracted. A few states, including California and Michigan, tax the full purchase price regardless of trade-in."
+      },
+      {
+        "question": "Should I roll fees and taxes into my loan or pay upfront?",
+        "answer": "Paying upfront reduces your Amount Financed and total interest paid. Rolling fees into the loan increases your monthly payment slightly but preserves cash on hand — compare both using this calculator."
+      },
+      {
+        "question": "Can I use this calculator for used cars and refinancing?",
+        "answer": "Absolutely. Enter the purchase price of the used vehicle or your remaining refinance principal, input the interest rate, and select your term."
+      },
+      {
+        "question": "How long should my car loan term be?",
+        "answer": "Most experts recommend 48 to 60 months. Shorter terms mean higher monthly payments but significantly lower total interest costs."
+      }
+    ],
+    "schema": {
+      "type": "SoftwareApplication",
+      "applicationCategory": "FinanceApplication",
+      "name": "Auto Loan EMI Calculator",
+      "description": "Calculate monthly car loan payments including down payment, trade-in, sales tax, and fees.",
+      "url": "https://quickfincalc.com/calculator/car-loan-calculator",
+      "offers": {
+        "price": "0",
+        "priceCurrency": "USD"
       }
     }
-  },
+  }
+},
 
   {
-    "slug": "personal-loan-calculator",
-    "formula": "loan",
-    "type": "loan",
-    "name": "Personal Loan & EMI Calculator",
-    "description": "Calculate monthly personal loan EMI, total repayment & interest cost. Free tool for any currency & lender worldwide.",
-    "label1": "Loan Amount",
-    "label2": "Annual Interest Rate (APR %)",
-    "label3": "Loan Term (Months)",
-    "what_is": "A personal loan calculator helps you estimate exactly what you will owe each month before you commit to borrowing. Personal loans are unsecured credit products — meaning no collateral is required — commonly used for debt consolidation, medical expenses, home improvements, or major purchases. By entering your loan amount, APR, and repayment term, this tool instantly calculates your fixed monthly installment (EMI), total repayment amount, and lifetime interest cost so you can make a fully informed borrowing decision.",
-    "who_use": "This calculator is built for anyone evaluating or comparing personal loan offers from traditional banks, credit unions, online lenders, or peer-to-peer (P2P) platforms. It is particularly useful for first-time borrowers learning how APR affects monthly payments, borrowers comparing multiple competing offers side by side, individuals planning a debt consolidation strategy, and anyone budgeting for a large upcoming expense like a wedding, relocation, or medical procedure.",
-    "how_to_use": "1. Enter your desired loan amount — the total principal you plan to borrow. Works with any currency including USD, GBP, EUR, AUD, INR, and more. 2. Input the annual interest rate (APR) quoted by your lender. If comparing offers, start with the lowest APR first. 3. Set your repayment term in months — for example, 12 months for one year or 60 months for five years. 4. Click Calculate to instantly see your fixed monthly payment, total amount repaid, and total interest charged over the loan life.",
-    "how_to_read": "Your results will display three key figures. Your Monthly EMI is the fixed amount you owe your lender each month — this never changes for a standard fixed-rate personal loan. Your Total Repayment is the monthly EMI multiplied by your full loan term, showing the complete amount you will pay back. Your Total Interest Cost is the difference between total repayment and your original loan principal — this is the true cost of borrowing. A shorter loan term reduces total interest but increases your monthly payment. A longer term lowers the monthly payment but increases the total interest paid over time.",
-    "pro_tip": "Always compare at least three lenders before signing. Even a 1% reduction in APR can save hundreds of dollars on a typical $10,000 loan. Focus on APR rather than just the monthly payment — a lower monthly payment with a longer term often costs significantly more in total interest. If your credit score is 720 or above, negotiate aggressively for a lower rate or use competing offers as leverage. Also check for origination fees, early repayment penalties, and prepayment options, as these can materially change your true borrowing cost.",
-    "seo": {
-      "title": "Personal Loan Calculator | Estimate EMI & Interest",
-      "meta_description": "Calculate personal loan EMI, total repayment & interest instantly. Free tool to compare loan offers from any bank or lender. Works with all currencies.",
-      "h1": "Personal Loan & EMI Calculator",
-      "primary_keyword": "personal loan calculator",
-      "secondary_keywords": [
-        "personal loan EMI calculator",
-        "monthly loan payment calculator",
-        "loan interest calculator",
-        "unsecured loan calculator"
-      ],
-      "h2_structure": [
-        "What Is a Personal Loan Calculator?",
-        "Who Should Use This Calculator?",
-        "How to Calculate Your Monthly Personal Loan Payment",
-        "How to Read Your Loan Results",
-        "Frequently Asked Questions"
-      ],
-      "faqs": [
-        {
-          "question": "How much personal loan can I safely afford?",
-          "answer": "Keep total monthly debt obligations below 36% of gross monthly income (Debt-to-Income ratio). For example, if you earn $5,000/month, total debt payments shouldn't exceed $1,800."
-        },
-        {
-          "question": "What is the average personal loan interest rate?",
-          "answer": "Personal loan APRs typically range from 6% to 36% depending on credit score, income, and lender. Excellent credit (720+) qualifies for rates below 12%, while fair credit may see 18-28%."
-        },
-        {
-          "question": "What is the difference between APR and interest rate?",
-          "answer": "Interest rate is the base borrowing cost. APR includes the interest rate plus lender fees (like origination charges), making it a more accurate reflection of true annual cost. Always compare APRs."
-        },
-        {
-          "question": "How do I compare personal loan offers using this calculator?",
-          "answer": "Enter each lender's APR and term separately, then record the monthly EMI and total interest. The best offer usually has the lowest total interest, not just the lowest monthly payment."
-        },
-        {
-          "question": "Does a shorter loan term save money?",
-          "answer": "Yes. Shorter terms mean you pay interest for fewer months, reducing total interest significantly. However, monthly payments will be higher. Use this calculator to find the optimal balance."
-        },
-        {
-          "question": "Does this calculator work for all currencies?",
-          "answer": "Yes. The fixed-rate EMI formula is universal. Simply enter your loan amount in your local currency (USD, GBP, EUR, INR, CAD, etc.) and calculations will be accurate."
-        }
-      ],
-      "schema": {
-        "type": "SoftwareApplication",
-        "applicationCategory": "FinanceApplication",
-        "name": "Personal Loan & EMI Calculator",
-        "description": "Free calculator to estimate monthly personal loan payments, total interest, and repayment cost. Works with all currencies and lenders.",
-        "url": "https://quickfincalc.com/calculator/personal-loan-calculator",
-        "offers": {
-          "price": "0",
-          "priceCurrency": "USD"
-        }
+  "slug": "personal-loan-calculator",
+  "formula": "personal_loan",
+  "type": "loan",
+  "name": "Personal Loan & EMI Calculator",
+  "description": "Calculate monthly personal loan EMI, total repayment & origination fee cost. Free tool for any currency & lender worldwide.",
+  "label1": "Loan Amount",
+  "label2": "Annual Interest Rate (APR %)",
+  "label3": "Loan Term (Months)",
+  "what_is": "A personal loan calculator helps you estimate exactly what you will owe each month before you commit to borrowing. Personal loans are unsecured credit products — meaning no collateral is required — commonly used for debt consolidation, medical expenses, home improvements, or major purchases. By entering your loan amount, APR, and repayment term, this tool instantly calculates your fixed monthly installment (EMI), total repayment amount, and lifetime interest cost. If your lender charges an origination fee, this calculator also shows exactly how much cash you'll actually receive after the fee is deducted.",
+  "who_use": "This calculator is built for anyone evaluating or comparing personal loan offers from traditional banks, credit unions, online lenders, or peer-to-peer (P2P) platforms. It is particularly useful for first-time borrowers learning how APR and origination fees affect their real cost of borrowing, borrowers comparing multiple competing offers side by side, individuals planning a debt consolidation strategy, and anyone budgeting for a large upcoming expense.",
+  "how_to_use": "1. Enter your desired loan amount — the total principal you plan to borrow. Works with any currency including USD, GBP, EUR, AUD, INR, and more. 2. Input the annual interest rate (APR) quoted by your lender. 3. Set your repayment term in months. 4. If your lender charges an origination fee (commonly 1-10% of the loan amount), enter it to see your true disbursed amount. 5. Click Calculate to instantly see your fixed monthly payment, total amount repaid, and total interest charged over the loan life.",
+  "how_to_read": "Your results display your Monthly EMI — the fixed amount you owe your lender each month. If you entered an origination fee, you'll also see 'You'll Actually Receive' — this is your loan amount minus the fee, which is the real cash you get even though your EMI is calculated on the full loan amount. Your Total Cost of Loan combines total interest and the origination fee, giving you the true cost of borrowing.",
+  "pro_tip": "Always compare loans using APR, not just the advertised interest rate — APR includes the origination fee and reflects your true annual cost. A loan with a slightly higher interest rate but no origination fee can sometimes cost less overall than one with a lower rate and a large upfront fee. Use this calculator to test both scenarios before signing.",
+  "seo": {
+    "title": "Personal Loan Calculator | Estimate EMI & Interest",
+    "meta_description": "Calculate personal loan EMI, total repayment & origination fee cost instantly. Free tool to compare loan offers from any bank or lender.",
+    "h1": "Personal Loan & EMI Calculator",
+    "primary_keyword": "personal loan calculator",
+    "secondary_keywords": [
+      "personal loan EMI calculator",
+      "monthly loan payment calculator",
+      "personal loan origination fee calculator",
+      "unsecured loan calculator"
+    ],
+    "h2_structure": [
+      "What Is a Personal Loan Calculator?",
+      "Who Should Use This Calculator?",
+      "How to Calculate Your Monthly Personal Loan Payment",
+      "How to Read Your Loan Results",
+      "Frequently Asked Questions"
+    ],
+    "faqs": [
+      {
+        "question": "What is an origination fee?",
+        "answer": "An origination fee is a one-time upfront fee, usually 1% to 10% of the loan amount, that most lenders deduct before disbursing your funds. Your EMI is still calculated on the full loan amount, but the cash you receive is reduced by the fee."
+      },
+      {
+        "question": "How much personal loan can I safely afford?",
+        "answer": "Keep total monthly debt obligations below 36% of gross monthly income (Debt-to-Income ratio). For example, if you earn $5,000/month, total debt payments shouldn't exceed $1,800."
+      },
+      {
+        "question": "What is the average personal loan interest rate?",
+        "answer": "Personal loan APRs typically range from 6% to 36% depending on credit score, income, and lender. Excellent credit (720+) qualifies for rates below 12%, while fair credit may see 18-28%."
+      },
+      {
+        "question": "What is the difference between APR and interest rate?",
+        "answer": "Interest rate is the base borrowing cost. APR includes the interest rate plus lender fees like the origination fee, making it a more accurate reflection of true annual cost. Always compare APRs, not just interest rates."
+      },
+      {
+        "question": "Does this calculator work for all currencies?",
+        "answer": "Yes. The fixed-rate EMI formula is universal. Simply enter your loan amount in your local currency (USD, GBP, EUR, INR, CAD, etc.) and calculations will be accurate."
+      }
+    ],
+    "schema": {
+      "type": "SoftwareApplication",
+      "applicationCategory": "FinanceApplication",
+      "name": "Personal Loan & EMI Calculator",
+      "description": "Free calculator to estimate monthly personal loan payments, total interest, and origination fee cost.",
+      "url": "https://quickfincalc.com/calculator/personal-loan-calculator",
+      "offers": {
+        "price": "0",
+        "priceCurrency": "USD"
       }
     }
-  },
+  }
+},
 
   {
     "slug": "sba-7a-loan-calculator",
