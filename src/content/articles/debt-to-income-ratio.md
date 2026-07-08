@@ -11,6 +11,7 @@ author: "Md. Merajul Islam"
 authorRole: "Internal Auditor & Cost Control Specialist"
 authorUrl: "https://quickfincalc.com/#authorSection"
 canonical: "https://quickfincalc.com/articles/debt-to-income-ratio"
+image: "https://quickfincalc.com/images/debt-to-income-ratio.jpg"
 ---
 
 <script type="application/ld+json">

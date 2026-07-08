@@ -10,9 +10,15 @@ const articles = defineCollection({
     category: z.string(),
     emoji: z.string(),
     readTime: z.string(),
-    // নিচের দুটি ফিল্ড অবশ্যই যোগ করতে হবে কারণ আপনার নতুন আর্টিকেলে এগুলো আছে
-    author: z.string().optional(), 
+    author: z.string().optional(),
     keywords: z.string().optional(),
+    // ✨ নতুন যোগ করা fields — এগুলো আগে থেকেই আপনার .md ফাইলগুলোতে ছিল,
+    // কিন্তু schema-তে declare না থাকায় Astro এগুলো silently drop করে দিচ্ছিল
+    image: z.string().optional(),
+    dateModified: z.string().optional(),
+    authorRole: z.string().optional(),
+    authorUrl: z.string().optional(),
+    canonical: z.string().optional(),
   }),
 });
 

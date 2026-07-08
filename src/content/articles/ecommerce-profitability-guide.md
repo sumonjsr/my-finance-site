@@ -11,6 +11,7 @@ author: "Md. Merajul Islam"
 authorRole: "Internal Auditor & Cost Control Specialist"
 authorUrl: "https://quickfincalc.com/#authorSection"
 canonical: "https://quickfincalc.com/articles/ecommerce-profitability-guide"
+image: "https://quickfincalc.com/images/ecommerce-profitability-guide.jpg"
 ---
 
 <script type="application/ld+json">
@@ -19,7 +20,7 @@ canonical: "https://quickfincalc.com/articles/ecommerce-profitability-guide"
   "@type": "Article",
   "headline": "E-commerce Profit Margin Calculator Guide",
   "description": "Calculate true e-commerce profit margins for Shopify & Amazon FBA. Avoid hidden fee traps, fix margin vs markup errors & boost your net profit by 10-30%.",
-  "image": "https://quickfincalc.com/images/ecommerce-profit-margin.jpg",
+  "image": "https://quickfincalc.com/images/ecommerce-profitability-guide.jpg",
   "datePublished": "2026-04-16",
   "dateModified": "2026-07-05",
   "author": {
