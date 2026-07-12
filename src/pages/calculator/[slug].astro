@@ -277,6 +277,72 @@ const breadcrumbSchema = {
                   <input type="number" id="v4" class="calc-input" placeholder="e.g. 3" step="any" min="0" max="15" />
                 </div>
               )}
+
+              {/* ✨ Marketing ROI-only extra inputs: CAC/LTV + Channel Breakdown (all optional, collapsible) */}
+              {calc.formula === 'marketing_roi' && (
+                <div class="field-full">
+                  <details class="mkt-advanced">
+                    <summary>➕ Advanced: Customer &amp; Channel Metrics <span class="mkt-optional">(optional)</span></summary>
+
+                    <div class="mkt-advanced-inner">
+                      <p class="mkt-subheading">Customer Economics</p>
+                      <div class="field-grid">
+                        <div class="field">
+                          <label for="v4">New Customers Acquired</label>
+                          <input type="number" id="v4" class="calc-input" placeholder="e.g. 50" step="any" min="0" />
+                        </div>
+                        <div class="field">
+                          <label for="v5">Avg. Customer Lifetime Value</label>
+                          <input type="number" id="v5" class="calc-input" placeholder="0.00" step="any" min="0" />
+                        </div>
+                      </div>
+
+                      <p class="mkt-subheading">Channel Breakdown</p>
+                      <div class="field-grid">
+                        <div class="field">
+                          <label for="v6">Google Ads — Spend</label>
+                          <input type="number" id="v6" class="calc-input" placeholder="0.00" step="any" min="0" />
+                        </div>
+                        <div class="field">
+                          <label for="v7">Google Ads — Revenue</label>
+                          <input type="number" id="v7" class="calc-input" placeholder="0.00" step="any" min="0" />
+                        </div>
+                        <div class="field">
+                          <label for="v8">Meta Ads — Spend</label>
+                          <input type="number" id="v8" class="calc-input" placeholder="0.00" step="any" min="0" />
+                        </div>
+                        <div class="field">
+                          <label for="v9">Meta Ads — Revenue</label>
+                          <input type="number" id="v9" class="calc-input" placeholder="0.00" step="any" min="0" />
+                        </div>
+                        <div class="field">
+                          <label for="v10">TikTok / Other — Spend</label>
+                          <input type="number" id="v10" class="calc-input" placeholder="0.00" step="any" min="0" />
+                        </div>
+                        <div class="field">
+                          <label for="v11">TikTok / Other — Revenue</label>
+                          <input type="number" id="v11" class="calc-input" placeholder="0.00" step="any" min="0" />
+                        </div>
+                      </div>
+                    </div>
+                  </details>
+                </div>
+              )}
+
+              {/* ✨ Canada GST/HST-only extra input: Small Supplier threshold check (optional, collapsible) */}
+              {calc.formula === 'ca_gst_hst' && (
+                <div class="field-full">
+                  <details class="mkt-advanced">
+                    <summary>➕ Small Supplier Check <span class="mkt-optional">(optional)</span></summary>
+                    <div class="mkt-advanced-inner">
+                      <div class="field">
+                        <label for="v4">Annual Taxable Revenue (CAD)</label>
+                        <input type="number" id="v4" class="calc-input" placeholder="0.00" step="any" min="0" />
+                      </div>
+                    </div>
+                  </details>
+                </div>
+              )}
             </div>
 
             <button id="calcBtn">Calculate Now</button>
@@ -691,6 +757,58 @@ const breadcrumbSchema = {
     }
 
     .sidebar-card:hover .card-arrow { transform: translateX(3px); }
+
+    /* ✨ Marketing ROI — Advanced collapsible section */
+    .mkt-advanced {
+      border: 2px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 16px 18px;
+      background: #f8fafc;
+      margin-bottom: 25px;
+    }
+
+    .mkt-advanced summary {
+      cursor: pointer;
+      font-weight: 700;
+      color: #1e3a8a;
+      font-size: 1rem;
+      list-style: none;
+    }
+
+    .mkt-advanced summary::-webkit-details-marker { display: none; }
+
+    .mkt-advanced summary::before {
+      content: '▸ ';
+      color: #d4a373;
+      font-weight: 800;
+    }
+
+    .mkt-advanced[open] summary::before {
+      content: '▾ ';
+    }
+
+    .mkt-optional {
+      font-weight: 400;
+      color: #94a3b8;
+      font-size: 0.85rem;
+    }
+
+    .mkt-advanced-inner {
+      margin-top: 18px;
+    }
+
+    .mkt-advanced-inner .field-grid {
+      margin-bottom: 5px;
+    }
+
+    .mkt-subheading {
+      font-weight: 700;
+      color: #1e3a8a;
+      font-size: 0.9rem;
+      margin: 14px 0 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
 
     /* ✨ Amortization Schedule Styles */
     .amort-header {
@@ -1421,6 +1539,137 @@ const breadcrumbSchema = {
           break;
         }
 
+        // ─── Marketing ROI & Campaign Calculator (Advanced) ──────────────────
+        // v1 = Total Revenue, v2 = Ad/Marketing Cost, v3 = COGS/Product Cost (optional)
+        // v4 = Customers Acquired, v5 = Avg. LTV (optional CAC/LTV block)
+        // v6-v11 = Channel breakdown: Google / Meta / TikTok-Other, Spend + Revenue pairs (optional)
+        case 'marketing_roi': {
+          const revenue  = v1;
+          const adCost   = v2;
+          const cogs     = v3 || 0;
+
+          if (!revenue || revenue <= 0 || !adCost || adCost <= 0) {
+            resDiv.innerHTML = '⚠️ Please enter both Total Revenue and Total Marketing/Ad Cost.';
+            resDiv.style.display = 'block';
+            resDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            return;
+          }
+
+          const totalCost   = adCost + cogs;
+          const netProfit   = revenue - totalCost;
+          const roiPct      = totalCost > 0 ? (netProfit / totalCost) * 100 : 0;
+          const roasRatio   = adCost > 0 ? revenue / adCost : 0;
+          const breakEvenROAS = adCost > 0 ? totalCost / adCost : 0;
+
+          let badge = '🟠 Marginal', badgeColor = '#c2410c';
+          if (roiPct >= 500)      { badge = '🟢 Excellent'; badgeColor = '#166534'; }
+          else if (roiPct >= 200) { badge = '🟡 Good';      badgeColor = '#92400e'; }
+          else if (roiPct < 0)    { badge = '🔴 Loss';      badgeColor = '#dc2626'; }
+
+          let extraHtml = '';
+
+          // CAC / LTV block
+          const customers = getValue('v4');
+          const ltv = getValue('v5');
+          if (customers > 0) {
+            const cac = adCost / customers;
+            extraHtml += `
+              <div style="margin-top:18px; padding-top:16px; border-top:1px dashed #e2e8f0; text-align:left;">
+                <p style="font-weight:700; color:#1e3a8a; margin-bottom:8px;">👤 Customer Economics</p>
+                <div style="display:flex; justify-content:space-between;"><span>Customer Acquisition Cost (CAC):</span><strong>${fmt(cac)}</strong></div>
+                ${ltv > 0 ? `<div style="display:flex; justify-content:space-between;"><span>LTV : CAC Ratio:</span><strong>${(ltv / cac).toFixed(2)}:1 ${(ltv / cac) >= 3 ? '✅ Healthy' : '⚠️ Low'}</strong></div>` : ''}
+              </div>
+            `;
+          }
+
+          // Channel breakdown
+          const channels = [
+            { name: 'Google Ads',     spend: getValue('v6'),  rev: getValue('v7')  },
+            { name: 'Meta Ads',       spend: getValue('v8'),  rev: getValue('v9')  },
+            { name: 'TikTok / Other', spend: getValue('v10'), rev: getValue('v11') },
+          ].filter(c => c.spend > 0);
+
+          let channelLabels = [];
+          let channelData   = [];
+
+          if (channels.length > 0) {
+            const rows = channels.map(c => {
+              const cRoi = c.spend > 0 ? ((c.rev - c.spend) / c.spend) * 100 : 0;
+              channelLabels.push(c.name);
+              channelData.push(c.rev);
+              return `
+                <tr>
+                  <td>${c.name}</td>
+                  <td>${fmt(c.spend)}</td>
+                  <td>${fmt(c.rev)}</td>
+                  <td style="color:${cRoi >= 0 ? '#166534' : '#dc2626'}; font-weight:700;">${pct(cRoi)}</td>
+                </tr>
+              `;
+            }).join('');
+
+            const best = channels.reduce((a, b) => {
+              const aRoi = a.spend > 0 ? (a.rev - a.spend) / a.spend : -Infinity;
+              const bRoi = b.spend > 0 ? (b.rev - b.spend) / b.spend : -Infinity;
+              return bRoi > aRoi ? b : a;
+            });
+
+            extraHtml += `
+              <div style="margin-top:20px; padding-top:16px; border-top:1px dashed #e2e8f0; text-align:left;">
+                <p style="font-weight:700; color:#1e3a8a; margin-bottom:10px;">📊 Channel Comparison</p>
+                <div style="overflow-x:auto;">
+                  <table style="width:100%; border-collapse:collapse; font-size:0.9rem;">
+                    <thead>
+                      <tr style="background:#f1f5f9;">
+                        <th style="padding:8px; text-align:left;">Channel</th>
+                        <th style="padding:8px; text-align:right;">Spend</th>
+                        <th style="padding:8px; text-align:right;">Revenue</th>
+                        <th style="padding:8px; text-align:right;">ROI</th>
+                      </tr>
+                    </thead>
+                    <tbody>${rows}</tbody>
+                  </table>
+                </div>
+                <p style="margin-top:10px; font-size:0.9rem; color:#166534;">🏆 Best performer: <strong>${best.name}</strong></p>
+              </div>
+            `;
+          }
+
+          out = `
+            <div style="background:linear-gradient(135deg, #1e3a8a, #1e40af); color:white; padding:22px; border-radius:14px; margin-bottom:18px;">
+              <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
+                <div>
+                  <p style="margin:0; opacity:0.9; font-size:0.9rem;">Net Profit</p>
+                  <h2 style="margin:6px 0 0; font-size:2.2rem; color:white;">${fmt(netProfit)}</h2>
+                </div>
+                <div style="text-align:right;">
+                  <p style="margin:0; opacity:0.9; font-size:0.9rem;">ROI</p>
+                  <h3 style="margin:6px 0 0; color:#60a5fa;">${pct(roiPct)}</h3>
+                </div>
+              </div>
+            </div>
+
+            <div style="text-align:left; font-size:1rem; line-height:2;">
+              <div style="display:flex; justify-content:space-between;"><span>Total Revenue:</span><strong>${fmt(revenue)}</strong></div>
+              <div style="display:flex; justify-content:space-between;"><span>Ad / Marketing Cost:</span><strong>${fmt(adCost)}</strong></div>
+              ${cogs > 0 ? `<div style="display:flex; justify-content:space-between;"><span>COGS / Product Cost:</span><strong>${fmt(cogs)}</strong></div>` : ''}
+              <div style="display:flex; justify-content:space-between;"><span>ROAS:</span><strong>${roasRatio.toFixed(2)}x</strong></div>
+              <div style="display:flex; justify-content:space-between;"><span>Break-even ROAS:</span><strong>${breakEvenROAS.toFixed(2)}x</strong></div>
+              <hr style="border:0; border-top:1px solid #e2e8f0; margin:8px 0;">
+              <div style="display:flex; justify-content:space-between;"><span>Performance:</span><strong style="color:${badgeColor};">${badge}</strong></div>
+            </div>
+            ${extraHtml}
+          `;
+
+          if (channelLabels.length > 0) {
+            cLabels = channelLabels;
+            cData   = channelData;
+          } else {
+            cLabels = ['Total Cost', 'Net Profit'];
+            cData   = [totalCost, netProfit > 0 ? netProfit : 0];
+          }
+          break;
+        }
+
         // ─── Runway ─────────────────────────────────────────────────────────
         case 'runway': {
           const burn = v2 - v3;
@@ -1645,6 +1894,98 @@ const breadcrumbSchema = {
           
           cLabels = ['Base Price', 'Sales Tax'];
           cData = [basePrice, taxAmount];
+          break;
+        }
+
+        // ─── Canada GST/HST (Province-aware, Add/Extract, Small Supplier check) ──
+        // v1 = Purchase Amount, v2 = Province (select, value = "gstRate,provRate,isHST")
+        // v3 = Mode (1 = Add Tax to Price, 2 = Extract Tax from Total)
+        // v4 = Annual Taxable Revenue (optional, small supplier threshold check)
+        case 'ca_gst_hst': {
+          const amount = v1;
+          const v2Select = document.getElementById('v2');
+
+          if (!amount || amount <= 0) {
+            resDiv.innerHTML = '⚠️ Please enter a valid purchase amount.';
+            resDiv.style.display = 'block';
+            resDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            return;
+          }
+          if (!v2Select || !v2Select.value) {
+            resDiv.innerHTML = '⚠️ Please select a province.';
+            resDiv.style.display = 'block';
+            resDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            return;
+          }
+
+          const [gstRate, provRate, isHST] = v2Select.value.split(',').map(Number);
+          const provinceLabel = v2Select.options[v2Select.selectedIndex].text;
+          const mode = v3;
+          const totalRate = gstRate + provRate;
+
+          let basePrice, gstAmount, provAmount, total;
+
+          if (mode === 2) {
+            total = amount;
+            basePrice = total / (1 + totalRate / 100);
+            gstAmount = basePrice * (gstRate / 100);
+            provAmount = basePrice * (provRate / 100);
+          } else {
+            basePrice = amount;
+            gstAmount = basePrice * (gstRate / 100);
+            provAmount = basePrice * (provRate / 100);
+            total = basePrice + gstAmount + provAmount;
+          }
+
+          const provLineLabel = isHST === 1 ? 'HST Provincial Portion' : 'PST / QST';
+
+          // ✨ Small Supplier threshold check (optional)
+          let smallSupplierHtml = '';
+          const annualRevenue = getValue('v4');
+          if (annualRevenue > 0) {
+            if (annualRevenue < 30000) {
+              smallSupplierHtml = `
+                <div style="margin-top:18px; padding:14px 16px; background:#f0fdf4; border-left:4px solid #22c55e; border-radius:8px; text-align:left;">
+                  <p style="margin:0; color:#166534; font-weight:700;">✅ Small Supplier — Exempt</p>
+                  <p style="margin:5px 0 0; font-size:0.9rem; color:#166534;">Your annual taxable revenue (${fmt(annualRevenue)}) is under the $30,000 CAD threshold. You're not required to register or collect GST/HST — though voluntary registration is allowed if you want to claim Input Tax Credits.</p>
+                </div>
+              `;
+            } else {
+              smallSupplierHtml = `
+                <div style="margin-top:18px; padding:14px 16px; background:#fff7ed; border-left:4px solid #f97316; border-radius:8px; text-align:left;">
+                  <p style="margin:0; color:#9a3412; font-weight:700;">⚠️ Registration Required</p>
+                  <p style="margin:5px 0 0; font-size:0.9rem; color:#c2410c;">Your annual taxable revenue (${fmt(annualRevenue)}) is over the $30,000 CAD small supplier threshold. You must register for a GST/HST account and begin collecting tax.</p>
+                </div>
+              `;
+            }
+          }
+
+          out = `
+            <div style="background:linear-gradient(135deg, #1e3a8a, #1e40af); color:white; padding:22px; border-radius:14px; margin-bottom:18px;">
+              <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
+                <div>
+                  <p style="margin:0; opacity:0.9; font-size:0.9rem;">${mode === 2 ? 'Pre-Tax Price' : 'Total Price'}</p>
+                  <h2 style="margin:6px 0 0; font-size:2.2rem; color:white;">${fmt(mode === 2 ? basePrice : total)}</h2>
+                </div>
+                <div style="text-align:right;">
+                  <p style="margin:0; opacity:0.9; font-size:0.9rem;">${provinceLabel}</p>
+                  <h3 style="margin:6px 0 0; color:#60a5fa;">${totalRate}%</h3>
+                </div>
+              </div>
+            </div>
+
+            <div style="text-align:left; font-size:1rem; line-height:2;">
+              <div style="display:flex; justify-content:space-between;"><span>Base Price:</span><strong>${fmt(basePrice)}</strong></div>
+              <div style="display:flex; justify-content:space-between;"><span>GST (${gstRate}%):</span><strong>${fmt(gstAmount)}</strong></div>
+              ${provRate > 0 ? `<div style="display:flex; justify-content:space-between;"><span>${provLineLabel} (${provRate}%):</span><strong>${fmt(provAmount)}</strong></div>` : ''}
+              <hr style="border:0; border-top:1px solid #e2e8f0; margin:8px 0;">
+              <div style="display:flex; justify-content:space-between; font-size:1.2rem; color:#1e3a8a;"><span>Total Price:</span><strong>${fmt(total)}</strong></div>
+            </div>
+            ${smallSupplierHtml}
+          `;
+
+          cLabels = provRate > 0 ? ['Base Price', 'GST', provLineLabel] : ['Base Price', 'GST'];
+          cData   = provRate > 0 ? [basePrice, gstAmount, provAmount] : [basePrice, gstAmount];
           break;
         }
 

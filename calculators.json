@@ -667,17 +667,17 @@
 
   {
     "slug": "roi-marketing-calculator",
-    "formula": "roi",
+    "formula": "marketing_roi",
     "type": "investment",
     "name": "Marketing ROI & Campaign Calculator",
     "description": "Measure net profit & return on ad spend (ROAS) for digital marketing campaigns, PPC ads & growth promotions.",
     "label1": "Total Revenue Generated",
     "label2": "Total Marketing / Ad Cost",
-    "label3": "",
+    "label3": "COGS / Product Cost (optional)",
     "what_is": "Marketing ROI tells you definitively whether your advertising spend is actively scaling your business bottom line or quietly draining your operational budget. This free global marketing ROI calculator measures the exact financial return on every dollar or currency unit you invest in PPC ads, organic social campaigns, and promotions, empowering you to scale your spend smarter.",
     "who_use": "Digital marketers, e-commerce growth hackers, business owners deploying paid traffic on Google, Meta, or TikTok, and CMOs who need to justify their quarterly ad spend budgets to stakeholders will find this optimization tool essential for every campaign post-mortem review.",
-    "how_to_use": "1. Enter the total gross revenue directly attributed to your specific campaign conversion funnel (works with $, £, €, or any local currency). 2. Input the overall cost of that marketing initiative (including ad spend, creative asset generation, and software tools). 3. Click calculate to instantly view your core ROI percentage.",
-    "how_to_read": "A positive marketing ROI indicates your campaign generated more net revenue than it cost to run. An exact ROI of 100% means you perfectly doubled your financial investment. If your percentage reads negative, the campaign lost capital relative to its acquisition costs and requires strategic optimization.",
+    "how_to_use": "1. Enter the total gross revenue directly attributed to your specific campaign conversion funnel (works with $, £, €, or any local currency). 2. Input the overall cost of that marketing initiative (including ad spend, creative asset generation, and software tools). 3. Optionally add your COGS/product cost for true net profit, and expand 'Advanced' to add customer acquisition and per-channel data. 4. Click calculate to instantly view your ROI, ROAS, CAC, LTV:CAC ratio, and channel-by-channel comparison.",
+    "how_to_read": "A positive marketing ROI indicates your campaign generated more net revenue than it cost to run. An exact ROI of 100% means you perfectly doubled your financial investment. If your percentage reads negative, the campaign lost capital relative to its acquisition costs and requires strategic optimization. ROAS shows raw revenue per ad dollar, while a healthy LTV:CAC ratio (3:1 or higher) confirms your customer economics are sustainable long-term.",
     "pro_tip": "Always track your ROI granularly per marketing channel, not just as a macro average. A single high-performing hyper-profitable funnel can easily mask multiple losing ad sets. Run this calculator consistently after every campaign wrap-up to construct a highly efficient, data-driven marketing budget!",
     "seo": {
       "title": "Marketing ROI Calculator | Campaign Ad Spend Tool",
@@ -2493,19 +2493,40 @@
       }
     }
   },
-  {
+{
     "slug": "gst-canada-calculator",
-    "formula": "tax",
+    "formula": "ca_gst_hst",
     "type": "tax",
     "name": "Canada GST/HST Calculator",
     "description": "Calculate Canadian GST, HST, or PST by province. Add or remove tax for pricing.",
-    "label1": "Pre-Tax Purchase Amount",
-    "label2": "Provincial Tax Rate (%)",
-    "label3": "",
+    "label1": "Purchase Amount",
+    "label2": "Province",
+    "label3": "Calculation Mode",
+    "v2_type": "select",
+    "v2_options": [
+      { "value": "5,0,0", "label": "Alberta — GST 5%" },
+      { "value": "5,7,0", "label": "British Columbia — GST 5% + PST 7% (12%)" },
+      { "value": "5,7,0", "label": "Manitoba — GST 5% + RST 7% (12%)" },
+      { "value": "5,6,0", "label": "Saskatchewan — GST 5% + PST 6% (11%)" },
+      { "value": "5,9.975,0", "label": "Quebec — GST 5% + QST 9.975% (14.975%)" },
+      { "value": "5,8,1", "label": "Ontario — HST 13%" },
+      { "value": "5,9,1", "label": "Nova Scotia — HST 14%" },
+      { "value": "5,10,1", "label": "New Brunswick — HST 15%" },
+      { "value": "5,10,1", "label": "Newfoundland & Labrador — HST 15%" },
+      { "value": "5,10,1", "label": "Prince Edward Island — HST 15%" },
+      { "value": "5,0,0", "label": "Northwest Territories — GST 5%" },
+      { "value": "5,0,0", "label": "Nunavut — GST 5%" },
+      { "value": "5,0,0", "label": "Yukon — GST 5%" }
+    ],
+    "v3_type": "select",
+    "v3_options": [
+      { "value": 1, "label": "Add Tax to Price (I have the pre-tax amount)" },
+      { "value": 2, "label": "Extract Tax from Total (I have the tax-included amount)" }
+    ],
     "what_is": "Canadian consumption tax structures vary dynamically by geographic territory. The federal government charges a baseline Goods and Services Tax (GST), while separate provincial authorities layer a Provincial Sales Tax (PST). Multiple forward-thinking jurisdictions fully combine these steps into a singular Harmonized Sales Tax (HST). This engine maps the exact aggregate rate to ensure compliance across all Canadian markets.",
     "who_use": "Canadian business owners, self-employed creators, remote freelancers invoicing Canadian corporate clients, and active consumers monitoring cross-provincial e-commerce transactions utilize this calculator.",
-    "how_to_use": "1. Input the gross pre-tax value of your product or digital service line (designed for Canadian Dollars or matching entry currencies). 2. Enter the cumulative combined percentage of your target province. 3. Process to generate isolated tax weights and grand transactional values.",
-    "how_to_read": "The computational interface parses out federal GST, regional PST, and final integrated HST parameters. For commercial business logs, this represents the exact absolute tax value required to structure customer receipts and remit smoothly to the Canada Revenue Agency (CRA).",
+    "how_to_use": "1. Input the purchase amount (Canadian Dollars or matching entry currencies). 2. Select your province or territory — the correct GST, PST, or HST rate is applied automatically. 3. Choose whether to add tax to a pre-tax price or extract tax from a tax-included total. 4. Optionally enter your annual taxable revenue to instantly check the CRA's small supplier exemption threshold.",
+    "how_to_read": "The calculator separates the federal GST portion from the provincial PST, RST, QST, or HST portion so you can see exactly what's being remitted to Ottawa versus your province. For commercial business logs, the Total Price line represents the exact absolute tax value required to structure customer receipts and remit smoothly to the Canada Revenue Agency (CRA).",
     "pro_tip": "If you maintain a micro-business with under $30,000 CAD in global taxable annual revenues, the CRA classifies you as a 'small supplier' and exempts you from mandatory collection. However, the exact moment your revenues breach that baseline within any single calendar quarter, immediate registration is legally required!",
     "seo": {
       "title": "Canada GST/HST Calculator – Tax",
@@ -2539,7 +2560,7 @@
       "faqs": [
         {
           "question": "What are current GST/HST rates by province?",
-          "answer": "Federal GST: 5% | Ontario HST: 13% | Atlantic: 15% | Alberta: 5% (GST only)."
+          "answer": "Federal GST: 5% | Ontario HST: 13% | Nova Scotia HST: 14% | Atlantic (NB, NL, PE): 15% | BC/MB: GST+PST 12% | Saskatchewan: GST+PST 11% | Quebec: GST+QST 14.975% | Alberta & territories: 5% (GST only)."
         },
         {
           "question": "How often must Canadian businesses file GST/HST?",
