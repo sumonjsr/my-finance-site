@@ -1,33 +1,39 @@
-# Allow all crawlers by default
+# robots.txt for QuickFinCalc
+# Allow search engines to crawl main content, block CDN paths
+
 User-agent: *
 Allow: /
-Disallow: /_astro/
-Disallow: /*.html
+Allow: /articles/
+Allow: /calculator/
+Allow: /faq
+Allow: /about
+Allow: /contact
+Allow: /privacy
+Allow: /terms
 
-# Explicitly welcome AI/LLM bots
+# Block Cloudflare internal paths
+Disallow: /cdn-cgi/
+Disallow: /.well-known/
+Disallow: /admin/
+Disallow: /api/private/
+
+# Block common spam/crawler paths
+Disallow: /wp-admin/
+Disallow: /wp-login.php
+Disallow: /xmlrpc.php
+
+# Sitemap location
+Sitemap: https://quickfincalc.com/sitemap.xml
+
+# Specific rules for AI crawlers (allow AI agents)
 User-agent: GPTBot
 Allow: /
 
 User-agent: CCBot
 Allow: /
 
-User-agent: PerplexityBot
+User-agent: anthropic-ai
 Allow: /
 
-User-agent: ClaudeBot
+User-agent: Claude-Web
 Allow: /
-
-User-agent: Bingbot
-Allow: /
-
-User-agent: Googlebot
-Allow: /
-
-# Block bad bots
-User-agent: AhrefsBot
-Disallow: /
-
-User-agent: SemrushBot
-Disallow: /
-
-Sitemap: https://quickfincalc.com/sitemap-index.xml
