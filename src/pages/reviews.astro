@@ -1,0 +1,308 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const title = "QuickFinCalc Reviews & Recognition";
+const description = "See what users say about QuickFinCalc on SaaSHub and Product Hunt. Trusted by thousands of professionals for financial calculations.";
+---
+
+<Layout title={title} description={description}>
+
+  <style>
+    :root {
+      --primary: #1e3a8a;
+      --accent: #d4a373;
+      --bg-light: #fdfbf7;
+      --text-slate: #475569;
+      --border: #e2e8f0;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, var(--primary) 0%, #0f172a 100%);
+      color: white;
+      text-align: center;
+      padding: 70px 20px;
+      border-bottom: 4px solid var(--accent);
+    }
+
+    .hero h1 {
+      font-family: 'Crimson Pro', serif;
+      font-size: 2.8rem;
+      font-weight: 800;
+      margin-bottom: 15px;
+    }
+
+    .hero p {
+      font-size: 1.1rem;
+      color: #cbd5e1;
+      max-width: 650px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 950px;
+      margin: 50px auto;
+      padding: 0 20px;
+    }
+
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+      gap: 30px;
+      margin-bottom: 50px;
+    }
+
+    .review-card {
+      background: white;
+      padding: 40px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      transition: all 0.3s;
+    }
+
+    .review-card:hover {
+      box-shadow: 0 12px 24px rgba(0,0,0,0.1);
+      transform: translateY(-5px);
+    }
+
+    .review-icon {
+      font-size: 3rem;
+      margin-bottom: 15px;
+      display: block;
+    }
+
+    .review-card h2 {
+      color: var(--primary);
+      font-size: 1.6rem;
+      margin: 15px 0;
+      font-family: 'Crimson Pro', serif;
+      font-weight: 800;
+    }
+
+    .review-card p {
+      color: var(--text-slate);
+      line-height: 1.8;
+      margin-bottom: 20px;
+      font-size: 0.95rem;
+    }
+
+    .review-link {
+      display: inline-block;
+      padding: 12px 24px;
+      background: var(--primary);
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: 600;
+      transition: all 0.3s;
+    }
+
+    .review-link:hover {
+      background: var(--accent);
+      color: white;
+    }
+
+    .review-link-ph {
+      background: #FF6154;
+    }
+
+    .review-link-ph:hover {
+      background: #FF5241;
+    }
+
+    .benefits-section {
+      background: var(--bg-light);
+      padding: 50px 30px;
+      border-radius: 12px;
+      margin-top: 50px;
+    }
+
+    .benefits-section h2 {
+      color: var(--primary);
+      font-size: 1.8rem;
+      margin-bottom: 30px;
+      text-align: center;
+      font-family: 'Crimson Pro', serif;
+      font-weight: 800;
+    }
+
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+    }
+
+    .benefit {
+      padding: 20px;
+      background: white;
+      border-radius: 10px;
+      border-left: 4px solid var(--accent);
+    }
+
+    .benefit h3 {
+      color: var(--primary);
+      margin: 10px 0;
+      font-size: 1.1rem;
+    }
+
+    .benefit p {
+      color: var(--text-slate);
+      line-height: 1.6;
+      margin: 0;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2rem;
+      }
+
+      .reviews-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .review-card {
+        padding: 30px 20px;
+      }
+    }
+  </style>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <h1>⭐ Trusted by Thousands</h1>
+    <p>
+      QuickFinCalc is recognized and reviewed by professionals worldwide. 
+      See what users and industry platforms say about our financial calculators.
+    </p>
+  </section>
+
+  <div class="container">
+
+    <!-- Reviews Grid -->
+    <section class="reviews-grid">
+
+      <!-- SaaSHub Card -->
+      <div class="review-card">
+        <span class="review-icon">🏆</span>
+        <h2>SaaSHub Reviews</h2>
+        <p>
+          SaaSHub is a trusted platform where verified users share honest reviews 
+          and comparisons of business software and financial tools.
+        </p>
+        <p style="font-size: 0.85rem; color: #94a3b8; margin-bottom: 25px;">
+          <strong>What users value:</strong> Free access, accurate calculations, 
+          ease of use, no signup required, privacy protection
+        </p>
+        <a href="https://www.saashub.com/quickfincalc-alternatives" 
+           target="_blank" 
+           rel="noopener noreferrer"
+           class="review-link">
+          Read Reviews on SaaSHub →
+        </a>
+      </div>
+
+      <!-- Product Hunt Card -->
+      <div class="review-card">
+        <span class="review-icon">🚀</span>
+        <h2>Product Hunt</h2>
+        <p>
+          Product Hunt is the leading platform for discovering and sharing innovative 
+          products. QuickFinCalc is featured as a top financial calculator tool.
+        </p>
+        <p style="font-size: 0.85rem; color: #94a3b8; margin-bottom: 25px;">
+          <strong>What makers say:</strong> Solves real problems, free & accessible, 
+          great user experience, daily active users
+        </p>
+        <a href="https://www.producthunt.com/products/quick-financial-calculator" 
+           target="_blank" 
+           rel="noopener noreferrer"
+           class="review-link review-link-ph">
+          Vote on Product Hunt →
+        </a>
+      </div>
+
+    </section>
+
+    <!-- Why Choose Section -->
+    <section class="benefits-section">
+      <h2>Why Choose QuickFinCalc?</h2>
+      
+      <div class="benefits-grid">
+        <div class="benefit">
+          <span style="font-size: 1.8rem;">💰</span>
+          <h3>Completely Free</h3>
+          <p>No signup, no subscriptions, no hidden costs. Use all 50+ calculators forever.</p>
+        </div>
+
+        <div class="benefit">
+          <span style="font-size: 1.8rem;">✅</span>
+          <h3>Accurate Formulas</h3>
+          <p>Built by financial professionals using verified industry-standard calculations.</p>
+        </div>
+
+        <div class="benefit">
+          <span style="font-size: 1.8rem;">🔒</span>
+          <h3>Private & Secure</h3>
+          <p>All calculations performed locally in your browser. Zero data collection.</p>
+        </div>
+
+        <div class="benefit">
+          <span style="font-size: 1.8rem;">📱</span>
+          <h3>Works Everywhere</h3>
+          <p>Desktop, tablet, mobile. Responsive design works perfectly on all devices.</p>
+        </div>
+
+        <div class="benefit">
+          <span style="font-size: 1.8rem;">⚡</span>
+          <h3>Lightning Fast</h3>
+          <p>Instant results. No waiting, no complex processes. Calculate in seconds.</p>
+        </div>
+
+        <div class="benefit">
+          <span style="font-size: 1.8rem;">🌍</span>
+          <h3>Global Access</h3>
+          <p>Used by professionals in 150+ countries for personal and business finance.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials/Stats Section (Optional) -->
+    <section style="text-align: center; margin-top: 50px; padding: 40px; background: white; border-radius: 12px; border: 1px solid var(--border);">
+      <h2 style="color: var(--primary); font-family: 'Crimson Pro', serif; font-size: 1.8rem; margin-bottom: 30px;">
+        Trusted by Professionals
+      </h2>
+      
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px;">
+        <div>
+          <div style="font-size: 2.5rem; color: var(--accent); font-weight: 800;">50+</div>
+          <p style="color: var(--text-slate);">Free Financial Calculators</p>
+        </div>
+        <div>
+          <div style="font-size: 2.5rem; color: var(--accent); font-weight: 800;">150+</div>
+          <p style="color: var(--text-slate);">Countries with Active Users</p>
+        </div>
+        <div>
+          <div style="font-size: 2.5rem; color: var(--accent); font-weight: 800;">11+</div>
+          <p style="color: var(--text-slate);">Years Financial Experience</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section style="text-align: center; margin-top: 50px; padding: 40px; background: linear-gradient(135deg, var(--primary) 0%, #0f172a 100%); color: white; border-radius: 12px;">
+      <h2 style="font-family: 'Crimson Pro', serif; font-size: 2rem; margin-bottom: 20px;">
+        Ready to Calculate?
+      </h2>
+      <p style="font-size: 1.1rem; margin-bottom: 25px; color: #cbd5e1;">
+        Start using QuickFinCalc's free calculators for salary, loans, investments, taxes, and more.
+      </p>
+      <a href="/" 
+         style="display: inline-block; padding: 14px 32px; background: var(--accent); color: white; text-decoration: none; border-radius: 8px; font-weight: 700; font-size: 1rem;">
+        Explore All Calculators →
+      </a>
+    </section>
+
+  </div>
+
+</Layout>
