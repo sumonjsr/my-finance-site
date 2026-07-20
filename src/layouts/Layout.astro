@@ -4,8 +4,7 @@ const {
     title, 
     description = "QuickFinCalc offers 50+ free financial tools for tax, loans, business & investment planning. Fast, accurate results with complete privacy—no signup needed.",
     url = Astro.url.pathname,
-    // ✅ নতুন Props - Schema-এর জন্য
-    pageType = 'website', // 'article', 'calculator', 'website'
+    pageType = 'website',
     datePublished = undefined,
     dateModified = undefined,
     author = 'Md. Merajul Islam',
@@ -15,19 +14,14 @@ const {
 const siteName = "QuickFinCalc";
 const siteUrl = "https://quickfincalc.com"; 
 
-// .html এক্সটেনশন বা শেষের স্ল্যাশ মুছে ক্লিন পাথ তৈরি করার লজিক
 const cleanPath = Astro.url.pathname.replace(/\.html$/, '').replace(/\/$/, '');
 const canonicalURL = new URL(cleanPath, Astro.site);
 
-// ✅ Full title with brand name for OG tags
 const fullTitle = `${title} | ${siteName}`;
 
-// ✅ ডিফল্ট image
 const ogImage = image || `${siteUrl}/og-image.png`;
 
-// ✅ DYNAMIC SCHEMA GENERATION
 const generateSchema = () => {
-  // Organization Schema (সব page-এ থাকবে)
   const organizationSchema = {
     "@context": "https://schema.org",
     "@type": "Organization",
@@ -45,11 +39,9 @@ const generateSchema = () => {
     }
   };
 
-  // Page-specific Schema
   let pageSchema;
 
   if (pageType === 'article') {
-    // Article Schema (Guide articles-এর জন্য)
     pageSchema = {
       "@context": "https://schema.org",
       "@type": "Article",
@@ -78,7 +70,6 @@ const generateSchema = () => {
       }
     };
   } else if (pageType === 'calculator') {
-    // SoftwareApplication Schema (Calculators-এর জন্য)
     pageSchema = {
       "@context": "https://schema.org",
       "@type": "SoftwareApplication",
@@ -108,7 +99,6 @@ const generateSchema = () => {
       "dateModified": dateModified || new Date().toISOString().split('T')[0],
     };
   } else {
-    // WebSite Schema (Homepage-এর জন্য)
     pageSchema = {
       "@context": "https://schema.org",
       "@type": "WebSite",
@@ -144,7 +134,7 @@ const { organizationSchema, pageSchema } = generateSchema();
     <meta name="author" content="Md Merajul Islam">
     <meta name="theme-color" content="#1e3a8a">
     
-    <!-- ✅ Robots Meta - Indexing Control -->
+    <!-- ✅ Robots Meta -->
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
 
     <!-- ✅ Search Console Verification -->
@@ -181,10 +171,8 @@ const { organizationSchema, pageSchema } = generateSchema();
     <meta name="twitter:image" content={ogImage}>
     <meta name="twitter:image:alt" content="QuickFinCalc - Free Financial Calculator Tools">
 
-    <!-- ✅ JSON-LD SCHEMA - ORGANIZATION (সব page-এ) -->
+    <!-- ✅ JSON-LD SCHEMA -->
     <script type="application/ld+json" set:html={JSON.stringify(organizationSchema)} />
-    
-    <!-- ✅ JSON-LD SCHEMA - PAGE-SPECIFIC (article/calculator/website) -->
     <script type="application/ld+json" set:html={JSON.stringify(pageSchema)} />
 
     <!-- ✅ Extra head slot -->
@@ -252,123 +240,6 @@ const { organizationSchema, pageSchema } = generateSchema();
             p {
                 text-align: left;
             }
-        }
-
-        /* ✅ Article Markdown Content Styling (applies inside <Content /> on every article) */
-        .content-area h2 {
-            font-family: var(--serif);
-            color: var(--brand-blue);
-            font-size: 1.6rem;
-            font-weight: 800;
-            margin: 36px 0 14px;
-            border-bottom: 2px solid #f1f5f9;
-            padding-bottom: 8px;
-            line-height: 1.3;
-        }
-
-        .content-area h3 {
-            font-family: var(--serif);
-            color: var(--brand-blue);
-            font-size: 1.25rem;
-            font-weight: 700;
-            margin: 28px 0 10px;
-        }
-
-        .content-area p {
-            margin-bottom: 16px;
-        }
-
-        .content-area ul,
-        .content-area ol {
-            margin: 8px 0 20px 24px;
-        }
-
-        .content-area li {
-            margin-bottom: 8px;
-        }
-
-        .content-area a {
-            color: var(--brand-blue);
-            font-weight: 600;
-            text-decoration: underline;
-            text-decoration-color: var(--brand-accent);
-            text-underline-offset: 3px;
-        }
-
-        .content-area strong {
-            color: #1e293b;
-        }
-
-        .content-area hr {
-            border: 0;
-            border-top: 1px solid #e2e8f0;
-            margin: 32px 0;
-        }
-
-        /* Tables */
-        .content-area table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 24px 0;
-            font-size: 0.95rem;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.05);
-            border: 1px solid #e2e8f0;
-        }
-
-        .content-area thead th {
-            background: var(--brand-blue);
-            color: var(--white);
-            padding: 12px 16px;
-            text-align: left;
-            font-weight: 700;
-        }
-
-        .content-area tbody td {
-            padding: 12px 16px;
-            border-bottom: 1px solid #e2e8f0;
-            text-align: left;
-        }
-
-        .content-area tbody tr:nth-child(even) {
-            background: #f8fafc;
-        }
-
-        .content-area tbody tr:last-child td {
-            border-bottom: none;
-        }
-
-        @media (max-width: 640px) {
-            .content-area table {
-                display: block;
-                overflow-x: auto;
-                white-space: nowrap;
-            }
-        }
-
-        /* Blockquotes / Callout-style lines (💡, ⚠️, 💰, 📋) */
-        .content-area blockquote {
-            border-left: 4px solid var(--brand-accent);
-            background: #fffbeb;
-            padding: 14px 20px;
-            margin: 20px 0;
-            border-radius: 0 10px 10px 0;
-            color: #92400e;
-            font-style: normal;
-        }
-
-        .content-area blockquote p {
-            margin-bottom: 0;
-        }
-
-        /* Inline code / small technical terms */
-        .content-area code {
-            background: #f1f5f9;
-            color: #1e3a8a;
-            padding: 2px 6px;
-            border-radius: 4px;
-            font-size: 0.9em;
         }
 
         /* ✅ Header */
@@ -636,14 +507,29 @@ const { organizationSchema, pageSchema } = generateSchema();
             <p class="footer-tagline">
                 Free professional financial tools for businesses, investors & individuals worldwide.
             </p>
+            
+            <!-- ✅ Main Footer Links (WITH REVIEWS LINK) -->
             <div class="footer-links">
                 <a href="/">Home</a>
                 <a href="/articles">Guides</a>
                 <a href="/faq">FAQ</a>
+                <a href="/reviews">⭐ Reviews</a>
                 <a href="/privacy">Privacy</a>
                 <a href="/terms">Terms</a>
                 <a href="/contact">Support</a>
             </div>
+
+            <!-- ✅ Recognition Section (NEW) -->
+            <div style="margin: 20px 0; padding: 20px 0; border-top: 1px solid rgba(255,255,255,0.1); border-bottom: 1px solid rgba(255,255,255,0.1); text-align: center;">
+                <p style="font-size: 0.85rem; color: #cbd5e1; margin: 0;">
+                    Trusted on 
+                    <a href="/reviews" style="color: var(--brand-accent); text-decoration: none; font-weight: 600; transition: 0.3s;">
+                        SaaSHub & Product Hunt
+                    </a>
+                </p>
+            </div>
+
+            <!-- ✅ Copyright -->
             <div class="copyright">
                 &copy; {new Date().getFullYear()} {siteName}. All rights reserved. <br/>
                 <small style="opacity: 0.6;">
