@@ -17,6 +17,20 @@ try {
 const title = "Financial Guides & Expert Articles | Knowledge Hub";
 const description = "Explore expert financial guides on ROI, mortgage, e-commerce margins & retirement planning. Written by professionals to help you make smarter money decisions.";
 
+// ✅ Blog Schema Markup - Fixed JSON-LD (DEFINED IN FRONTMATTER)
+const articlesSchema = {
+  "@context": "https://schema.org",
+  "@type": "Blog",
+  "name": "QuickFinCalc Financial Knowledge Hub",
+  "description": description,
+  "url": "https://quickfincalc.com/articles",
+  "publisher": {
+    "@type": "Organization",
+    "name": "QuickFinCalc",
+    "url": "https://quickfincalc.com"
+  }
+};
+
 // ✅ Date Formatter - Clean date display
 const formatDate = (dateStr: string) => {
   return new Date(dateStr).toLocaleDateString('en-US', {
@@ -45,21 +59,8 @@ const formatDate = (dateStr: string) => {
     <!-- ✅ Canonical Tag -->
     <link rel="canonical" href="https://quickfincalc.com/articles" />
 
-    <!-- ✅ Blog Schema Markup -->
-    <script type="application/ld+json">
-      {JSON.stringify({
-        "@context": "https://schema.org",
-        "@type": "Blog",
-        "name": "QuickFinCalc Financial Knowledge Hub",
-        "description": description,
-        "url": "https://quickfincalc.com/articles",
-        "publisher": {
-          "@type": "Organization",
-          "name": "QuickFinCalc",
-          "url": "https://quickfincalc.com"
-        }
-      })}
-    </script>
+    <!-- ✅ Blog Schema Markup - FIXED SYNTAX -->
+    <script type="application/ld+json" set:html={JSON.stringify(articlesSchema)} />
   </Fragment>
 
   <style>
@@ -86,7 +87,7 @@ const formatDate = (dateStr: string) => {
       margin: 0 auto 20px;
     }
 
-    /* ✅ Article Count Badge - নতুন */
+    /* ✅ Article Count Badge */
     .article-count {
       display: inline-block;
       background: rgba(255,255,255,0.1);
@@ -173,7 +174,7 @@ const formatDate = (dateStr: string) => {
       gap: 5px;
     }
 
-    /* ✅ Footer Meta - Updated with better date */
+    /* ✅ Footer Meta */
     .footer-meta {
       margin-top: auto;
       display: flex;
@@ -184,7 +185,7 @@ const formatDate = (dateStr: string) => {
       border-top: 1px solid #f1f5f9;
     }
 
-    /* ✅ Empty State - Updated */
+    /* ✅ Empty State */
     .empty-state {
       text-align: center;
       background: white;
