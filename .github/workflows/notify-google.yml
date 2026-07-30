@@ -1,0 +1,31 @@
+name: Notify Google Indexing API
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install dependencies
+        run: npm install google-auth-library
+
+      - name: Wait for Cloudflare Pages deploy to finish
+        run: sleep 90
+
+      - name: Get sitemap URLs
+        run: node scripts/get-sitemap-urls.mjs
+
+      - name: Notify Google Indexing API
+        run: node scripts/notify-google-index.mjs
+        env:
+          GOOGLE_INDEXING_KEY: ${{ secrets.GOOGLE_INDEXING_KEY }}
