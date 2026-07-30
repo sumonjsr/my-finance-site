@@ -3,7 +3,7 @@
   "slug": "mortgage-calculator",
   "formula": "mortgage",
   "type": "loan",
-  "name": "Mortgage Payment Calculator",
+  "name": "Monthly Mortgage Payment Calculator",
   "description": "Calculate monthly mortgage payments including property tax, insurance & PMI. Free tool for any currency worldwide.",
   "label1": "Home Price / Property Value ($)",
   "label2": "Down Payment",
@@ -22,11 +22,11 @@
       "mortgage calculator",
       "monthly mortgage payment calculator",
       "home loan calculator",
-      "PITI mortgage calculator"
+      "home payment calculator"
       "mortgage payment calculator"
     ],
     "h2_structure": [
-      "What Is a Mortgage Payment Calculator?",
+      "What Is a Monthly Mortgage Payment Calculator?",
       "How to Calculate Your Monthly Mortgage Payment",
       "What Affects Your Mortgage Payment?",
       "15-Year vs 30-Year Mortgage Comparison",
