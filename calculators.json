@@ -4,80 +4,74 @@
   "formula": "mortgage",
   "type": "loan",
   "name": "Mortgage Payment Calculator with Taxes, Insurance & PMI (PITI)",
-  "description": "Calculate your total monthly mortgage payment including principal, interest, property taxes, home insurance, PMI, and HOA fees with full amortization schedule.",
+  "description": "Calculate monthly mortgage payments including property tax, insurance & PMI. Free tool for any currency worldwide.",
   "label1": "Home Price / Property Value ($)",
   "label2": "Down Payment",
   "label3": "Interest Rate (Annual %)",
-  "what_is": "A PITI mortgage calculator estimates your true, all-in monthly home loan payment. Standard calculators only show principal and interest (P&I), which misleads buyers by ignoring 25% to 40% of their actual monthly cost. This tool accurately accounts for property taxes, homeowners insurance, Private Mortgage Insurance (PMI), and HOA dues to give you an exact monthly housing budget.",
-  "who_use": "First-time homebuyers checking true housing affordability, real estate investors analyzing rental cash flow and financing costs, and homeowners comparing 15-year vs. 30-year fixed loan terms before applying for a mortgage.",
-  "how_to_use": "1. Enter the total home purchase price.\n2. Enter your down payment (use the % or $ toggle; PMI applies automatically below 20%).\n3. Input your lender's annual interest rate and loan term (e.g., 30 or 15 years).\n4. Optionally enter annual property tax, home insurance, and monthly HOA fees.\n5. Click 'Calculate Now' to inspect your itemized monthly PITI breakdown, visual chart, and complete amortization schedule.",
-  "how_to_read": "Your monthly payment is divided into five parts: Principal (loan balance payoff), Interest (lender finance charge), Property Taxes (held in escrow), Hazard Insurance, and PMI (if down payment is under 20%). To maintain financial security, follow the 28/36 rule: your total monthly mortgage payment (PITI) should not exceed 28% of your gross pre-tax income, and total debt payments should stay under 36%.",
-  "pro_tip": "If your down payment is just below 20% (e.g., 15% to 18%), look closely at the PMI cost in the breakdown. Often, saving just 2-3% more or asking the seller for closing credits to bridge the gap eliminates hundreds of dollars in non-recoverable PMI fees every single month.",
+  "what_is": "A PITI mortgage calculator estimates your true total monthly home loan payment — not just principal and interest, but also property tax, homeowners insurance, PMI, and HOA fees (together known as PITI). It helps you understand the real cost of borrowing before you commit to one of the largest financial decisions of your life.",
+  "who_use": "First-time homebuyers checking affordability, real estate investors analyzing financing costs, and anyone comparing loan terms, down payment sizes, or interest rates before applying for a mortgage.",
+  "how_to_use": "1. Enter the total home price.\n2. Enter your down payment as a percentage or amount.\n3. Input your lender's annual interest rate.\n4. Enter the loan term in years (e.g. 30).\n5. Optionally add annual property tax, annual home insurance, and monthly HOA fees.\n6. Click Calculate to see your full PITI breakdown and amortization schedule.",
+  "how_to_read": "The result shows your total monthly housing payment broken into Principal & Interest, Property Tax, Home Insurance, PMI (automatically added if your down payment is below 20%), and HOA fees. Keep your total housing cost below 28% of your gross monthly income for a healthy financial position. The amortization schedule below tracks your Principal & Interest portion only, matching how most lenders present it.",
+  "pro_tip": "A down payment below 20% triggers Private Mortgage Insurance (PMI), an extra monthly cost with no equity benefit. If you're close to the 20% threshold, it's often worth delaying your purchase slightly to save the difference — this calculator shows exactly how much PMI adds to your monthly payment.",
   "seo": {
-    "title": "Mortgage Calculator with Taxes, Insurance & PMI (PITI)",
-    "meta_description": "Free mortgage calculator with PITI: includes property taxes, home insurance, and automatic PMI. View 15 vs 30-year loan payments with amortization schedule.",
+    "title": "Mortgage Payment Calculator with Taxes, Insurance & PMI",
+    "meta_description": "Free mortgage calculator with PITI: includes property taxes, home insurance, and PMI. Calculate monthly payments and view amortization schedule.",
     "h1": "Mortgage Payment Calculator (PITI & PMI Included)",
-    "primary_keyword": "mortgage calculator with taxes insurance and pmi",
+    "primary_keyword": "mortgage payment calculator",
     "secondary_keywords": [
       "piti mortgage calculator",
+      "mortgage calculator with taxes and insurance",
       "monthly payment on 300k mortgage",
       "monthly payment on 400k mortgage",
-      "mortgage payment breakdown calculator",
-      "mortgage payment calculator with taxes and insurance"
+      "mortgage payment breakdown calculator"
     ],
     "h2_structure": [
-      "What Is a PITI Mortgage Payment Calculator?",
-      "Who Should Use This Home Loan Calculator?",
-      "How to Calculate Your Total Monthly Mortgage Payment",
-      "Understanding Your PITI & Amortization Breakdown",
-      "Frequently Asked Questions About Mortgage Payments"
+      "What Is a Monthly Mortgage Payment Calculator?",
+      "Who Should Use This Tool?",
+      "How to Use the Mortgage Payment Calculator",
+      "Understanding Your PITI Results & Amortization Schedule",
+      "Frequently Asked Questions"
     ],
     "faqs": [
       {
         "question": "What is included in a PITI mortgage payment?",
-        "answer": "PITI stands for Principal, Interest, Taxes, and Insurance. It represents your complete monthly out-of-pocket housing payment: Principal (paying down the loan balance), Interest (lender borrowing cost), Property Taxes (local county/city assessment), and Hazard Home Insurance (plus PMI if down payment is below 20%)."
+        "answer": "PITI stands for Principal, Interest, Taxes, and Insurance. It represents your complete monthly housing cost: Principal (loan balance payoff), Interest (lender fee), Property Taxes (escrow), and Home Insurance (plus PMI if down payment is under 20%)."
       },
       {
         "question": "What is the monthly payment on a $300,000 mortgage?",
-        "answer": "At a 6.5% interest rate on a 30-year fixed loan, the principal and interest (P&I) payment is approximately $1,896.20 per month. Depending on your state and county, property taxes and insurance typically add $300 to $600/month, bringing the total PITI payment to between $2,200 and $2,500."
+        "answer": "At a 6.5% interest rate on a 30-year fixed loan, the principal and interest payment is $1,896.20 per month. Adding average property taxes and insurance typically brings the total monthly PITI payment to between $2,200 and $2,500."
       },
       {
         "question": "What is the monthly payment on a $400,000 mortgage?",
-        "answer": "At a 6.5% interest rate on a 30-year fixed loan, the principal and interest payment is $2,528.27 per month. Adding average property tax (approx. 1.1%) and homeowners insurance brings the estimated total monthly PITI payment to roughly $3,050 to $3,300."
+        "answer": "At a 6.5% interest rate on a 30-year fixed loan, principal and interest is $2,528.27 per month. With property taxes and insurance added, total monthly payments typically range between $3,050 and $3,300."
       },
       {
-        "question": "How much does Private Mortgage Insurance (PMI) cost per month?",
-        "answer": "PMI typically costs between 0.22% and 1.5% of your original loan balance per year. On a $300,000 loan with a 10% down payment, expect to pay roughly $75 to $200 each month in PMI until your home equity reaches 20%."
+        "question": "What is PMI and when do I have to pay it?",
+        "answer": "Private Mortgage Insurance (PMI) is typically required when your down payment is below 20% of the home price. It protects the lender and is automatically removed once your equity reaches 20%."
       },
       {
-        "question": "What is the 28/36 rule for mortgage affordability?",
-        "answer": "The 28/36 rule states that your household should spend no more than 28% of gross monthly income on total housing costs (PITI), and no more than 36% on all recurring debt combined (mortgage, student loans, car payments, and credit cards)."
-      },
-      {
-        "question": "Does this mortgage calculator work for any currency?",
-        "answer": "Yes. Standard amortization mathematics applies universally. You can input figures in USD ($), GBP (£), EUR (€), CAD, or any other currency without affecting the calculation accuracy."
+        "question": "What is a safe monthly mortgage payment (28% Rule)?",
+        "answer": "Most financial advisors follow the 28% rule — your total monthly housing costs (PITI) should not exceed 28% of your gross monthly income. For example, on a $7,000 monthly income, keep housing costs below $1,960."
       }
     ],
     "schema": {
-      "@context": "https://schema.org",
-      "@type": "SoftwareApplication",
+      "type": "SoftwareApplication",
       "applicationCategory": "FinanceApplication",
-      "name": "Mortgage Payment Calculator with Taxes, Insurance & PMI",
-      "description": "Free online mortgage calculator calculating total monthly payments including principal, interest, property tax, insurance, PMI, and HOA.",
+      "name": "Mortgage Payment Calculator",
+      "description": "Calculate monthly mortgage payments with property tax, insurance & PMI included.",
       "url": "https://quickfincalc.com/calculator/mortgage-calculator",
       "offers": {
-        "@type": "Offer",
         "price": "0",
         "priceCurrency": "USD"
       }
     },
     "open_graph": {
-      "og:title": "Mortgage Calculator with Taxes, Insurance & PMI (PITI)",
+      "og:title": "Mortgage Payment Calculator with Taxes, Insurance & PMI",
       "og:description": "Calculate monthly mortgage payments with property tax, insurance & PMI included.",
       "og:image": "https://quickfincalc.com/og-image.png"
     },
     "twitter_card": {
-      "twitter:title": "Mortgage Calculator with PITI & PMI | Free Tool",
+      "twitter:title": "Mortgage Payment Calculator | Free Tool",
       "twitter:description": "Calculate your full monthly mortgage payment including PITI.",
       "twitter:card": "summary_large_image"
     }
