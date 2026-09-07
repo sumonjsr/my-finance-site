@@ -11,7 +11,7 @@ author: "Md. Merajul Islam"
 authorRole: "Internal Auditor & Cost Control Specialist"
 authorUrl: "https://quickfincalc.com/#authorSection"
 canonical: "https://quickfincalc.com/articles/car-loan-vs-personal-loan"
-image: "https://quickfincalc.com/images/car-loan-vs-personal-loan.jpg"
+image: ""
 ---
 
 <script type="application/ld+json">
