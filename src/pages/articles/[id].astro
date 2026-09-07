@@ -13,7 +13,6 @@ export async function getStaticPaths() {
 const { post } = Astro.props;
 const { Content } = await render(post);
 
-// ✨ FIX: 'image' and 'dateModified' were missing here before — now properly extracted
 const { title, description, keywords, author, date, dateModified, emoji, category, readTime, image } = post.data;
 ---
 
@@ -28,43 +27,52 @@ const { title, description, keywords, author, date, dateModified, emoji, categor
   author={author}
 >
   <style>
-    /* হেডার এখন স্ক্রলের সাথে উপরে চলে যাবে, লক হয়ে থাকবে না */
     .article-header {
       background: linear-gradient(135deg, #1e3a8a 0%, #0f172a 100%);
       color: white;
-      padding: 30px 20px; 
+      padding: 40px 20px; 
       text-align: center;
-      border-bottom: 3px solid var(--brand-accent);
-      position: relative; /* লকড অবস্থা এড়াতে নিশ্চিত করা হলো */
+      border-bottom: 3px solid var(--brand-accent, #d4a373);
+      position: relative;
     }
     
     .emoji-hero { 
-      font-size: 2rem; 
-      margin-bottom: 5px; 
+      font-size: 2.2rem; 
+      margin-bottom: 8px; 
+    }
+
+    .category-badge {
+      color: var(--brand-accent, #d4a373);
+      font-weight: 700;
+      text-transform: uppercase;
+      font-size: 0.75rem;
+      letter-spacing: 1.5px;
+      display: inline-block;
+      margin-bottom: 8px;
     }
 
     h1 { 
-      font-family: var(--serif); 
-      font-size: 1.7rem !important; 
-      margin: 8px auto;
+      font-family: var(--serif, 'Crimson Pro', serif); 
+      font-size: 2.2rem !important; 
+      margin: 10px auto;
       max-width: 850px;
-      line-height: 1.2;
+      line-height: 1.25;
+      font-weight: 800;
     }
 
     .meta-info {
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 10px;
-      font-size: 0.8rem;
-      opacity: 0.8;
+      gap: 16px;
+      margin-top: 14px;
+      font-size: 0.85rem;
+      opacity: 0.9;
     }
 
-    /* ✨ NEW: Featured image styling */
     .featured-image-wrapper {
-      max-width: 800px;
-      margin: 24px auto 0;
+      max-width: 850px;
+      margin: 30px auto 0;
       padding: 0 20px;
     }
 
@@ -74,39 +82,57 @@ const { title, description, keywords, author, date, dateModified, emoji, categor
       max-height: 420px;
       object-fit: cover;
       border-radius: 16px;
-      box-shadow: 0 15px 40px rgba(0,0,0,0.25);
-      border: 3px solid rgba(255,255,255,0.15);
+      box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+      border: 1px solid #e2e8f0;
     }
 
-    .back-link {
-      display: inline-block;
-      margin: 20px 0;
-      color: var(--brand-blue);
+    .content-area {
+      max-width: 850px;
+      margin: 0 auto;
+      padding: 30px 20px 60px;
+      line-height: 1.8;
+      font-size: 1.1rem;
+      color: #334155;
+    }
+
+    /* ✨ SEO Breadcrumb Bar */
+    .breadcrumb-nav {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.85rem;
+      color: #64748b;
+      margin-bottom: 25px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid #f1f5f9;
+    }
+
+    .breadcrumb-nav a {
+      color: #1e3a8a;
       text-decoration: none;
       font-weight: 600;
-      font-size: 0.85rem;
-    }
-    
-    .content-area {
-      max-width: 800px;
-      margin: 0 auto;
-      padding: 0 20px 50px;
-      line-height: 1.7;
-      font-size: 1.05rem;
     }
 
-    /* মোবাইলের জন্য আরও কম্প্যাক্ট */
+    .breadcrumb-nav a:hover {
+      text-decoration: underline;
+    }
+
+    .breadcrumb-separator {
+      color: #cbd5e1;
+    }
+
     @media (max-width: 768px) {
-      h1 { font-size: 1.4rem !important; }
-      .article-header { padding: 20px 15px; }
+      h1 { font-size: 1.6rem !important; }
+      .article-header { padding: 25px 15px; }
       .emoji-hero { font-size: 1.8rem; }
       .featured-image { max-height: 240px; }
+      .content-area { padding: 20px 15px 40px; font-size: 1rem; }
     }
   </style>
 
   <header class="article-header">
     <div class="emoji-hero">{emoji}</div>
-    <span style="color: var(--brand-accent); font-weight: 700; text-transform: uppercase; font-size: 0.65rem; letter-spacing: 1px;">{category}</span>
+    <span class="category-badge">{category}</span>
     <h1>{title}</h1>
     
     <div class="meta-info">
@@ -116,7 +142,6 @@ const { title, description, keywords, author, date, dateModified, emoji, categor
     </div>
   </header>
 
-  {/* ✨ NEW: Visible featured image — only renders if the article has an image set */}
   {image && (
     <div class="featured-image-wrapper">
       <img src={image} alt={title} class="featured-image" loading="eager" />
@@ -124,7 +149,14 @@ const { title, description, keywords, author, date, dateModified, emoji, categor
   )}
 
   <main class="content-area">
-    <a href="/articles" class="back-link">← Back to Guides</a>
+    <!-- ✨ Clean Breadcrumb Navigation -->
+    <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+      <a href="/">Home</a>
+      <span class="breadcrumb-separator">/</span>
+      <a href="/articles">Guides</a>
+      <span class="breadcrumb-separator">/</span>
+      <span style="color: #94a3b8; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 300px;">{title}</span>
+    </nav>
     
     <article class="prose lg:prose-xl max-w-none">
       <Content />
@@ -132,10 +164,10 @@ const { title, description, keywords, author, date, dateModified, emoji, categor
     
     <hr style="margin: 40px 0; border: 0; border-top: 1px solid #e2e8f0;" />
     
-    <div style="background: #f8fafc; padding: 25px; border-radius: 12px; text-align: center; border: 1px solid #e2e8f0;">
-      <h4 style="color: #1e3a8a; margin-bottom: 8px;">Need a precise calculation?</h4>
-      <p style="color: #64748b; font-size: 0.9rem;">Try our professional tools for accurate financial analysis.</p>
-      <a href="/" style="display: inline-block; margin-top: 12px; padding: 10px 24px; background: var(--brand-blue); color: white; text-decoration: none; border-radius: 6px; font-weight: 600; font-size: 0.9rem;">Open Calculators</a>
+    <div style="background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%); padding: 30px 20px; border-radius: 16px; text-align: center; border: 1px solid #e2e8f0; box-shadow: 0 4px 20px rgba(0,0,0,0.03);">
+      <h3 style="color: #1e3a8a; margin-bottom: 8px; font-size: 1.3rem; font-family: 'Crimson Pro', serif; font-weight: 700;">Need a precise calculation?</h3>
+      <p style="color: #64748b; font-size: 0.95rem; max-width: 500px; margin: 0 auto 16px;">Try our free interactive calculators for instant loan, tax, and investment results.</p>
+      <a href="/" style="display: inline-block; padding: 12px 28px; background: #1e3a8a; color: white; text-decoration: none; border-radius: 8px; font-weight: 700; font-size: 0.95rem; transition: 0.2s;">Explore All Calculators →</a>
     </div>
   </main>
 </Layout>
