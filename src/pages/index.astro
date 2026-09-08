@@ -2,10 +2,10 @@
 import Layout from '../layouts/Layout.astro';
 import calculators from '../../calculators.json';
 
-const title = "Financial Calculators | EMI, ROI & Tax Tools";
-const description = "Calculate loan EMI, ROI, taxes & profit margins instantly. Free professional tools for businesses & investors. Accurate results in seconds—no signup.";
+const title = "Financial Calculators | EMI, ROI, Tax & Business Tools";
+const description = "Calculate loan EMI, ROI, sales tax, e-commerce profit margins, and retirement growth instantly. 53+ professional free financial calculators with zero signup.";
 
-// FIX 1: Explicit canonical for homepage — prevents /index.html canonical bug
+// ✅ SEO - Optimized Canonical for Homepage
 const canonical = "https://quickfincalc.com/";
 
 // Group calculators by type
@@ -56,9 +56,27 @@ const categoryInfo = {
     color: '#06b6d4'
   }
 };
+
+// ✅ Homepage FAQ Schema for Rich Results
+const homepageSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "QuickFinCalc",
+  "url": "https://quickfincalc.com/",
+  "description": description,
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://quickfincalc.com/?q={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+};
 ---
 
 <Layout title={title} description={description} canonical={canonical}>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(homepageSchema)} />
+  </Fragment>
+
     <style>
         :root {
             --primary: #1e3a8a;
@@ -217,7 +235,6 @@ const categoryInfo = {
             margin-bottom: 0;
         }
 
-        /* FIX 4: Honest stats — real numbers only */
         .quick-stats {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
@@ -314,7 +331,7 @@ const categoryInfo = {
             margin: 0 10px;
         }
 
-        /* FIX 4: User metrics section — honest numbers */
+        /* USER METRICS SECTION */
         .user-metrics {
             padding: 60px 20px;
             background: white;
@@ -375,7 +392,7 @@ const categoryInfo = {
             margin: 0;
         }
 
-        /* FIX 5: Use cases section replacing fake testimonials */
+        /* USE CASES SECTION */
         .usecases-section {
             padding: 60px 20px;
             background: linear-gradient(135deg, #f8f9ff 0%, #f0f4ff 100%);
@@ -561,19 +578,6 @@ const categoryInfo = {
             border: 3px solid rgba(255, 255, 255, 0.3);
         }
 
-        .placeholder-avatar {
-            width: 180px;
-            height: 180px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.2);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 60px;
-            font-weight: bold;
-            border: 3px solid rgba(255, 255, 255, 0.3);
-        }
-
         .bio-content h3 {
             color: rgba(255, 255, 255, 0.8);
             font-size: 12px;
@@ -647,7 +651,7 @@ const categoryInfo = {
             border-color: rgba(255, 255, 255, 0.6);
         }
 
-        /* CALCULATORS BY CATEGORY — Option C */
+        /* CALCULATORS BY CATEGORY */
         .calculators-section {
             margin-bottom: 80px;
         }
@@ -708,7 +712,6 @@ const categoryInfo = {
             gap: 12px;
         }
 
-        /* ✨ Redesigned calculator card — icon badge + premium shine hover */
         .calc-list-item {
             display: flex;
             align-items: center;
@@ -797,7 +800,6 @@ const categoryInfo = {
             transform: translateX(4px);
         }
 
-        /* ✨ No results message for search */
         .no-results-message {
             display: none;
             text-align: center;
@@ -858,8 +860,6 @@ const categoryInfo = {
             box-shadow: 0 15px 30px rgba(212, 163, 115, 0.4);
         }
 
-
-        /* RESPONSIVE */
         @media (max-width: 1024px) {
             .bio-container { grid-template-columns: 1fr; gap: 30px; }
             .steps-container { flex-direction: column; }
@@ -878,8 +878,6 @@ const categoryInfo = {
             .why-section { padding: 30px 20px; margin: 0 auto 60px; }
             .why-section h2 { font-size: 1.4rem; }
             .quick-stats { grid-template-columns: repeat(2, 1fr); }
-            .benefits-section h2 { font-size: 1.4rem; }
-            .benefits-container { grid-template-columns: 1fr; }
             .how-it-works { padding: 40px 20px; }
             .how-it-works h2 { font-size: 1.4rem; }
             .trust-security { padding: 40px 20px; }
@@ -898,7 +896,6 @@ const categoryInfo = {
 
     <section class="hero">
         <div class="hero-content">
-            <!-- FIX 8: More natural H1 -->
             <h1>Free Financial Calculators for Small Business, Loans & Investments</h1>
             <p>Professional-grade calculators for accurate financial planning, completely free</p>
             <div class="search-container">
@@ -912,7 +909,7 @@ const categoryInfo = {
         </div>
     </section>
 
-    <!-- ✨ CATEGORY JUMP NAVIGATION -->
+    <!-- CATEGORY JUMP NAVIGATION -->
     <div class="category-nav-wrapper">
         <nav class="category-nav" aria-label="Jump to category">
             {Object.entries(calcsByType).map(([type, calcs]) => {
@@ -929,7 +926,7 @@ const categoryInfo = {
 
     <div class="main-container">
 
-        <!-- CALCULATORS BY CATEGORY — Option C: Full list per category -->
+        <!-- CALCULATORS BY CATEGORY -->
         <div class="calculators-section" id="calculatorsSection">
             <h2 class="section-title">Browse All Calculators by Category</h2>
 
@@ -961,7 +958,7 @@ const categoryInfo = {
 
             <div class="no-results-message" id="noResultsMessage">
                 <strong>No matching calculators found</strong>
-                Try a different keyword, or clear the search to browse all 53 tools.
+                Try a different keyword, or clear the search to browse all tools.
             </div>
         </div>
 
@@ -971,10 +968,9 @@ const categoryInfo = {
             <p>Financial decisions impact your business growth, but complex calculations drain time and introduce errors. QuickFinCalc removes the complexity. Whether you're calculating loan EMI, analyzing ROI on marketing campaigns, or determining profit margins, our professional-grade calculators deliver accurate results in seconds.</p>
             <p>No spreadsheet formulas. No accounting background required. Just instant, reliable financial insights at your fingertips — helping you understand the true cost of loans, maximize investment returns, optimize business pricing, and plan taxes effectively.</p>
 
-            <!-- FIX 4: Honest stats — real numbers only -->
             <div class="quick-stats">
                 <div class="stat-item">
-                    <div class="stat-number">53</div>
+                    <div class="stat-number">{calculators.length}</div>
                     <div class="stat-label">Free Calculators</div>
                 </div>
                 <div class="stat-item">
@@ -992,7 +988,7 @@ const categoryInfo = {
             </div>
         </div>
 
-        <!-- FIX 5: Replace fake testimonials with real use cases -->
+        <!-- USE CASES SECTION -->
         <section class="usecases-section" id="usecasesSection">
             <h2>Who Uses QuickFinCalc?</h2>
             <p class="usecases-subtitle">Built for professionals who need fast, reliable financial answers</p>
@@ -1037,7 +1033,7 @@ const categoryInfo = {
                 <div class="step">
                     <div class="step-number">1</div>
                     <h3>Choose Your Calculator</h3>
-                    <p>Browse 53 calculators organized by category: Loans, Investments, Business Margins, Taxes, Marketing, and more.</p>
+                    <p>Browse professional calculators organized by category: Loans, Investments, Business Margins, Taxes, Marketing, and more.</p>
                 </div>
                 <div class="step-arrow">→</div>
                 <div class="step">
@@ -1060,12 +1056,12 @@ const categoryInfo = {
             </div>
         </section>
 
-        <!-- FIX 4: Honest metrics — real tool counts, not inflated user numbers -->
+        <!-- USER METRICS SECTION -->
         <section class="user-metrics" id="userMetricsSection">
             <h2>Everything You Need in One Place</h2>
             <div class="metrics-grid">
                 <div class="metric-card">
-                    <div class="metric-number">53</div>
+                    <div class="metric-number">{calculators.length}</div>
                     <div class="metric-label">Calculators</div>
                     <p class="metric-description">Covering loans, investments, taxes, e-commerce, marketing, and HR</p>
                 </div>
@@ -1108,7 +1104,6 @@ const categoryInfo = {
                 </div>
                 <div class="trust-item">
                     <span class="trust-icon">✓</span>
-                    <!-- FIX 6: Removed "since 2026" -->
                     <h3>Built by a Certified Auditor</h3>
                     <p>Every calculator is built and verified by a qualified Internal Auditor with 10+ years of financial experience.</p>
                 </div>
@@ -1137,10 +1132,6 @@ const categoryInfo = {
         <section class="author-bio" id="authorSection">
             <div class="bio-container">
                 <div class="bio-image">
-                    {/* To add your photo: place image in public/images/merajul.jpg
-                        then replace the div below with:
-                        <img src="/merajul.jpg" alt="Md Merajul Islam" class="bio-photo" />
-                    */}
                     <img src="/merajul.jpg" alt="Md Merajul Islam" class="bio-photo" />
                 </div>
                 <div class="bio-content">
@@ -1155,7 +1146,6 @@ const categoryInfo = {
                         <span class="credential">• Assistant Manager, Internal Audit</span>
                         <span class="credential">• Committed to Financial Literacy & Accuracy</span>
                     </div>
-                    <!-- FIX 3: Removed broken social links, kept only Contact -->
                     <p class="connect-text">Have questions or suggestions?</p>
                     <div class="social-links">
                         <a href="https://quickfincalc.com/contact" class="social-link" title="Contact">Get in Touch</a>
@@ -1172,7 +1162,6 @@ const categoryInfo = {
         </section>
 
     </div>
-
 
     <script is:inline>
         function filterCalculators() {
