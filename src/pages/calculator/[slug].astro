@@ -2115,7 +2115,75 @@ const breadcrumbSchema = {
           cData = [salary, socialSecurity, medicare, futa];
           break;
         }
+        ase 'rent_vs_buy': {
+          const homePrice = v1;
+          const monthlyRent = v2;
+          const years = v3 > 0 ? v3 : 7;
 
+          if (!homePrice || homePrice <= 0 || !monthlyRent || monthlyRent <= 0) {
+            resDiv.innerHTML = '⚠️ Please enter a valid home price and monthly rent.';
+            resDiv.style.display = 'block';
+            if (e?.isTrusted) resDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            return;
+          }
+
+          // Assumptions for realistic calculation
+          const downPayment = homePrice * 0.20;
+          const loanAmount = homePrice - downPayment;
+          const rateAnnual = 6.5;
+          const r = (rateAnnual / 12) / 100;
+          const months = Math.round(years * 12);
+
+          const emi = r > 0
+            ? (loanAmount * r * Math.pow(1 + r, months)) / (Math.pow(1 + r, months) - 1)
+            : loanAmount / months;
+
+          const annualTaxRate = 0.011; // 1.1% property tax
+          const annualMaintRate = 0.01; // 1% maintenance
+          const annualAppreciation = 0.03; // 3% home value growth
+
+          let totalRentPaid = 0;
+          let currentRent = monthlyRent;
+          let totalBuyingCost = downPayment + (emi * months);
+          let propertyVal = homePrice;
+
+          for (let y = 1; y <= years; y++) {
+            totalRentPaid += currentRent * 12;
+            currentRent *= 1.03; // rent inflation 3% / yr
+
+            // Add annual tax & maintenance to buying cost
+            const annualTax = propertyVal * annualTaxRate;
+            const annualMaint = propertyVal * annualMaintRate;
+            totalBuyingCost += annualTax + annualMaint;
+
+            propertyVal *= (1 + annualAppreciation);
+          }
+
+          // Selling cost at the end (approx 6% realtor/closing fee)
+          const sellingCost = propertyVal * 0.06;
+          const finalHomeEquity = propertyVal - (loanAmount * 0.7) - sellingCost; // rough remaining balance estimation
+          const netBuyingCost = totalBuyingCost - finalHomeEquity;
+
+          const diff = Math.abs(netBuyingCost - totalRentPaid);
+          const winner = netBuyingCost < totalRentPaid ? "Buying is Cheaper 🏠" : "Renting is Cheaper 🏢";
+
+          out = `
+            <div style="background:linear-gradient(135deg, #1e3a8a, #1e40af); color:white; padding:22px; border-radius:14px; margin-bottom:18px;">
+              <p style="margin:0; opacity:0.9; font-size:0.9rem;">Over ${years} Years Recommendation</p>
+              <h2 style="margin:6px 0 0; font-size:2rem; color:#60a5fa;">${winner}</h2>
+            </div>
+            <div style="text-align:left; font-size:1rem; line-height:2;">
+              <div style="display:flex; justify-content:space-between;"><span>Total Rent Cost:</span><strong>${fmt(totalRentPaid)}</strong></div>
+              <div style="display:flex; justify-content:space-between;"><span>Net Buying Cost ( incl. taxes & maintenance ):</span><strong>${fmt(netBuyingCost)}</strong></div>
+              <hr style="border:0; border-top:1px solid #e2e8f0; margin:8px 0;">
+              <div style="display:flex; justify-content:space-between; font-size:1.2rem; color:#1e3a8a;"><span>Financial Advantage:</span><strong>Save ${fmt(diff)}</strong></div>
+            </div>
+          `;
+
+          cLabels = ['Total Rent Paid', 'Net Buying Cost'];
+          cData = [totalRentPaid, netBuyingCost > 0 ? netBuyingCost : 0];
+          break;
+        }
         default: {
           out     = `Result: ${fmt(v1 * v2)}`;
           cLabels = ['Value 1', 'Value 2'];
@@ -2368,6 +2436,12 @@ const breadcrumbSchema = {
         case 'payroll_tax':
           v1.value = '75000'; // Annual salary
           if (v2) v2.value = '12'; // Pay periods
+          break;
+
+        case 'rent_vs_buy':
+          v1.value = '400000'; // Home Price
+          if (v2) v2.value = '2200'; // Monthly Rent
+          if (v3) v3.value = '7'; // Years
           break;
 
         default:
