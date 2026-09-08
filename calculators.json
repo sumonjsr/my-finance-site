@@ -3197,5 +3197,68 @@
         }
       }
     }
+  },
+  {
+  "slug": "rent-vs-buy-calculator",
+  "formula": "rent_vs_buy",
+  "type": "loan",
+  "name": "Rent vs. Buy Calculator: Should You Rent or Buy a Home?",
+  "description": "Compare renting vs buying a home over 5 to 30 years. Factor in property appreciation, mortgage interest, maintenance, and opportunity cost.",
+  "label1": "Home Purchase Price ($)",
+  "label2": "Monthly Rent Price ($)",
+  "label3": "Expected Years Staying in Home",
+  "what_is": "Deciding whether to rent a home or buy one is one of the biggest financial crossroads you will ever face. A Rent vs. Buy calculator goes far beyond a simple monthly comparison. It models the total cost of homeownership—including mortgage interest, property taxes, home insurance, maintenance, closing costs, and homeowners association (HOA) fees—against the total cost of renting, while factoring in potential home appreciation and the opportunity cost of investing your down payment elsewhere.",
+  "who_use": "First-time homebuyers trying to decide if purchasing makes mathematical sense right now, renters evaluating long-term wealth building, and real estate relocators comparing local housing markets.",
+  "how_to_use": "1. Enter the estimated home purchase price.\n2. Enter the comparable monthly rent for a similar property.\n3. Input your expected duration of stay in years (e.g. 7 or 10 years).\n4. Click Calculate to see the net financial difference and long-term net worth comparison.",
+  "how_to_read": "The result displays whether buying or renting builds higher net worth over your chosen timeframe. Buying generally wins over long horizons (7+ years) because of property appreciation and principal paydown, whereas renting often wins over short horizons (1–4 years) due to heavy upfront closing costs and mortgage interest front-loading.",
+  "pro_tip": "If you plan to move within 3 to 4 years, buying is almost always a financial loss due to the 5–6% selling commissions and closing costs. Only buy if you expect to stay in the home long enough for appreciation and amortization to outpace transaction costs.",
+  "seo": {
+    "title": "Rent vs Buy Calculator: Which Is Better?",
+    "meta_description": "Compare renting vs buying a home instantly. Factor in mortgage payments, property appreciation, maintenance, and opportunity cost with our free calculator.",
+    "h1": "Rent vs. Buy Calculator: Should You Rent or Buy?",
+    "primary_keyword": "rent vs buy calculator",
+    "secondary_keywords": [
+      "should I rent or buy a house",
+      "renting vs buying calculator",
+      "cost of renting vs buying home",
+      "rent vs buy net worth comparison"
+    ],
+    "h2_structure": [
+      "What Is a Rent vs. Buy Calculator?",
+      "Who Should Use This Real Estate Tool?",
+      "How to Calculate Rent vs. Buy Net Worth",
+      "Hidden Costs of Homeownership vs. Renting",
+      "Frequently Asked Questions"
+    ],
+    "faqs": [
+      {
+        "question": "Is it always better to buy a home than to rent?",
+        "answer": "No. While buying builds equity over time through property appreciation and loan paydown, renting is often cheaper over short horizons (1-4 years) because buying incurs heavy upfront closing costs and selling commissions."
+      },
+      {
+        "question": "What is the 'opportunity cost' in a rent vs buy calculation?",
+        "answer": "Opportunity cost represents the returns you could have earned if you invested your down payment and closing costs in the stock market (like S&P 500) instead of tying it up in home equity."
+      },
+      {
+        "question": "How long do I need to stay in a home to make buying worthwhile?",
+        "answer": "Generally, financial advisors recommend staying in a home for at least 5 to 7 years to absorb the upfront transaction costs of buying and selling."
+      },
+      {
+        "question": "Does this calculator include property taxes and maintenance?",
+        "answer": "Yes. A realistic comparison must include property taxes, home insurance, HOA dues, and estimated annual maintenance (typically 1% of home value per year)."
+      }
+    ],
+    "schema": {
+      "type": "SoftwareApplication",
+      "applicationCategory": "FinanceApplication",
+      "name": "Rent vs. Buy Calculator",
+      "description": "Free calculator to compare renting versus buying a home over time.",
+      "url": "https://quickfincalc.com/calculator/rent-vs-buy-calculator",
+      "offers": {
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    }
   }
+}
 ]
