@@ -1,5 +1,5 @@
 ---
-title: "How to Calculate Debt-to-Income (DTI) Ratio: Limits & Guide"
+title: "Debt-to-Income (DTI) Ratio: Calculation & Limits Guide"
 description: "Calculate your Debt-to-Income (DTI) ratio. Learn front-end vs back-end DTI limits for mortgages, FHA, auto loans, and proven ways to lower it."
 date: "2026-04-17"
 dateModified: "2026-09-08"
@@ -17,7 +17,7 @@ canonical: "https://quickfincalc.com/articles/debt-to-income-ratio"
 {
   "@context": "https://schema.org",
   "@type": "Article",
-  "headline": "How to Calculate Debt-to-Income (DTI) Ratio: Limits & Guide",
+  "headline": "Debt-to-Income (DTI) Ratio: Calculation & Limits Guide",
   "description": "Calculate your Debt-to-Income (DTI) ratio. Learn front-end vs back-end DTI limits for mortgages, FHA, auto loans, and proven ways to lower it.",
   "datePublished": "2026-04-17",
   "dateModified": "2026-09-08",
