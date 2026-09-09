@@ -3260,5 +3260,69 @@
       }
     }
   }
+},
+
+{
+  "slug": "mortgage-refinance-calculator",
+  "formula": "mortgage_refinance",
+  "type": "loan",
+  "name": "Mortgage Refinance Calculator",
+  "description": "Calculate monthly savings, total lifetime interest reduction, and break-even timeline when refinancing your home loan.",
+  "label1": "Remaining Loan Balance ($)",
+  "label2": "Current Interest Rate (%)",
+  "label3": "New Refinance Interest Rate (%)",
+  "what_is": "A mortgage refinance calculator helps homeowners determine whether replacing their current home loan with a new one makes financial sense. By comparing your current interest rate and remaining loan balance against a new lower rate and closing costs, this tool instantly calculates your new monthly payment, total lifetime interest savings, and the exact break-even timeline required to recover refinancing closing fees.",
+  "who_use": "Homeowners looking to lower their monthly mortgage payments when market interest rates drop, borrowers wanting to switch from an adjustable-rate mortgage (ARM) to a stable fixed rate, or homeowners looking to shorten their loan tenure from 30 years to 15 years.",
+  "how_to_use": "1. Enter your remaining mortgage balance.\n2. Input your current interest rate and remaining loan term in years.\n3. Enter the new refinance interest rate and your new loan term (e.g. 30 or 15 years).\n4. Optionally enter estimated refinancing closing costs (usually 2% to 5% of the loan amount).\n5. Click Calculate to view your monthly savings and break-even analysis.",
+  "how_to_read": "The result displays your new monthly payment, your immediate monthly savings, and your total lifetime interest reduction. Crucially, the **Break-Even Point** tells you exactly how many months of savings it will take to cover your upfront closing costs. If you plan to sell the house before reaching the break-even point, refinancing is not financially worthwhile.",
+  "pro_tip": "As a general rule of thumb, refinancing makes financial sense if you can secure a new interest rate that is at least 0.75% to 1.0% lower than your current note rate, and you plan to stay in the home long enough to pass your break-even month.",
+  "seo": {
+    "title": "Mortgage Refinance Calculator: Monthly Savings & Break-Even",
+    "meta_description": "Calculate mortgage refinancing savings, total interest reduction, and closing cost break-even timeline instantly. Free home loan refinance tool.",
+    "h1": "Mortgage Refinance Calculator",
+    "primary_keyword": "mortgage refinance calculator",
+    "secondary_keywords": [
+      "refinance calculator",
+      "should i refinance my mortgage",
+      "mortgage refinancing savings calculator",
+      "refinance break even calculator"
+    ],
+    "h2_structure": [
+      "What Is a Mortgage Refinance Calculator?",
+      "Who Should Use This Refinance Tool?",
+      "How to Calculate Refinance Savings & Break-Even",
+      "When Does Refinancing Actually Make Sense?",
+      "Frequently Asked Questions"
+    ],
+    "faqs": [
+      {
+        "question": "When is it smart to refinance a mortgage?",
+        "answer": "It is generally smart to refinance if you can lower your interest rate by at least 0.75% to 1.0%, lower your monthly payment, and plan to stay in the home past your closing cost break-even point."
+      },
+      {
+        "question": "What is the break-even point in mortgage refinancing?",
+        "answer": "The break-even point is the number of months it takes for your monthly payment savings to completely cover your upfront refinancing closing costs. Formula: Closing Costs ÷ Monthly Savings = Break-Even Months."
+      },
+      {
+        "question": "What are typical refinancing closing costs?",
+        "answer": "Refinancing closing costs typically range from 2% to 5% of your total loan amount, covering appraisal fees, title search, origination fees, and government recording charges."
+      },
+      {
+        "question": "Should I refinance a 30-year mortgage into another 30-year mortgage?",
+        "answer": "Doing so lowers your monthly payment immediately, but restarting a 30-year clock means you will pay interest for a longer total duration unless you make extra principal payments."
+      }
+    ],
+    "schema": {
+      "type": "SoftwareApplication",
+      "applicationCategory": "FinanceApplication",
+      "name": "Mortgage Refinance Calculator",
+      "description": "Free calculator to compute mortgage refinancing savings and closing cost break-even timelines.",
+      "url": "https://quickfincalc.com/calculator/mortgage-refinance-calculator",
+      "offers": {
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    }
+  }
 }
 ]

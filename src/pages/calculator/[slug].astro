@@ -2204,6 +2204,61 @@ const breadcrumbSchema = {
           cData = [totalRentPaid, netBuyingCost > 0 ? netBuyingCost : 0];
           break;
         }
+
+        case 'mortgage_refinance': {
+          const balance = v1;
+          const currentRate = v2;
+          const newRate = v3;
+          const v4Ref = getValue('v4'); // remaining years current
+          const v5Ref = getValue('v5'); // closing costs
+
+          if (!balance || balance <= 0 || !currentRate || !newRate) {
+            resDiv.innerHTML = '⚠️ Please enter remaining balance, current rate, and new rate.';
+            resDiv.style.display = 'block';
+            if (e?.isTrusted) resDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            return;
+          }
+
+          const years = v4Ref > 0 ? v4Ref : 30;
+          const totalMonths = Math.round(years * 12);
+
+          // Current Monthly Payment (P&I)
+          const rCurr = (currentRate / 12) / 100;
+          const currentEmi = rCurr > 0
+            ? (balance * rCurr * Math.pow(1 + rCurr, totalMonths)) / (Math.pow(1 + rCurr, totalMonths) - 1)
+            : balance / totalMonths;
+
+          // New Monthly Payment (P&I)
+          const rNew = (newRate / 12) / 100;
+          const newEmi = rNew > 0
+            ? (balance * rNew * Math.pow(1 + rNew, totalMonths)) / (Math.pow(1 + rNew, totalMonths) - 1)
+            : balance / totalMonths;
+
+          const monthlySavings = currentEmi - newEmi;
+          const closingCosts = v5Ref > 0 ? v5Ref : balance * 0.02; // default 2% closing costs
+
+          const breakEvenMonths = monthlySavings > 0 ? closingCosts / monthlySavings : 999;
+          const totalLifetimeSavings = (monthlySavings * totalMonths) - closingCosts;
+
+          out = `
+            <div style="background:linear-gradient(135deg, #1e3a8a, #1e40af); color:white; padding:22px; border-radius:14px; margin-bottom:18px;">
+              <p style="margin:0; opacity:0.9; font-size:0.9rem;">Estimated Monthly Savings</p>
+              <h2 style="margin:6px 0 0; font-size:2.2rem; color:#60a5fa;">${fmt(monthlySavings)} /mo</h2>
+            </div>
+            <div style="text-align:left; font-size:1rem; line-height:2;">
+              <div style="display:flex; justify-content:space-between;"><span>Current Monthly Payment:</span><strong>${fmt(currentEmi)}</strong></div>
+              <div style="display:flex; justify-content:space-between;"><span>New Monthly Payment:</span><strong>${fmt(newEmi)}</strong></div>
+              <div style="display:flex; justify-content:space-between;"><span>Estimated Closing Costs:</span><strong>${fmt(closingCosts)}</strong></div>
+              <div style="display:flex; justify-content:space-between;"><span>Break-Even Timeline:</span><strong style="color:#d4a373;">${breakEvenMonths.toFixed(1)} Months</strong></div>
+              <hr style="border:0; border-top:1px solid #e2e8f0; margin:8px 0;">
+              <div style="display:flex; justify-content:space-between; font-size:1.2rem; color:#1e3a8a;"><span>Net Lifetime Interest Saved:</span><strong>${fmt(totalLifetimeSavings)}</strong></div>
+            </div>
+          `;
+
+          cLabels = ['Current Payment Total', 'New Refinance Total'];
+          cData = [currentEmi * totalMonths, (newEmi * totalMonths) + closingCosts];
+          break;
+        }
         default: {
           out     = `Result: ${fmt(v1 * v2)}`;
           cLabels = ['Value 1', 'Value 2'];
@@ -2462,6 +2517,12 @@ const breadcrumbSchema = {
           v1.value = '400000'; // Home Price
           if (v2) v2.value = '2200'; // Monthly Rent
           if (v3) v3.value = '7'; // Years
+          break;
+        
+        case 'mortgage_refinance':
+          v1.value = '300000'; // Balance
+          if (v2) v2.value = '7.5'; // Current Rate
+          if (v3) v3.value = '5.8'; // New Rate
           break;
 
         default:
