@@ -349,7 +349,9 @@ const breadcrumbSchema = {
             
             <div id="chartWrapper" style="display:none; margin-top: 35px; background: #fff; padding: 25px; border-radius: 20px; border: 1px solid #e2e8f0;">
               <h3 style="text-align:center; font-size:1.1rem; color:#1e3a8a; margin-bottom:15px; font-family:'Crimson Pro', serif;">Visual Breakdown</h3>
-              <canvas id="resultChart"></canvas>
+              <div class="chart-canvas-box">
+                <canvas id="resultChart"></canvas>
+              </div>
             </div>
 
             <div id="amortWrapper" style="display:none; margin-top: 35px; background: #fff; padding: 25px; border-radius: 20px; border: 1px solid #e2e8f0;">
@@ -610,6 +612,22 @@ const breadcrumbSchema = {
     @keyframes slideIn {
       from { opacity: 0; transform: translateY(-10px); }
       to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ✅ Chart size fix — keeps the doughnut/bar chart from filling the whole card */
+    .chart-canvas-box {
+      position: relative;
+      width: 100%;
+      height: 280px;
+      max-width: 400px;
+      margin: 0 auto;
+    }
+
+    @media (max-width: 640px) {
+      .chart-canvas-box {
+        height: 240px;
+        max-width: 100%;
+      }
     }
     
     .rich-content { 
@@ -1003,6 +1021,7 @@ const breadcrumbSchema = {
         },
         options: {
           responsive: true,
+          maintainAspectRatio: false,
           plugins: {
             legend: { position: 'bottom', labels: { padding: 20, font: { size: 12, weight: 'bold' } } }
           }
@@ -1279,6 +1298,7 @@ const breadcrumbSchema = {
             data: { labels: chartLabels, datasets },
             options: {
               responsive: true,
+              maintainAspectRatio: false,
               interaction: { mode: 'index', intersect: false },
               plugins: {
                 legend: {
@@ -2452,7 +2472,7 @@ const breadcrumbSchema = {
       }
     }
 
-    // ✨ পেজ লোড হওয়ার সাথে সাথে ডিফল্ট ডেটা লোড হয়ে অটো রান করবে
+    // ✨ পেজ লোড হওয়ার সাথে সাথে ডিফল্ট ডেটা লোড হয়ে অটো রান করবে
     window.addEventListener('DOMContentLoaded', () => {
       loadDemoData();
       if (btn) {
